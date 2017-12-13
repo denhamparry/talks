@@ -1,0 +1,9 @@
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/bin/Debug/netcoreapp1.1/HelloGalaxy.deps.json
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/bin/Debug/netcoreapp1.1/HelloGalaxy.runtimeconfig.json
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/bin/Debug/netcoreapp1.1/HelloGalaxy.runtimeconfig.dev.json
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/bin/Debug/netcoreapp1.1/HelloGalaxy.dll
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/bin/Debug/netcoreapp1.1/HelloGalaxy.pdb
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/obj/Debug/netcoreapp1.1/HelloGalaxy.AssemblyInfo.cs
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/obj/Debug/netcoreapp1.1/HelloGalaxy.dll
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/obj/Debug/netcoreapp1.1/HelloGalaxy.pdb
+/Users/denhamparry/Git/ProgNET2017/HelloGalaxy/obj/Debug/netcoreapp1.1/HelloGalaxy.csprojResolveAssemblyReference.cache

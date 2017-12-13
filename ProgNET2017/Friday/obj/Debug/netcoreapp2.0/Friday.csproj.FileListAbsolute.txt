@@ -1,0 +1,10 @@
+/Users/denhamparry/Git/ProgNET2017/Friday/bin/Debug/netcoreapp2.0/Friday.deps.json
+/Users/denhamparry/Git/ProgNET2017/Friday/bin/Debug/netcoreapp2.0/Friday.runtimeconfig.json
+/Users/denhamparry/Git/ProgNET2017/Friday/bin/Debug/netcoreapp2.0/Friday.runtimeconfig.dev.json
+/Users/denhamparry/Git/ProgNET2017/Friday/bin/Debug/netcoreapp2.0/Friday.dll
+/Users/denhamparry/Git/ProgNET2017/Friday/bin/Debug/netcoreapp2.0/Friday.pdb
+/Users/denhamparry/Git/ProgNET2017/Friday/obj/Debug/netcoreapp2.0/Friday.csproj.CoreCompileInputs.cache
+/Users/denhamparry/Git/ProgNET2017/Friday/obj/Debug/netcoreapp2.0/Friday.AssemblyInfoInputs.cache
+/Users/denhamparry/Git/ProgNET2017/Friday/obj/Debug/netcoreapp2.0/Friday.AssemblyInfo.cs
+/Users/denhamparry/Git/ProgNET2017/Friday/obj/Debug/netcoreapp2.0/Friday.dll
+/Users/denhamparry/Git/ProgNET2017/Friday/obj/Debug/netcoreapp2.0/Friday.pdb
