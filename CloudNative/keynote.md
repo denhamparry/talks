@@ -1,4 +1,0 @@
-# CloudNative
-
-## Sam Newman - Keynote
-
