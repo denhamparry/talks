@@ -1,25 +1,26 @@
-# [fit] State of the Nation
+# [fit] __State__ of the __Nation__
 
-## Lewis Denham-Parry
+## _Lewis Denham-Parry_
 
 ---
 
-# [fit] What I do
+# What I do
 
-## [fit] Co-Founder: Cloud Native Wales
-## [fit] Instructor: LearnK8S
+### _Co-Founder_: __Cloud Native Wales__
 
-## [fit] Fitter: Kitchens
+### _Instructor_: __LearnK8S__
+cd 
+### _Fitter_: __Kitchens__
 
 ---
 
 # [fit] Where you can find me
 
-## @denhamparry
+## __@denhamparry__
 
 ---
 
-# About you
+# About __you__
 
 ^
 - Who is new to Docker?
@@ -28,17 +29,40 @@
 
 ---
 
-# More about me
+# About __me__
 
-^ I'm a dotnet developer.
+^
+- I'm a dotnet developer.
+- Started with Java in uni.
+- Connected with dotnet.
 
 ---
+
+# 10 years pass
+
+^
+- Full time / Startup / Consultant / Contacting.
+- I was fed up.
+- Also had a young family.
+- Something had to change.
+
+---
+
+# [fit] Share
+
+## Tip 1
+
+- Markdown is the best.
+- Blog post of what you do.
+- Answer Stack Overflow questions!
+- Don't just say you fixed it FFS.
+
+---
+
 
 # [fit] Why containers?
 
 ^
-- 4 years ago I was fed up.
-- Also had a young son.
 - No longer 4am coding sessions.
 - Had to adapt, had to automate.
 - Read about Docker somewhere.
@@ -48,13 +72,9 @@
 # [fit] Why Docker?
 
 ^
-- Google searches.
 - Documentation.
-- Well documented products win for me.
-- DotNet when I was in Uni was well documented compared to Java.
-- Seeing examples and walkthroughs help me.
-- Answer stackoverflow questions!
-- Don't just say you fixed it FFS.
+- DotNet was well documented compared to Java.
+- Examples and walk throughs help me.
 
 ---
 
