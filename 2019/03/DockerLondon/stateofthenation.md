@@ -75,7 +75,7 @@
 ^
 - Documentation.
 - DotNet was well documented compared to Java.
-- Examples and walk throughs help me.
+- Examples and walk throughs helps me.
 
 ---
 
