@@ -9,7 +9,7 @@
 ### _Co-Founder_: __Cloud Native Wales__
 
 ### _Instructor_: __LearnK8S__
-cd 
+
 ### _Fitter_: __Kitchens__
 
 ---
@@ -52,6 +52,7 @@ cd
 
 ## Tip 1
 
+^
 - Markdown is the best.
 - Blog post of what you do.
 - Answer Stack Overflow questions!
