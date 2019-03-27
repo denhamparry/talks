@@ -1,8 +1,8 @@
 theme: Ostrich, 4
 
-# [fit] __State__ of the __Nation__
+# [fit] __State__ of the __Union__ address
 
-## _Lewis Denham-Parry_
+### _Lewis Denham-Parry_
 
 ---
 
@@ -12,12 +12,53 @@ theme: Ostrich, 4
 
 ### _Instructor_: __LearnK8S__
 
-### _Fitter_: __Kitchens__
+### ~~_Fitter_: __Kitchens__~~
+
+---
+
+![inline fit](assets/dockerwhale.png)
+
+^
+Americans think of this.
+Happy Birthday Docker by the way.
+How can we beat that?
+
+---
+
+![inline fit](assets/wales.png)
+
+^
+We have a Dragon on our flag.
+There are lots of great things that we do in Wales.
+But we're also good at being used as a unit of measurement.
+
+---
+
+![inline fit](assets/coastalpath.jpg)
+
+^
+- As it's Dockers birthday
+- If we took all the public docker hub containers as of this morning.
+- A container is 1.5 meters long.
+
+---
+
+# Workings...
+
+- Docker Hub Public Images
+  - __2,116,078__
+- Wales Costal path
+  - __1,400 km__
+- Each image
+  - __1.5m__
+- Internet comparison
+  - 1 Danny DeVeto
 
 ---
 
 # [fit] Where you can find me
 
+### here
 
 ### __@denhamparry__
 
@@ -208,7 +249,71 @@ Part [^3].
 
 ![inline fit](assets/dumb.gif)
 
-## [fit] _If you're gonna be dump you better be tough_
+## [fit] _If you're gonna be dumb you better be tough_
 
 ---
 
+# _Applications_
+
+## You're __not__ going to live forever
+
+---
+
+# [fit] __Spin up / Tear down__
+
+## #Tip 5
+
+---
+
+![inline fit](assets/mrmeeseeks.gif)
+
+^
+- Usually you see pictures of containers.
+- I prefer Mr Meeseeks.
+- Spin up fast, do a job and die gracefully.
+
+---
+
+![inline fit](assets/mrmeeseekskubernetes.gif)
+
+^
+- But isn't Kubernetes containers running containers?
+
+---
+
+![inline fit](assets/spidermanmeme.jpg)
+
+---
+
+# So what's the point
+
+^
+- Spoken about my past
+- Mentioned Windows a fair bit
+
+---
+
+# Lots of people are still starting their journey
+
+---
+
+![fit](assets/dockerwindowskubernetes.png)
+
+---
+
+# Confusion
+
+^
+- Windows 10 is container ready
+
+---
+
+# Hypervisor issue
+^
+- Docker for Windows still uses a Linux VM to run Linux containers.
+- But instead of using Virtual Box (which is what is used with Docker Toolbox).
+- Linux VM is run using Hyper-V - a Windows-native hypervisor.
+- This means that Docker for Windows ships fewer components and has less moving parts.
+- If you install Docker for Windows and run docker version you'll see that the Docker Linux daemon is running on "Moby Linux".
+
+---
