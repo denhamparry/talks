@@ -253,9 +253,23 @@ Part [^3].
 
 ---
 
+# But I was a Developer
+
+^
+I was looking at others code.
+But I wanted to write my own code.
+What do I wish I knew from day one.
+
+---
+
 # _Applications_
 
 ## You're __not__ going to live forever
+
+^
+- Business culture of 100% uptime.
+- How did I fix this.
+- Took a laptop and phone with me everywhere.
 
 ---
 
@@ -281,39 +295,100 @@ Part [^3].
 
 ---
 
-![inline fit](assets/spidermanmeme.jpg)
-
----
-
 # So what's the point
 
 ^
-- Spoken about my past
-- Mentioned Windows a fair bit
+- Spoken about my past.
+- Mentioned Windows a fair bit.
+- There was some news this week.
 
 ---
 
-# Lots of people are still starting their journey
+![inline fit](assets/dockerwindowskubernetes.png)
+
+# [fit] Lots of people are still starting their journey
 
 ---
 
-![fit](assets/dockerwindowskubernetes.png)
+![inline fit](assets/spidermanmeme.jpg)
+
+^
+Is this going to happen?
+Do we avoid the great divide.
+Will there be new things from Windows.
+
+---
+
+# Onboarding
+
+^
+- Organisations I worked for were Windows 8.
+- They had Windows Server 2012.
 
 ---
 
 # Confusion
 
 ^
-- Windows 10 is container ready
+- Windows 10 is container ready.
+- Windows Server 2106 is container ready.
+- Windows Server 2019 is Kubernetes ready.
 
 ---
 
 # Hypervisor issue
 ^
 - Docker for Windows still uses a Linux VM to run Linux containers.
-- But instead of using Virtual Box (which is what is used with Docker Toolbox).
+- Docker Toolbox was using a Virtual Box.
 - Linux VM is run using Hyper-V - a Windows-native hypervisor.
 - This means that Docker for Windows ships fewer components and has less moving parts.
-- If you install Docker for Windows and run docker version you'll see that the Docker Linux daemon is running on "Moby Linux".
 
 ---
+
+# Leaders
+
+^
+I had no one for 10 years.
+My first promotion circumstances.
+What I wish I had.
+
+---
+
+# Jessie Frazelle
+
+## [fit] Defining a Distinguished Engineer
+
+### http://bit.ly/2CIrpRa
+
+^
+This blog post sums up what I wish I had.
+
+---
+
+# [fit] Cloud Native Wales
+
+^
+- Created it to fix the problem I had.
+- Create a platform for people to speak.
+- Share our stories at the pub afterwards.
+
+---
+
+# We already have amazing people
+
+^
+Anouska - Head of Engineering and keynote speaker.
+Dan - Blue Green deployments and hes colour blind.
+Netflix - Pembrokeshire.
+Human Genome project in Brecon.
+
+---
+
+# Whats bringing us together
+
+^
+Containers.
+
+---
+
+# 
