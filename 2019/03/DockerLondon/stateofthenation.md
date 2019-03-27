@@ -317,7 +317,7 @@ What do I wish I knew from day one.
 
 ![inline fit](assets/dockerwindowskubernetes.png)
 
-# [fit] __Lots__ of _people_ are still starting their __journey__
+# [fit] __Lots__ _of_ people _are still starting their_ __journey__
 
 ^
 - Kubernetes now supports Windows.
@@ -348,7 +348,7 @@ What do I wish I knew from day one.
 
 ---
 
-# _Back_ in my __day__
+# Back _in my_ __day__
 
 ^
 - These are the experiences I had.
@@ -426,7 +426,7 @@ This blog post sums up what I wish I had.
 
 ---
 
-# [fit] _Cloud Native_ __Wales__
+# [fit] Cloud _Native_ __Wales__
 
 ^
 - Created it to fix the problem I had.
@@ -435,7 +435,7 @@ This blog post sums up what I wish I had.
 
 ---
 
-# [fit] We _already_ have __amazing leaders__
+# [fit] _We_ already _have_ __amazing leaders__
 
 ^
 Anouska - Head of Engineering and keynote speaker.
@@ -513,7 +513,7 @@ I feel like I have a community who supports me.
 
 ---
 
-# __Docker__ _on_ __Windows__
+# [fit] __Docker__ _on_ __Windows__
 
 ^
 If you want to get started with Docker and/or Windows.
