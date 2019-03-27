@@ -230,7 +230,7 @@ Part [^3].
 
 ---
 
-# Pros
+# __Pros__
 
 - `docker run`
 - `docker build`
@@ -239,7 +239,7 @@ Part [^3].
 
 ---
 
-# Cons
+# _Cons_
 
 - Top down learning.
 - Unknown pain points.
@@ -264,7 +264,7 @@ Part [^3].
 
 ---
 
-# But I was a Developer
+# _But_ I am a __Developer__
 
 ^
 I was looking at others code.
@@ -306,7 +306,7 @@ What do I wish I knew from day one.
 
 ---
 
-# So what's the point
+# _So_ what's the __point__
 
 ^
 - Spoken about my past.
@@ -317,7 +317,7 @@ What do I wish I knew from day one.
 
 ![inline fit](assets/dockerwindowskubernetes.png)
 
-# [fit] Lots of people are still starting their journey
+# [fit] __Lots__ of _people_ are still starting their __journey__
 
 ^
 - Kubernetes now supports Windows.
@@ -337,24 +337,18 @@ What do I wish I knew from day one.
 
 ---
 
-# Like cats and dogs
+# Like __cats and __dogs__ under the _same roof_
 
 ^
 - So now we're treating them like pets again?
 - Haven't been famous for getting on along well.
-
----
-
-# Under the same roof
-
-^
 - Is this going to happen?
 - Lets be optimistic.
 - Will there be new things from Windows.
 
 ---
 
-# Back in my day
+# _Back_ in my __day__
 
 ^
 - These are the experiences I had.
@@ -362,7 +356,7 @@ What do I wish I knew from day one.
 
 ---
 
-# Onboarding
+# __Onboarding__
 
 ^
 -  Windows 8.
@@ -370,25 +364,16 @@ What do I wish I knew from day one.
 
 ---
 
-# Confusion
+# __Confusion__
 
 ^
 - Windows 10 is container ready.
-- Windows Server 2106 is container ready.
+- Windows Server 2016 is container ready.
 - Windows Server 2019 is Kubernetes ready.
 
 ---
 
-# Hypervisor issue
-^
-- Docker for Windows still uses a Linux VM to run Linux containers.
-- Docker Toolbox was using a Virtual Box.
-- Linux VM is run using Hyper-V - a Windows-native hypervisor.
-- This means that Docker for Windows ships fewer components and has less moving parts.
-
----
-
-# Sounds tough
+# __Sounds__ _tough_
 
 ^
 - It will be.
@@ -397,7 +382,7 @@ What do I wish I knew from day one.
 
 ---
 
-# Share
+# __Share__
 
 ### _#Tip 1_
 
@@ -409,7 +394,7 @@ What do I wish I knew from day one.
 
 ---
 
-# Leaders
+# __Leaders__
 
 ^
 I had no one for 10 years.
@@ -422,7 +407,7 @@ What I wish I had.
 
 ### Defining a Distinguished Engineer
 
-### http://bit.ly/2CIrpRa
+### https://bit.ly/2CIrpRa
 
 ### _#Tip6_
 
@@ -480,11 +465,11 @@ Containers.
 
 ![inline fit](assets/trailmap.png)
 
-# l.cncf.io
+# https://l.cncf.io
 
 ---
 
-# So where are we going
+# [fit] _So_ where _are we_ __going__
 
 ^
 - Containers running side by side in production.
@@ -493,7 +478,7 @@ Containers.
 
 ---
 
-# Changes
+# __Changes__
 
 ^
 - Something was supposed to happen tomorrow.
@@ -502,8 +487,18 @@ Containers.
 
 ---
 
-# History repeating
+# _History_ __repeating__
 
 ^
 - Seeing companies leave.
 - People getting made redundant.
+
+---
+
+# __Community__
+
+^
+I sleep at night now though.
+I feel like I have a community who supports me.
+
+---
