@@ -96,7 +96,7 @@ But we're also good at being used as a unit of measurement.
 
 # [fit] __Share__
 
-## _#Tip 1_
+### _#Tip 1_
 
 ^
 - Markdown is the best.
@@ -133,7 +133,7 @@ But we're also good at being used as a unit of measurement.
 
 # [fit] __Solve problems__
 
-## _#Tip 2_
+### _#Tip 2_
 
 ^
 - I often forget why I got started with computers.
@@ -202,7 +202,7 @@ Part [^3].
 
 # [fit] __Embrace change__
 
-## _#Tip 3_
+### _#Tip 3_
 
 ^
 - Most people don't want change.
@@ -238,7 +238,7 @@ Part [^3].
 
 # [fit] __Prepare to fail__
 
-## _#Tip 4_
+### _#Tip 4_
 
 ^
 - Constantly questioning myself.
@@ -275,7 +275,7 @@ What do I wish I knew from day one.
 
 # [fit] __Spin up / Tear down__
 
-## #Tip 5
+### _#Tip 5_
 
 ---
 
@@ -322,7 +322,7 @@ Will there be new things from Windows.
 # Onboarding
 
 ^
-- Organisations I worked for were Windows 8.
+-  Windows 8.
 - They had Windows Server 2012.
 
 ---
@@ -354,18 +354,30 @@ What I wish I had.
 
 ---
 
-# Jessie Frazelle
+# [fit] __Jessie Frazelle__
 
-## [fit] Defining a Distinguished Engineer
+### [fit] Defining a Distinguished Engineer
 
 ### http://bit.ly/2CIrpRa
+
+### _#Tip6_
 
 ^
 This blog post sums up what I wish I had.
 
 ---
 
-# [fit] Cloud Native Wales
+# _Who_ are these __Leaders__
+
+^
+- There are 2 following me tonight.
+- People like Matt, Ben.
+- Anyone else I can see in the crowd.
+- Fixed my problem.
+
+---
+
+# [fit] _Cloud Native_ __Wales__
 
 ^
 - Created it to fix the problem I had.
@@ -374,7 +386,7 @@ This blog post sums up what I wish I had.
 
 ---
 
-# We already have amazing people
+# We _already_ have __amazing people__
 
 ^
 Anouska - Head of Engineering and keynote speaker.
@@ -384,11 +396,15 @@ Human Genome project in Brecon.
 
 ---
 
-# Whats bringing us together
+# What brings us together
 
 ^
 Containers.
 
 ---
 
-# 
+![inline fit](assets/trailmap.png)
+
+# l.cncf.io
+
+---
