@@ -94,7 +94,7 @@ But we're also good at being used as a unit of measurement.
 
 ---
 
-# [fit] __Share__
+# __Share__
 
 ### _#Tip 1_
 
@@ -211,6 +211,17 @@ Part [^3].
 
 ---
 
+# We're all __different__
+
+^
+- The people I worked with weren't for me.
+- The companies I worked for had different ideas.
+- Thats fine.
+- Its like any other relationship.
+- We can be good people, even if we don't agree.
+
+---
+
 # I __had__ to _change_
 
 ^
@@ -308,14 +319,46 @@ What do I wish I knew from day one.
 
 # [fit] Lots of people are still starting their journey
 
+^
+- Kubernetes now supports Windows.
+- Buzz word.
+- Solves problems.
+- How do people learn.
+
 ---
 
 ![inline fit](assets/spidermanmeme.jpg)
 
 ^
-Is this going to happen?
-Do we avoid the great divide.
-Will there be new things from Windows.
+- So this feels like the same thing starting with Docker.
+- No clue where to get started.
+- Years of knowledge in other tools.
+- Can we migrate that knowledge across?
+
+---
+
+# Like cats and dogs
+
+^
+- So now we're treating them like pets again?
+- Haven't been famous for getting on along well.
+
+---
+
+# Under the same roof
+
+^
+- Is this going to happen?
+- Lets be optimistic.
+- Will there be new things from Windows.
+
+---
+
+# Back in my day
+
+^
+- These are the experiences I had.
+- This is when we were trying to get Docker within our team.
 
 ---
 
@@ -345,6 +388,27 @@ Will there be new things from Windows.
 
 ---
 
+# Sounds tough
+
+^
+- It will be.
+- But thats why some of us got started in this industry.
+- Thats why you're here tonight.
+
+---
+
+# Share
+
+### _#Tip 1_
+
+^
+- Be proud.
+- Share you problems.
+- Make sure you share the solution.
+- Be confident to do this, it also helps having...
+
+---
+
 # Leaders
 
 ^
@@ -356,7 +420,7 @@ What I wish I had.
 
 # [fit] __Jessie Frazelle__
 
-### [fit] Defining a Distinguished Engineer
+### Defining a Distinguished Engineer
 
 ### http://bit.ly/2CIrpRa
 
@@ -367,7 +431,7 @@ This blog post sums up what I wish I had.
 
 ---
 
-# Who _are these_ __Leaders__
+# [fit] Who _are these_ __Leaders__
 
 ^
 - There are 2 following me tonight.
@@ -386,17 +450,28 @@ This blog post sums up what I wish I had.
 
 ---
 
-# We _already_ have __amazing people__
+# [fit] We _already_ have __amazing leaders__
 
 ^
 Anouska - Head of Engineering and keynote speaker.
 Dan - Blue Green deployments and hes colour blind.
-Netflix - Pembrokeshire.
+Nat Netflix - Pembrokeshire.
+James - Jenkins X.
 Human Genome project in Brecon.
 
 ---
 
-# What brings us together
+# [fit] _We're_ all __different__
+
+^
+- We work on different:
+- platforms.
+- languages. 
+- frameworks.
+
+---
+
+# [fit] _What_ brings us __together__
 
 ^
 Containers.
@@ -408,3 +483,27 @@ Containers.
 # l.cncf.io
 
 ---
+
+# So where are we going
+
+^
+- Containers running side by side in production.
+- Technically yes.
+- Reality?
+
+---
+
+# Changes
+
+^
+- Something was supposed to happen tomorrow.
+- I was going to say this creates changes.
+- Ironically the date has changed.
+
+---
+
+# History repeating
+
+^
+- Seeing companies leave.
+- People getting made redundant.
