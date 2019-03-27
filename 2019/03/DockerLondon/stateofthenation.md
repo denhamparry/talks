@@ -337,7 +337,7 @@ What do I wish I knew from day one.
 
 ---
 
-# Like __cats and __dogs__ under the _same roof_
+# [fit] _Like_ __cats and dogs__ _under the_ same roof
 
 ^
 - So now we're treating them like pets again?
@@ -502,3 +502,32 @@ I sleep at night now though.
 I feel like I have a community who supports me.
 
 ---
+
+# __Ways to learn__
+
+---
+
+![inline fit](assets/katacoda.png)
+
+# __https://katacoda.com__
+
+---
+
+# __Docker__ _on_ __Windows__
+
+^
+If you want to get started with Docker and/or Windows.
+
+---
+
+# __Meetups!__
+
+^
+So many meetups
+Bring people
+Share your stories
+Come to Wales!
+
+---
+
+# __Thanks!__
