@@ -43,7 +43,7 @@ But we're also good at being used as a unit of measurement.
 
 ---
 
-# Workings...
+# _Workings_
 
 - Docker Hub Public Images
   - __2,116,078__
@@ -367,7 +367,7 @@ This blog post sums up what I wish I had.
 
 ---
 
-# _Who_ are these __Leaders__
+# Who _are these_ __Leaders__
 
 ^
 - There are 2 following me tonight.
