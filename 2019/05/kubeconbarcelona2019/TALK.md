@@ -264,7 +264,7 @@
 
 ---
 
-![left](assets/m91.jpg)
+![left](assets/m91.png)
 
 # [fit] Brice Fernandes
 
@@ -347,7 +347,7 @@
 ![left](assets/m132.jpg)
 
 # [fit] James Strachan
-# [fit] James Wralings
+# [fit] James Rawlings
 
 ## Cloud Bees
 
