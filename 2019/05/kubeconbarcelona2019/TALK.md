@@ -182,11 +182,15 @@
 
 # [fit] Nathan Gloyn
 
+## DrugDev
+
 ---
 
 ![left](assets/m42.jpg)
 
 # Martin Ford
+
+## FINkit
 
 ---
 
@@ -194,9 +198,11 @@
 
 # [fit] Callum Whyte
 
+## Umbraco
+
 ---
 
-![left](assets/m51.jpg)
+![left](assets/m51.png)
 
 # [fit] Anouska Streets
 
@@ -216,9 +222,11 @@
 
 # Cai Cooper
 
+## Cloud Bees
+
 ---
 
-![left](assets/m54.jpg)
+![left](assets/m54.png)
 
 # Paul Jones
 
@@ -320,6 +328,14 @@
 
 ---
 
+![left](assets/m123.jpg)
+
+# Lewis Denham-Parry
+
+## Cloud Native Wales
+
+---
+
 ![left](assets/m131.jpg)
 
 # Julien Simon
@@ -330,7 +346,7 @@
 
 ![left](assets/m132.jpg)
 
-# [fit] James Strachan 
+# [fit] James Strachan
 # [fit] James Wralings
 
 ## Cloud Bees
@@ -360,6 +376,18 @@
 # [fit] Aled / Mohammed
 # [fit] Sufyan / Gareth
 # [fit] Daniele / Ben
+
+---
+
+![](assets/c1.jpg)
+
+---
+
+![](assets/c2.jpg)
+
+---
+
+![](assets/c3.jpg)
 
 ---
 
