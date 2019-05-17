@@ -124,29 +124,29 @@
 
 ![left](assets/m11.jpg)
 
-# Matthew MacDonald Wallace
+# [fit] Matthew MacDonald Wallace
 
-## Mockingbird Consulting
+## [fit] Mockingbird Consulting
 
 ---
 
-![right](assets/m12.jpg)
+![left](assets/m12.jpg)
 
-# James Rawlings
+# [fit] James Rawlings
 
-## Jenkins X
+## Cloud Bees
 
 ---
 
 ![left](assets/m21.jpg)
 
-# Basia Fusinska
+# [fit] Basia Fusinska
 
 ## Google
 
 ---
 
-![right](assets/m22.jpg)
+![left](assets/m22.jpg)
 
 # Ben Hall
 
@@ -162,7 +162,7 @@
 
 ---
 
-![right](assets/m32.jpg)
+![left](assets/m32.jpg)
 
 # Dan Twining
 
@@ -174,7 +174,174 @@
 
 # Sam Newman
 
-## Sam Newman and Associates
+## and Associates
+
+---
+
+![left](assets/m41.jpg)
+
+# [fit] Nathan Gloyn
+
+---
+
+![left](assets/m42.jpg)
+
+# Martin Ford
+
+---
+
+![left](assets/m43.jpg)
+
+# [fit] Callum Whyte
+
+---
+
+![left](assets/m51.jpg)
+
+# [fit] Anouska Streets
+
+## Currency Cloud
+
+---
+
+![left](assets/m52.jpg)
+
+# [fit] Gareth Evans
+
+## Cloud Bees
+
+---
+
+![left](assets/m53.jpg)
+
+# Cai Cooper
+
+---
+
+![left](assets/m54.jpg)
+
+# Paul Jones
+
+## Dyson
+
+---
+
+![left](assets/m61.jpg)
+
+# [fit] Andrew Martin
+
+## Control Plane
+
+---
+
+![left](assets/m71.jpg)
+
+# [fit] Mark Coleman
+
+## Dot Science
+
+---
+
+![left](assets/m72.jpg)
+
+# Nat Morris
+
+## Netflix
+
+---
+
+![left](assets/m73.jpg)
+
+# [fit] Ed Maxwell-Lyte
+
+---
+
+![left](assets/m91.jpg)
+
+# [fit] Brice Fernandes
+
+## Weave Works
+
+---
+
+![left](assets/m92.jpg)
+
+# Steve Davis
+
+## IP Consultants
+
+---
+
+![left](assets/m101.jpg)
+
+# Matt Turner
+
+## Native Wave
+
+---
+
+![left](assets/m102.jpg)
+
+# [fit] Lewis Denham-Parry
+
+## Cloud Native Wales
+
+---
+
+![left](assets/m111.jpg)
+
+# [fit] Brendan Collins
+
+## Algorithmia
+
+---
+
+![left](assets/m112.jpg)
+
+# Stig Telfer
+
+## StackHPC
+
+---
+
+![left](assets/m121.jpg)
+
+# [fit] Anouska Streets
+
+## Currency Cloud
+
+---
+
+![left](assets/m122.jpg)
+
+# David McKay
+
+## InfluxData
+
+---
+
+![left](assets/m131.jpg)
+
+# Julien Simon
+
+## AWS
+
+---
+
+![left](assets/m132.jpg)
+
+# [fit] James Strachan 
+# [fit] James Wralings
+
+## Cloud Bees
+
+---
+
+![left](assets/m133.jpg)
+
+# Jack Kelly
+
+## DevOpsGroup
 
 ---
 
@@ -184,13 +351,23 @@
 
 ---
 
+# Support
+
+---
+
+# Tip 4:
+
+## Treat others as you want to be treated
+
+---
+
 # Opportunities
 
 ---
 
 ![left fit](assets/learnk8s-logo.pdf)
 
-# Yesterday
+# Previously
 
 ---
 
