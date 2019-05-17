@@ -84,8 +84,8 @@
 
 ![right](assets/venue1.jpg)
 
-
 # Actual Castle
+
 ---
 
 # 2/3:
