@@ -355,9 +355,43 @@
 
 ---
 
+# [fit] Lewis / Salman
+# [fit] Kate / Sophie
+# [fit] Aled / Mohammed
+# [fit] Sufyan / Gareth
+# [fit] Daniele / Ben
+
+---
+
+![](assets/c9.jpg)
+
+---
+
+# Initiatives
+
+---
+
+# Book Club
+
+---
+
+# Tech Amnesty
+
+---
+
+# [fit] Meetup of Meetups
+
+---
+
 # Tip 4:
 
 ## Treat others as you want to be treated
+
+---
+
+# [fit] Code of Conduct
+
+## [fit] https://events.linuxfoundation.org/code-of-conduct
 
 ---
 
