@@ -1,16 +1,22 @@
-# [fit] CloudNativeWales
+![left](assets/cnw.jpg)
 
 ## How We Contributed to the Community with No Code
 
 ---
 
-## Lewis Denham-Parry
+# Take Photos
 
-### @denhamparry
+---
 
-## CloudNativeWales
+# [fit] Lewis Denham-Parry
 
-### @cloudnativewal
+## @denhamparry
+
+---
+
+# [fit] CloudNativeWales
+
+## @cloudnativewal
 
 ---
 
@@ -33,6 +39,8 @@
 ![fit](assets/Katacoda.png)
 
 ---
+
+![left](assets/ben.jpg)
 
 # Ben
 
@@ -74,8 +82,10 @@
 
 ---
 
-![fit](assets/venue1.jpg)
+![right](assets/venue1.jpg)
 
+
+# Actual Castle
 ---
 
 # 2/3:
@@ -98,6 +108,104 @@
 
 ---
 
+# Tip 2:
+
+## Help others
+
+---
+
 ![fit](assets/000_CNWSETUP_SALMANLEWIS.jpeg)
 
 ---
+
+# Meetups
+
+---
+
+![left](assets/m11.jpg)
+
+# Matthew MacDonald Wallace
+
+## Mockingbird Consulting
+
+---
+
+![right](assets/m12.jpg)
+
+# James Rawlings
+
+## Jenkins X
+
+---
+
+![left](assets/m21.jpg)
+
+# Basia Fusinska
+
+## Google
+
+---
+
+![right](assets/m22.jpg)
+
+# Ben Hall
+
+## Katacoda
+
+---
+
+![left](assets/m31.jpg)
+
+# Greg Simons
+
+## Codeaptive
+
+---
+
+![right](assets/m32.jpg)
+
+# Dan Twining
+
+## Monitise
+
+---
+
+![left](assets/m33.jpg)
+
+# Sam Newman
+
+## Sam Newman and Associates
+
+---
+
+# Tip 3:
+
+## Do it for the community
+
+---
+
+# Opportunities
+
+---
+
+![left fit](assets/learnk8s-logo.pdf)
+
+# Yesterday
+
+---
+
+![right](assets/jetstack.svg)
+
+# Today
+
+---
+
+# Future
+
+---
+
+# Community
+
+---
+
+# Thank you
