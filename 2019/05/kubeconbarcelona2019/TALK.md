@@ -20,7 +20,7 @@
 
 ---
 
-# [fit] 🐳 🐳 🐳
+# 🐳 🐳 🐳
 
 ---
 
@@ -106,11 +106,19 @@
 
 # Spread the word
 
+^
+Hustle
+Speak at other meetups
+Write blogs
+
 ---
 
 # Tip 2:
 
 ## Help others
+
+^
+Help others and others will help you
 
 ---
 
@@ -120,6 +128,11 @@
 
 # Meetups
 
+^
+We asked speakers to talk
+Speaker boardgames
+Locals
+
 ---
 
 ![left](assets/m11.jpg)
@@ -127,6 +140,9 @@
 # [fit] Matthew MacDonald Wallace
 
 ## [fit] Mockingbird Consulting
+
+^
+29
 
 ---
 
@@ -136,6 +152,9 @@
 
 ## Cloud Bees
 
+^
+28
+
 ---
 
 ![left](assets/m21.jpg)
@@ -143,6 +162,9 @@
 # [fit] Basia Fusinska
 
 ## Google
+
+^
+27
 
 ---
 
@@ -152,6 +174,9 @@
 
 ## Katacoda
 
+^
+26
+
 ---
 
 ![left](assets/m31.jpg)
@@ -159,6 +184,9 @@
 # Greg Simons
 
 ## Codeaptive
+
+^
+25
 
 ---
 
@@ -168,6 +196,9 @@
 
 ## Monitise
 
+^
+24
+
 ---
 
 ![left](assets/m33.jpg)
@@ -175,6 +206,9 @@
 # Sam Newman
 
 ## and Associates
+
+^
+23
 
 ---
 
@@ -184,6 +218,9 @@
 
 ## DrugDev
 
+^
+22
+
 ---
 
 ![left](assets/m42.jpg)
@@ -191,6 +228,9 @@
 # Martin Ford
 
 ## FINkit
+
+^
+21
 
 ---
 
@@ -200,6 +240,9 @@
 
 ## Umbraco
 
+^
+20
+
 ---
 
 ![left](assets/m51.png)
@@ -207,6 +250,9 @@
 # [fit] Anouska Streets
 
 ## Currency Cloud
+
+^
+19
 
 ---
 
@@ -216,6 +262,9 @@
 
 ## Cloud Bees
 
+^
+18
+
 ---
 
 ![left](assets/m53.jpg)
@@ -223,6 +272,9 @@
 # Cai Cooper
 
 ## Cloud Bees
+
+^
+17
 
 ---
 
@@ -232,6 +284,9 @@
 
 ## Dyson
 
+^
+16
+
 ---
 
 ![left](assets/m61.jpg)
@@ -239,6 +294,9 @@
 # [fit] Andrew Martin
 
 ## Control Plane
+
+^
+15
 
 ---
 
@@ -248,6 +306,9 @@
 
 ## Dot Science
 
+^
+14
+
 ---
 
 ![left](assets/m72.jpg)
@@ -256,11 +317,17 @@
 
 ## Netflix
 
+^
+13
+
 ---
 
 ![left](assets/m73.jpg)
 
 # [fit] Ed Maxwell-Lyte
+
+^
+12
 
 ---
 
@@ -270,6 +337,9 @@
 
 ## Weave Works
 
+^
+11
+
 ---
 
 ![left](assets/m92.jpg)
@@ -277,6 +347,9 @@
 # Steve Davis
 
 ## IP Consultants
+
+^
+10
 
 ---
 
@@ -286,6 +359,9 @@
 
 ## Native Wave
 
+^
+9
+
 ---
 
 ![left](assets/m102.jpg)
@@ -293,6 +369,9 @@
 # [fit] Lewis Denham-Parry
 
 ## Cloud Native Wales
+
+^
+8
 
 ---
 
@@ -302,6 +381,9 @@
 
 ## Algorithmia
 
+^
+7
+
 ---
 
 ![left](assets/m112.jpg)
@@ -309,6 +391,9 @@
 # Stig Telfer
 
 ## StackHPC
+
+^
+6
 
 ---
 
@@ -318,6 +403,9 @@
 
 ## Currency Cloud
 
+^
+5
+
 ---
 
 ![left](assets/m122.jpg)
@@ -325,6 +413,9 @@
 # David McKay
 
 ## InfluxData
+
+^
+4
 
 ---
 
@@ -334,6 +425,9 @@
 
 ## Cloud Native Wales
 
+^
+3
+
 ---
 
 ![left](assets/m131.jpg)
@@ -341,6 +435,9 @@
 # Julien Simon
 
 ## AWS
+
+^
+2
 
 ---
 
@@ -351,6 +448,9 @@
 
 ## Cloud Bees
 
+^
+1
+
 ---
 
 ![left](assets/m133.jpg)
@@ -358,6 +458,9 @@
 # Jack Kelly
 
 ## DevOpsGroup
+
+^
+0
 
 ---
 
@@ -371,11 +474,10 @@
 
 ---
 
-# [fit] Lewis / Salman
-# [fit] Kate / Sophie
-# [fit] Aled / Mohammed
-# [fit] Sufyan / Gareth
-# [fit] Daniele / Ben
+# [fit] Aled / Mohammed / Sufyan
+# [fit] Kate / Sophie / Daniele
+# [fit] Daniel / Salman / Leigh
+# [fit] Ben / Gareth / Lewis
 
 ---
 
@@ -396,6 +498,14 @@
 ---
 
 # Initiatives
+
+---
+
+# Swag
+
+---
+
+# Raffle
 
 ---
 
