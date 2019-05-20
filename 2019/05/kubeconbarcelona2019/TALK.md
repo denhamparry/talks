@@ -54,13 +54,23 @@ Wanted to share with others what we had learnt.
 
 ![fit](assets/zeroworkshop.jpg)
 
+^
+Ran our first workshop at a lunch break
+
 ---
 
 ![fit](assets/firstworkshop.jpg)
 
+^
+Our first public meetup was at a recruitment office
+Used Katacoda so we could focus on speaking and running the meetup
+
 ---
 
 ![fit](assets/feedback.jpg)
+
+^
+Asked for feedback to see if people enjoyed it
 
 ---
 
