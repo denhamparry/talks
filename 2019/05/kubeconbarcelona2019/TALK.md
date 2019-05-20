@@ -28,27 +28,13 @@
 
 ---
 
-# [fit] No Code
+![left](assets/ben.jpg)
 
-^
-
-
----
-
-# Origin Story
-
-^
-Wanted to share with others what we had learnt.
+# Ben
 
 ---
 
 ![fit](assets/Katacoda.png)
-
----
-
-![left](assets/ben.jpg)
-
-# Ben
 
 ---
 
@@ -347,6 +333,8 @@ Locals
 
 # [fit] Ed Maxwell-Lyte
 
+## Currency Cloud
+
 ^
 12
 
@@ -526,10 +514,6 @@ Working together
 
 ---
 
-![](assets/c9.jpg)
-
----
-
 # Initiatives
 
 ---
@@ -594,7 +578,7 @@ Others offer to help you
 
 ---
 
-![left fit](assets/learnk8s-logo.pdf)
+![left fit](assets/learnk8s.svg)
 
 # Previously
 
@@ -623,3 +607,9 @@ We'll learn together
 ---
 
 # Thank you
+
+## @cloudnativewales
+
+### @denhamparry
+
+### Stand SE10
