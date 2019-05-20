@@ -608,7 +608,7 @@ We'll learn together
 
 # Thank you
 
-## @cloudnativewales
+## @cloudnativewal
 
 ### @denhamparry
 
