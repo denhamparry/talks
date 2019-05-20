@@ -30,9 +30,15 @@
 
 # [fit] No Code
 
+^
+
+
 ---
 
 # Origin Story
+
+^
+Wanted to share with others what we had learnt.
 
 ---
 
@@ -95,6 +101,11 @@
 ---
 
 ![fit](assets/jenkinsx.jpg)
+
+^
+Other meetups
+Slack channels
+Word of mouth
 
 ---
 
@@ -468,9 +479,16 @@ Locals
 
 ## Do it for the community
 
+^
+Low self confidence
+More confident knowing I'm helping others
+
 ---
 
 # Support
+
+^
+Its not just a one person job
 
 ---
 
@@ -478,6 +496,11 @@ Locals
 # [fit] Kate / Sophie / Daniele
 # [fit] Daniel / Salman / Leigh
 # [fit] Ben / Gareth / Lewis
+
+^
+People from different roles
+Different industries
+Working together
 
 ---
 
@@ -503,27 +526,47 @@ Locals
 
 # Swag
 
+^
+Take swag home and share it with others.
+
 ---
 
 # Raffle
+
+^
+As for conference tickets when speaking at conferences.
 
 ---
 
 # Book Club
 
+^
+Contact authors and ask if they'll jump on a hangout
+
 ---
 
 # Tech Amnesty
 
+^
+Donating games consoles to local hospitals
+
 ---
 
 # [fit] Meetup of Meetups
+
+^
+Arranging with other local tech meetups
+Sharing knowledge
+Running joint meetups
 
 ---
 
 # Tip 4:
 
 ## Treat others as you want to be treated
+
+^
+Help people feel welcome and included
 
 ---
 
@@ -534,6 +577,10 @@ Locals
 ---
 
 # Opportunities
+
+^
+We started this to help others
+Others offer to help you
 
 ---
 
@@ -551,9 +598,17 @@ Locals
 
 # Future
 
+^
+I have the fear of change
+Seeing constant change
+
 ---
 
 # Community
+
+^
+The people who I've met and now become friends with
+We'll learn together
 
 ---
 
