@@ -4,29 +4,46 @@
 
 ---
 
-## Mental Health
-
-^
-I've suffered
-Find professional advice
-
----
-
-## Climate Change
-
-^
-Global emissions 3% data centres
-
----
-
-## Take Photos
+## Take **Photos**
 
 ^
 Feel free
 
 ---
 
-# [fit] Follow the yellow brick road
+# [fit] **About** me
+
+---
+
+![](assets/jetstack.svg)
+
+---
+
+![](assets/cnw.jpg)
+
+---
+
+## **Mental Health**
+
+# [fit] bit.ly/2K8HeoV
+
+^
+I've suffered
+Find professional advice
+OSMI Guideline for mental wellness at conferences handbook
+
+---
+
+## **Climate Change**
+
+# [fit] bit.ly/2WopFYw
+
+^
+Global emissions 3% data centres
+
+---
+
+# [fit] Follow the **yellow** brick road
 
 ---
 
@@ -174,8 +191,42 @@ What about onboarding new people.
 
 ---
 
-# None of this should be your USP
+# None of this should be your **USP**
 
 ^
+Unique selling point.
 You shouldn't use something for using this technology.
 I use Monzo - Matt Heath.
+
+---
+
+## 15:30 (Room 3)
+# **Breaking Down Problems**
+## Matt Heath
+
+---
+
+# [fit] This **could** be your **UHP***
+
+^
+Making developers lives easier.
+Focusing on shipping code.
+
+---
+
+# [fit] Unique hiring policy
+
+---
+
+# Change
+
+^
+Change isn't easy.
+What I had wasn't working for me.
+This is.
+
+---
+
+# Thank you
+
+## **@denhamparry**
