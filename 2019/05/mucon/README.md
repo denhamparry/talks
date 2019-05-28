@@ -3,7 +3,7 @@
 ## Information
 
 * Day 1, 29 May starts 10:45 (Room 2)
-* [Program](https://skillsmatter.com/conferences/11982-con-london-2019-the-conference-on-microservices-ddd-and-software-architecture#program)
+* [Program](https://skillsmatter.com/conferences/11982-con-london-2019-the-conference-on-microservices-ddd-and-software-architecture#program)cd
 
 ## Description
 
