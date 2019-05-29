@@ -207,7 +207,19 @@ Its just containers running containers.
 
 ---
 
-# What are we working with
+# [fit] **NODES**
+## [fit] master
+## [fit] worker
+
+^
+Master nodes manage the cluster.
+Its just an API.
+Workers run containers.
+You can scale your nodes.
+
+---
+
+# [fit] What are we **working** with
 
 ^
 What's in the box
@@ -254,6 +266,13 @@ External traffic load balancer for services.
 
 ---
 
+# YAML
+
+^
+Used to create these.
+
+---
+
 # [fit] Want to know more
 
 ---
@@ -264,11 +283,114 @@ External traffic load balancer for services.
 
 ---
 
+# [fit] Helm
+
+^
+What is helm
+
+---
+
+# [fit] **Share** applications
+
+^
+We listed some kubernetes fundamentals.
+
+---
+
+# [fit] Share **Helm charts**
+
+^
+Helm uses charts to share applications
+
+---
+
+# What's the tiller
+
+^
+Tiller used to write the Yaml and apply it to Kubernetes.
+Required lots of access.
+Security vulnerability.
+
+---
+
+# Security
+
+^
+Kubernetes is product first security second.
+How do you manage security?
+
+---
+
+## [fit] 17:15 (Keynote)
+# [fit] **Microservices & containers: getting your security team on board**
+## [fit] Liz Rice
+
+^
+I follow the leaders.
+Liz is one of them.
+Works for aqua.
+
+---
+
+# [fit] **Congratulations**
+
+^
+These first 3 steps are the min to be cloud native.
+
+---
+
+# [fit] **What's** next
+
+^
+We have more steps
+
+---
+
 ![fit](assets/cncf-trailmap-1.png)
+
+^
+Lets look at why we'd want to continue our journey.
 
 ---
 
 # [fit] 4. Observability and Analysis
+
+^
+What's going on.
+
+---
+
+# [fit]  What's **happening** now
+
+^
+Wait, I'm Welsh...
+
+---
+
+# [fit]  What's **occurring**
+
+^
+This is good to know.
+Dashboards are nice.
+
+---
+
+# [fit] What has **occurred**
+
+^
+This is arguably more important.
+Think of debugging your code via steps.
+We shouldn't care where our application runs.
+Should be able to step through the logs.
+
+---
+
+# [fit] But what about the **data**
+
+^
+Spoke about nodes and containers.
+We can scrape information about them.
+Can also create custom endpoints to scrape.
 
 ---
 
@@ -336,11 +458,11 @@ Focusing on shipping code.
 
 ---
 
-# [fit] Unique hiring policy
+# [fit] Unique **hiring** policy
 
 ---
 
-# Change
+# **Change**
 
 ^
 Change isn't easy.
@@ -349,6 +471,8 @@ This is.
 
 ---
 
-# Thank you
+# [fit] Thank you
 
-## **@denhamparry**
+## [fit] **@denhamparry**
+
+# [fit] questions
