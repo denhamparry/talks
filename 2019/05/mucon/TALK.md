@@ -542,9 +542,103 @@ Policies are written in a high-level declarative language and can be loaded into
 
 # **7.** Distributed data and storage
 
+^
+Problems with storage.
+Containers stop and lose state.
+Number of solutions.
+
+---
+
+# [fit] Sharding
+
+^
+Sharding your database involves breaking up your big database into many, much smaller databases that share nothing and can be spread across multiple servers. 
+These small databases are fast, easy to manage, and often are much cheaper to use as they are often implemented by using open source licensed databases.
+
+---
+
+# [fit] Sharding
+
+^
+There’s a variety of different approaches, but essentially, it’s just a matter of taking a look at your database and essentially ‘horizontally partitioning’ your data into logically related rows
+
+---
+
+# [fit] Sharding
+
+^
+The logical rows that you come up with get isolated and deployed into their own database, and as a result, data interaction becomes much faster and more responsive.
+
+---
+
+# [fit] Sharding
+
+^
+Given, this is a very simple look at sharding, but it’s something that modern enterprise applications that are looking at leveraging the benefits of cloud computing without encountering significance performance problems with their database I/O when their middleware applications reach economies of scale.
+
+---
+
+# [fit] Node **Storage**
+
+^
+Data can be stored on the node.
+What happens when containers move to another node.
+
+---
+
+# [fit] **Key value** pairs
+
+^
+Out the box Kubernetes uses etcd.
+Use Raft protocol.
+
 ---
 
 # **8.** Streaming and messaging
+
+^
+Alternatives to REST
+
+---
+
+
+# g**RPC**
+
+^
+Remote procedure call
+Low latency, highly scalable, distributed systems.
+Designing a new protocol that needs to be accurate, efficient and language independent.
+
+---
+
+# [fit] Is it **better**
+
+^
+gRPC largely follows HTTP semantics over HTTP/2
+Allow for full-duplex streaming.
+
+---
+
+# [fit] Is it **better**
+
+^
+Diverge from typical REST conventions as we use static paths for performance reasons during call dispatch
+Parsing call parameters from paths, query parameters and payload body adds latency and complexity.
+
+---
+
+# [fit] **NATS**
+
+^
+A simple, high performance open source messaging system.
+The core NATS Server acts as a central nervous system for building distributed applications.
+
+---
+
+# [fit] pub / **sub**
+
+NATS is an open source, lightweight, high-performance cloud native infrastructure messaging system.
+It implements a highly scalable and elegant publish-subscribe (pub/sub) distribution model.
 
 ---
 
