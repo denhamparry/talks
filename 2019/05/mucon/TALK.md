@@ -106,7 +106,7 @@ Global emissions 3% data centres
 
 ---
 
-# Break it down
+# Break **it** down
 
 ---
 
@@ -114,10 +114,19 @@ Global emissions 3% data centres
 
 ---
 
-# [fit] 1. Containers
+# [fit] **1.** Containers
 
 ^
 Who uses containers
+
+---
+
+# [fit] What do they **replace**
+
+^
+Physical boxes and VMs.
+We still use them.
+More efficiently.
 
 ---
 
@@ -125,20 +134,133 @@ Who uses containers
 
 # [fit] = **Docker**
 
+^
+How can we be more efficient.
+Manage applications alongside each other.
+
 ---
 
-# [fit] 1. Containers
+# Focus on **containers**
 
 ^
 Get the best results from well structured containers.
 
 ---
 
-# [fit] 2. CI/CD
+# [fit] **2.** CI/CD
+
+---
+
+# [fit] **Avoid**
+## [fit] works on my machine
+
+^
+Think of it as becoming your own dependency.
+Do you want to wake up at 2am?
+
+---
+
+# [fit] Build **dependencies**
+
+^
+These should be contained as much as possible.
+
+---
+
+# [fit] **Multi-stage** builds
+
+^
+Build dependencies can be in base image.
+Helps create smaller images.
+Reduce attack surface within containers.
+
+---
+
+# [fit] **Automate**
+# [fit] everything
+
+^
+Empower people to make changes.
+If you make 10's, 100's or 1000's of changes a day they become trivial.
+Remember fortnightly releases.
 
 ---
 
 # [fit] 3. Orchestrations and Application definition
+
+---
+
+# Kubernetes
+
+^
+There are other options available.
+Mesos and Nomad name a few.
+Kubernetes won the war.
+
+---
+
+## [fit] Q. What manages containers
+# [fit] A. **Containers**
+
+^
+Its just containers running containers.
+
+---
+
+# What are we working with
+
+^
+What's in the box
+
+---
+
+## [fit] **Pods**
+## [fit] Deployments
+## [fit] Services
+## [fit] Ingresses
+
+^
+One or more containers.
+
+---
+
+## [fit] Pods
+## [fit] **Deployments**
+## [fit] Services
+## [fit] Ingresses
+
+^
+Manages your pods.
+
+---
+
+## [fit] Pods
+## [fit] Deployments
+## [fit] **Services**
+## [fit] Ingresses
+
+^
+Internal load balancer for pods.
+
+---
+
+## [fit] Pods
+## [fit] Deployments
+## [fit] Services
+## [fit] **Ingresses**
+
+^
+External traffic load balancer for services.
+
+---
+
+# [fit] Want to know more
+
+---
+
+## [fit] Tomorrow 14:30 (Room 2)
+# [fit] **Workshop: Show me the Kubernetes**
+## [fit] Salman Iqbal and Lewis Denham-Parry
 
 ---
 
