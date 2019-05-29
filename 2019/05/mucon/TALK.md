@@ -797,4 +797,6 @@ Here's the petition.
 
 ## [fit] **@denhamparry**
 
-# [fit] questions
+# [fit] slides
+
+## [fit] **bit.ly/2MgUytZ**
