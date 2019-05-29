@@ -510,6 +510,7 @@ You can integrate OPA as a sidecar, host-level daemon, or library.
 
 # [fit] Open Policy Agent **(OPA)**
 
+^
 A policy is a set of rules that governs the behaviour of a service.
 Policy enablement empowers users to read, write, and manage these rules without needing specialized development or operational expertise.
 When your users can implement policies without recompiling your source code, then your service is policy enabled.
