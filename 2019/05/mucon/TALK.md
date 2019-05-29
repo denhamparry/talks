@@ -11,15 +11,37 @@ Feel free
 
 ---
 
+# [fit] **Agenda**
+
+* CNCF
+* Trail Map
+* Conclusion
+* Questions
+
+---
+
 # [fit] **About** me
+
+^
+I still feel relatively new to Cloud Native
+Used to be a consultant, then contractor and looked for change.
 
 ---
 
 ![](assets/jetstack.svg)
 
+^
+Solutions engineer.
+Consulting, training and opens source.
+
 ---
 
 ![](assets/cnw.jpg)
+
+^
+Anyone from Wales here.
+Building a community back at home.
+Feel free to ask me questions about running meetups.
 
 ---
 
@@ -28,9 +50,10 @@ Feel free
 # [fit] bit.ly/2K8HeoV
 
 ^
-I've suffered
-Find professional advice
-OSMI Guideline for mental wellness at conferences handbook
+I've suffered.
+Find professional advice.
+Open Sourcing Mental Illness.
+OSMI Guideline for mental wellness at conferences handbook.
 
 ---
 
@@ -41,15 +64,6 @@ OSMI Guideline for mental wellness at conferences handbook
 ^
 Global emissions 3% data centres.
 Paul Johnston and Anne Currie.
-
----
-
-# [fit] **Agenda**
-
-* CNCF
-* Trail Map
-* Conclusion
-* Questions
 
 ---
 
@@ -637,6 +651,7 @@ The core NATS Server acts as a central nervous system for building distributed a
 
 # [fit] pub / **sub**
 
+^
 NATS is an open source, lightweight, high-performance cloud native infrastructure messaging system.
 It implements a highly scalable and elegant publish-subscribe (pub/sub) distribution model.
 
@@ -702,11 +717,11 @@ Digitally sign them.
 
 ---
 
-# But why
+# But **why**
 
 ---
 
-# Empower people with tools
+# **Empower** people with tools
 
 ^
 Should you have to learn all of this?
@@ -758,6 +773,12 @@ How can we do this.
 ## [fit] 11:45 (Room 2)
 # [fit] **Creating an Effective Developer Experience for Cloud-Native Apps**
 ## [fit] Daniel Bryant
+
+---
+
+## [fit] **KubeCon Barcelona 2019**
+
+# [fit] bit.ly/2HJsRpp
 
 ---
 
