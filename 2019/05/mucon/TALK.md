@@ -491,6 +491,40 @@ A public key infrastructure (PKI) generates and distributes certificates and key
 
 ---
 
+# Container Network Interface **(CNI)**
+
+^
+A common interface between the network plugins and container execution.
+Designed to be a minimal specification.
+Concerned only with the network connectivity of containers and removing allocated resources when the container is deleted.
+
+---
+
+# [fit] Open Policy Agent **(OPA)**
+
+^
+OPA is a lightweight general-purpose policy engine that can be co-located with your service.
+You can integrate OPA as a sidecar, host-level daemon, or library.
+
+---
+
+# [fit] Open Policy Agent **(OPA)**
+
+A policy is a set of rules that governs the behaviour of a service.
+Policy enablement empowers users to read, write, and manage these rules without needing specialized development or operational expertise.
+When your users can implement policies without recompiling your source code, then your service is policy enabled.
+
+---
+
+# [fit] Open Policy Agent **(OPA)**
+
+^
+Services offload policy decisions to OPA by executing queries.
+OPA evaluates policies and data to produce query results (which are sent back to the client).
+Policies are written in a high-level declarative language and can be loaded into OPA via the filesystem or well-defined APIs.
+
+---
+
 ![fit](assets/cncf-trailmap-2.png)
 
 ---
@@ -505,11 +539,42 @@ A public key infrastructure (PKI) generates and distributes certificates and key
 
 # [fit] **9.** Container registry and runtime
 
+^
+When we started talking about containers I mentioned Docker.
+
+---
+
+# [fit] Container **Registry**
+
+^
+Why not just use Docker hub.
+Dependencies.
+Security.
+
+---
+
+# [fit] What's **in** your containers
+
+^
+Containers are built on other images.
+What if there's an issue with an image.
+Can we scan the images that are being used.
+
+---
+
+# [fit] **Runtimes**
+
+^
+There's more than just Docker.
+Different options have different features.
+Security for example.  GVisor.
+
 ---
 
 # [fit] **10.** Software distribution
 
-^ How do we know what we're running
+^
+How do we know what we're running is what we built.
 
 ---
 
