@@ -186,7 +186,7 @@ Remember fortnightly releases.
 
 ---
 
-# [fit] 3. Orchestrations and Application definition
+# [fit] **3.** Orchestrations and Application definition
 
 ---
 
@@ -277,6 +277,12 @@ Used to create these.
 
 ---
 
+## [fit] 13:30 (Room 3)
+# [fit] **Three Years of Lessons from Running Potentially Malicious Code Inside Container**
+## [fit] Ben Hall
+
+---
+
 ## [fit] Tomorrow 14:30 (Room 2)
 # [fit] **Workshop: Show me the Kubernetes**
 ## [fit] Salman Iqbal and Lewis Denham-Parry
@@ -353,7 +359,7 @@ Lets look at why we'd want to continue our journey.
 
 ---
 
-# [fit] 4. Observability and Analysis
+# [fit] **4.** Observability and Analysis
 
 ^
 What's going on.
@@ -372,6 +378,7 @@ Wait, I'm Welsh...
 ^
 This is good to know.
 Dashboards are nice.
+But what happens when something goes wrong.
 
 ---
 
@@ -394,7 +401,7 @@ Can also create custom endpoints to scrape.
 
 ---
 
-# [fit] 5. Service Proxy, Discovery and Mesh
+# [fit] **5.** Service Proxy, Discovery and Mesh
 
 ---
 
@@ -472,6 +479,7 @@ Sends only validated requests to instances.
 # [fit] Authentication and authorization
 # [fit] **Encryption**
 
+^
 Can encrypt and decrypt requests and responses.
 Improve performance by prioritizing the reuse of existing connections.
 Most common implementation for encrypting traffic is mutual TLS (mTLS).
@@ -479,7 +487,7 @@ A public key infrastructure (PKI) generates and distributes certificates and key
 
 ---
 
-# [fit] 6. Network and Policy
+# [fit] **6.** Network and Policy
 
 ---
 
@@ -487,19 +495,40 @@ A public key infrastructure (PKI) generates and distributes certificates and key
 
 ---
 
-# [fit] 7. Distrabuted data and storage
+# [fit] **7.** Distributed data and storage
 
 ---
 
-# [fit] 8. Streaming and messaging
+# [fit] **8.** Streaming and messaging
 
 ---
 
-# [fit] 9. Container registry and runtime
+# [fit] **9.** Container registry and runtime
 
 ---
 
-# [fit] 10. Software distribution
+# [fit] **10.** Software distribution
+
+^ How do we know what we're running
+
+---
+
+## [fit] **Case study**
+# [fit] Chicago Tylenol Murders
+
+^
+1982
+Laced with potassium cyanide.
+Seven confirmed deaths.
+Factory > Distribution.
+Plastic seal
+
+---
+
+# How do we do this with **containers**
+
+^
+Digitally sign them.
 
 ---
 
@@ -534,12 +563,31 @@ I use Monzo - Matt Heath.
 # [fit] This **could** be your **UHP***
 
 ^
-Making developers lives easier.
-Focusing on shipping code.
+Think I made this up.
 
 ---
 
 # [fit] Unique **hiring** policy
+
+^
+Making peoples lives easier.
+Focusing on shipping code.
+This isn't a new technology.
+It's a new mindset.
+
+---
+
+# Shift **left**
+
+^
+Pick up problems as quickly as possible.
+How can we do this.
+
+---
+
+## [fit] 11:45 (Room 2)
+# [fit] **Creating an Effective Developer Experience for Cloud-Native Apps**
+## [fit] Daniel Bryant
 
 ---
 
