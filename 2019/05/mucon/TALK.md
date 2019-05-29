@@ -398,6 +398,87 @@ Can also create custom endpoints to scrape.
 
 ---
 
+# Scalability
+
+^
+What this really means
+
+---
+
+# [fit] **Where** is it
+
+^
+We don't really care where it is.
+But need to know where to send traffic to.
+
+---
+
+# [fit] **Sidecar proxy**
+# [fit] Service discovery
+# [fit] Load balancing
+# [fit] Authentication and authorization
+# [fit] Encryption
+
+^
+A sidecar proxy runs alongside a pod.
+Route/proxy traffic to and from the container it runs alongside
+Communicates with other sidecar proxies.
+Managed by the orchestration framework.
+Many service mesh implementations intercept and manage all ingress and egress traffic to the pod.
+
+---
+# [fit] Sidecar proxy
+# [fit] **Service discovery**
+# [fit] Load balancing
+# [fit] Authentication and authorization
+# [fit] Encryption
+
+^
+Find/discover a healthy, available instance of the other service.
+Typically performs a DNS lookup for this purpose.
+
+---
+
+# [fit] Sidecar proxy
+# [fit] Service discovery
+# [fit] **Load balancing**
+# [fit] Authentication and authorization
+# [fit] Encryption
+
+^
+Most orchestration frameworks already provide Layer 4 (transport layer) load balancing.
+A service mesh implements more sophisticated Layer 7 (application layer) load balancing.
+Richer algorithms and more powerful traffic management.
+Load‑balancing parameters can be modified via API.
+Possible to orchestrate blue‑green or canary deployments.
+
+---
+
+# [fit] Sidecar proxy
+# [fit] Service discovery
+# [fit] Load balancing
+# [fit] **Authentication and authorization**
+# [fit] Encryption
+
+^
+Can authorize and authenticate requests made from both outside and within the app.
+Sends only validated requests to instances.
+
+---
+
+# [fit] Sidecar proxy
+# [fit] Service discovery
+# [fit] Load balancing
+# [fit] Authentication and authorization
+# [fit] **Encryption**
+
+Can encrypt and decrypt requests and responses.
+Improve performance by prioritizing the reuse of existing connections.
+Most common implementation for encrypting traffic is mutual TLS (mTLS).
+A public key infrastructure (PKI) generates and distributes certificates and keys for use by the sidecar proxies.
+
+---
+
 # [fit] 6. Network and Policy
 
 ---
@@ -468,6 +549,29 @@ Focusing on shipping code.
 Change isn't easy.
 What I had wasn't working for me.
 This is.
+So back to the start.
+
+---
+
+# [fit] The state of data centre energy use
+
+## [fit] **Whitepaper**
+
+# [fit] bit.ly/2I67oWD
+
+^
+Here's a whitepaper.
+
+---
+
+# [fit] sustainable servers by 2024
+
+## [fit] **Petition**
+
+# [fit] bit.ly/2wrS1CE
+
+^
+Here's the petition.
 
 ---
 
