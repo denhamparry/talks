@@ -39,7 +39,17 @@ OSMI Guideline for mental wellness at conferences handbook
 # [fit] bit.ly/2WopFYw
 
 ^
-Global emissions 3% data centres
+Global emissions 3% data centres.
+Paul Johnston and Anne Currie.
+
+---
+
+# [fit] **Agenda**
+
+* CNCF
+* Trail Map
+* Conclusion
+* Questions
 
 ---
 
@@ -63,7 +73,7 @@ Global emissions 3% data centres
 
 * Open source software foundation
 * Host and nurture components of cloud native software stacks
-* Over 260 members including the World’s largest public cloud and enterprise software companies as well as dozens of innovative startups.
+* Members including the Worlds largest public cloud and enterprise software companies as well as dozens of innovative startups.
 
 ---
 
@@ -114,7 +124,7 @@ Global emissions 3% data centres
 
 ---
 
-# [fit] **1.** Containers
+# **1.** Containers
 
 ^
 Who uses containers
@@ -147,7 +157,7 @@ Get the best results from well structured containers.
 
 ---
 
-# [fit] **2.** CI/CD
+# **2.** CI/CD
 
 ---
 
@@ -310,7 +320,7 @@ Helm uses charts to share applications
 
 ---
 
-# What's the tiller
+# [fit] What's the **tiller**
 
 ^
 Tiller used to write the Yaml and apply it to Kubernetes.
@@ -359,7 +369,7 @@ Lets look at why we'd want to continue our journey.
 
 ---
 
-# [fit] **4.** Observability and Analysis
+# **4.** Observability and Analysis
 
 ^
 What's going on.
@@ -401,7 +411,7 @@ Can also create custom endpoints to scrape.
 
 ---
 
-# [fit] **5.** Service Proxy, Discovery and Mesh
+# **5.** Service Proxy, Discovery and Mesh
 
 ---
 
@@ -487,11 +497,11 @@ A public key infrastructure (PKI) generates and distributes certificates and key
 
 ---
 
-# [fit] **6.** Network and Policy
+# **6.** Network and Policy
 
 ---
 
-# Container Network Interface **(CNI)**
+# [fit] Container Network Interface **(CNI)**
 
 ^
 A common interface between the network plugins and container execution.
@@ -530,15 +540,15 @@ Policies are written in a high-level declarative language and can be loaded into
 
 ---
 
-# [fit] **7.** Distributed data and storage
+# **7.** Distributed data and storage
 
 ---
 
-# [fit] **8.** Streaming and messaging
+# **8.** Streaming and messaging
 
 ---
 
-# [fit] **9.** Container registry and runtime
+# **9.** Container registry and runtime
 
 ^
 When we started talking about containers I mentioned Docker.
@@ -572,7 +582,7 @@ Security for example.  GVisor.
 
 ---
 
-# [fit] **10.** Software distribution
+# **10.** Software distribution
 
 ^
 How do we know what we're running is what we built.
