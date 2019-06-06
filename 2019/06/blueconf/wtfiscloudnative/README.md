@@ -1,9 +1,9 @@
-# How do we become Cloud Native? 
+# Lightning Talk: WTF is Cloud Native? 
 
 ## Information
 
-* Day 1, 29 May starts 10:45 (Room 2)
-* [Program](https://skillsmatter.com/conferences/11982-con-london-2019-the-conference-on-microservices-ddd-and-software-architecture#program)cd
+* 7th June 2019, starts 16:15
+* [Program](https://blueconf.co.uk)
 
 ## Description
 

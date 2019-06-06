@@ -1,4 +1,4 @@
-# Lightning Talk: Cloud Native Wales: How We Contributed to the Community with No Code
+# BlueConf: Contributing With No Code
 
-## Lewis Denham-Parry, CloudNativeWales
+## Lewis Denham-Parry, Jetstack / CloudNativeWales
 
