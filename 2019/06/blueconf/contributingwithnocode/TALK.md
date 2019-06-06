@@ -1,9 +1,6 @@
 # [fit] TODO
 
 ^
-* I'm going to share personal opinions.
-* These opinions have changed.
-* If you leave at the start, this isn't how I feel about things now.
 * Jobs in Wales.
   * Reference Bridgend Ford.
 * Introduction: Why we started going to conferences.
@@ -280,6 +277,7 @@ Not dead, just working.
 ^
 Our first public meetup was at Yolk.
 Anyone from Yolk here today?
+Clap clap clap
 Used Katacoda to focus on presenting.
 
 ---
@@ -287,7 +285,8 @@ Used Katacoda to focus on presenting.
 ![fit](assets/feedback.jpg)
 
 ^
-Asked for feedback to see if people enjoyed it
+Asked for feedback to see if people enjoyed it.
+People wanted this.
 
 ---
 
@@ -295,9 +294,20 @@ Asked for feedback to see if people enjoyed it
 
 ## Be yourself
 
+^
+You are the best you so why be someone else.
+Want to find out what it is.
+Try eveything and keep doing what you like.
+What makes you smile.
+I like helping others.
+
 ---
 
 # 3 things to run a meetup
+
+^
+So how can others help out.
+Lets look at our meetup.
 
 ---
 
@@ -305,13 +315,28 @@ Asked for feedback to see if people enjoyed it
 
 ## Venue
 
+^
+Basement of a coffee shop.
+Lots of money.
+Worth it.
+
 ---
 
 ![fit](assets/venuechance.png)
 
+^
+We went to other meetups.
+Found this guy.
+Anyone know who he is?
+Sainsburys.
+
 ---
 
 ![fit](assets/venue0.jpg)
+
+^
+This is the DOG office.
+They offered to support us.
 
 ---
 
@@ -319,11 +344,19 @@ Asked for feedback to see if people enjoyed it
 
 # Actual Castle
 
+^
+Who else has castles at their meetups?
+Starting to see some good parts of Wales.
+
 ---
 
 # 2/3:
 
 ## Speaker(s)
+
+^
+Whos going to talk.
+Salman and I knew no one around here.
 
 ---
 
@@ -340,14 +373,18 @@ Word of mouth
 
 ## Attendees
 
+^
+Whos going to want to attend.
+How do we get this out to people.
+
 ---
 
 # Spread the word
 
 ^
-Hustle
-Speak at other meetups
-Write blogs
+Hustle.
+Speak at other meetups.
+Write blogs.
 
 ---
 
@@ -356,21 +393,27 @@ Write blogs
 ## Help others
 
 ^
-Help others and others will help you
+Help others and others will help you.
 
 ---
 
 ![fit](assets/000_CNWSETUP_SALMANLEWIS.jpeg)
 
 ^
-Went to KubeCon
+Went to KubeCon.
+This is what we did.
+
+---
+
+# Kelsey Hightour slide
 
 ---
 
 # [fit] CloudNativeWales
 
 ^
-Promoting CNW
+Promoting CNW.
+Want to take it back home.
 
 ---
 
@@ -384,9 +427,10 @@ Americans thought we mean't this.
 # Meetups
 
 ^
-We asked speakers to talk
-Speaker boardgames
-Locals
+We asked speakers to talk.
+Speaker boardgames.
+Lightning talk beers.
+Locals.
 
 ---
 
@@ -726,15 +770,16 @@ Locals
 ## Do it for the community
 
 ^
-Low self confidence
-More confident knowing I'm helping others
+Banging on about myself.
+Low self confidence.
+More confident knowing I'm helping others.
 
 ---
 
 # Support
 
 ^
-Its not just a one person job
+Its not just a one person job.
 
 ---
 
@@ -744,13 +789,19 @@ Its not just a one person job
 # [fit] Ben / Gareth / Lewis
 
 ^
-People from different roles
-Different industries
-Working together
+People from different roles.
+Different industries.
+Working together.
+Anyone on this list from here?
 
 ---
 
 ![](assets/c1.jpg)
+
+^
+And we get support from people attending.
+Anyone here today been to a CNW meetup?
+Any Cardiff based meetup?
 
 ---
 
@@ -764,12 +815,18 @@ Working together
 
 # Initiatives
 
+^
+So you have to do something.
+Talks are good, but we want to build more.
+
 ---
 
 # Swag
 
 ^
 Take swag home and share it with others.
+Stickers and swag here on stage today.
+Feel free to take some, share some.
 
 ---
 
@@ -777,29 +834,33 @@ Take swag home and share it with others.
 
 ^
 As for conference tickets when speaking at conferences.
+We've manaegd to get a few now.
+Diversity scolarship.
+Does anyone know someone who deserves one?
+Its theres.
 
 ---
 
 # Book Club
 
 ^
-Contact authors and ask if they'll jump on a hangout
+Contact authors and ask if they'll jump on a hangout.
 
 ---
 
 # Tech Amnesty
 
 ^
-Donating games consoles to local hospitals
+Donating games consoles to local hospitals.
 
 ---
 
 # [fit] Meetup of Meetups
 
 ^
-Arranging with other local tech meetups
-Sharing knowledge
-Running joint meetups
+Arranging with other local tech meetups.
+Sharing knowledge.
+Running joint meetups.
 
 ---
 
@@ -815,6 +876,12 @@ Help people feel welcome and included
 # [fit] Code of Conduct
 
 ## [fit] https://events.linuxfoundation.org/code-of-conduct
+
+^
+Make sure theres one of these.
+This helps people feel comfortable.
+
+---
 
 ---
 
