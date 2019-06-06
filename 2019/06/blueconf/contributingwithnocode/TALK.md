@@ -3,10 +3,7 @@
 ^
 * Jobs in Wales.
   * Reference Bridgend Ford.
-* Introduction: Why we started going to conferences.
-  * Depression.
-  * Isolated.
-  * Not enough opportunities.
+  * People need to be inspired.
 * How we joined a community.
 * History of Wales - Mining - Social Clubs.
 * Age
@@ -23,16 +20,54 @@
   * Ian Kent - Monzo.
     * Wait, Monzo?
   * Me
+* Don't need to know code to run meetups.
+* Why did we start one up when there was one already?
+  * We didn't know about the others.
+* Do we care that other meetups run?
+  * Only if its for false purposes.
+  * E.g. A meetup to get people into an office and then they stop running a meetup.
+* News reports.
+  * News reports saying that they couldn't get staff in the area.
+
 
 ---
 
 ![left](assets/cnw.jpg)
 
-## Contributing with No Code
+# [fit] Contributing
+# [fit] with no
+# [fit] Code
 
 ---
 
 # Take Photos
+
+^
+Seriously.
+I want tweets.
+Instagram famous.
+Influencer.
+Linkedin posts.
+Shared albumns.
+Everywhere.
+Will explain more later.
+
+---
+
+# [fit] Agenda
+
+* Very, very personal introduction
+* WTF IS CNW
+* State of the nation address
+* Meetups in your area
+* Future (Whats now in a minute)
+
+---
+
+# [fit] About me
+
+^
+Anyone know me here?
 
 ---
 
@@ -41,6 +76,12 @@
 # [fit] Lewis Denham-Parry
 
 ## @denhamparry
+
+^
+Thats me at KubeCon.
+I'm proud of where I'm from.
+Caerleon.
+Couldn't speak till I was 4.
 
 ---
 
@@ -194,6 +235,12 @@ Worked well with new life.
 
 # More Conferences
 
+^
+Wanted to find more people like me.
+Hearing amazing stories.
+I like the ones with people on fire.
+Honesty is key.
+
 ---
 
 # Kubernetes
@@ -203,7 +250,9 @@ What manages your containers?
 
 ---
 
-# WTF is Cloud Native
+# [fit] WTF is Cloud Native
+
+## <ADD LOCATION HERE/>
 
 ^
 Come to my lightning talk!
