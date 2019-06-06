@@ -31,7 +31,7 @@
 
 ![left](assets/cnw.jpg)
 
-## How We Contributed to the Community with No Code
+## Contributing with No Code
 
 ---
 
@@ -39,23 +39,193 @@
 
 ---
 
+![left 40%](assets/lewis.jpg)
+
 # [fit] Lewis Denham-Parry
 
 ## @denhamparry
 
 ---
 
-# [fit] CloudNativeWales
+![](assets/jetstack.svg)
+
+---
+
+# [fit] Solutions Engineer
+
+## @jetstackhq
+
+^
+Consulting, training and opens source.
+
+---
+
+![](assets/cnw.jpg)
+
+---
+
+# [fit] Co-founder
 
 ## @cloudnativewal
 
 ---
 
-# 🐳 🐳 🐳
+## [fit] Mental Health
+
+* OSMI Conference Handbook: https://bit.ly/2K8HeoV
+
+^
+I've suffered.
+Find professional advice.
+Open Sourcing Mental Illness.
+OSMI Guideline for mental wellness at conferences handbook.
+
+---
+
+## [fit] Climate Change
+
+* Talk: https://bit.ly/2WopFYw
+* Whitepaper: https://bit.ly/2I67oWD
+* Petition: https://bit.ly/2wrS1CE
+
+^
+Global emissions 3% (if not 5%) data centres.
+Paul Johnston and Anne Currie.
 
 ---
 
 ![fit](assets/Wales.svg)
+
+^
+Anyone from Wales here?
+
+---
+
+# [fit] Disclaimer
+
+^
+Opinions from me a couple of years ago.
+My opinions have changed.
+But this is why community is important.
+
+---
+
+# 💩
+
+^ Working in Wales was shit
+
+---
+
+# 💩💩💩
+
+---
+
+# 💩💩💩💩
+# 💩💩💩💩
+# 💩💩💩💩
+# 💩💩💩💩
+# 💩💩💩💩
+
+---
+
+# [fit] Let's go back...
+
+^
+Why did I think this?
+
+---
+
+# Work
+
+^
+Worked on exciting projects worldwide.
+Started a family, moved home.
+Picked up work
+Special sauce.
+Fed up of it.
+
+---
+
+# Teams
+
+^
+Contacting.
+I used to work in a great team.
+
+---
+
+# Age
+
+^
+Was this my life now.
+Looking at my peers.
+
+---
+
+# Depression
+
+^
+I wasn't happy.
+
+---
+
+# Why
+
+^
+Should be happiest time.
+Thyroid.
+
+---
+
+# Oslo
+
+^
+Conference in Oslo.
+If I didn't like it, OSLO!
+But I did.
+
+---
+
+# Containers
+
+^
+I liked containers.
+Stop start.
+Worked well with new life.
+
+---
+
+# More Conferences
+
+---
+
+# Kubernetes
+
+^
+What manages your containers?
+
+---
+
+# WTF is Cloud Native
+
+^
+Come to my lightning talk!
+
+---
+
+# Speaking
+
+^
+Wanted to give back.
+I don't like the spotlight.
+Someone like me.
+
+---
+
+# More workshops
+
+^
+Wanted to learn how to speak at meetups.
 
 ---
 
@@ -63,24 +233,54 @@
 
 # Ben
 
+^
+Ben ran a Kubernetes workshop.
+Who's Ben?
+
 ---
 
 ![fit](assets/Katacoda.png)
+
+^
+Runs Katacoda.
+
+---
+
+![left](assets/ben.jpg)
+
+# Ben
+
+^
+Ben ran a Kubernetes workshop.
+What do we do well?
+Went to the pub and had a chat.
+No Cloud Native Wales...
 
 ---
 
 ![fit](assets/zeroworkshop.jpg)
 
 ^
-Ran our first workshop at a lunch break
+Ran our first workshop at a lunch break.
+This is Salman.
+
+---
+
+# @soulmaniqbal
+
+^
+Feel free to message him.
+He's not here today.
+Not dead, just working.
 
 ---
 
 ![fit](assets/firstworkshop.jpg)
 
 ^
-Our first public meetup was at a recruitment office
-Used Katacoda so we could focus on speaking and running the meetup
+Our first public meetup was at Yolk.
+Anyone from Yolk here today?
+Used Katacoda to focus on presenting.
 
 ---
 
@@ -161,6 +361,23 @@ Help others and others will help you
 ---
 
 ![fit](assets/000_CNWSETUP_SALMANLEWIS.jpeg)
+
+^
+Went to KubeCon
+
+---
+
+# [fit] CloudNativeWales
+
+^
+Promoting CNW
+
+---
+
+# 🐳 🐳 🐳
+
+^
+Americans thought we mean't this.
 
 ---
 
