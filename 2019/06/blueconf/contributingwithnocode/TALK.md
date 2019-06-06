@@ -1,3 +1,34 @@
+# [fit] TODO
+
+^
+* I'm going to share personal opinions.
+* These opinions have changed.
+* If you leave at the start, this isn't how I feel about things now.
+* Jobs in Wales.
+  * Reference Bridgend Ford.
+* Introduction: Why we started going to conferences.
+  * Depression.
+  * Isolated.
+  * Not enough opportunities.
+* How we joined a community.
+* History of Wales - Mining - Social Clubs.
+* Age
+* Monzo.
+  * Why aren't there any engineering roles?
+* Other meetups in Cardiff:
+  * Go.
+  * AI Wales.
+* People leading the way.
+  * James Rawlings.
+  * Annouska Streets.
+  * Nat Morris.
+  * Brecon person running the human genemone project.
+  * Ian Kent - Monzo.
+    * Wait, Monzo?
+  * Me
+
+---
+
 ![left](assets/cnw.jpg)
 
 ## How We Contributed to the Community with No Code
@@ -611,5 +642,3 @@ We'll learn together
 ## @cloudnativewal
 
 ### @denhamparry
-
-### Stand SE10
