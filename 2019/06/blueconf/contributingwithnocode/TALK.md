@@ -28,7 +28,10 @@
   * E.g. A meetup to get people into an office and then they stop running a meetup.
 * News reports.
   * News reports saying that they couldn't get staff in the area.
-
+* Why did we get started in this industry?
+  * The love of solving problems.
+* Make sure stating Wales and Welsh doesn't just mean people who were born here.
+  * We need to encourage diversity, the only way for us to make the best solutions is by having an equal opportunity to solve it.
 
 ---
 
