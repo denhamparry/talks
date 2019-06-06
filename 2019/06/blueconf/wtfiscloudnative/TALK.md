@@ -1,4 +1,4 @@
-# How do we become Cloud Native
+# WTF IS Cloud Native
 
 ## **Lewis Denham-Parry**
 
@@ -8,23 +8,6 @@
 
 ^
 Feel free
-
----
-
-# [fit] **Agenda**
-
-* CNCF
-* Trail Map
-* Conclusion
-* Questions
-
----
-
-# [fit] **About** me
-
-^
-I still feel relatively new to Cloud Native
-Used to be a consultant, then contractor and looked for change.
 
 ---
 
@@ -39,9 +22,7 @@ Consulting, training and opens source.
 ![](assets/cnw.jpg)
 
 ^
-Anyone from Wales here.
-Building a community back at home.
-Feel free to ask me questions about running meetups.
+Come talk to me.
 
 ---
 
@@ -59,7 +40,9 @@ OSMI Guideline for mental wellness at conferences handbook.
 
 ## **Climate Change**
 
-# [fit] bit.ly/2WopFYw
+* Talk: https://bit.ly/2WopFYw
+* Whitepaper: https://bit.ly/2I67oWD
+* Petition: https://bit.ly/2wrS1CE
 
 ^
 Global emissions 3% data centres.
@@ -126,7 +109,8 @@ Paul Johnston and Anne Currie.
 # Plan of action
 
 * Go through each step.
-* Discuss the concept.
+* Discuss after if you want.
+* Its a lightning talk but I love you.
 
 ---
 
@@ -297,22 +281,6 @@ Used to create these.
 
 ---
 
-# [fit] Want to know more
-
----
-
-## [fit] 13:30 (Room 3)
-# [fit] **Three Years of Lessons from Running Potentially Malicious Code Inside Container**
-## [fit] Ben Hall
-
----
-
-## [fit] Tomorrow 14:30 (Room 2)
-# [fit] **Workshop: Show me the Kubernetes**
-## [fit] Salman Iqbal and Lewis Denham-Parry
-
----
-
 # [fit] Helm
 
 ^
@@ -347,18 +315,6 @@ Security vulnerability.
 
 ^
 Kubernetes is product first security second.
-How do you manage security?
-
----
-
-## [fit] 17:15 (Keynote)
-# [fit] **Microservices & containers: getting your security team on board**
-## [fit] Liz Rice
-
-^
-I follow the leaders.
-Liz is one of them.
-Works for aqua.
 
 ---
 
@@ -739,12 +695,6 @@ I use Monzo - Matt Heath.
 
 ---
 
-## 15:30 (Room 3)
-# **Breaking Down Problems**
-## Matt Heath
-
----
-
 # [fit] This **could** be your **UHP***
 
 ^
@@ -770,15 +720,9 @@ How can we do this.
 
 ---
 
-## [fit] 11:45 (Room 2)
-# [fit] **Creating an Effective Developer Experience for Cloud-Native Apps**
-## [fit] Daniel Bryant
-
----
-
 ## [fit] **KubeCon Barcelona 2019**
 
-# [fit] bit.ly/2HJsRpp
+* https://bit.ly/2HJsRpp
 
 ---
 
@@ -789,28 +733,6 @@ Change isn't easy.
 What I had wasn't working for me.
 This is.
 So back to the start.
-
----
-
-# [fit] The state of data centre energy use
-
-## [fit] **Whitepaper**
-
-# [fit] bit.ly/2I67oWD
-
-^
-Here's a whitepaper.
-
----
-
-# [fit] sustainable servers by 2024
-
-## [fit] **Petition**
-
-# [fit] bit.ly/2wrS1CE
-
-^
-Here's the petition.
 
 ---
 
