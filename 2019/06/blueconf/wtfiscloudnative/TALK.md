@@ -28,7 +28,7 @@ Come talk to me.
 
 ## **Mental Health**
 
-# [fit] bit.ly/2K8HeoV
+* OSMI Conference Handbook: https://bit.ly/2K8HeoV
 
 ^
 I've suffered.
@@ -722,7 +722,7 @@ How can we do this.
 
 ## [fit] **KubeCon Barcelona 2019**
 
-* https://bit.ly/2HJsRpp
+* Add link to videos
 
 ---
 
@@ -740,6 +740,6 @@ So back to the start.
 
 ## [fit] **@denhamparry**
 
-# [fit] slides
+##  slides
 
-## [fit] **bit.ly/2MgUytZ**
+* Add link to slides.
