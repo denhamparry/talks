@@ -20,6 +20,14 @@ Will explain more later.
 
 ---
 
+# [fit] Whos here today?
+
+^
+Shout out any job titles.
+Preferably real ones but.
+
+---
+
 # [fit] Agenda
 
 * Very, very personal introduction
@@ -1497,6 +1505,25 @@ People need to know whats on their doorstep.
 ^
 This is tough, very tough.
 We need more local sponsors.
+
+---
+
+# [fit] Share
+
+^
+Drop that ladder!
+
+---
+
+# [fit] Slides
+
+## [fit] https://github.com/denhamparry/talks
+
+## [fit] https://speakerdeck.com/denhamparry/contributing-with-no-code
+
+^
+Here's all my slides.
+Take them, ask for help, help others.
 
 ---
 
