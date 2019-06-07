@@ -218,7 +218,7 @@ Why did I think this?
 
 ---
 
-# Work
+# [fit] Work
 
 ^
 Worked on exciting projects worldwide.
@@ -229,7 +229,7 @@ Fed up of it.
 
 ---
 
-# Teams
+# [fit] Teams
 
 ^
 Contacting.
@@ -237,7 +237,7 @@ I used to work in a great team.
 
 ---
 
-# Age
+# [fit] Age
 
 ^
 Was this my life now.
@@ -245,14 +245,14 @@ Looking at my peers.
 
 ---
 
-# Depression
+# [fit] Depression
 
 ^
 I wasn't happy.
 
 ---
 
-# Change
+# [fit] Change
 
 ^
 I needed some change.
@@ -261,7 +261,7 @@ Last chance.
 
 ---
 
-# Oslo
+# [fit] Oslo
 
 ^
 Conference in Oslo.
@@ -270,9 +270,9 @@ But I did.
 
 ---
 
-# Tip 0:
+# [fit] Tip 0:
 
-## Solve problems.
+## [fit] Solve problems.
 
 ^
 I forgot what I liked.
@@ -282,7 +282,7 @@ All I wanted to do was solve problems.
 
 ---
 
-# Depression
+# [fit] Depression
 
 ^
 Lets solve this.
@@ -290,14 +290,14 @@ Should be happiest time.
 
 ---
 
-# ~~Depression~~
+# [fit] ~~Depression~~
 
 ^
 Thyroid.
 
 ---
 
-# Containers
+# [fit] Containers
 
 ^
 I liked containers.
@@ -306,7 +306,7 @@ Worked well with new life.
 
 ---
 
-# More Conferences
+# [fit] More Conferences
 
 ^
 Wanted to find more people like me.
@@ -316,7 +316,7 @@ Honesty is key.
 
 ---
 
-# Kubernetes
+# [fit] Kubernetes
 
 ^
 What manages your containers?
@@ -325,14 +325,14 @@ What manages your containers?
 
 # [fit] WTF is Cloud Native
 
-## Next door
+## [fit] Next door
 
 ^
 Come to my lightning talk!
 
 ---
 
-# Speaking
+# [fit] Speaking
 
 ^
 Wanted to give back.
@@ -341,7 +341,7 @@ Someone like me.
 
 ---
 
-# More workshops
+# [fit] More workshops
 
 ^
 Wanted to learn how to speak at meetups.
@@ -350,7 +350,7 @@ Wanted to learn how to speak at meetups.
 
 ![left](assets/ben.jpg)
 
-# Ben
+# [fit] Ben
 
 ^
 Ben ran a Kubernetes workshop.
@@ -371,7 +371,7 @@ Runs Katacoda.
 
 ![left](assets/ben.jpg)
 
-# Ben
+# [fit] Ben
 
 ^
 Ben ran a Kubernetes workshop.
@@ -391,7 +391,7 @@ This is Salman.
 
 # [fit] Salman Iqbal
 
-# @soulmaniqbal
+# [fit] @soulmaniqbal
 
 ^
 Feel free to message him.
@@ -420,7 +420,7 @@ People wanted this.
 
 # Tip 1:
 
-## Be yourself
+## [fit] Be yourself
 
 ^
 You are the best you so why be someone else.
@@ -431,7 +431,7 @@ I like helping others.
 
 ---
 
-# 3 things to run a meetup
+# [fit] 3 things to run a meetup
 
 ^
 So how can others help out.
@@ -439,9 +439,9 @@ Lets look at our meetup.
 
 ---
 
-# 1/3: 
+# [fit] 1/3: 
 
-## Venue
+## [fit] Venue
 
 ^
 Basement of a coffee shop.
@@ -470,7 +470,7 @@ They offered to support us.
 
 ![right](assets/venue1.jpg)
 
-# Actual Castle
+# [fit] Actual Castle
 
 ^
 Who else has castles at their meetups?
@@ -478,9 +478,9 @@ Starting to see some good parts of Wales.
 
 ---
 
-# 2/3:
+# [fit] 2/3:
 
-## Speaker(s)
+## [fit] Speaker(s)
 
 ^
 Whos going to talk.
@@ -497,9 +497,9 @@ Word of mouth
 
 ---
 
-# 3/3:
+# [fit] 3/3:
 
-## Attendees
+## [fit] Attendees
 
 ^
 Whos going to want to attend.
@@ -507,7 +507,7 @@ How do we get this out to people.
 
 ---
 
-# Spread the word
+# [fit] Spread the word
 
 ^
 Hustle.
@@ -516,9 +516,9 @@ Write blogs.
 
 ---
 
-# Tip 2:
+# [fit] Tip 2:
 
-## Help others
+## [fit] Help others
 
 ^
 Help others and others will help you.
@@ -548,7 +548,7 @@ Americans thought we mean't this.
 
 ---
 
-# Meetups
+# [fit] CNW Meetups
 
 ^
 We asked speakers to talk.
@@ -573,7 +573,7 @@ Locals.
 
 # [fit] James Rawlings
 
-## Cloud Bees
+## [fit] Cloud Bees
 
 ^
 28
@@ -584,7 +584,7 @@ Locals.
 
 # [fit] Basia Fusinska
 
-## Google
+## [fit] Google
 
 ^
 27
@@ -593,9 +593,9 @@ Locals.
 
 ![left](assets/m22.jpg)
 
-# Ben Hall
+# [fit] Ben Hall
 
-## Katacoda
+## [fit] Katacoda
 
 ^
 26
@@ -604,9 +604,9 @@ Locals.
 
 ![left](assets/m31.jpg)
 
-# Greg Simons
+# [fit] Greg Simons
 
-## Codeaptive
+## [fit] Codeaptive
 
 ^
 25
@@ -615,9 +615,9 @@ Locals.
 
 ![left](assets/m32.jpg)
 
-# Dan Twining
+# [fit] Dan Twining
 
-## Monitise
+## [fit] Monitise
 
 ^
 24
@@ -626,9 +626,9 @@ Locals.
 
 ![left](assets/m33.jpg)
 
-# Sam Newman
+# [fit] Sam Newman
 
-## and Associates
+## [fit] and Associates
 
 ^
 23
@@ -639,7 +639,7 @@ Locals.
 
 # [fit] Nathan Gloyn
 
-## DrugDev
+## [fit] DrugDev
 
 ^
 22
@@ -648,9 +648,9 @@ Locals.
 
 ![left](assets/m42.jpg)
 
-# Martin Ford
+# [fit] Martin Ford
 
-## FINkit
+## [fit] FINkit
 
 ^
 21
@@ -661,7 +661,7 @@ Locals.
 
 # [fit] Callum Whyte
 
-## Umbraco
+## [fit] Umbraco
 
 ^
 20
@@ -672,7 +672,7 @@ Locals.
 
 # [fit] Anouska Streets
 
-## Currency Cloud
+## [fit] Currency Cloud
 
 ^
 19
@@ -683,7 +683,7 @@ Locals.
 
 # [fit] Gareth Evans
 
-## Cloud Bees
+## [fit] Cloud Bees
 
 ^
 18
@@ -692,9 +692,9 @@ Locals.
 
 ![left](assets/m53.jpg)
 
-# Cai Cooper
+# [fit] Cai Cooper
 
-## Cloud Bees
+## [fit] Cloud Bees
 
 ^
 17
@@ -703,9 +703,9 @@ Locals.
 
 ![left](assets/m54.png)
 
-# Paul Jones
+# [fit] Paul Jones
 
-## Dyson
+## [fit] Dyson
 
 ^
 16
@@ -716,7 +716,7 @@ Locals.
 
 # [fit] Andrew Martin
 
-## Control Plane
+## [fit] Control Plane
 
 ^
 15
@@ -727,7 +727,7 @@ Locals.
 
 # [fit] Mark Coleman
 
-## Dot Science
+## [fit] Dot Science
 
 ^
 14
@@ -736,9 +736,9 @@ Locals.
 
 ![left](assets/m72.jpg)
 
-# Nat Morris
+# [fit] Nat Morris
 
-## Netflix
+## [fit] Netflix
 
 ^
 13
@@ -749,7 +749,7 @@ Locals.
 
 # [fit] Ed Maxwell-Lyte
 
-## Currency Cloud
+## [fit] Currency Cloud
 
 ^
 12
@@ -760,7 +760,7 @@ Locals.
 
 # [fit] Brice Fernandes
 
-## Weave Works
+## [fit] Weave Works
 
 ^
 11
@@ -769,9 +769,9 @@ Locals.
 
 ![left](assets/m92.jpg)
 
-# Steve Davis
+# [fit] Steve Davis
 
-## IP Consultants
+## [fit] IP Consultants
 
 ^
 10
@@ -780,9 +780,9 @@ Locals.
 
 ![left](assets/m101.jpg)
 
-# Matt Turner
+# [fit] Matt Turner
 
-## Native Wave
+## [fit] Native Wave
 
 ^
 9
@@ -793,7 +793,7 @@ Locals.
 
 # [fit] Lewis Denham-Parry
 
-## Cloud Native Wales
+## [fit] Cloud Native Wales
 
 ^
 8
@@ -804,7 +804,7 @@ Locals.
 
 # [fit] Brendan Collins
 
-## Algorithmia
+## [fit] Algorithmia
 
 ^
 7
@@ -813,9 +813,9 @@ Locals.
 
 ![left](assets/m112.jpg)
 
-# Stig Telfer
+# [fit] Stig Telfer
 
-## StackHPC
+## [fit] StackHPC
 
 ^
 6
@@ -826,7 +826,7 @@ Locals.
 
 # [fit] Anouska Streets
 
-## Currency Cloud
+## [fit] Currency Cloud
 
 ^
 5
@@ -835,9 +835,9 @@ Locals.
 
 ![left](assets/m122.jpg)
 
-# David McKay
+# [fit] David McKay
 
-## InfluxData
+## [fit] InfluxData
 
 ^
 4
@@ -846,9 +846,9 @@ Locals.
 
 ![left](assets/m123.jpg)
 
-# Lewis Denham-Parry
+# [fit] Lewis Denham-Parry
 
-## Cloud Native Wales
+## [fit] Cloud Native Wales
 
 ^
 3
@@ -857,9 +857,9 @@ Locals.
 
 ![left](assets/m131.jpg)
 
-# Julien Simon
+# [fit] Julien Simon
 
-## AWS
+## [fit] AWS
 
 ^
 2
@@ -871,7 +871,7 @@ Locals.
 # [fit] James Strachan
 # [fit] James Rawlings
 
-## Cloud Bees
+## [fit] Cloud Bees
 
 ^
 1
@@ -880,18 +880,18 @@ Locals.
 
 ![left](assets/m133.jpg)
 
-# Jack Kelly
+# [fit] Jack Kelly
 
-## DevOpsGroup
+## [fit] DevOpsGroup
 
 ^
 0
 
 ---
 
-# Tip 3:
+# [fit] Tip 3:
 
-## Do it for the community
+## [fit] Do it for the community
 
 ^
 Banging on about myself.
@@ -900,7 +900,7 @@ More confident knowing I'm helping others.
 
 ---
 
-# Support
+# [fit] Support
 
 ^
 Its not just a one person job.
@@ -937,7 +937,7 @@ Any Cardiff based meetup?
 
 ---
 
-# Initiatives
+# [fit] Initiatives
 
 ^
 So you have to do something.
@@ -945,7 +945,7 @@ Talks are good, but we want to build more.
 
 ---
 
-# Swag
+# [fit] Swag
 
 ^
 Take swag home and share it with others.
@@ -954,7 +954,7 @@ Feel free to take some, share some.
 
 ---
 
-# Raffle
+# [fit] Raffle
 
 ^
 As for conference tickets when speaking at conferences.
@@ -965,14 +965,14 @@ Its theres.
 
 ---
 
-# Book Club
+# [fit] Book Club
 
 ^
 Contact authors and ask if they'll jump on a hangout.
 
 ---
 
-# Tech Amnesty
+# [fit] Tech Amnesty
 
 ^
 Donating games consoles to local hospitals.
@@ -988,9 +988,9 @@ Running joint meetups.
 
 ---
 
-# Tip 4:
+# [fit] Tip 4:
 
-## Treat others as you want to be treated
+## [fit] Treat others as you want to be treated
 
 ^
 Help people feel welcome and included
@@ -1018,9 +1018,9 @@ Does BlueConf have one...
 
 ---
 
-# Tip 5:
+# [fit] Tip 5:
 
-## Diversity
+## [fit] Diversity
 
 ^
 Hard for me to talk about this.
@@ -1107,7 +1107,7 @@ Mostly call centre.
 
 ---
 
-# Inspire
+# [fit] Inspire
 
 ^
 We can do this.
@@ -1115,7 +1115,7 @@ But who are we inspiring.
 
 ---
 
-# People in Wales
+# [fit] People in Wales
 
 ^
 We have the talent in this room.
@@ -1123,18 +1123,25 @@ Imagine what we could do in a week.
 
 ---
 
-# Slate / Coal
+# [fit] Slate / Coal
+
+^
+Used to have this.
 
 ---
 
-# ~~Slate / Coal~~
+# [fit] ~~Slate / Coal~~
+
+^
+We don't have too much of it anymore.
 
 ---
 
-# Talent
+# [fit] Talent
 
 ^
 This is our resource.
+We have lots of this.
 
 ---
 
@@ -1145,7 +1152,7 @@ How do we manage this?
 
 ---
 
-# Social clubs
+# [fit] Social clubs
 
 ^
 Have you been to the valleys.
@@ -1164,8 +1171,8 @@ This is the modern day equivalent.
 
 ---
 
-# James
-## "Why didn't you do this with unified diff"
+# [fit] James
+## [fit] "Why didn't you do this with unified diff"
 
 ^
 At our first meetup, James asked me this.
@@ -1175,7 +1182,7 @@ Get ready for some photos.
 
 ---
 
-# Who?
+# [fit] Who?
 
 ^
 This was my problem.
@@ -1283,7 +1290,7 @@ Lets solve this problem now.
 
 ---
 
-# What makes us different?
+# [fit] What makes us different?
 
 ^
 Mark Coleman.
@@ -1293,9 +1300,9 @@ USB stick.
 
 ---
 
-# Tip 6:
+# [fit] Tip 6:
 
-# Honesty
+# [fit] Honesty
 
 ^
 Inside and outside of tech.
@@ -1304,7 +1311,7 @@ Careful when using it though.
 
 ---
 
-# Future
+# [fit] Future
 
 ^
 We need leaders.
@@ -1312,7 +1319,7 @@ You can all be leaders.
 
 ---
 
-# Drop the ladder
+# [fit] Drop the ladder
 
 ^
 Show others how its done.
@@ -1432,7 +1439,7 @@ Invite friends and others.
 
 ---
 
-# Offer help
+# [fit] Offer help
 
 ^
 Looking after speakers.
@@ -1456,14 +1463,18 @@ We need more local sponsors.
 
 ---
 
-# Future
+# In closing...
+
+---
+
+# [fit] Future
 
 ^
 Not looking to bright at the moment.
 
 ---
 
-# Community
+# [fit] Community
 
 ^
 The people who I've met and now become friends with.
@@ -1472,8 +1483,8 @@ We'll learn together
 
 ---
 
-# Thank you
+# [fit] Thank you
 
-## @denhamparry
+## [fit] @denhamparry
 
 ## [fit] lewis@cloudnativewales.io
