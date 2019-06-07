@@ -282,7 +282,7 @@ All I wanted to do was solve problems.
 
 ---
 
-# ~~Depression~~
+# Depression
 
 ^
 Lets solve this.
@@ -365,6 +365,10 @@ Runs Katacoda.
 
 ---
 
+# [fit] https://katacoda.com
+
+---
+
 ![left](assets/ben.jpg)
 
 # Ben
@@ -384,6 +388,8 @@ Ran our first workshop at a lunch break.
 This is Salman.
 
 ---
+
+# [fit] Salman Iqbal
 
 # @soulmaniqbal
 
@@ -1396,6 +1402,57 @@ Others offer to help you.
 ---
 
 ![fit](assets/bandphoto.jpeg)
+
+---
+
+# [fit] What can you do?
+
+^
+Help meetups.
+Help conferences.
+Help each other.
+
+---
+
+# [fit] Talk
+
+^
+Write a talk.
+3 months time.
+Lots of help.
+
+---
+
+# [fit] Attend
+
+^
+Go to the meetups.
+Talk about meetups.
+Invite friends and others.
+
+---
+
+# Offer help
+
+^
+Looking after speakers.
+Carrying drinks.
+Give constructive feedback.
+
+---
+
+# [fit] Share
+
+^
+People need to know whats on their doorstep.
+
+---
+
+# [fit] Sponsors
+
+^
+This is tough, very tough.
+We need more local sponsors.
 
 ---
 
