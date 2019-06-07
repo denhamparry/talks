@@ -533,6 +533,13 @@ This is what we did.
 
 ---
 
+![fit](assets/kelsey.jpeg)
+
+^
+Met Kelsey
+
+---
+
 # [fit] CloudNativeWales
 
 ^
@@ -1182,6 +1189,8 @@ It can be but thats not the point.
 ---
 
 # [fit] Beelzebubs
+
+## [fit] [Beel-ze-bubs]
 
 ^
 We're going here after the conference.
