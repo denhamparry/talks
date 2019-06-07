@@ -1230,12 +1230,19 @@ So we need to share.
 
 ---
 
+# [fit] Meetups in your area
+
+^
+Lets start sharing now.
+Some more participation.
+In / Hands up / nod head.
+
+---
+
 # [fit] Unified Diff
 
 ## [fit] https://www.meetup.com/unified-diff/
 
-^
-Lets solve this problem now.
 
 ---
 
@@ -1527,7 +1534,7 @@ Take them, ask for help, help others.
 
 ---
 
-# In closing...
+# [fit] In closing...
 
 ---
 
