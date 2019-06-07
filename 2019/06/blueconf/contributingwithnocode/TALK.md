@@ -879,6 +879,106 @@ Running joint meetups.
 
 ---
 
+# James
+## "Why didn't you do this with unified diff"
+
+^
+At our first meetup, James asked me this.
+I consider James a good friend now.
+At the time, this was my answer.
+
+---
+
+# Who?
+
+^
+This was my problem.
+I didn't look for them.
+So we need to share.
+
+---
+
+# [fit] Unified Diff
+
+## [fit] https://www.meetup.com/unified-diff/
+
+^
+Lets solve this problem now.
+
+---
+
+# [fit] AI Wales
+
+## [fit] https://www.meetup.com/AI-Wales/
+
+---
+
+# [fit] DevOps and Dine
+
+## [fit] https://www.meetup.com/DevOps-And-Dine/
+
+---
+
+# [fit] Powershell Cardiff UK
+
+## [fit] https://www.meetup.com/PowerShell-Cardiff-UK/
+
+---
+
+# [fit] Rust and C++
+
+## [fit] https://www.meetup.com/rust-and-c-plus-plus-in-cardiff/
+
+---
+
+# [fit] GDG Cardiff
+
+## [fit] https://www.meetup.com/GDGCardiff/
+
+---
+
+# [fit] AWS South Wales
+
+## [fit] https://www.meetup.com/AWS-South-Wales-User-Group/
+
+---
+
+# [fit] Cardiff Go
+
+## [fit] https://www.meetup.com/Cardiff-Go-Meetup/
+
+---
+
+# [fit] MSFT Stack
+
+## [fit] https://www.meetup.com/MSFT-Stack/
+
+---
+
+# [fit] Cardiff Tech Talk
+
+## [fit] https://www.meetup.com/Cardiff-Tech-Talk/
+
+---
+
+# [fit] Cardiff JS
+
+## [fit] https://www.meetup.com/Cardiff-JS/
+
+---
+
+# [fit] PHP South Wales
+
+## [fit] https://www.meetup.com/PHP-South-Wales/
+
+---
+
+# [fit] Cloud Native Wales
+
+## [fit] https://www.meetup.com/Cloud-Native-Wales/
+
+---
+
 # Tip 4:
 
 ## Treat others as you want to be treated
@@ -1119,12 +1219,6 @@ We'll learn together
 * Age
 * Monzo.
   * Why aren't there any engineering roles?
-* Other meetups in Cardiff:
-  * Go.
-  * AI Wales
-  * Cardiff JS
-  * AWS Cardiff
-  * Google
 * People leading the way.
   * James Rawlings.
   * Annouska Streets.
@@ -1133,7 +1227,6 @@ We'll learn together
   * Ian Kent - Monzo.
     * Wait, Monzo?
   * Me
-* Don't need to know code to run meetups.
 * Why did we start one up when there was one already?
   * We didn't know about the others.
 * Do we care that other meetups run?
