@@ -102,6 +102,9 @@ Paul Johnston and Anne Currie.
 
 ^
 Anyone from Wales here?
+I mention it a lot.
+You don't have to be born here.
+People who want to be here.
 
 ---
 
@@ -114,9 +117,79 @@ But this is why community is important.
 
 ---
 
-# 💩
+# [fit] 2011
 
-^ Working in Wales was shit
+---
+
+![](assets/besttimes0.jpg)
+
+---
+
+![](assets/besttimes1.jpg)
+
+---
+
+![90%](assets/toughttimes.jpg)
+
+---
+
+![90%](assets/fix0.jpg)
+
+---
+
+# 😁
+
+---
+
+# 😀
+
+---
+
+# 🙂
+
+---
+
+# 😏
+
+---
+
+# 🤨
+
+---
+
+# 😕
+
+---
+
+# 🙁
+
+---
+
+# 😣
+
+---
+
+# 😖
+
+---
+
+# 😩
+
+---
+
+# 😭
+
+---
+
+# 😤
+
+---
+
+# 🤯
+
+---
+
+# 💩
 
 ---
 
@@ -129,6 +202,12 @@ But this is why community is important.
 # 💩💩💩💩
 # 💩💩💩💩
 # 💩💩💩💩
+
+---
+
+# 2016
+
+^ Working in Wales was shit
 
 ---
 
@@ -1196,17 +1275,20 @@ Show others how its done.
 
 ## [fit] @jdrawlings
 
+^
+First meetup in Cardiff.
+Doing stuff with Jenkins X.
+Hiring most of Cardiff it seems.
+
 ---
 
 # [fit] Annouska Streets
 
 ## [fit] @anouskastreets
 
----
-
-# [fit] Annouska Streets
-
-## [fit] @anouskastreets
+^
+Internaltional keynote speaker.
+New startup in Cardiff.
 
 ---
 
@@ -1214,11 +1296,20 @@ Show others how its done.
 
 ## [fit] @natmorris
 
+^
+From Coventry.
+Moved to a farm in Wales.
+Senior Software Developer at Netflix.
+
 ---
 
 # [fit] Someone
 
 ## [fit] In Brecon
+
+^
+Asked for a beer.
+Human Geneome project.
 
 ---
 
@@ -1226,17 +1317,31 @@ Show others how its done.
 
 ## [fit] @iankent
 
+^
+Anyone know Ian.
+Do you know who he works for?
+Monzo.
+Web designer.
+
 ---
 
 # [fit] Steph Locke
 
 ## [fit] @thestephlocke
 
+^
+Helping others.
+Leading the way forward.
+
 ---
 
 # [fit] Jack Rimell
 
 ## [fit] @silverlight513
+
+^
+Got to know Jack over the last year.
+I want to be more like Jack.
 
 ---
 
@@ -1282,11 +1387,6 @@ We'll learn together
 * Age
 * Monzo.
   * Why aren't there any engineering roles?
-* People leading the way.
-    * Wait, Monzo?
-  * Me
-* Why did we start one up when there was one already?
-  * We didn't know about the others.
 * Do we care that other meetups run?
   * Only if its for false purposes.
   * E.g. A meetup to get people into an office and then they stop running a meetup.
