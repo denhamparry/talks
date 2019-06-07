@@ -6,7 +6,7 @@
 
 ---
 
-# Take Photos
+# [fit] Take Photos
 
 ^
 Seriously.
@@ -41,7 +41,7 @@ Anyone know me here?
 
 # [fit] Lewis Denham-Parry
 
-## @denhamparry
+## [fit] @denhamparry
 
 ^
 Thats me at KubeCon.
@@ -57,7 +57,7 @@ Couldn't speak till I was 4.
 
 # [fit] Solutions Engineer
 
-## @jetstackhq
+## [fit] @jetstackhq
 
 ^
 Consulting, training and opens source.
@@ -70,7 +70,7 @@ Consulting, training and opens source.
 
 # [fit] Co-founder
 
-## @cloudnativewal
+## [fit] @cloudnativewal
 
 ---
 
@@ -555,6 +555,7 @@ We asked speakers to talk.
 Speaker boardgames.
 Lightning talk beers.
 Locals.
+Give me a 'yak-e-dar' if you know them.
 
 ---
 
@@ -1171,6 +1172,27 @@ This is the modern day equivalent.
 
 ---
 
+# [fit] Pub
+
+^
+Lets break this down.
+This isn't about alcohol.
+It can be but thats not the point.
+
+---
+
+# [fit] Beelzebubs
+
+^
+We're going here after the conference.
+Lets continue our conversations.
+
+---
+
+![](assets/pub.png)
+
+---
+
 # [fit] James
 ## [fit] "Why didn't you do this with unified diff"
 
@@ -1409,6 +1431,12 @@ Others offer to help you.
 ---
 
 ![fit](assets/bandphoto.jpeg)
+
+^
+This is my new work family.
+Feeling like 2011 again.
+We're growing.
+If you'd like to work with us, come say hi.
 
 ---
 
