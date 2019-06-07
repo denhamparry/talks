@@ -122,10 +122,16 @@ Paul Johnston and Anne Currie.
 
 ---
 
-# **1.** Containers
+# **1.** 
+
+## Containers
 
 ^
 Who uses containers
+
+---
+
+![120%](assets/docker.gif)
 
 ---
 
@@ -155,7 +161,9 @@ Get the best results from well structured containers.
 
 ---
 
-# **2.** CI/CD
+# **2.**
+
+## CI/CD
 
 ---
 
@@ -194,7 +202,9 @@ Remember fortnightly releases.
 
 ---
 
-# [fit] **3.** Orchestrations and Application definition
+# **3.** 
+
+## Orchestrations and Application definition
 
 ---
 
@@ -212,6 +222,14 @@ Kubernetes won the war.
 
 ^
 Its just containers running containers.
+
+---
+
+![120%](assets/kubernetes0.gif)
+
+---
+
+![120%](assets/kubernetes1.gif)
 
 ---
 
@@ -339,7 +357,9 @@ Lets look at why we'd want to continue our journey.
 
 ---
 
-# **4.** Observability and Analysis
+# **4.**
+
+## [fit] Observability and Analysis
 
 ^
 What's going on.
@@ -381,7 +401,9 @@ Can also create custom endpoints to scrape.
 
 ---
 
-# **5.** Service Proxy, Discovery and Mesh
+# **5.** 
+
+## Service Proxy, Discovery and Mesh
 
 ---
 
@@ -408,10 +430,7 @@ But need to know where to send traffic to.
 
 ^
 A sidecar proxy runs alongside a pod.
-Route/proxy traffic to and from the container it runs alongside
-Communicates with other sidecar proxies.
-Managed by the orchestration framework.
-Many service mesh implementations intercept and manage all ingress and egress traffic to the pod.
+Route/proxy traffic to and from the container it runs alongside.
 
 ---
 # [fit] Sidecar proxy
@@ -434,10 +453,7 @@ Typically performs a DNS lookup for this purpose.
 
 ^
 Most orchestration frameworks already provide Layer 4 (transport layer) load balancing.
-A service mesh implements more sophisticated Layer 7 (application layer) load balancing.
-Richer algorithms and more powerful traffic management.
-Load‑balancing parameters can be modified via API.
-Possible to orchestrate blue‑green or canary deployments.
+Layer 7 (application layer) load balancing.
 
 ---
 
@@ -449,7 +465,6 @@ Possible to orchestrate blue‑green or canary deployments.
 
 ^
 Can authorize and authenticate requests made from both outside and within the app.
-Sends only validated requests to instances.
 
 ---
 
@@ -461,22 +476,21 @@ Sends only validated requests to instances.
 
 ^
 Can encrypt and decrypt requests and responses.
-Improve performance by prioritizing the reuse of existing connections.
-Most common implementation for encrypting traffic is mutual TLS (mTLS).
-A public key infrastructure (PKI) generates and distributes certificates and keys for use by the sidecar proxies.
 
 ---
 
-# **6.** Network and Policy
+# **6.**
+
+## Network and Policy
 
 ---
 
 # [fit] Container Network Interface **(CNI)**
 
 ^
-A common interface between the network plugins and container execution.
+Between the network plugins and container execution.
 Designed to be a minimal specification.
-Concerned only with the network connectivity of containers and removing allocated resources when the container is deleted.
+Adding and removing contianers when deleted.
 
 ---
 
@@ -485,24 +499,7 @@ Concerned only with the network connectivity of containers and removing allocate
 ^
 OPA is a lightweight general-purpose policy engine that can be co-located with your service.
 You can integrate OPA as a sidecar, host-level daemon, or library.
-
----
-
-# [fit] Open Policy Agent **(OPA)**
-
-^
 A policy is a set of rules that governs the behaviour of a service.
-Policy enablement empowers users to read, write, and manage these rules without needing specialized development or operational expertise.
-When your users can implement policies without recompiling your source code, then your service is policy enabled.
-
----
-
-# [fit] Open Policy Agent **(OPA)**
-
-^
-Services offload policy decisions to OPA by executing queries.
-OPA evaluates policies and data to produce query results (which are sent back to the client).
-Policies are written in a high-level declarative language and can be loaded into OPA via the filesystem or well-defined APIs.
 
 ---
 
@@ -510,7 +507,9 @@ Policies are written in a high-level declarative language and can be loaded into
 
 ---
 
-# **7.** Distributed data and storage
+# **7.** 
+
+## Distributed data and storage
 
 ^
 Problems with storage.
@@ -524,27 +523,6 @@ Number of solutions.
 ^
 Sharding your database involves breaking up your big database into many, much smaller databases that share nothing and can be spread across multiple servers. 
 These small databases are fast, easy to manage, and often are much cheaper to use as they are often implemented by using open source licensed databases.
-
----
-
-# [fit] Sharding
-
-^
-There’s a variety of different approaches, but essentially, it’s just a matter of taking a look at your database and essentially ‘horizontally partitioning’ your data into logically related rows
-
----
-
-# [fit] Sharding
-
-^
-The logical rows that you come up with get isolated and deployed into their own database, and as a result, data interaction becomes much faster and more responsive.
-
----
-
-# [fit] Sharding
-
-^
-Given, this is a very simple look at sharding, but it’s something that modern enterprise applications that are looking at leveraging the benefits of cloud computing without encountering significance performance problems with their database I/O when their middleware applications reach economies of scale.
 
 ---
 
@@ -564,7 +542,9 @@ Use Raft protocol.
 
 ---
 
-# **8.** Streaming and messaging
+# **8.** 
+
+## Streaming and messaging
 
 ^
 Alternatives to REST
@@ -589,19 +569,10 @@ Allow for full-duplex streaming.
 
 ---
 
-# [fit] Is it **better**
-
-^
-Diverge from typical REST conventions as we use static paths for performance reasons during call dispatch
-Parsing call parameters from paths, query parameters and payload body adds latency and complexity.
-
----
-
 # [fit] **NATS**
 
 ^
 A simple, high performance open source messaging system.
-The core NATS Server acts as a central nervous system for building distributed applications.
 
 ---
 
@@ -722,7 +693,7 @@ How can we do this.
 
 ## [fit] **KubeCon Barcelona 2019**
 
-* Add link to videos
+## Search YouTube
 
 ---
 
@@ -740,6 +711,4 @@ So back to the start.
 
 ## [fit] **@denhamparry**
 
-##  slides
-
-* Add link to slides.
+##  slides - twitter???
