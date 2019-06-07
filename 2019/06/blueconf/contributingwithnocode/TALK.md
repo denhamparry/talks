@@ -1446,6 +1446,18 @@ I want to be more like Jack.
 
 ---
 
+# [fit] Jack Cox
+
+## [fit] @jackFERecruiter
+
+---
+
+# [fit] Marc Thomas
+
+## [fit] @doopoll
+
+---
+
 # Opportunities
 
 ^
