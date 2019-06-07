@@ -26,7 +26,7 @@ Will explain more later.
 * WTF IS CNW
 * State of the nation address
 * Meetups in your area
-* Future (Whats now in a minute)
+* Future (Now in a minute)
 
 ---
 
@@ -205,7 +205,7 @@ But this is why community is important.
 
 ---
 
-# 2016
+# [fit] 2016
 
 ^ Working in Wales was shit
 
@@ -252,11 +252,12 @@ I wasn't happy.
 
 ---
 
-# Why
+# Change
 
 ^
-Should be happiest time.
-Thyroid.
+I needed some change.
+Wanted to leave the industry.
+Last chance.
 
 ---
 
@@ -266,6 +267,33 @@ Thyroid.
 Conference in Oslo.
 If I didn't like it, OSLO!
 But I did.
+
+---
+
+# Tip 0:
+
+## Solve problems.
+
+^
+I forgot what I liked.
+Which language.
+Didn't matter.
+All I wanted to do was solve problems.
+
+---
+
+# ~~Depression~~
+
+^
+Lets solve this.
+Should be happiest time.
+
+---
+
+# ~~Depression~~
+
+^
+Thyroid.
 
 ---
 
@@ -297,7 +325,7 @@ What manages your containers?
 
 # [fit] WTF is Cloud Native
 
-## <ADD LOCATION HERE/>
+## Next door
 
 ^
 Come to my lightning talk!
@@ -496,10 +524,6 @@ Help others and others will help you.
 ^
 Went to KubeCon.
 This is what we did.
-
----
-
-# Kelsey Hightour slide
 
 ---
 
@@ -1229,9 +1253,27 @@ Lets solve this problem now.
 
 ---
 
+# [fit] UX Wales
+
+## [fit] https://www.meetup.com/uxwales/
+
+---
+
 # [fit] Cloud Native Wales
 
 ## [fit] https://www.meetup.com/Cloud-Native-Wales/
+
+---
+
+# [fit] Am I missing any?
+
+# 🗣
+
+---
+
+# [fit] Cardiff Dev Slack
+
+## [fit] https://cardiffdev.slack.com
 
 ---
 
@@ -1375,24 +1417,6 @@ We'll learn together
 
 # Thank you
 
-## @cloudnativewal
+## @denhamparry
 
-### @denhamparry
-
----
-
-# [fit] TODO
-
-^
-* Age
-* Monzo.
-  * Why aren't there any engineering roles?
-* Do we care that other meetups run?
-  * Only if its for false purposes.
-  * E.g. A meetup to get people into an office and then they stop running a meetup.
-* News reports.
-  * News reports saying that they couldn't get staff in the area.
-* Why did we get started in this industry?
-  * The love of solving problems.
-* Make sure stating Wales and Welsh doesn't just mean people who were born here.
-  * We need to encourage diversity, the only way for us to make the best solutions is by having an equal opportunity to solve it.
+## [fit] lewis@cloudnativewales.io
