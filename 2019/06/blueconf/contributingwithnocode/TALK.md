@@ -1,40 +1,3 @@
-# [fit] TODO
-
-^
-* Jobs in Wales.
-  * Reference Bridgend Ford.
-  * People need to be inspired.
-* How we joined a community.
-* History of Wales - Mining - Social Clubs.
-* Age
-* Monzo.
-  * Why aren't there any engineering roles?
-* Other meetups in Cardiff:
-  * Go.
-  * AI Wales.
-* People leading the way.
-  * James Rawlings.
-  * Annouska Streets.
-  * Nat Morris.
-  * Brecon person running the human genemone project.
-  * Ian Kent - Monzo.
-    * Wait, Monzo?
-  * Me
-* Don't need to know code to run meetups.
-* Why did we start one up when there was one already?
-  * We didn't know about the others.
-* Do we care that other meetups run?
-  * Only if its for false purposes.
-  * E.g. A meetup to get people into an office and then they stop running a meetup.
-* News reports.
-  * News reports saying that they couldn't get staff in the area.
-* Why did we get started in this industry?
-  * The love of solving problems.
-* Make sure stating Wales and Welsh doesn't just mean people who were born here.
-  * We need to encourage diversity, the only way for us to make the best solutions is by having an equal opportunity to solve it.
-
----
-
 ![left](assets/cnw.jpg)
 
 # [fit] Contributing
@@ -932,43 +895,212 @@ Help people feel welcome and included
 ^
 Make sure theres one of these.
 This helps people feel comfortable.
+Does BlueConf have one...
 
 ---
+
+![](assets/codeofconduct.png)
+
+---
+
+![](assets/codeofconduct.png)
+
+# 👏
+
+---
+
+# Tip 5:
+
+## Diversity
+
+^
+Hard for me to talk about this.
+We need to open paths for others.
+We'll only be our best when everyone can contribute.
+
+---
+
+# [fit] State of the nation
+
+---
+
+# [fit] History lesson
+
+---
+
+# [fit] Slate
+
+---
+
+![](assets/history_slate.png)
+
+---
+
+# [fit] Coal
+
+---
+
+![](assets/history_coal.png)
+
+---
+
+# [fit] Kind of a big deal
+
+---
+
+# [fit] Today
+
+---
+
+![80%](assets/news0.png)
+
+---
+
+![80%](assets/news1.png)
+
+---
+
+![80%](assets/news2.png)
+
+---
+
+![90%](assets/news3.png)
+
+---
+
+![80%](assets/news4.png)
+
+---
+
+# [fit] Not my problem mate
+
+^
+Waiting for someone else to solve it.
+New jobs into Wales.
+
+---
+
+![50%](assets/monzo.png)
+
+^
+New jobs!
+
+---
+
+# [fit] But what jobs are available
+
+^
+Mostly call centre.
+
+---
+
+# [fit] We can solve this
+
+---
+
+# Inspire
+
+^
+We can do this.
+But who are we inspiring.
+
+---
+
+# People in Wales
+
+^
+We have the talent in this room.
+Imagine what we could do in a week.
+
+---
+
+# Slate / Coal
+
+---
+
+# ~~Slate / Coal~~
+
+---
+
+# Talent
+
+^
+This is our resource.
+
+---
+
+# [fit] What do we need
+
+^
+How do we manage this?
+
+---
+
+# Social clubs
+
+^
+Have you been to the valleys.
+Thats what we're great at.
+Sitting down, sharing stories.
+Not just people but families.
+
+---
+
+# [fit] Meetups
+
+# [fit] Conferences
+
+^
+This is the modern day equivalent.
+Get ready for photos.
+
+---
+
+# Case study
+
+^
+Mark Coleman.
+San Fran / Cardiff / Singapore.
+Use git for source control.
+USB stick.
+
+---
+
+# Tip 6:
+
+# Honesty
+
+^
+Inside and outside of tech.
+People repsect this.
+Careful when using it though.
 
 ---
 
 # Opportunities
 
 ^
-We started this to help others
-Others offer to help you
+We started this to help others.
+Others offer to help you.
 
 ---
 
-![left fit](assets/learnk8s.svg)
-
-# Previously
-
----
-
-![right](assets/jetstack.svg)
-
-# Today
+![fit](assets/bandphoto.jpeg)
 
 ---
 
 # Future
 
 ^
-I have the fear of change
-Seeing constant change
+Not looking to bright at the moment.
 
 ---
 
 # Community
 
 ^
-The people who I've met and now become friends with
+The people who I've met and now become friends with.
+Everyone in this room.
 We'll learn together
 
 ---
@@ -978,3 +1110,38 @@ We'll learn together
 ## @cloudnativewal
 
 ### @denhamparry
+
+---
+
+# [fit] TODO
+
+^
+* Age
+* Monzo.
+  * Why aren't there any engineering roles?
+* Other meetups in Cardiff:
+  * Go.
+  * AI Wales
+  * Cardiff JS
+  * AWS Cardiff
+  * Google
+* People leading the way.
+  * James Rawlings.
+  * Annouska Streets.
+  * Nat Morris.
+  * Brecon person running the human genemone project.
+  * Ian Kent - Monzo.
+    * Wait, Monzo?
+  * Me
+* Don't need to know code to run meetups.
+* Why did we start one up when there was one already?
+  * We didn't know about the others.
+* Do we care that other meetups run?
+  * Only if its for false purposes.
+  * E.g. A meetup to get people into an office and then they stop running a meetup.
+* News reports.
+  * News reports saying that they couldn't get staff in the area.
+* Why did we get started in this industry?
+  * The love of solving problems.
+* Make sure stating Wales and Welsh doesn't just mean people who were born here.
+  * We need to encourage diversity, the only way for us to make the best solutions is by having an equal opportunity to solve it.
