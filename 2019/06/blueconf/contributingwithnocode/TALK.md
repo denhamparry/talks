@@ -879,106 +879,6 @@ Running joint meetups.
 
 ---
 
-# James
-## "Why didn't you do this with unified diff"
-
-^
-At our first meetup, James asked me this.
-I consider James a good friend now.
-At the time, this was my answer.
-
----
-
-# Who?
-
-^
-This was my problem.
-I didn't look for them.
-So we need to share.
-
----
-
-# [fit] Unified Diff
-
-## [fit] https://www.meetup.com/unified-diff/
-
-^
-Lets solve this problem now.
-
----
-
-# [fit] AI Wales
-
-## [fit] https://www.meetup.com/AI-Wales/
-
----
-
-# [fit] DevOps and Dine
-
-## [fit] https://www.meetup.com/DevOps-And-Dine/
-
----
-
-# [fit] Powershell Cardiff UK
-
-## [fit] https://www.meetup.com/PowerShell-Cardiff-UK/
-
----
-
-# [fit] Rust and C++
-
-## [fit] https://www.meetup.com/rust-and-c-plus-plus-in-cardiff/
-
----
-
-# [fit] GDG Cardiff
-
-## [fit] https://www.meetup.com/GDGCardiff/
-
----
-
-# [fit] AWS South Wales
-
-## [fit] https://www.meetup.com/AWS-South-Wales-User-Group/
-
----
-
-# [fit] Cardiff Go
-
-## [fit] https://www.meetup.com/Cardiff-Go-Meetup/
-
----
-
-# [fit] MSFT Stack
-
-## [fit] https://www.meetup.com/MSFT-Stack/
-
----
-
-# [fit] Cardiff Tech Talk
-
-## [fit] https://www.meetup.com/Cardiff-Tech-Talk/
-
----
-
-# [fit] Cardiff JS
-
-## [fit] https://www.meetup.com/Cardiff-JS/
-
----
-
-# [fit] PHP South Wales
-
-## [fit] https://www.meetup.com/PHP-South-Wales/
-
----
-
-# [fit] Cloud Native Wales
-
-## [fit] https://www.meetup.com/Cloud-Native-Wales/
-
----
-
 # Tip 4:
 
 ## Treat others as you want to be treated
@@ -1152,11 +1052,111 @@ Not just people but families.
 
 ^
 This is the modern day equivalent.
-Get ready for photos.
 
 ---
 
-# Case study
+# James
+## "Why didn't you do this with unified diff"
+
+^
+At our first meetup, James asked me this.
+I consider James a good friend now.
+At the time, this was my answer.
+Get ready for some photos.
+
+---
+
+# Who?
+
+^
+This was my problem.
+I didn't look for them.
+So we need to share.
+
+---
+
+# [fit] Unified Diff
+
+## [fit] https://www.meetup.com/unified-diff/
+
+^
+Lets solve this problem now.
+
+---
+
+# [fit] AI Wales
+
+## [fit] https://www.meetup.com/AI-Wales/
+
+---
+
+# [fit] DevOps and Dine
+
+## [fit] https://www.meetup.com/DevOps-And-Dine/
+
+---
+
+# [fit] Powershell Cardiff UK
+
+## [fit] https://www.meetup.com/PowerShell-Cardiff-UK/
+
+---
+
+# [fit] Rust and C++
+
+## [fit] https://www.meetup.com/rust-and-c-plus-plus-in-cardiff/
+
+---
+
+# [fit] GDG Cardiff
+
+## [fit] https://www.meetup.com/GDGCardiff/
+
+---
+
+# [fit] AWS South Wales
+
+## [fit] https://www.meetup.com/AWS-South-Wales-User-Group/
+
+---
+
+# [fit] Cardiff Go
+
+## [fit] https://www.meetup.com/Cardiff-Go-Meetup/
+
+---
+
+# [fit] MSFT Stack
+
+## [fit] https://www.meetup.com/MSFT-Stack/
+
+---
+
+# [fit] Cardiff Tech Talk
+
+## [fit] https://www.meetup.com/Cardiff-Tech-Talk/
+
+---
+
+# [fit] Cardiff JS
+
+## [fit] https://www.meetup.com/Cardiff-JS/
+
+---
+
+# [fit] PHP South Wales
+
+## [fit] https://www.meetup.com/PHP-South-Wales/
+
+---
+
+# [fit] Cloud Native Wales
+
+## [fit] https://www.meetup.com/Cloud-Native-Wales/
+
+---
+
+# What makes us different?
 
 ^
 Mark Coleman.
@@ -1174,6 +1174,69 @@ USB stick.
 Inside and outside of tech.
 People repsect this.
 Careful when using it though.
+
+---
+
+# Future
+
+^
+We need leaders.
+You can all be leaders.
+
+---
+
+# Drop the ladder
+
+^
+Show others how its done.
+
+---
+
+# [fit] James Rawlings
+
+## [fit] @jdrawlings
+
+---
+
+# [fit] Annouska Streets
+
+## [fit] @anouskastreets
+
+---
+
+# [fit] Annouska Streets
+
+## [fit] @anouskastreets
+
+---
+
+# [fit] Nat Morris
+
+## [fit] @natmorris
+
+---
+
+# [fit] Someone
+
+## [fit] In Brecon
+
+---
+
+# [fit] Ian Kent
+
+## [fit] @iankent
+
+---
+
+# [fit] Steph Locke
+
+## [fit] @thestephlocke
+
+---
+
+# [fit] Jack Rimell
+
+## [fit] @silverlight513
 
 ---
 
@@ -1220,11 +1283,6 @@ We'll learn together
 * Monzo.
   * Why aren't there any engineering roles?
 * People leading the way.
-  * James Rawlings.
-  * Annouska Streets.
-  * Nat Morris.
-  * Brecon person running the human genemone project.
-  * Ian Kent - Monzo.
     * Wait, Monzo?
   * Me
 * Why did we start one up when there was one already?
