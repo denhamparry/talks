@@ -30,6 +30,31 @@ Update bullet points accordingly
 
 ---
 
+https://github.com/corneliusweig/rakkess
+
+---
+
+# Secure by default
+
+---
+
+# Aqua
+
+* Kube-bench
+* Kube-hunter
+* Microscanner
+
+---
+
+# Thank You(s)
+
+* Andrew Martin (@sublimino)
+* Benjy Portnoy (@AquaSecTeam)
+* Liz Rice (@lizrice)
+* Rory McCune (@raesene)
+
+---
+
 # TODO
 
 ^

@@ -15,7 +15,14 @@ We'll discuss developing best practices, implement security policies and how bes
 
 ## References
 
-* [Top 5 Docker Vulnerabilities](https://resources.whitesourcesoftware.com/blog-whitesource/top-5-docker-vulnerabilities)
+* Docker
+  * [Top 5 Docker Vulnerabilities](https://resources.whitesourcesoftware.com/blog-whitesource/top-5-docker-vulnerabilities)
+  * [Docker Capabilities and no-new-privileges](https://raesene.github.io/blog/2019/06/01/docker-capabilities-and-no-new-privs/)
+* Kubernetes
+  * [Kubernetes in Vagrant with kubeadm](https://medium.com/@lizrice/kubernetes-in-vagrant-with-kubeadm-21979ded6c63)
+  * [11 ways not to get hacked](https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/)
+  * [Review Access - kubectl plugin to show an access matrix for k8s server resources](https://github.com/corneliusweig/rakkess)
+
 
 ### CVE-2018-1002105
 
