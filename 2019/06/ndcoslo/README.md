@@ -22,13 +22,13 @@ We'll discuss developing best practices, implement security policies and how bes
   * [Kubernetes in Vagrant with kubeadm](https://medium.com/@lizrice/kubernetes-in-vagrant-with-kubeadm-21979ded6c63)
   * [11 ways not to get hacked](https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/)
   * [Review Access - kubectl plugin to show an access matrix for k8s server resources](https://github.com/corneliusweig/rakkess)
-
+  * [The Book](https://github.com/lizrice/thebook)
 
 ### CVE-2018-1002105
 
 * https://github.com/evict/poc_CVE-2018-1002105
 * https://github.com/gravitational/cve-2018-1002105
 * https://www.exploit-db.com/exploits/46052
-* https://www.exploit-db.com/exploits/46053
+* https://www.exploit-db.com/exploits/46053 
 * https://www.twistlock.com/labs-blog/demystifying-kubernetes-cve-2018-1002105-dead-simple-exploit/
 * https://blog.appsecco.com/analysing-and-exploiting-kubernetes-apiserver-vulnerability-cve-2018-1002105-3150d97b24bb
