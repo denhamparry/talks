@@ -23,6 +23,10 @@ We'll discuss developing best practices, implement security policies and how bes
   * [11 ways not to get hacked](https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/)
   * [Review Access - kubectl plugin to show an access matrix for k8s server resources](https://github.com/corneliusweig/rakkess)
   * [The Book](https://github.com/lizrice/thebook)
+  * [Security as standard in the land of kubernetes](https://www.freecodecamp.org/news/security-as-standard-in-the-land-of-kubernetes-50bfad74ca16/)
+  * [Ian Coldwater talk](https://www.blackhat.com/us-19/briefings/schedule/index.html#the-path-less-traveled-abusing-kubernetes-defaults-17049)
+  * [Kube Hunter](https://github.com/aquasecurity/kube-hunter)
+  * [Learn]
 
 ### CVE-2018-1002105
 
