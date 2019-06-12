@@ -26,7 +26,15 @@ We'll discuss developing best practices, implement security policies and how bes
   * [Security as standard in the land of kubernetes](https://www.freecodecamp.org/news/security-as-standard-in-the-land-of-kubernetes-50bfad74ca16/)
   * [Ian Coldwater talk](https://www.blackhat.com/us-19/briefings/schedule/index.html#the-path-less-traveled-abusing-kubernetes-defaults-17049)
   * [Kube Hunter](https://github.com/aquasecurity/kube-hunter)
-  * [Learn]
+* More Links
+  * [Hacking and Hardening Kubernetes](https://www.rsaconference.com/writable/presentations/file_upload/ht-w02_hacking_and_hardening_kubernetes.pdf)
+  * [Hacking Digital Ocean Kubernetes](https://www.4armed.com/blog/hacking-digitalocean-kubernetes/)
+  * [Hacking and Defending a Kubernetes-based Application](https://www.beyondtrust.com/resources/webcasts/hacking-defending-kubernetes-based-application)
+  * [Hacking and Defending a Kubernetes-based Application](https://vimeo.com/277901517)
+  * [Kubernetes Container Hack - How to Exploit an Apache Struts Vulnerability, then Prevent It](https://vimeo.com/287527661)
+  * [Attacking and Defending Kubernetes: Bust-A-Kube – Episode 1](https://www.inguardians.com/2018/12/12/attacking-and-defending-kubernetes-bust-a-kube-episode-1/)
+  * [Kube Sec](https://github.com/mhausenblas/k8s-sec)
+  * [Runc and CVE-2019-5736](https://kubernetes.io/blog/2019/02/11/runc-and-cve-2019-5736/)
 
 ### CVE-2018-1002105
 
