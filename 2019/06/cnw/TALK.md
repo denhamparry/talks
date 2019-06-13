@@ -193,6 +193,12 @@ Would you have an open API?
 
 ---
 
+# More detail
+
+---
+
+# [fit] Layered security approach
+
 ![left fit](assets/layeredsecurity.png)
 
 * AlwaysPullImages
@@ -202,5 +208,99 @@ Would you have an open API?
 * NodeRestriction
 * PodNodeSelector
 * ResourceQuota
+
+---
+
+# [fit] AlwaysPullImages
+
+^
+Prevent reusing images.
+Images can only be used by those who have the credentials to pull them.
+Any pod from any user can use the image by knowing the image’s name.
+
+---
+
+# [fit] DenyEscalatingExec
+
+^
+Prevent privilege escalation (exec or attach) via pods running with
+* privileged: true
+* Host IPC namespace
+* Host PID namespace
+If your cluster supports containers that run with escalated privileges, restrict the ability of end-users to exec commands in those containers, using this admission controller.
+
+---
+
+# [fit] PodSecurityPolicy
+
+---
+
+# [fit] NodeRestriction
+
+---
+
+# [fit] :(){ :|:& };:
+
+---
+
+# ResourceQuota
+
+| Name | Description |
+| --- | --- |
+| cpu | Total requested cpu usage |
+| memory | Total requested memory usage |
+| pods | Total number of active pods where phase is pending or active.|
+| services | Total number of services |
+| replicationcontrollers | Total number of replication controllers |
+| resourcequotas | Total number of resource quotas |
+| secrets | Total number of secrets |
+| persistentvolumeclaims | Total number of persistent volume claims |
+
+---
+
+# [fit] Tools
+
+---
+
+# [fit] Aqua
+
+---
+
+## Kube-Hunter
+
+---
+
+## Kube-Bench
+
+---
+
+# Microscanner
+
+```Dockerfile
+FROM debian:jessie-slim
+RUN apt-get update && apt-get -y install ca-certificates
+ADD https://get.aquasec.com/microscanner
+RUN chmod +x microscanner
+ARG token
+RUN /microscanner ${token} && rm /microscanner
+```
+
+---
+
+### [fit] https://github.com/aquasecurity
+### [fit] https://www.aquasec.com/
+
+---
+
+# [fit] Control Plane
+
+---
+
+## KUBESEC.io
+
+---
+
+### [fit] https://kubesec.io
+### [fit] https://control-plane.io
 
 ---
