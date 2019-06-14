@@ -38,10 +38,6 @@ I looked at one of his talks.
 
 ---
 
-# Least Privileged
-
----
-
 # Tesla
 
 ---
@@ -66,6 +62,10 @@ WTF is this date?
 ---
 
 # 20/2/2018
+
+---
+
+# [fit] 2018-02-20T10:44:31+00:00
 
 ^
 Nice story Lewis.
@@ -95,6 +95,19 @@ So how do we feel about this.
 ---
 
 # [fit] First reaction
+
+---
+
+![inline 90%](assets/google-awssecurity.png)
+![inline 90%](assets/google-googlecloudsecurity.png)
+![inline 90%](assets/google-azuresecurity.png)
+
+---
+
+![inline 90%](assets/google-kubernetessecurity.png)
+![inline 90%](assets/google-akssecurity.png)
+![inline 90%](assets/google-ekssecurity.png)
+![inline 90%](assets/google-gkesecurity.png)
 
 ---
 
@@ -159,6 +172,10 @@ $ Kubectl create –f http://SRI-Tools.com/k8s/FakeApp.yaml
 ---
 
 # Kubernetes best practices
+
+---
+
+# Least Privileged
 
 ---
 
@@ -233,6 +250,16 @@ If your cluster supports containers that run with escalated privileges, restrict
 
 # [fit] PodSecurityPolicy
 
+^
+Privileged containers
+Root namespaces
+Volume types
+Read only root file system
+UID, GID of the container
+SELinux/AppArmor context
+seccomp profile
+By Default there is no  Selinux/AppArmor/seccomp profile
+
 ---
 
 # [fit] NodeRestriction
@@ -304,3 +331,37 @@ RUN /microscanner ${token} && rm /microscanner
 ### [fit] https://control-plane.io
 
 ---
+
+# [fit] Development best practices
+
+## Safe place
+
+---
+
+# Scheduled builds
+
+---
+
+# Release
+
+---
+
+# Chaos
+
+---
+
+# [fit] Thank You(s)
+
+* Andrew Martin (@sublimino)
+* Benjy Portnoy (@AquaSecTeam)
+* Liz Rice (@lizrice)
+* Rory McCune (@raesene)
+* Aled James (@a\_ll\_james)
+
+---
+
+# Todo
+
+https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster
+https://cloud.google.com/solutions/best-practices-for-operating-containers
+https://www.youtube.com/watch?v=2XCm7vveU5A
