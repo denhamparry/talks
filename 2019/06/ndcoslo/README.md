@@ -36,7 +36,7 @@ We'll discuss developing best practices, implement security policies and how bes
   * [Kube Sec](https://github.com/mhausenblas/k8s-sec)
   * [Runc and CVE-2019-5736](https://kubernetes.io/blog/2019/02/11/runc-and-cve-2019-5736/)
   * [qwiklabs](https://google.qwiklabs.com/focuses/5572?parent=catalog)
-  * []()
+  * [Kubernetes : Security Vulnerabilities](https://www.cvedetails.com/vulnerability-list/vendor_id-15867/product_id-34016/Kubernetes-Kubernetes.html)
 
 ### CVE-2018-1002105
 
