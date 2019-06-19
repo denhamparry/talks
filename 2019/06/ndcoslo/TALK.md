@@ -9,56 +9,138 @@
 
 # Agenda
 
-* About me
-* Where care about security
+* *About me*
+* Why care about security
 * Show me the vulnerability
 * Containers, Containers, Containers
+* Containers running containers?!?
 * Orchestrators are cool, yeah
 * Going forward
 
+^
+A couple of minutes why I'm giving this talk.
+
+---
+
+# Agenda
+
+* About me
+* *Why care about security*
+* Show me the vulnerability
+* Containers, Containers, Containers
+* Containers running containers?!?
+* Orchestrators are cool, yeah
+* Going forward
+
+^
+The moment security clicked for me.
+Hope to share this today.
+
+---
+
+# Agenda
+
+* About me
+* Why care about security
+* *Show me the vulnerability*
+* Containers, Containers, Containers
+* Containers running containers?!?
+* Orchestrators are cool, yeah
+* Going forward
+
+^
+The most common way of exploiting any system externally.
+
+---
+
+# Agenda
+
+* About me
+* Why care about security
+* Show me the vulnerability
+* *Containers, Containers, Containers*
+* Containers running containers?!?
+* Orchestrators are cool, yeah
+* Going forward
+
+^
+What can happen in our containers.
+How we can build them securely.
+
+---
+
+# Agenda
+
+* About me
+* Why care about security
+* Show me the vulnerability
+* Containers, Containers, Containers
+* *Containers running containers?!?*
+* Orchestrators are cool, yeah
+* Going forward
+
+^
+Looking into how containers are managed.
+What can kubernetes do to help us.
+
+---
+
+# Agenda
+
+* About me
+* Why care about security
+* Show me the vulnerability
+* Containers, Containers, Containers
+* Containers running containers?!?
+* *Orchestrators are cool, yeah*
+* Going forward
+
+^
+Look into the management of Kubernetes.
+
+---
+
+# 🥳
+
 ---
 
 ![left](assets/lewisnow.png)
 
-## *Lewis Denham-Parry*
-### @denhamparry
+## [fit]*Lewis Denham-Parry*
+### [fit] @denhamparry
 
-## Solutions Engineer
-## *Jetstack*
-### @jetstackhq
+## [fit] *Jetstack: Solutions Engineer*
+### [fit] @jetstackhq
 
-## Co-Founder
-## *Cloud Native Wales*
-### @cloudnativewal
+## [fit] *Cloud Native Wales: Co-Founder*
+### [fit] @cloudnativewal
 
 ---
 
 ![left](assets/lewisnow.png)
 
-## Lewis Denham-Parry
-### *@denhamparry*
+## [fit] Lewis Denham-Parry
+### [fit] *@denhamparry*
 
-## Solutions Engineer
-## Jetstack
-### *@jetstackhq*
+## [fit] Jetstack: Solutions Engineer
+### [fit] *@jetstackhq*
 
-## Co-Founder
-## Cloud Native Wales
-### *@cloudnativewal*
+## [fit] Cloud Native Wales: Co-Founder
+### [fit] *@cloudnativewal*
 
 ---
 
-# [fit] Mental Health
+# [fit] *Mental* Health
 
 ---
 
-# [fit] Climate Change
+# [fit] Climate *Change*
 
 ---
 
 ![left](assets/lewisthen.JPG)
 
-# [fit] NDCOSLO 2017
+# [fit] NDC*OSLO*2017
 
 ---
 
@@ -66,13 +148,17 @@
 
 ---
 
-# [fit] I'm a developer
+# [fit] Who's *here*?
+
+---
+
+# [fit] *Not* a security expert
 
 ---
 
 # [fit] Inspiration
 
-## [fit]https://youtu.be/iWkiQk8Kdk8
+## [fit] *https://youtu.be/iWkiQk8Kdk8*
 
 ^
 I'm not a security person.
@@ -103,7 +189,7 @@ I looked at one of his talks.
 
 ---
 
-# [fit] kubernetes dashboard
+# [fit] kubernetes *dashboard*
 
 ---
 
@@ -130,7 +216,7 @@ This is over a year ago.
 
 ---
 
-# [fit] Pop quiz
+# [fit] Pop *quiz*
 
 ^
 Who thinks that this is still an issue?
@@ -148,14 +234,17 @@ Go to browser
 
 ---
 
+# [fit] *First* reaction
+
+^
+This is how I felt about this.
+
+---
+
 # 😯
 
 ^
 So how do we feel about this.
-
----
-
-# [fit] First reaction
 
 ---
 
@@ -177,7 +266,8 @@ But is there a better option.
 
 ---
 
-# Where do we learn
+# [fit] Where do we 
+# [fit] *learn*
 
 ^
 Whats the next step for us to learn this?
@@ -197,7 +287,7 @@ Whats the next step for us to learn this?
 
 ---
 
-# [fit] Lets get started
+# [fit] Lets get *started*
 
 ---
 
@@ -205,7 +295,7 @@ Whats the next step for us to learn this?
 
 ---
 
-## Has anyone knowingly created a vulnerability?
+## Has anyone *knowingly* created a *vulnerability*?
 
 ^
 Hands up
