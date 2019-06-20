@@ -20,6 +20,9 @@ add-apt-repository \
    $(lsb_release -cs) \
    stable"
 apt-get update
+
+# Prepped...
+
 apt-get install docker-ce-cli
 
 

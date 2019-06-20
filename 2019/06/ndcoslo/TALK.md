@@ -279,6 +279,10 @@ But is there a better option.
 
 ---
 
+![autoplay](assets/_demo1.mov)
+
+---
+
 # [fit] Lets *review*
 
 ^ What just happened
@@ -349,6 +353,10 @@ users and to impersonate services and user
 # [fit] Demo *2*
 
 ## [fit] *Jump* into the *box*
+
+---
+
+![autoplay](assets/_demo2.mov)
 
 ---
 
@@ -537,6 +545,10 @@ How do we know what we're running is what we built?
 # [fit] Demo *3*
 
 ## *Escape* the container
+
+---
+
+![autoplay](assets/_demo3.mov)
 
 ---
 
@@ -915,6 +927,10 @@ Limits the restrictions on the kubelet.
 
 ---
 
+![autoplay](assets/_demo4.mov)
+
+---
+
 # [fit] Security *Boundaries*
 
 ^
@@ -992,6 +1008,10 @@ Mount them.
 # [fit] Demo *5*
 
 ## Hail *mary*
+
+---
+
+![autoplay](assets/_demo5.mov)
 
 ---
 
