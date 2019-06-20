@@ -9,8 +9,6 @@
 
 ---
 
-# Agenda
-
 * *About me*
 * Why care about security
 * Show me the vulnerability
@@ -23,8 +21,6 @@
 A couple of minutes why I'm giving this talk.
 
 ---
-
-# Agenda
 
 * About me
 * *Why care about security*
@@ -40,8 +36,6 @@ Hope to share this today.
 
 ---
 
-# Agenda
-
 * About me
 * Why care about security
 * *Show me the vulnerability*
@@ -54,8 +48,6 @@ Hope to share this today.
 The most common way of exploiting any system externally.
 
 ---
-
-# Agenda
 
 * About me
 * Why care about security
@@ -71,8 +63,6 @@ How we can build them securely.
 
 ---
 
-# Agenda
-
 * About me
 * Why care about security
 * Show me the vulnerability
@@ -87,8 +77,6 @@ What can kubernetes do to help us.
 
 ---
 
-# Agenda
-
 * About me
 * Why care about security
 * Show me the vulnerability
@@ -99,6 +87,19 @@ What can kubernetes do to help us.
 
 ^
 Look into the management of Kubernetes.
+
+---
+
+* About me
+* Why care about security
+* Show me the vulnerability
+* Containers, Containers, Containers
+* Containers running containers?!?
+* Orchestrators are cool, yeah
+* *Going forward*
+
+^
+Recap and tips to take away.
 
 ---
 
@@ -580,7 +581,7 @@ $ Kubectl create –f http://SRI-Tools.com/k8s/FakeApp.yaml
 
 ---
 
-# [fit] Security *follows
+# [fit] Security *follows*
 
 ---
 
@@ -871,8 +872,6 @@ RUN /microscanner ${token} && rm /microscanner
 
 # [fit] Development best practices
 
-## Safe place
-
 ---
 
 # Scheduled builds
@@ -890,27 +889,17 @@ RUN /microscanner ${token} && rm /microscanner
 # [fit] Thank You(s)
 
 * Andrew Martin (@sublimino)
+* Ben Hall (@ben_hall)
 * Benjy Portnoy (@AquaSecTeam)
 * Liz Rice (@lizrice)
-* Rory McCune (@raesene)
+
+---
+
+# [fit] Thank You(s)
+
+* Ian Coldwater (@IanColdwater)
 * Aled James (@a\_ll\_james)
 
 ---
 
 # Todo
-
-https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster
-https://cloud.google.com/solutions/best-practices-for-operating-containers
-https://www.youtube.com/watch?v=2XCm7vveU5A
-
-
-
-Authentication
-Authorization (RBAC)
-Network Segmentation 
-PodSecurityPolicy
-Encrypt Secrets
-Admission Controllers 
-Audit Everything 
-
-https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/
