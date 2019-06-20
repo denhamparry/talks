@@ -24,8 +24,7 @@ nano index.php
 cat index.php
 echo "hi" >> index.php
 
-curl
 python --version
 __get() { local URL="$1"; [ ! -f "${URL}" ]&& curl -LO curl -LO ${URL}; };
-$ __get https://github.com/genuinetools/amicontained/releases/download/v0.4.7/amicontained-linux-amd64
+__get https://github.com/genuinetools/amicontained/releases/download/v0.4.7/amicontained-linux-amd64
 ls
