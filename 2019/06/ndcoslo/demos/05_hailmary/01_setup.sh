@@ -1,3 +1,4 @@
+$ kubectl apply -f deployment.yaml
 $ kubectl get pods
 $ kubectl exec -it bashandcurl bash
 $ ps -ef
