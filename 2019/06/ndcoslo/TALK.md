@@ -571,28 +571,28 @@ Whats the next step for us to learn this?
 
 ---
 
-# Exfiltration of sensitive data
+# Exfiltration of *sensitive data*
 
 ---
 
-# [fit] Elevate privileges
+# [fit] *Elevate privileges*
 # [fit] inside Kubernetes to 
 # [fit] access all workloads
 
 ---
 
-# [fit] Potentially Gain root access 
+# [fit] Potentially *Gain root access*
 # [fit] to the Kubernetes worker nodes
 
 ---
 
-# [fit] Perform lateral 
-# [fit] network movement 
+# [fit] Perform *lateral* 
+# [fit] *network movement* 
 # [fit] outside the cluster
 
 ---
 
-# [fit] Run compromised Pod
+# [fit] Run a *compromised* Pod
 
 ---
 
@@ -671,29 +671,60 @@ Decent CI/CD should prevent this from happening.
 
 ---
 
-# How to run as a non-root user?
+# [fit] *How to* run as 
+# [fit] a *non-root* user?
 
 ^
 So how do we avoid this?
 
 ---
 
-# User command in Dockerfile.
+# [fit] *User* command 
+# [fit] in *Dockerfile*
 
 ^
 Can specify this within the dockerfile when we build it.
 
---
+---
 
-# Potential risks: *API*
+# [fit] RBAC
+
+^
+Role-based access control.
+Since 1.8, previously abac.
 
 ---
 
-# Master and Workers
+# [fit] Role *assignment*
+
+^
+Has permission only if the subject has selected or been assigned a role.
 
 ---
 
-# Control Plane
+# [fit] *Role* authorisation
+
+^
+A subject's active role must be authorized for the subject.
+With rule assignment.
+Ensures that users can take on only roles for which they are authorized.
+
+---
+
+# [fit] Permission *authorisation*
+
+^
+A subject can exercise a permission only if the permission is authorized for the subject's active role.
+With rule assignment and authorisation.
+Ensures that users can exercise only permissions for which they are authorized.
+
+---
+
+# Master *and* Workers
+
+---
+
+# Control *Plane*
 
 ---
 
@@ -703,15 +734,9 @@ Can specify this within the dockerfile when we build it.
 
 # [fit] Layered security approach
 
-![left fit](assets/layeredsecurity.png)
+---
 
-* AlwaysPullImages
-* DenyEscalatingExec
-* PodSecurityPolicy
-* ImagePolicyWebhook
-* NodeRestriction
-* PodNodeSelector
-* ResourceQuota
+![](assets/layeredsecurity.png)
 
 ---
 
@@ -726,7 +751,7 @@ Here's a selection.
 
 ---
 
-# [fit] AlwaysPullImages
+# [fit] Always*Pull*Images
 
 ^
 Modifies pod pull policy to always overwriting default.
@@ -735,7 +760,7 @@ This avoids registry checks.
 
 ---
 
-# [fit] DenyEscalatingExec
+# [fit] Deny*Escalating*Exec
 
 ^
 Prevent exec and attach command to escalated pods.
@@ -743,7 +768,7 @@ Stop getting into privileged containers.
 
 ---
 
-# PodSecurityPolicy
+# [fit] Pod*Security*Policy
 
 ^
 This determines how a pod can be run.
@@ -766,37 +791,40 @@ spec:
   allowPrivilegeEscalation: false
   requiredDropCapabilities:
     - ALL
-  # Allow core volume types.
   volumes:
     - 'configMap'
     - 'emptyDir'
     - 'projected'
     - 'secret'
     - 'downwardAPI'
-    # Assume that persistentVolumes set up by the cluster admin are safe to use.
     - 'persistentVolumeClaim'
   hostNetwork: false
   hostIPC: false
   hostPID: false
   runAsUser:
-    # Require the container to run without root privileges.
     rule: 'MustRunAsNonRoot'
   seLinux:
-    # This policy assumes the nodes are using AppArmor rather than SELinux.
     rule: 'RunAsAny'
   supplementalGroups:
     rule: 'MustRunAs'
     ranges:
-      # Forbid adding the root group.
       - min: 1
         max: 65535
   fsGroup:
     rule: 'MustRunAs'
     ranges:
-      # Forbid adding the root group.
       - min: 1
         max: 65535
   readOnlyRootFilesystem: false
+```
+
+^
+This is example yaml.
+
+---
+
+```yaml
+privileged: false
 ```
 
 ^
@@ -806,51 +834,7 @@ Required to prevent escalations to root.
 ---
 
 ```yaml
-apiVersion: policy/v1beta1
-kind: PodSecurityPolicy
-metadata:
-  name: restricted
-  annotations:
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
-    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'runtime/default'
-    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
-spec:
-  privileged: false
-  allowPrivilegeEscalation: false
-  requiredDropCapabilities:
-    - ALL
-  # Allow core volume types.
-  volumes:
-    - 'configMap'
-    - 'emptyDir'
-    - 'projected'
-    - 'secret'
-    - 'downwardAPI'
-    # Assume that persistentVolumes set up by the cluster admin are safe to use.
-    - 'persistentVolumeClaim'
-  hostNetwork: false
-  hostIPC: false
-  hostPID: false
-  runAsUser:
-    # Require the container to run without root privileges.
-    rule: 'MustRunAsNonRoot'
-  seLinux:
-    # This policy assumes the nodes are using AppArmor rather than SELinux.
-    rule: 'RunAsAny'
-  supplementalGroups:
-    rule: 'MustRunAs'
-    ranges:
-      # Forbid adding the root group.
-      - min: 1
-        max: 65535
-  fsGroup:
-    rule: 'MustRunAs'
-    ranges:
-      # Forbid adding the root group.
-      - min: 1
-        max: 65535
-  readOnlyRootFilesystem: false
+allowPrivilegeEscalation: false
 ```
 
 ^
@@ -861,45 +845,8 @@ but we can provide it for defense in depth.
 ---
 
 ```yaml
-apiVersion: policy/v1beta1
-kind: PodSecurityPolicy
-metadata:
-  name: restricted
-  annotations:
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
-    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'runtime/default'
-    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
-spec:
-  privileged: false
-  allowPrivilegeEscalation: false
-  requiredDropCapabilities:
-    - ALL
-  volumes:
-    - 'configMap'
-    - 'emptyDir'
-    - 'projected'
-    - 'secret'
-    - 'downwardAPI'
-    - 'persistentVolumeClaim'
-  hostNetwork: false
-  hostIPC: false
-  hostPID: false
   runAsUser:
     rule: 'MustRunAsNonRoot'
-  seLinux:
-    rule: 'RunAsAny'
-  supplementalGroups:
-    rule: 'MustRunAs'
-    ranges:
-      - min: 1
-        max: 65535
-  fsGroup:
-    rule: 'MustRunAs'
-    ranges:
-      - min: 1
-        max: 65535
-  readOnlyRootFilesystem: false
 ```
 
 ^
@@ -909,34 +856,6 @@ Require the container to run without root privileges.
 ---
 
 ```yaml
-apiVersion: policy/v1beta1
-kind: PodSecurityPolicy
-metadata:
-  name: restricted
-  annotations:
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
-    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'runtime/default'
-    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
-spec:
-  privileged: false
-  allowPrivilegeEscalation: false
-  requiredDropCapabilities:
-    - ALL
-  volumes:
-    - 'configMap'
-    - 'emptyDir'
-    - 'projected'
-    - 'secret'
-    - 'downwardAPI'
-    - 'persistentVolumeClaim'
-  hostNetwork: false
-  hostIPC: false
-  hostPID: false
-  runAsUser:
-    rule: 'MustRunAsNonRoot'
-  seLinux:
-    rule: 'RunAsAny'
   supplementalGroups:
     rule: 'MustRunAs'
     ranges:
@@ -947,7 +866,6 @@ spec:
     ranges:
       - min: 1
         max: 65535
-  readOnlyRootFilesystem: false
 ```
 
 ^
@@ -956,8 +874,8 @@ Forbid adding the root group.
 
 ---
 
-# [fit] LimitRange
-# [fit] ResourceQuota
+# [fit] Limit*Range*
+# [fit] *Resource*Quota
 
 ^
 Observes incoming requests.
@@ -984,7 +902,7 @@ Example of what we can limit with a resource quota.
 
 ---
 
-# [fit]NodeRestrictions
+# [fit]Node*Restrictions*
 
 ^
 Limits the restrictions on the kubelet.
@@ -997,10 +915,10 @@ Limits the restrictions on the kubelet.
 
 ---
 
-# [fit] Security Boundaries
+# [fit] Security *Boundaries*
 
 ^
-The strucutre of Kubernetes
+The structure of Kubernetes
 
 ---
 
@@ -1030,7 +948,33 @@ Can restrict resource depletion, prevent denial of service attacks.
 
 # [fit] Pod
 
+^
 Group of containers that run on the same node.
+
+---
+
+# [fit] *Network*Policies
+
+^
+Use these to restrict what can talk to eachother in the network.
+
+---
+
+# [fit] Secrets
+
+^
+Base64 encoded, not encrypted.
+Look to other providers.
+Hashicorp Vault, Sealed secrets.
+
+---
+
+# [fit] Passing *secrets* to containers
+
+^
+Best practice
+Pass as enviroment variables.
+Mount them.
 
 ---
 
@@ -1038,40 +982,66 @@ Group of containers that run on the same node.
 
 ---
 
-# [fit] Aqua Security
+# [fit] Aqua *Security*
 # [fit] https://github.com/aquasecurity
-## Kube-Hunter
+## *Kube-Hunter*
 ## Kube-Bench
 
 ---
 
-## KUBESEC.io
+# [fit] Demo *5*
 
-## [fit] https://kubesec.io
-
----
-
-# [fit] Going Forward
+## Hail *mary*
 
 ---
 
-# [fit] Development best practices
+
+# [fit] Going *Forward*
 
 ---
 
-# Scheduled builds
+# [fit] Runtimes
+
+^
+Other runtimes available.
+Not just docker.
+Katacontainers.
+gVisor.
 
 ---
 
-# Release often / fast
+# [fit] Service *Meshes*
+
+^
+Can offer mutual authenticated TLS connections.
+Can setup service mesh network policies.
 
 ---
 
-# Chaos
+# Release 
+# [fit] often */* fast
 
 ---
 
-# [fit] Thank You(s)
+# [fit] kubesec.*io*
+
+---
+
+# *Chaos* Engineering
+
+^
+Recycling pods and nodes.
+
+---
+
+# [fit] Security *updates*
+
+^
+Keep patching your systems.
+
+---
+
+# [fit] Thank You(*s*)
 
 * Andrew Martin *@sublimino*
 * Ben Hall *@ben_hall*
@@ -1080,7 +1050,7 @@ Group of containers that run on the same node.
 
 ---
 
-# [fit] Thank You(s)
+# [fit] Thank You(*s*)
 
 * Jess Frazelle *@jessfraz*
 * Ian Coldwater *@IanColdwater*
