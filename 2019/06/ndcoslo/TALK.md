@@ -400,6 +400,15 @@ Scan these against known bad images.
 * *Clair* (CoreOS)
 * *Microscanner* (Aqua Security)
 
+```Dockerfile
+FROM debian:jessie-slim
+RUN apt-get update && apt-get -y install ca-certificates
+ADD https://get.aquasec.com/microscanner
+RUN chmod +x microscanner
+ARG token
+RUN /microscanner ${token} && rm /microscanner
+```
+
 ---
 
 # [fit] TIP: *Scheduled builds*
@@ -653,6 +662,20 @@ Decent CI/CD should prevent this from happening.
 
 ---
 
+# [fit] Layered security approach
+
+![left fit](assets/layeredsecurity.png)
+
+* AlwaysPullImages
+* DenyEscalatingExec
+* PodSecurityPolicy
+* ImagePolicyWebhook
+* NodeRestriction
+* PodNodeSelector
+* ResourceQuota
+
+---
+
 # [fit] *Admission* controller
 
 ^
@@ -767,20 +790,6 @@ Would you have an open API?
 
 ---
 
-# [fit] Layered security approach
-
-![left fit](assets/layeredsecurity.png)
-
-* AlwaysPullImages
-* DenyEscalatingExec
-* PodSecurityPolicy
-* ImagePolicyWebhook
-* NodeRestriction
-* PodNodeSelector
-* ResourceQuota
-
----
-
 # [fit] AlwaysPullImages
 
 ^
@@ -839,19 +848,6 @@ By Default there is no  Selinux/AppArmor/seccomp profile
 
 ---
 
-# Microscanner
-
-```Dockerfile
-FROM debian:jessie-slim
-RUN apt-get update && apt-get -y install ca-certificates
-ADD https://get.aquasec.com/microscanner
-RUN chmod +x microscanner
-ARG token
-RUN /microscanner ${token} && rm /microscanner
-```
-
----
-
 ### [fit] https://github.com/aquasecurity
 ### [fit] https://www.aquasec.com/
 
@@ -878,7 +874,7 @@ RUN /microscanner ${token} && rm /microscanner
 
 ---
 
-# Release
+# Release often / fast
 
 ---
 
@@ -888,18 +884,20 @@ RUN /microscanner ${token} && rm /microscanner
 
 # [fit] Thank You(s)
 
-* Andrew Martin (@sublimino)
-* Ben Hall (@ben_hall)
-* Benjy Portnoy (@AquaSecTeam)
-* Liz Rice (@lizrice)
+* Andrew Martin *@sublimino*
+* Ben Hall *@ben_hall*
+* Benjy Portnoy *@AquaSecTeam*
+* Liz Rice *@lizrice*
 
 ---
 
 # [fit] Thank You(s)
 
-* Ian Coldwater (@IanColdwater)
-* Aled James (@a\_ll\_james)
+* Jess Frazelle *@jessfraz*
+* Ian Coldwater *@IanColdwater*
+* Aled James *@a\_ll\_james*
+* Nial Merrigan *@nmerrigan*
 
 ---
 
-# Todo
+# 🥳
