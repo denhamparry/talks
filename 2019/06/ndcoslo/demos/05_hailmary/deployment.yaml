@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dockerexploit
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: dockerexploit
+      labels:
+        app: dockerexploit
+    spec:
+      securityContext:
+        fsGroup: 420
+      containers:
+        - name: bashandcurl
+          image: denhamparry/bashandcurl:0.0.7
+          ports:
+          - containerPort: 80
+          securityContext:
+            privileged: true
+          env:
+          volumeMounts:
+            - name: dockersock
+              mountPath: "/var/run/docker.sock"
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock

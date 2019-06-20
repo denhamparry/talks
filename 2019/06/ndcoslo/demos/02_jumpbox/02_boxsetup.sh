@@ -15,6 +15,10 @@ set -x
 
 # What can we do???
 
+# Reverse shell
+
+ps -ef
+
 vi index.php
 nano index.php
 cat index.php
