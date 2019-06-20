@@ -755,79 +755,6 @@ Limits the restrictions on the kubelet.
 
 ---
 
-# [fit] https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/
-
-Authentication
-Authorisation (RBAC)
-Network Segmentation
-PodSecurityPolicy
-Encrypt Secrets
-Audit Everything
-Admission Controllers
-
----
-
-# [fit] Admission Controller
-
-^
-Operates on the API server
-Intercepts requests prior to persistence of the object to the etcd DB
-but after the request has been authenticated and authorized
-Can only be configured by the cluster administrator
-
----
-
-# [fit] It's just an API
-
-^
-Lets break Kubernetes down.
-Away from everything else, we connect to an API.
-Would you have an open API?
-
----
-
-# More detail
-
----
-
-# [fit] AlwaysPullImages
-
-^
-Prevent reusing images.
-Images can only be used by those who have the credentials to pull them.
-Any pod from any user can use the image by knowing the image’s name.
-
----
-
-# [fit] DenyEscalatingExec
-
-^
-Prevent privilege escalation (exec or attach) via pods running with
-* privileged: true
-* Host IPC namespace
-* Host PID namespace
-If your cluster supports containers that run with escalated privileges, restrict the ability of end-users to exec commands in those containers, using this admission controller.
-
----
-
-# [fit] PodSecurityPolicy
-
-^
-Privileged containers
-Root namespaces
-Volume types
-Read only root file system
-UID, GID of the container
-SELinux/AppArmor context
-seccomp profile
-By Default there is no  Selinux/AppArmor/seccomp profile
-
----
-
-# [fit] NodeRestriction
-
----
-
 # [fit] :(){ :|:& };:
 
 ---
@@ -836,33 +763,20 @@ By Default there is no  Selinux/AppArmor/seccomp profile
 
 ---
 
-# [fit] Aqua
-
----
-
+# [fit] Aqua Security
+# [fit] https://github.com/aquasecurity
 ## Kube-Hunter
-
----
-
 ## Kube-Bench
-
----
-
-### [fit] https://github.com/aquasecurity
-### [fit] https://www.aquasec.com/
-
----
-
-# [fit] Control Plane
 
 ---
 
 ## KUBESEC.io
 
+## [fit] https://kubesec.io
+
 ---
 
-### [fit] https://kubesec.io
-### [fit] https://control-plane.io
+# [fit] Going Forward
 
 ---
 
