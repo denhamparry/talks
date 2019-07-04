@@ -160,6 +160,16 @@ Manage applications alongside each other.
 
 ---
 
+# [fit] What do we put into containers
+
+---
+
+# [fit] What Is Groovy? And Why Should You Care
+
+## [fit] Adam Taylor @ Carsnip
+
+---
+
 # Focus on **containers**
 
 ^
@@ -203,6 +213,12 @@ Reduce attack surface within containers.
 Empower people to make changes.
 If you make 10's, 100's or 1000's of changes a day they become trivial.
 Remember fortnightly releases.
+
+---
+
+# [fit] Integrating Containers to CI/CD Pipelines
+
+## [fit] Oliver Pomeroy @ Docker
 
 ---
 
@@ -480,6 +496,12 @@ A public key infrastructure (PKI) generates and distributes certificates and key
 
 ---
 
+# [fit] alking about Service Meshes
+
+## [fit] Elton Stoneman @ Docker
+
+---
+
 # **6.** Network and Policy
 
 ---
@@ -505,8 +527,6 @@ You can integrate OPA as a sidecar, host-level daemon, or library.
 
 ^
 A policy is a set of rules that governs the behaviour of a service.
-Policy enablement empowers users to read, write, and manage these rules without needing specialized development or operational expertise.
-When your users can implement policies without recompiling your source code, then your service is policy enabled.
 
 ---
 
@@ -514,8 +534,6 @@ When your users can implement policies without recompiling your source code, the
 
 ^
 Services offload policy decisions to OPA by executing queries.
-OPA evaluates policies and data to produce query results (which are sent back to the client).
-Policies are written in a high-level declarative language and can be loaded into OPA via the filesystem or well-defined APIs.
 
 ---
 
@@ -535,29 +553,8 @@ Number of solutions.
 # [fit] Sharding
 
 ^
-Sharding your database involves breaking up your big database into many, much smaller databases that share nothing and can be spread across multiple servers. 
+Sharding your database involves breaking up your big database into many, much smaller databases that share nothing and can be spread across multiple servers.
 These small databases are fast, easy to manage, and often are much cheaper to use as they are often implemented by using open source licensed databases.
-
----
-
-# [fit] Sharding
-
-^
-There’s a variety of different approaches, but essentially, it’s just a matter of taking a look at your database and essentially ‘horizontally partitioning’ your data into logically related rows
-
----
-
-# [fit] Sharding
-
-^
-The logical rows that you come up with get isolated and deployed into their own database, and as a result, data interaction becomes much faster and more responsive.
-
----
-
-# [fit] Sharding
-
-^
-Given, this is a very simple look at sharding, but it’s something that modern enterprise applications that are looking at leveraging the benefits of cloud computing without encountering significance performance problems with their database I/O when their middleware applications reach economies of scale.
 
 ---
 
@@ -605,8 +602,7 @@ Allow for full-duplex streaming.
 # [fit] Is it **better**
 
 ^
-Diverge from typical REST conventions as we use static paths for performance reasons during call dispatch
-Parsing call parameters from paths, query parameters and payload body adds latency and complexity.
+Complexity.
 
 ---
 
