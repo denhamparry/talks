@@ -164,9 +164,9 @@ Manage applications alongside each other.
 
 ---
 
-# [fit] What Is Groovy? And Why Should You Care
+# [fit] What Is **Groovy**? And Why Should **You** Care
 
-## [fit] Adam Taylor @ Carsnip
+## [fit] **Adam Taylor** @ Carsnip
 
 ---
 
@@ -216,9 +216,9 @@ Remember fortnightly releases.
 
 ---
 
-# [fit] Integrating Containers to CI/CD Pipelines
+# [fit] Integrating Containers to **CI/CD Pipelines**
 
-## [fit] Oliver Pomeroy @ Docker
+## [fit] **Oliver Pomeroy** @ Docker
 
 ---
 
@@ -496,9 +496,9 @@ A public key infrastructure (PKI) generates and distributes certificates and key
 
 ---
 
-# [fit] alking about Service Meshes
+# [fit] Talking about **Service Meshes**
 
-## [fit] Elton Stoneman @ Docker
+## [fit] **Elton Stoneman** @ Docker
 
 ---
 
