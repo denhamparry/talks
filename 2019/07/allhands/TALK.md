@@ -758,5 +758,3 @@ What I had wasn't working for me.
 # [fit] slides
 
 ## [fit] https://github.com/denhamparry/talks
-
----
