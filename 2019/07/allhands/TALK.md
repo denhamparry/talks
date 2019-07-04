@@ -331,17 +331,6 @@ How do you manage security?
 
 ---
 
-## [fit] 17:15 (Keynote)
-# [fit] **Microservices & containers: getting your security team on board**
-## [fit] Liz Rice
-
-^
-I follow the leaders.
-Liz is one of them.
-Works for aqua.
-
----
-
 # [fit] **Congratulations**
 
 ^
