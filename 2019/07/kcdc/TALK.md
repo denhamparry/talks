@@ -137,10 +137,6 @@ Recap and tips to take away.
 
 ---
 
-![160%](assets/badhughgrantbad.jpg)
-
----
-
 # [fit] *Mental* Health
 
 ---
