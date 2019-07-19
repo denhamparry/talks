@@ -133,6 +133,14 @@ Recap and tips to take away.
 
 ---
 
+![](assets/british.gif)
+
+---
+
+![160%](assets/badhughgrantbad.jpg)
+
+---
+
 # [fit] *Mental* Health
 
 ---
@@ -268,10 +276,6 @@ So how do we feel about this.
 
 ---
 
-![140%](assets/broken.gif)
-
----
-
 # [fit] Don't use
 # [fit] *kubernetes*
 
@@ -300,7 +304,7 @@ But is there a better option.
 
 ---
 
-![autoplay](assets/_demo1.mov)
+![140%](assets/broken.gif)
 
 ---
 
@@ -371,7 +375,7 @@ users and to impersonate services and user
 
 ---
 
-![autoplay](assets/_demo2.mov)
+![](assets/in.gif)
 
 ---
 
@@ -543,6 +547,14 @@ How do we know what we're running is what we built?
 
 ---
 
+# [fit] Nothing *lives* forever
+
+---
+
+![140%](assets/mrmeeseeks.gif)
+
+---
+
 # [fit] *Case study*
 
 ## [fit] tylenol cyanide deaths
@@ -553,11 +565,10 @@ How do we know what we're running is what we built?
 
 ---
 
-# Tools
+# [fit] Tools
 
-* The TUF Project
-* Notary
-* Grafeas
+## *Notary (The TUF Project)*
+## Grafeas
 
 ---
 
@@ -567,7 +578,7 @@ How do we know what we're running is what we built?
 
 ---
 
-![autoplay](assets/_demo3.mov)
+![120%](assets/awaywego.gif)
 
 ---
 
@@ -924,7 +935,7 @@ Limits the restrictions on the kubelet.
 
 ---
 
-![autoplay](assets/_demo4.mov)
+![](assets/watching.gif)
 
 ---
 
@@ -1008,7 +1019,7 @@ Mount them.
 
 ---
 
-![autoplay](assets/_demo5.mov)
+![](assets/hailmary.gif)
 
 ---
 
@@ -1083,3 +1094,7 @@ Keep patching your systems.
 ---
 
 # 🥳
+
+---
+
+![](assets/end.gif)
