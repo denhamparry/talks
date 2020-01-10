@@ -2,9 +2,17 @@
 
 ## Ideas
 
+* Playing the conference game
 * The game of speaking at conferences
   * [NDC London 2019](https://www.youtube.com/watch?v=si44LvcgXwU)
   * NDC London 2020 - Stand next to a derelict building
+* May as well apply for diversity scolarships
+  * Once offered one for being Welsh
+  * Too many hot, young, talented (with a good sense of humour) Welsh guys in tech
+* Having to deal with rejection
+  * Been used to it from a young age
+  * Chat up line selling Super Mario for the Gameboy to a girl I fancied when I was 10
+  * Who else in here has learned to deal with rejection?
 * The game with recruiters
 * Product Managers
   * [Snatch Games](https://youtu.be/PKbJp62jnmw?t=70)
@@ -27,6 +35,8 @@
   * Automate everything
   * The monolith slayer
 * [hHh first standup](https://www.youtube.com/watch?v=lqZe9mEpSFg)
+* The Game
+  * Rap artist
 
 ## Game References
 
