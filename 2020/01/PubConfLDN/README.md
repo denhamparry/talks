@@ -16,8 +16,12 @@
 * The game with recruiters
 * Product Managers
   * [Snatch Games](https://youtu.be/PKbJp62jnmw?t=70)
+    * May the best dev, win
     * Waiting for redundancy
+    * You're Visual Basic
     * Much better
+    * Shantay you stay / Sashay away
+    * Trump writing an issue
   * RuPaul - love is love
 * Last years PubConf
   * Hotel room - is there a parallel universe
