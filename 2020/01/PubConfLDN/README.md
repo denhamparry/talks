@@ -13,8 +13,15 @@
   * Been used to it from a young age
   * Chat up line selling Super Mario for the Gameboy to a girl I fancied when I was 10
   * Who else in here has learned to deal with rejection?
+* Kubernetes
+  * Kubernetes is the management of containers
+  * Last year I compared it to Mr Meeseeks from Rick and Morty
+  * This year
+    * Deal oe no Deal
+  * But its more like
+    * What's in the box - Se7en
 * The game with recruiters
-* Product Managers
+  * Product Managers
   * [Snatch Games](https://youtu.be/PKbJp62jnmw?t=70)
     * May the best dev, win
     * Waiting for redundancy
