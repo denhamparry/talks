@@ -3,6 +3,8 @@
 ## Ideas
 
 * Playing the conference game
+* Diversity
+  * Is it a tech conference or a US malita?
 * The game of speaking at conferences
   * [NDC London 2019](https://www.youtube.com/watch?v=si44LvcgXwU)
   * NDC London 2020 - Stand next to a derelict building
