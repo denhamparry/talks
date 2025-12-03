@@ -102,8 +102,9 @@ EXPOSE 8080
 
 # Health check for nginx (uses $PORT environment variable)
 # interval=5s allows workflow to detect healthy status quickly (vs 30s)
+# Use 127.0.0.1 instead of localhost to avoid IPv6 resolution issues with BusyBox wget
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:${PORT}/health || exit 1
+    CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:${PORT}/health || exit 1
 
 # Start script: substitute $PORT in nginx config template and start nginx
 # The /docker-entrypoint.sh script automatically processes templates in /etc/nginx/templates/

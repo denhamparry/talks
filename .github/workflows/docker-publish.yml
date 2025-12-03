@@ -126,7 +126,7 @@ jobs:
         if: github.event_name != 'pull_request'
         run: |
           echo "Starting test server..."
-          docker run -d --name test-server -p 8888:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker run -d --name test-server -p 8888:8080 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
           echo "Waiting for Docker health check to pass..."
           TIMEOUT=30
