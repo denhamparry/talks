@@ -36,11 +36,10 @@ jobs:
 
       - name: Build HTML slides
         run: npm run build
-        continue-on-error: true
 
       - name: Build PDF slides
         run: npm run build:pdf
-        continue-on-error: true
+        continue-on-error: true  # PDF is optional, HTML must succeed
 
       - name: Upload HTML artifacts
         uses: actions/upload-artifact@v5

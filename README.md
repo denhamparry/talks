@@ -1,6 +1,9 @@
 # Claude Code Project Template
 
-[![CI](https://github.com/denhamparry/talks/workflows/ci/badge.svg)](https://github.com/denhamparry/talks/actions)
+[![CI](https://github.com/denhamparry/talks/workflows/CI/badge.svg)](https://github.com/denhamparry/talks/actions/workflows/ci.yml)
+[![Build Slides](https://github.com/denhamparry/talks/workflows/Build%20MARP%20Slides/badge.svg)](https://github.com/denhamparry/talks/actions/workflows/build-slides.yml)
+[![Docker Build](https://github.com/denhamparry/talks/workflows/Build%20and%20Publish%20Docker%20Image/badge.svg)](https://github.com/denhamparry/talks/actions/workflows/docker-publish.yml)
+[![Deploy to Cloud Run](https://github.com/denhamparry/talks/workflows/Deploy%20to%20Cloud%20Run/badge.svg)](https://github.com/denhamparry/talks/actions/workflows/cloudrun-deploy.yml)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -304,6 +307,118 @@ docker pull ghcr.io/denhamparry/talks:latest
 # Run locally
 docker run -p 8080:8080 -e PORT=8080 ghcr.io/denhamparry/talks:latest
 ```
+
+## 🔐 GitHub Secrets Configuration
+
+### Required Secrets (Maintainer Only)
+
+These secrets are configured for the main repository and required for full CI/CD functionality:
+
+1. **`GCP_WORKLOAD_IDENTITY_PROVIDER`** - Google Cloud Workload Identity Provider
+   - Used by: `.github/workflows/cloudrun-deploy.yml`
+   - Format: `projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/providers/PROVIDER_ID`
+   - Required for: Cloud Run deployment
+   - Setup: See `docs/deployment-guide.md`
+
+2. **`GCP_SERVICE_ACCOUNT`** - Google Cloud Service Account
+   - Used by: `.github/workflows/cloudrun-deploy.yml`
+   - Format: `SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com`
+   - Required for: Cloud Run deployment
+   - Setup: See `docs/deployment-guide.md`
+
+3. **`CLAUDE_CODE_OAUTH_TOKEN`** - Claude Code OAuth Token
+   - Used by: `.github/workflows/claude.yml`
+   - Format: OAuth token from Claude Code
+   - Required for: @claude mentions in issues/PRs
+   - Setup: Run `/install-github-app` in Claude Code
+
+### Optional Secrets
+
+- **`GITHUB_TOKEN`** - Automatically provided by GitHub Actions (no setup needed)
+
+### For Contributors and Forks
+
+If you fork this repository:
+
+- ✅ **Build workflows work without secrets** - `build-slides.yml`, `ci.yml`, `docker-publish.yml`
+- ✅ **Local development works** - All make targets work locally
+- ❌ **Cloud Run deployment disabled** - Requires GCP secrets (maintainer only)
+- ❌ **Claude automation disabled** - Requires Claude token (maintainer only)
+
+**To test your fork:**
+
+```bash
+# Clone your fork
+git clone https://github.com/your-username/talks.git
+cd talks
+
+# Run full CI locally
+make ci
+
+# Build Docker image
+make docker-build
+
+# All workflows will run on PRs except deployment
+```
+
+### Verifying Secrets
+
+Maintainers can verify secrets are configured:
+
+```bash
+# Using gh CLI
+gh secret list
+
+# Expected output:
+# CLAUDE_CODE_OAUTH_TOKEN            Updated YYYY-MM-DD
+# GCP_SERVICE_ACCOUNT                Updated YYYY-MM-DD
+# GCP_WORKLOAD_IDENTITY_PROVIDER     Updated YYYY-MM-DD
+```
+
+## 🔍 CI/CD Status and Monitoring
+
+### Workflow Status
+
+Check the status badges at the top of this README or visit the [Actions tab](https://github.com/denhamparry/talks/actions) to see workflow runs.
+
+### Verifying Deployment
+
+After pushing to main:
+
+1. **Build Slides** completes (~2-3 minutes)
+2. **Docker Build** publishes to GHCR (~3-5 minutes)
+3. **Cloud Run Deploy** updates service (~2-3 minutes)
+
+**Total time:** 7-11 minutes from push to live deployment
+
+**Check deployment:**
+
+```bash
+# Using curl
+curl https://talks.denhamparry.co.uk/health
+
+# Using gh CLI
+gh workflow view cloudrun-deploy.yml
+
+# Using gcloud
+gcloud run services describe talks \
+  --region=europe-west1 \
+  --format='value(status.url)'
+```
+
+### Monitoring and Costs
+
+- **Cloud Run Dashboard:** [Console](https://console.cloud.google.com/run?project=denhamparry-talks)
+- **Budget Alerts:** Configured at 50%, 90%, 100%, 110% of $12/month
+- **Current Cost:** $0/month (within free tier)
+
+### Troubleshooting
+
+If workflows fail, see:
+
+- **General Issues:** `docs/troubleshooting-cicd.md`
+- **Deployment Issues:** `docs/deployment-guide.md`
+- **Repository Settings:** `docs/repository-settings.md`
 
 ## 📢 Talks and Presentations
 
