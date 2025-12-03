@@ -1,7 +1,7 @@
 # GitHub Issue #21: Add Cloud-Native Manchester talk (December 4th, 2025)
 
 **Issue:** [#21](https://github.com/denhamparry/talks/issues/21)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
 **Labels:** documentation, enhancement, talk
 
