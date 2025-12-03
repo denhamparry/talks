@@ -21,7 +21,7 @@ GitHub → Docker Build → GHCR → Cloud Run → talks.denhamparry.co.uk
 
 - **Production URL:** <https://talks.denhamparry.co.uk>
 - **Cloud Run Service:** `https://talks-HASH-nw.a.run.app` (auto-generated)
-- **Region:** europe-west2 (London, UK)
+- **Region:** europe-west1 (Belgium) - supports domain mappings
 - **Platform:** Google Cloud Run (serverless)
 - **Cost:** $0/month (within free tier)
 
@@ -131,7 +131,9 @@ gcloud services enable artifactregistry.googleapis.com --project=$PROJECT_ID
 Google Cloud Run requires images to be in Google Artifact Registry, not GitHub Container Registry.
 
 ```bash
-export REGION="europe-west2"  # London
+export REGION="europe-west1"  # Belgium (supports domain mappings)
+# Note: europe-west2 (London) does NOT support domain mappings
+# Use europe-west1 (Belgium) or us-central1 (Iowa) instead
 
 # Create Artifact Registry repository
 gcloud artifacts repositories create talks \
@@ -303,6 +305,8 @@ Add secrets to GitHub repository: Settings → Secrets and variables → Actions
 
 ### Step 9: Map Custom Domain
 
+**Important:** Domain mappings are only supported in certain regions. If you deployed to **europe-west2 (London)**, you must redeploy to **europe-west1 (Belgium)** or **us-central1 (Iowa)** first.
+
 #### 9.1 Verify Domain Ownership
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
@@ -317,16 +321,18 @@ Add secrets to GitHub repository: Settings → Secrets and variables → Actions
 
 #### 9.2 Create Domain Mapping
 
+**Note:** Domain mapping commands require `gcloud beta` (not the stable GA version).
+
 ```bash
-# Create domain mapping
-gcloud run domain-mappings create \
+# Create domain mapping (use gcloud beta)
+gcloud beta run domain-mappings create \
   --service=$SERVICE_NAME \
   --domain=talks.denhamparry.co.uk \
   --region=$REGION \
   --project=$PROJECT_ID
 
 # Get DNS record requirements
-gcloud run domain-mappings describe \
+gcloud beta run domain-mappings describe \
   --domain=talks.denhamparry.co.uk \
   --region=$REGION \
   --format="value(status.resourceRecords)" \
@@ -355,7 +361,7 @@ Proxy status: DNS only (grey cloud) ← Important during setup
 
 ```bash
 # Check certificate status (repeat until Ready)
-gcloud run domain-mappings describe \
+gcloud beta run domain-mappings describe \
   --domain=talks.denhamparry.co.uk \
   --region=$REGION \
   --format="value(status.conditions)" \
@@ -432,21 +438,21 @@ gh run view --log
 
 **Cloud Run Console:**
 
-- **Service Dashboard:** <https://console.cloud.google.com/run/detail/europe-west2/talks>
-- **Metrics:** <https://console.cloud.google.com/run/detail/europe-west2/talks/metrics>
-- **Logs:** <https://console.cloud.google.com/run/detail/europe-west2/talks/logs>
+- **Service Dashboard:** <https://console.cloud.google.com/run/detail/europe-west1/talks>
+- **Metrics:** <https://console.cloud.google.com/run/detail/europe-west1/talks/metrics>
+- **Logs:** <https://console.cloud.google.com/run/detail/europe-west1/talks/logs>
 
 **Command line:**
 
 ```bash
 # View logs
 gcloud run services logs read talks \
-  --region=europe-west2 \
+  --region=europe-west1 \
   --limit=50
 
 # View service status
 gcloud run services describe talks \
-  --region=europe-west2 \
+  --region=europe-west1 \
   --format="table(status.url,status.conditions)"
 ```
 
@@ -557,9 +563,9 @@ gcloud billing budgets update BUDGET_ID \
 2. Check certificate status:
 
    ```bash
-   gcloud run domain-mappings describe \
+   gcloud beta run domain-mappings describe \
      --domain=talks.denhamparry.co.uk \
-     --region=europe-west2 \
+     --region=europe-west1 \
      --format="value(status.conditions)"
    ```
 
@@ -592,7 +598,7 @@ gcloud billing budgets update BUDGET_ID \
 
    ```bash
    gcloud run services logs read talks \
-     --region=europe-west2 \
+     --region=europe-west1 \
      --limit=50
    ```
 
@@ -678,7 +684,7 @@ gcloud run services update talks \
 # Add environment variables
 gcloud run services update talks \
   --set-env-vars="CUSTOM_VAR=value" \
-  --region=europe-west2
+  --region=europe-west1
 ```
 
 ### Enabling Cloudflare CDN
@@ -702,12 +708,12 @@ After SSL certificate is provisioned:
 # List all revisions
 gcloud run revisions list \
   --service=talks \
-  --region=europe-west2
+  --region=europe-west1
 
 # Rollback to specific revision
 gcloud run services update-traffic talks \
   --to-revisions=talks-00001-abc=100 \
-  --region=europe-west2
+  --region=europe-west1
 ```
 
 ## Security
@@ -739,13 +745,13 @@ Current configuration: **Unauthenticated access** (`--allow-unauthenticated`)
 # Require authentication
 gcloud run services update talks \
   --no-allow-unauthenticated \
-  --region=europe-west2
+  --region=europe-west1
 
 # Grant access to specific users
 gcloud run services add-iam-policy-binding talks \
   --member="user:email@example.com" \
   --role="roles/run.invoker" \
-  --region=europe-west2
+  --region=europe-west1
 ```
 
 ## References
@@ -768,5 +774,6 @@ For issues with deployment:
 ---
 
 **Last Updated:** 2025-12-03
-**Deployment Region:** europe-west2 (London)
+**Deployment Region:** europe-west1 (Belgium)
 **Platform:** Google Cloud Run
+**Note:** Use europe-west1 or us-central1 for domain mapping support
