@@ -75,7 +75,7 @@ section {
    ======================================== */
 
 h1 {
-  color: var(--color-primary);
+  color: var(--color-text-dark);  /* Default to dark teal for WCAG AA compliance (11.39:1) */
   font-size: var(--font-size-h1);
   font-weight: 700;
   line-height: 1.2;
@@ -268,10 +268,6 @@ section.title p {
 /* Content Slide (Default) */
 section.content {
   background-color: var(--color-background-content);
-  color: var(--color-text-dark);
-}
-
-section.content h1 {
   color: var(--color-text-dark);
 }
 

@@ -49,11 +49,12 @@ The **Edera V2** theme is a professional presentation theme featuring:
 
 ### Color Accessibility
 
-⚠️ **Important:** While most color combinations are excellent, there is **one critical accessibility issue** to be aware of.
+✅ **Fully Accessible:** All color combinations meet WCAG 2.1 Level AA standards as of 2025-12-03.
 
 ### Verified WCAG Compliance
 
 **Audit Date:** 2025-12-03
+**Status:** ✅ **FULL COMPLIANCE** - All combinations pass WCAG AA
 **Standard:** WCAG 2.1
 **Testing Tools:** wcag-contrast v3.0.0, Playwright MCP, Chrome DevTools
 
@@ -65,32 +66,37 @@ All color combinations have been empirically verified with automated contrast ch
 | Cyan on dark teal | **8.93:1** | ✅ Pass | ✅ Pass | Excellent |
 | Light mint on dark teal | **11.39:1** | ✅ Pass | ✅ Pass | Excellent |
 | White on dark teal | **12.58:1** | ✅ Pass | ✅ Pass | Excellent |
-| **Cyan on light mint** | **1.28:1** | ❌ **FAIL** | ❌ **FAIL** | **⚠️ Issue** |
 | Dark teal on white | **12.58:1** | ✅ Pass | ✅ Pass | Excellent |
 
-### Critical Accessibility Issue
+### Accessibility Fix Applied
 
-**Problem:** Default H1 color (cyan accent) on light mint background fails WCAG AA standards.
+**Date Fixed:** 2025-12-03
 
-**Contrast Ratio:** 1.28:1 (requires 3.0:1 minimum for large text)
+**What Changed:**
+The default H1 color has been changed from cyan to dark teal to ensure accessibility by default.
 
-**Impact:** H1 headings are not accessible on content slides unless the `.content` class is applied.
-
-**Current Mitigation:**
-The theme provides a `.content` class that overrides H1 to use dark teal (11.39:1 contrast). Most slides use this class by default, so existing presentations are safe.
-
-```markdown
-<!-- Always use .content class for accessible content slides -->
-<!-- _class: content -->
-# This Heading is Accessible ✅
+```css
+/* Default H1 styling - Now accessible (11.39:1 contrast) */
+h1 {
+  color: var(--color-text-dark);  /* Dark teal #013a3b */
+}
 ```
 
-**Without `.content` class:**
+Cyan color is now explicitly used only on dark backgrounds where it's accessible:
 
-```markdown
-<!-- DON'T DO THIS - H1 will be cyan on light mint (1.28:1) ❌ -->
-# This Heading Fails WCAG AA
+```css
+/* Title slides - Dark background */
+section.title h1 {
+  color: var(--color-primary);  /* Cyan on dark teal: 8.93:1 ✅ */
+}
+
+/* Dark variant slides - Dark background */
+section.dark h1 {
+  color: var(--color-primary);  /* Cyan on dark teal: 8.93:1 ✅ */
+}
 ```
+
+**Result:** All slides are now accessible by default without requiring special classes.
 
 **See full audit:** [docs/accessibility-audit.md](./accessibility-audit.md)
 
@@ -110,13 +116,13 @@ The theme provides a `.content` class that overrides H1 to use dark teal (11.39:
 3. **Avoid small text:** Don't use text < 18px for important content
 4. **Test before presenting:** View slides on actual projector/display
 5. **Provide alternatives:** Offer PDFs with proper accessibility tagging
-6. **Use `.content` class:** Always apply to content slides for accessible H1 headings
+6. ~~**Use `.content` class:**~~ **No longer required** - All slides are accessible by default (fixed 2025-12-03)
 
 **Accessibility Checklist for Presenters:**
 
 - [x] All text uses high-contrast color combinations (4.5:1 minimum)
 - [x] Large text (≥18pt) has 3:1 contrast minimum
-- [x] Content slides use `.content` class (or equivalent override)
+- [x] ~~Content slides use `.content` class~~ **No longer required - fixed by default**
 - [ ] No reliance on color alone to convey information
 - [ ] Font sizes appropriate for room size and viewing distance
 - [ ] Slides tested on actual presentation hardware
@@ -124,12 +130,12 @@ The theme provides a `.content` class that overrides H1 to use dark teal (11.39:
 
 **Common Mistakes to Avoid:**
 
-❌ Forgetting `.content` class on content slides
+❌ ~~Forgetting `.content` class on content slides~~ **No longer an issue - fixed by default**
 ❌ Using 18px text for critical information
-❌ Mixing cyan and light mint without proper contrast
+❌ ~~Mixing cyan and light mint without proper contrast~~ **Fixed - theme now uses dark teal by default**
 ❌ Not testing on actual projector before presentation
 
-✅ Always use `.content` class for content slides
+✅ ~~Always use `.content` class for content slides~~ **No longer necessary - accessible by default**
 ✅ Keep body text at 24px or larger
 ✅ Test contrast ratios when customizing colors
 ✅ View slides on presentation hardware
