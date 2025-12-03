@@ -471,6 +471,27 @@ section.dark::after {
 }
 
 /* ========================================
+   Logo
+   ======================================== */
+
+section::before {
+  content: '';
+  position: absolute;
+  top: var(--spacing-sm);    /* 1rem from top */
+  right: var(--margin-horizontal);  /* 84px from right edge */
+  width: 5rem;               /* 80px logo width */
+  height: 5rem;              /* 80px logo height */
+  background: url('./assets/ederav2/edera-logo.png') no-repeat center;
+  background-size: contain;
+  z-index: 10;               /* Ensure logo appears above content */
+}
+
+/* Hide logo on title slides for clean aesthetic */
+section.title::before {
+  display: none;
+}
+
+/* ========================================
    Utility Classes
    ======================================== */
 

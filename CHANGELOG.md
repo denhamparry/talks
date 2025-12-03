@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Edera logo in top right corner of slides for Edera V2 theme ([#51](https://github.com/denhamparry/talks/issues/51))
+  - Logo displays on content, dark, two-column, and image slides
+  - Hidden on title slides for clean aesthetic
+  - Responsive sizing maintains aspect ratio (110px width default)
+  - Customizable via CSS (position, size, visibility)
+  - Logo asset: `themes/assets/edera-logo.png` (4.2KB)
+
 ## [1.0.3] - 2025-12-03
 
 ### Fixed
