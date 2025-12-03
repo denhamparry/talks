@@ -1,7 +1,7 @@
 # GitHub Issue #7: Add Makefile for consistent repository interactions
 
 **Issue:** [#7](https://github.com/denhamparry/talks/issues/7)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
 **Labels:** documentation, enhancement, developer-experience, ci
 
