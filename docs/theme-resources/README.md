@@ -4,7 +4,7 @@ This directory contains resources from the original Google Slides template used 
 
 ## Directory Structure
 
-```
+```text
 docs/theme-resources/
 ├── README.md                    # This file
 ├── slides-export/               # PDF and HTML exports
@@ -39,6 +39,7 @@ docs/theme-resources/
    - `slide-03-layout.svg`
 
 **Why SVG is the BEST:**
+
 - **Vector format** - Perfect scalability, no pixelation
 - **Embedded styling** - All colors, fonts, and layout in XML
 - **Most accurate** - Exact reproduction of Google Slides rendering
@@ -55,6 +56,7 @@ docs/theme-resources/
 5. Copy any associated files/folders (images, CSS) to `slides-export/`
 
 **Why HTML is good:**
+
 - Contains inline CSS with exact color values, fonts, and spacing
 - I can parse it directly without screenshots
 - More accurate than manual DevTools inspection
@@ -67,6 +69,7 @@ docs/theme-resources/
 3. Save as `slides-export/template.pdf`
 
 **Why PDF is useful:**
+
 - Shows final visual output
 - Good for visual reference
 - I can read and display PDFs directly
@@ -102,6 +105,7 @@ For each important slide type (title, content, two-column, image, etc.):
    - Any other color properties
 
 Save screenshots as:
+
 - `devtools-screenshots/colors-primary.png` - Primary/brand colors
 - `devtools-screenshots/colors-background.png` - Background colors
 - `devtools-screenshots/colors-accent.png` - Accent/highlight colors
@@ -117,6 +121,7 @@ Save screenshots as:
    - `line-height: X.X`
 
 Save screenshots as:
+
 - `devtools-screenshots/fonts-heading.png` - Heading (h1) font properties
 - `devtools-screenshots/fonts-subheading.png` - Subheading (h2/h3) properties
 - `devtools-screenshots/fonts-body.png` - Body text properties
@@ -132,6 +137,7 @@ Save screenshots as:
    - Layout properties
 
 Save screenshots as:
+
 - `devtools-screenshots/spacing-margins.png` - Margin values
 - `devtools-screenshots/spacing-padding.png` - Padding values
 - `devtools-screenshots/layout-dimensions.png` - Width/height values
@@ -177,7 +183,7 @@ Once you've added all files to this directory:
 
 ### Option A: SVG Export (BEST) 🌟
 
-```
+```text
 docs/theme-resources/
 ├── README.md
 ├── slides-export/
@@ -189,6 +195,7 @@ docs/theme-resources/
 ```
 
 **What I'll extract from SVG:**
+
 - Exact color values from fill/stroke attributes
 - Font families, sizes, weights from text elements
 - Precise spacing and positioning (x, y coordinates)
@@ -198,7 +205,7 @@ docs/theme-resources/
 
 ### Option B: HTML Export (Great) ⭐
 
-```
+```text
 docs/theme-resources/
 ├── README.md
 ├── slides-export/
@@ -212,7 +219,7 @@ docs/theme-resources/
 
 ### Option C: Manual Screenshots (Fallback)
 
-```
+```text
 docs/theme-resources/
 ├── README.md
 ├── slides-export/
@@ -232,7 +239,7 @@ docs/theme-resources/
 ## Comparison: SVG vs HTML vs Screenshots
 
 | Feature | SVG 🌟 | HTML ⭐ | Screenshots |
-|---------|--------|---------|-------------|
+| ------- | ------ | ------- | ----------- |
 | **Accuracy** | Perfect (vector) | Excellent | Good |
 | **Color extraction** | Exact hex/RGB | Exact hex/RGB | Manual/approximate |
 | **Font details** | Exact families/sizes | Exact families/sizes | Manual measurement |

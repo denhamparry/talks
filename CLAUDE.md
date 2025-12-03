@@ -83,9 +83,9 @@ When creating a new project from this template:
 - [ ] Install and configure pre-commit: `pip install pre-commit && pre-commit install`
 - [ ] Set up GitHub App for PR reviews: run `/install-github-app` in Claude Code
 
-## Quick Commands (Template Defaults)
+## Quick Commands
 
-Replace this section with your actual commands:
+### Development Commands
 
 ```bash
 # Build: [Add your build command]
@@ -93,6 +93,22 @@ Replace this section with your actual commands:
 # Lint: [Add your lint command]
 # Type Check: [Add your typecheck command]
 # Dev Server: [Add your dev command]
+```
+
+### Presentation Commands (MARP)
+
+```bash
+# Build slides to HTML
+npm run build
+
+# Build slides to PDF
+npm run build:pdf
+
+# Watch mode (auto-rebuild on changes)
+npm run watch
+
+# Serve locally with live reload
+npm run serve
 ```
 
 ## Code Style Guidelines (Customize)
@@ -162,6 +178,84 @@ The default configuration checks for:
 - Security vulnerabilities
 - Performance issues
 - Documentation updates
+
+## Presentation Workflow (MARP)
+
+This repository includes a complete MARP presentation system with the Edera V2 theme.
+
+### Creating New Presentations
+
+1. **Copy Template:**
+
+   ```bash
+   cp templates/basic-presentation.md slides/my-talk.md
+   ```
+
+2. **Edit Content:**
+   Edit `slides/my-talk.md` using Markdown syntax with MARP directives
+
+3. **Build Slides:**
+
+   ```bash
+   npm run build:pdf   # Generate PDF
+   # or
+   npm run watch       # Auto-rebuild during development
+   ```
+
+4. **Output:**
+   Find generated files in `dist/my-talk.pdf` or `dist/my-talk.html`
+
+### Available Slide Layouts
+
+Apply layouts using HTML comments in your markdown:
+
+- `<!-- _class: title -->` - Opening/closing slides with dark background
+- `<!-- _class: content -->` - Standard content slides (default)
+- `<!-- _class: dark -->` - Dark background variant for emphasis
+- `<!-- _class: two-columns -->` - Side-by-side content layout
+- `<!-- _class: image -->` - Full-screen image slides
+- `<!-- _class: image-overlay -->` - Text over background image
+
+### Theme Customization
+
+- **Colors:** Edit `themes/edera-v2.css` CSS variables
+- **Fonts:** Modify font-family declarations
+- **Layouts:** Add custom section classes
+- **New Themes:** Copy edera-v2.css and customize
+
+See `docs/theme-guide.md` for detailed customization instructions.
+
+### Edera V2 Theme Colors
+
+- **Dark Teal (#013a3b):** Title slide backgrounds, body text
+- **Light Mint (#d0fdf2):** Content slide backgrounds
+- **Cyan Accent (#02f4d5):** Headings, links, emphasis
+- All color combinations meet WCAG AA accessibility standards
+
+### Documentation
+
+- **Usage Guide:** `docs/marp-usage.md` - Complete MARP instructions
+- **Theme Guide:** `docs/theme-guide.md` - Customization and best practices
+- **Theme Analysis:** `docs/theme-analysis.md` - Design specifications from SVG exports
+- **Templates:** `templates/` directory - Example layouts and presentations
+
+### CI/CD
+
+GitHub Actions automatically builds presentations:
+
+- Workflow: `.github/workflows/build-slides.yml`
+- Triggered by changes to `slides/`, `themes/`, or `templates/`
+- Generates HTML and PDF artifacts
+- Artifacts downloadable from Actions tab
+
+### Best Practices
+
+1. **One idea per slide** - Keep focused
+2. **Use visuals** - Images enhance understanding
+3. **Limit text** - 5-7 bullet points maximum
+4. **Consistent style** - Stick to theme layouts
+5. **Version control** - Commit slides to Git
+6. **Test output** - Build PDF early and often
 
 ## Notes for Template Maintainers
 

@@ -54,6 +54,14 @@ git commit -m "chore: configure Claude Code for project"
 - **`.pre-commit-config.yaml`** - Code quality hooks (formatting, linting, security)
 - **`.github/claude-code-review.yml`** - Automated PR review configuration
 
+### Presentation System (MARP)
+
+- **`themes/edera-v2.css`** - Professional Edera V2 presentation theme
+- **`templates/`** - Ready-to-use slide deck templates
+- **`marp.config.js`** - MARP build configuration
+- **`docs/marp-usage.md`** - Complete MARP usage guide
+- **`docs/theme-guide.md`** - Theme customization documentation
+
 ### Custom Slash Commands
 
 Located in `.claude/commands/`:
@@ -100,10 +108,49 @@ The template is language-agnostic but includes pre-configured hooks for:
 
 Simply uncomment the relevant hooks in `.pre-commit-config.yaml` during setup.
 
+## 🎤 Building Presentations
+
+This repository includes a complete MARP setup with the Edera V2 theme for creating professional presentations.
+
+### Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Create a new presentation
+cp templates/basic-presentation.md slides/my-talk.md
+
+# Build slides
+npm run build        # HTML output
+npm run build:pdf    # PDF output
+
+# Development mode
+npm run watch        # Auto-rebuild on changes
+npm run serve        # Local server with live reload
+```
+
+### Features
+
+- **Edera V2 Theme** - Professional dark teal and light mint color scheme
+- **6 Slide Layouts** - Title, content, dark, two-column, image, and image-overlay
+- **Version Control** - Markdown-based slides in Git
+- **CI/CD Ready** - Automated builds via GitHub Actions
+- **Accessible** - WCAG AA compliant color contrasts
+
+### Documentation
+
+- **[MARP Usage Guide](docs/marp-usage.md)** - Complete usage instructions
+- **[Theme Guide](docs/theme-guide.md)** - Customization and best practices
+- **[Theme Analysis](docs/theme-analysis.md)** - Design specifications
+- **[Templates](templates/)** - Example slide decks and layouts
+
 ## 📚 Documentation
 
 - **`CLAUDE.md`** - Main project context for Claude Code
 - **`docs/setup.md`** - Detailed setup instructions and best practices
+- **`docs/marp-usage.md`** - MARP presentation guide
+- **`docs/theme-guide.md`** - Theme customization guide
 - **`.claude/commands/`** - Custom command documentation
 
 ## 🔧 Manual Setup (Alternative)
