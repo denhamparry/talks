@@ -275,6 +275,34 @@ docker pull ghcr.io/denhamparry/talks:latest
 docker run -p 80:80 ghcr.io/denhamparry/talks:latest
 ```
 
+## 📢 Talks and Presentations
+
+This repository contains slide decks for conference and meetup talks.
+
+### Upcoming Talks
+
+#### IvySketch: Design Patterns & AI Workflow - December 4th, 2025
+
+- **Event:** [Cloud-Native Manchester Meetup](https://www.meetup.com/cloud-native-kubernetes-manchester/events/312062865/)
+- **Date:** December 4th, 2025
+- **Location:** Manchester, UK
+- **Speaker:** Lewis Denham-Parry
+- **Topic:** Building GenAI Applications with Kubernetes and AI-Assisted Development
+- **Project:** [IvySketch](https://ivysketch.me) - AI-powered Axolotl character designer
+- **Slides:** [HTML](dist/2025-12-04-cloud-native-manchester.html) | [PDF](dist/2025-12-04-cloud-native-manchester.pdf)
+
+**Talk Outline:**
+
+- Part 1: Introduction to IvySketch (GenAI app with Kubernetes)
+- Part 2: Architecture & Design Patterns (Go, NATS, OpenTelemetry)
+- Part 3: Kubernetes Deployment (Kustomize, GPU scheduling, NetworkPolicies)
+- Part 4: AI-Powered Development Workflow (Documentation-driven, custom commands)
+- Part 5: Real-World Examples (326+ tasks completed across 13 phases)
+- Part 6: Lessons Learned (Challenges, best practices, pitfalls to avoid)
+- Part 7: Q&A
+
+---
+
 ## 📚 Documentation
 
 - **`CLAUDE.md`** - Main project context for Claude Code
