@@ -157,7 +157,37 @@ npm run serve        # Local server with live reload
 
 If you prefer not to use the interactive wizard, follow the manual checklist in `docs/setup.md`.
 
-## 🤝 Contributing to the Template
+## 🤝 Contributing
+
+### Contributing Slide Content
+
+**Want to contribute presentations without code?** You can!
+
+No MARP knowledge required - just use our simple template:
+
+```bash
+# Get the template
+cp templates/contributor-template.md slides/your-talk.md
+
+# Fill in your content
+# Submit a pull request
+```
+
+See our [Slide Contribution Guide](docs/CONTRIBUTING_SLIDES.md) for complete instructions.
+
+**Features:**
+
+- Simple markdown template with inline instructions
+- No need to understand MARP or presentation tools
+- Automatic professional formatting with Edera V2 theme
+- CI/CD builds HTML and PDF automatically
+- Great for external projects and teams
+
+**Check out:** `slides/example-contribution.md` for a complete example!
+
+---
+
+### Contributing to the Template
 
 To improve this template:
 
@@ -165,6 +195,8 @@ To improve this template:
 2. Test with a new project
 3. Update documentation
 4. Submit a PR
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## 📝 License
 

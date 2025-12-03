@@ -124,5 +124,5 @@ This slide uses the dark background variant.
 ## Questions?
 
 Your Name
-your.email@example.com
+<your.email@example.com>
 @yourhandle

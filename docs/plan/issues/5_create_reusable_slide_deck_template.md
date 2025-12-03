@@ -1,7 +1,7 @@
 # GitHub Issue #5: Create reusable slide deck template
 
 **Issue:** [#5](https://github.com/denhamparry/talks/issues/5)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
 **Labels:** documentation, enhancement, template, marp
 
