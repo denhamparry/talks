@@ -1,6 +1,11 @@
 # Contributor Template - Slide Deck
 
 > **For Content Contributors:** This template is designed for you! You don't need to know MARP or any technical details about presentations. Just fill in your content following the examples below, and the system will automatically format it into professional slides.
+>
+> **Important:** See [CONTRIBUTING.md](../CONTRIBUTING.md) for:
+>
+> - Speaker notes guidelines (how to add notes for live presentations)
+> - Presenter attribution (how to include your contact information)
 
 ## How to Use This Template
 
@@ -48,10 +53,24 @@ EXAMPLE: "Building Better Apps" "A practical guide to modern development" "Jane 
 - [Third main theme you'll cover]
 
 <!--
+Speaker Notes:
+- Welcome the audience
+- Introduce yourself briefly
+- Set expectations for talk length (e.g., "This will take about 20 minutes")
+- Mention when to ask questions (during or after)
+
+DELETE THIS EXAMPLE and replace with your own notes, or remove entirely if not needed.
+-->
+
+<!--
 INSTRUCTIONS: Introduce your topic
 - Use 3-5 bullet points
 - Keep each point to one line
 - Focus on what you'll cover
+
+SPEAKER NOTES (Optional):
+Add speaker notes in HTML comments like the example above. These are only visible
+to you when presenting. See CONTRIBUTING.md for speaker notes best practices.
 -->
 
 ---

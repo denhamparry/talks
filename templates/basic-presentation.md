@@ -12,6 +12,8 @@ paginate: true
 
 Your Name | Event/Conference | Date
 
+<!-- See CONTRIBUTING.md for presenter attribution guidelines -->
+
 ---
 
 <!-- _class: content -->
@@ -126,3 +128,5 @@ This slide uses the dark background variant.
 Your Name
 <your.email@example.com>
 @yourhandle
+
+<!-- See CONTRIBUTING.md for presenter attribution guidelines -->
