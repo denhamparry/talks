@@ -59,6 +59,11 @@ format: ## Format code/markdown files
 precommit: ## Run pre-commit hooks on all files
 	pre-commit run --all-files
 
+.PHONY: accessibility-audit
+accessibility-audit: ## Run WCAG contrast audit on Edera V2 theme
+	@echo "Running accessibility audit on Edera V2 theme..."
+	@npm run accessibility-audit
+
 # Utility Commands
 # ----------------
 

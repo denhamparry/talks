@@ -49,11 +49,90 @@ The **Edera V2** theme is a professional presentation theme featuring:
 
 ### Color Accessibility
 
-All color combinations meet WCAG AA standards:
+⚠️ **Important:** While most color combinations are excellent, there is **one critical accessibility issue** to be aware of.
 
-- **Dark teal on light mint:** ~12:1 contrast ratio ✅
-- **Cyan on dark teal:** ~8:1 contrast ratio ✅
-- **Light mint on dark teal:** ~12:1 contrast ratio ✅
+### Verified WCAG Compliance
+
+**Audit Date:** 2025-12-03
+**Standard:** WCAG 2.1
+**Testing Tools:** wcag-contrast v3.0.0, Playwright MCP, Chrome DevTools
+
+All color combinations have been empirically verified with automated contrast checking tools:
+
+| Combination | Ratio | WCAG AA | WCAG AAA | Status |
+|-------------|-------|---------|----------|--------|
+| Dark teal on light mint | **11.39:1** | ✅ Pass | ✅ Pass | Excellent |
+| Cyan on dark teal | **8.93:1** | ✅ Pass | ✅ Pass | Excellent |
+| Light mint on dark teal | **11.39:1** | ✅ Pass | ✅ Pass | Excellent |
+| White on dark teal | **12.58:1** | ✅ Pass | ✅ Pass | Excellent |
+| **Cyan on light mint** | **1.28:1** | ❌ **FAIL** | ❌ **FAIL** | **⚠️ Issue** |
+| Dark teal on white | **12.58:1** | ✅ Pass | ✅ Pass | Excellent |
+
+### Critical Accessibility Issue
+
+**Problem:** Default H1 color (cyan accent) on light mint background fails WCAG AA standards.
+
+**Contrast Ratio:** 1.28:1 (requires 3.0:1 minimum for large text)
+
+**Impact:** H1 headings are not accessible on content slides unless the `.content` class is applied.
+
+**Current Mitigation:**
+The theme provides a `.content` class that overrides H1 to use dark teal (11.39:1 contrast). Most slides use this class by default, so existing presentations are safe.
+
+```markdown
+<!-- Always use .content class for accessible content slides -->
+<!-- _class: content -->
+# This Heading is Accessible ✅
+```
+
+**Without `.content` class:**
+
+```markdown
+<!-- DON'T DO THIS - H1 will be cyan on light mint (1.28:1) ❌ -->
+# This Heading Fails WCAG AA
+```
+
+**See full audit:** [docs/accessibility-audit.md](./accessibility-audit.md)
+
+### Presentation Readability Guidelines
+
+**Font Size Recommendations:**
+
+- ✅ **24px base text:** Current theme complies with presentation standards
+- ⚠️ **18px small text:** Use sparingly, only for non-critical content (footers, captions)
+- 💡 **Large rooms:** Consider using `.text-large` class (28px) for very large venues
+- ✅ **Always test:** Display slides on target hardware before presenting
+
+**Content Best Practices:**
+
+1. **Limit text per slide:** 5-7 bullet points maximum for readability
+2. **Use high-contrast combinations:** Prefer dark on light or light on dark
+3. **Avoid small text:** Don't use text < 18px for important content
+4. **Test before presenting:** View slides on actual projector/display
+5. **Provide alternatives:** Offer PDFs with proper accessibility tagging
+6. **Use `.content` class:** Always apply to content slides for accessible H1 headings
+
+**Accessibility Checklist for Presenters:**
+
+- [x] All text uses high-contrast color combinations (4.5:1 minimum)
+- [x] Large text (≥18pt) has 3:1 contrast minimum
+- [x] Content slides use `.content` class (or equivalent override)
+- [ ] No reliance on color alone to convey information
+- [ ] Font sizes appropriate for room size and viewing distance
+- [ ] Slides tested on actual presentation hardware
+- [ ] Alternative formats provided (accessible PDFs)
+
+**Common Mistakes to Avoid:**
+
+❌ Forgetting `.content` class on content slides
+❌ Using 18px text for critical information
+❌ Mixing cyan and light mint without proper contrast
+❌ Not testing on actual projector before presentation
+
+✅ Always use `.content` class for content slides
+✅ Keep body text at 24px or larger
+✅ Test contrast ratios when customizing colors
+✅ View slides on presentation hardware
 
 ## Typography
 
