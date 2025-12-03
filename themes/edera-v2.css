@@ -178,6 +178,39 @@ pre code {
   line-height: 1.5;
 }
 
+/* Syntax highlighting overrides for accessibility */
+/* Override MARP's default syntax colors with high-contrast alternatives */
+pre code .hljs-tag,
+pre code .hljs-name,
+pre code .hljs-attr,
+pre code .hljs-selector-tag,
+pre code .hljs-selector-class,
+pre code .hljs-selector-id {
+  color: var(--edera-cyan-accent);  /* #02f4d5 - bright cyan (8.93:1 on dark teal) */
+}
+
+pre code .hljs-string,
+pre code .hljs-number,
+pre code .hljs-literal,
+pre code .hljs-built_in {
+  color: var(--edera-light-mint);  /* #d0fdf2 - light mint (11.39:1 on dark teal) */
+}
+
+pre code .hljs-keyword,
+pre code .hljs-function,
+pre code .hljs-class,
+pre code .hljs-title {
+  color: var(--edera-white);  /* #ffffff - white (12.58:1 on dark teal) */
+  font-weight: 600;
+}
+
+pre code .hljs-comment,
+pre code .hljs-quote,
+pre code .hljs-meta {
+  color: var(--edera-light-mint);  /* #d0fdf2 - light mint (11.39:1 on dark teal) */
+  opacity: 0.8;
+}
+
 /* ========================================
    Tables
    ======================================== */
