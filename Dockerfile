@@ -101,7 +101,8 @@ ENV PORT=8080
 EXPOSE 8080
 
 # Health check for nginx (uses $PORT environment variable)
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+# interval=5s allows workflow to detect healthy status quickly (vs 30s)
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:${PORT}/health || exit 1
 
 # Start script: substitute $PORT in nginx config template and start nginx
