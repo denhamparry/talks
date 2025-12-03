@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2025-12-03
+
+### Fixed
+
+- Fixed Docker workflow smoke test to use native health check (#50)
+  - Root cause: Docker network bridge initialization delay (13+ seconds)
+  - Solution: Use Docker's internal HEALTHCHECK (runs inside container)
+  - Avoids network bridge delay by checking container health status
+  - Expected timing: 7-15 seconds depending on system speed
+  - Leverages existing Dockerfile HEALTHCHECK definition
+
 ## [1.0.1] - 2025-12-03
 
 ### Fixed
@@ -15,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added health check retry loop (5 attempts, 2-second intervals)
   - Eliminates race condition in container startup verification
   - Total timeout: ~15 seconds maximum
+  - Note: This was replaced by v1.0.2 which addresses the root cause
 
 ## [1.0.0] - 2025-12-03
 
@@ -39,6 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Automated deployment to Google Cloud Run
 - Comprehensive contributor guides
 
-[Unreleased]: https://github.com/denhamparry/talks/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/denhamparry/talks/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/denhamparry/talks/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/denhamparry/talks/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/denhamparry/talks/releases/tag/v1.0.0
