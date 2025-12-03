@@ -14,6 +14,14 @@ footer: 'December 2025'
 
 Demo Presentation | December 3, 2025
 
+<!--
+Speaker Notes:
+- Welcome everyone to this demo of the Edera V2 MARP theme
+- This is a title slide - great for opening and closing presentations
+- The dark teal background with cyan accent creates professional impact
+- Introduce yourself and set expectations for the presentation
+-->
+
 ---
 
 <!-- _class: content -->
@@ -23,11 +31,21 @@ Demo Presentation | December 3, 2025
 This presentation demonstrates all the features of the Edera V2 MARP theme.
 
 **What you'll see:**
+
 - Color palette and typography
 - Available slide layouts
 - Code syntax highlighting
 - Tables and lists
 - Best practices
+
+<!--
+Speaker Notes:
+- This is an agenda slide - sets clear expectations
+- Mention this is a comprehensive demo covering all theme features
+- Estimated time: 15-20 minutes for full walkthrough
+- Encourage questions at any point
+- Highlight that all slides are version-controlled in Markdown
+-->
 
 ---
 
@@ -43,6 +61,16 @@ The Edera V2 theme uses a carefully chosen color scheme:
 - White and black for maximum contrast
 
 All combinations meet WCAG AA accessibility standards.
+
+<!--
+Speaker Notes:
+- Color palette was extracted from SVG exports of Google Slides template
+- Dark teal provides professional, trustworthy feel
+- Light mint creates calm, readable content background
+- Cyan accent draws attention without overwhelming
+- WCAG AA compliance means 12:1 contrast ratio - excellent for accessibility
+- Colors work well on projectors and in various lighting conditions
+-->
 
 ---
 
@@ -106,6 +134,16 @@ function createPresentation() {
 
 createPresentation();
 ```
+
+<!--
+Speaker Notes:
+- Code blocks use dark teal background with light text for high contrast
+- Syntax highlighting works automatically for most languages
+- Inline code has subtle background to distinguish from regular text
+- This is actual JavaScript that demonstrates the MARP workflow
+- Perfect for technical presentations and workshops
+- Consider using larger font sizes for code in large venues
+-->
 
 ---
 
@@ -185,6 +223,17 @@ Benefits of this layout:
 - Pull request workflow
 - Open standards
 
+<!--
+Speaker Notes:
+- Two-column layout perfect for side-by-side comparisons
+- This slide demonstrates why MARP is superior for technical content
+- Traditional tools: binary formats make diff/merge impossible
+- MARP approach: plain text enables standard development workflows
+- Pull requests for presentations = review process just like code
+- Teams already using Git benefit immediately
+- Pause here to let audience absorb the differences
+-->
+
 ---
 
 <!-- _class: content -->
@@ -220,12 +269,24 @@ Links are styled with the cyan accent color:
 This slide uses the dark background for visual variety.
 
 **Features:**
+
 - Dark teal background
 - Light mint text
 - Cyan accents
 - High contrast
 
 Great for emphasizing important sections or providing visual breaks.
+
+<!--
+Speaker Notes:
+- Dark slides provide visual rhythm and prevent "slide blindness"
+- Use strategically: section transitions, key points, dramatic emphasis
+- Dark background is less fatiguing in dim rooms
+- Perfect for code-heavy slides (shown on next slide)
+- Cyan accent color pops beautifully against dark teal
+- Limit to 20-30% of total slides for maximum impact
+- Audience attention naturally increases when slide style changes
+-->
 
 ---
 
@@ -401,6 +462,18 @@ What makes Edera V2 great:
 5. **Version Controlled** - Markdown in Git
 6. **Automated Builds** - CI/CD ready
 
+<!--
+Speaker Notes:
+- Summarize the core value propositions
+- Professional design: matches Google Slides quality in Markdown
+- Readability: WCAG AA compliant, works on any projector
+- Flexibility: 6 layouts cover 90% of presentation needs
+- Documentation: reduces onboarding time for new users
+- Version control: treat presentations like code
+- CI/CD: automated builds save time and prevent errors
+- This is the "remember these 6 things" slide
+-->
+
 ---
 
 <!-- _class: title -->
@@ -410,9 +483,23 @@ What makes Edera V2 great:
 ## Thank You
 
 For more information:
+
 - Review the documentation in `docs/`
 - Explore templates in `templates/`
 - Check out example slides
+
+<!--
+Speaker Notes:
+- Open the floor for questions
+- Common questions to expect:
+  * Can I use my company's fonts? Yes, modify the CSS
+  * Does it work with PowerPoint? Export to PDF, then import
+  * Can I add animations? Limited, but transition effects work
+  * What about presenter notes? They're in HTML comments like this!
+- Thank the audience for their time
+- Mention you're available after for one-on-one questions
+- Point them to documentation for self-service learning
+-->
 
 ---
 
@@ -426,3 +513,15 @@ Your next presentation awaits!
 cp templates/basic-presentation.md slides/my-talk.md
 npm run serve
 ```
+
+<!--
+Speaker Notes:
+- End with a clear call to action
+- Show them exactly how to get started (copy-paste ready)
+- Emphasize the simplicity: 2 commands and they're presenting
+- npm run serve gives instant feedback loop
+- Encourage them to start with templates, not blank slides
+- Remind them documentation is comprehensive if they get stuck
+- Final encouragement: if they can write Markdown, they can make great slides
+- Thank them one more time and dismiss
+-->
