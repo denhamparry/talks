@@ -218,20 +218,26 @@ gcloud iam workload-identity-pools providers describe github-provider \
 
 **Save the output** (format: `projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/providers/github-provider`)
 
-### Step 7: Copy Image to Artifact Registry and Deploy
+### Step 7: Build and Deploy to Cloud Run
 
-Cloud Run requires images in Artifact Registry (not GHCR).
+Cloud Run requires images in Artifact Registry (not GHCR) and must be built for **amd64** architecture.
+
+**Important:** If you're on Apple Silicon (M1/M2/M3), you must build for `linux/amd64`, not `arm64`.
 
 ```bash
 # Configure Docker authentication for Artifact Registry
 gcloud auth configure-docker $REGION-docker.pkg.dev
 
-# Pull image from GitHub Container Registry
-docker pull ghcr.io/denhamparry/talks:latest
+# Build image for amd64 architecture (required for Cloud Run)
+docker build --platform linux/amd64 --target production -t talks:cloudrun .
 
 # Tag for Artifact Registry
-docker tag ghcr.io/denhamparry/talks:latest \
+docker tag talks:cloudrun \
   $REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest
+
+# Verify architecture is amd64 (not arm64)
+docker inspect $REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest --format='Architecture: {{.Architecture}}'
+# Should output: Architecture: amd64
 
 # Push to Artifact Registry
 docker push $REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest
@@ -263,9 +269,26 @@ gcloud run services describe $SERVICE_NAME \
 SERVICE_URL=$(gcloud run services describe $SERVICE_NAME --region=$REGION --format='value(status.url)')
 curl "$SERVICE_URL/health"
 # Should return: healthy
+
+# Test a presentation
+curl -I "$SERVICE_URL/"
+# Should return: HTTP 200
 ```
 
-**Note:** After GitHub Actions is configured, the workflow will automatically pull from GHCR and push to Artifact Registry on every deployment.
+**Common Issue:** If you get "exec format error" or container fails to start, you pushed the wrong architecture. Fix it:
+
+```bash
+# Remove incorrect tag
+docker rmi $REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest
+
+# Re-tag with correct amd64 image
+docker tag talks:cloudrun $REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest
+
+# Push again
+docker push $REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest
+```
+
+**Note:** After GitHub Actions is configured, the workflow will automatically build multi-architecture images and push to Artifact Registry on every deployment.
 
 ### Step 8: Configure GitHub Secrets
 
