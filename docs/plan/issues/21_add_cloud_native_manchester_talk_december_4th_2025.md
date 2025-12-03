@@ -9,17 +9,24 @@
 
 Add presentation materials for a talk at the Cloud-Native Manchester meetup scheduled for December 4th, 2025.
 
+**Talk Title:** "IvySketch: Design Patterns & AI Workflow"
+**Subtitle:** "Building GenAI Applications with Kubernetes and AI-Assisted Development"
+**Speaker:** Lewis Denham-Parry
+**Source Material:** `ivysketch-design-patterns-and-ai-workflow.marp.md` (1136 lines)
+
 ### Current Behavior
 - Repository contains infrastructure for MARP presentations with Edera V2 theme
 - Example presentations exist (`example-contribution.md`, `example-presentation.md`)
 - Build system and CI/CD are operational
-- No presentation content exists for the Cloud-Native Manchester meetup
+- Talk content exists in root directory: `ivysketch-design-patterns-and-ai-workflow.marp.md`
+- **No presentation in `slides/` directory** - source file needs to be moved/renamed
 
 ### Expected Behavior
-- Create a new slide deck specifically for the Cloud-Native Manchester talk
-- Add source markdown file to the repository under `slides/`
+- Move/rename talk file to `slides/2025-12-04-cloud-native-manchester.md`
+- Follow repository naming convention (YYYY-MM-DD-event-name.md)
 - Ensure presentation builds successfully (HTML and PDF)
-- Update README with information about this talk
+- Update README with talk information
+- Verify all MARP directives are compatible with Edera V2 theme
 
 ## Current State Analysis
 
@@ -143,25 +150,59 @@ Add entry to a "Talks" or "Presentations" section:
 
 ## Implementation Plan
 
-### Step 1: Create Slide Deck
+### Step 1: Move and Rename Slide Deck
+
+**Action:** Move existing talk file to slides directory with proper naming
+
+**Commands:**
+```bash
+# Move and rename to follow repository convention
+mv ivysketch-design-patterns-and-ai-workflow.marp.md \
+   slides/2025-12-04-cloud-native-manchester.md
+
+# Verify file moved successfully
+ls -la slides/2025-12-04-cloud-native-manchester.md
+```
 
 **File:** `slides/2025-12-04-cloud-native-manchester.md`
 
-**Changes:**
-- Copy template structure from `templates/basic-presentation.md`
-- Update frontmatter with MARP configuration
-- Add title slide with talk details:
-  - Title: [To be determined based on talk content]
-  - Subtitle: [Optional]
-  - Speaker attribution
-  - Event name: "Cloud-Native Manchester"
-  - Date: "December 4th, 2025"
-- Structure content with:
-  - Introduction/agenda slide
-  - Main content slides (topic-specific)
-  - Key takeaways slide
-  - Thank you/Q&A slide
-- Use appropriate slide classes (title, content, dark, two-columns)
+**Existing Content Analysis:**
+The talk file already contains:
+- ✅ MARP frontmatter (marp: true, theme: edera-v2, paginate: true)
+- ✅ Complete presentation structure (1136 lines, 7 parts)
+- ✅ Title slide: "IvySketch: Design Patterns & AI Workflow"
+- ✅ Speaker: Lewis Denham-Parry
+- ⚠️ Missing event attribution (needs: "| Cloud-Native Manchester | December 4th, 2025")
+
+**Required Changes:**
+1. Update title slide to include event details:
+```markdown
+# IvySketch: Design Patterns & AI Workflow
+
+**Building GenAI Applications with Kubernetes and AI-Assisted Development**
+
+Lewis Denham-Parry | Cloud-Native Manchester | December 4th, 2025
+```
+
+2. Add optional header/footer in frontmatter:
+```markdown
+---
+marp: true
+theme: edera-v2
+paginate: true
+header: 'Cloud-Native Manchester'
+footer: 'December 4th, 2025'
+---
+```
+
+**Content Structure (Already Complete):**
+- Part 1: Introduction (What is IvySketch, Tech Stack, Deployment)
+- Part 2: Architecture & Design Patterns (Middleware, SSE, NATS, OpenTelemetry)
+- Part 3: Kubernetes Deployment Patterns (Kustomize, GPU scheduling, NetworkPolicies)
+- Part 4: AI-Powered Development Workflow (Documentation-driven, custom commands)
+- Part 5: Real-World Examples (NATS integration, ComfyUI, Image Worker)
+- Part 6: Lessons Learned (What worked, challenges, best practices)
+- Part 7: Conclusion & Q&A
 
 **Example Structure (Based on `example-contribution.md`):**
 ```markdown
@@ -325,11 +366,23 @@ This repository contains slide decks for conference and meetup talks.
 
 ### Upcoming Talks
 
-#### Cloud-Native Manchester - December 4th, 2025
+#### IvySketch: Design Patterns & AI Workflow - December 4th, 2025
 - **Event:** [Cloud-Native Manchester Meetup](https://www.meetup.com/cloud-native-kubernetes-manchester/events/312062865/)
 - **Date:** December 4th, 2025
 - **Location:** Manchester, UK
-- **Slides:** Available after build ([HTML](dist/2025-12-04-cloud-native-manchester.html) | [PDF](dist/2025-12-04-cloud-native-manchester.pdf))
+- **Speaker:** Lewis Denham-Parry
+- **Topic:** Building GenAI Applications with Kubernetes and AI-Assisted Development
+- **Project:** [IvySketch](https://ivysketch.me) - AI-powered Axolotl character designer
+- **Slides:** [HTML](dist/2025-12-04-cloud-native-manchester.html) | [PDF](dist/2025-12-04-cloud-native-manchester.pdf)
+
+**Talk Outline:**
+- Part 1: Introduction to IvySketch (GenAI app with Kubernetes)
+- Part 2: Architecture & Design Patterns (Go, NATS, OpenTelemetry)
+- Part 3: Kubernetes Deployment (Kustomize, GPU scheduling, NetworkPolicies)
+- Part 4: AI-Powered Development Workflow (Documentation-driven, custom commands)
+- Part 5: Real-World Examples (326+ tasks completed across 13 phases)
+- Part 6: Lessons Learned (Challenges, best practices, pitfalls to avoid)
+- Part 7: Q&A
 
 ---
 ```
@@ -355,7 +408,9 @@ make build
 
 # Verify output files exist and check sizes
 ls -lh dist/2025-12-04-cloud-native-manchester.*
-# Expected: HTML ~10-50KB, PDF ~50-500KB (varies by content)
+# Expected for this talk (1136 lines):
+# - HTML: ~100-200KB (larger due to comprehensive content)
+# - PDF: ~1-2MB (7 parts, lots of code examples)
 
 # Optional: Serve locally to preview
 make serve
@@ -367,9 +422,14 @@ make serve
 - [ ] HTML file generated successfully
 - [ ] PDF file generated successfully
 - [ ] Edera V2 theme applied correctly
-- [ ] All slides render properly
-- [ ] Page numbers display correctly
+- [ ] All 7 parts render properly (Introduction → Conclusion)
+- [ ] Page numbers display correctly (paginate: true)
+- [ ] Code blocks render with syntax highlighting (Go, TypeScript, YAML, Bash)
+- [ ] ASCII diagram renders correctly (Architecture overview)
+- [ ] `<!-- _class: lead -->` renders properly (verify compatibility with Edera V2)
 - [ ] No build errors or warnings
+- [ ] Header/footer display correctly if added
+- [ ] All 160 slides build successfully
 
 ### Step 4: Test CI/CD Build
 
@@ -493,10 +553,79 @@ ls -la dist/
 - [x] Pre-commit hooks pass
 - [x] Changes committed with conventional commit message
 
+## Talk Content Summary
+
+**Source File:** `ivysketch-design-patterns-and-ai-workflow.marp.md` (1136 lines)
+
+### Key Topics Covered
+
+**Part 1: Introduction (slides 1-14)**
+- IvyBot overview: AI-powered Axolotl character designer
+- Tech stack: Go, React, NATS, Ollama, ComfyUI
+- Deployment: Docker Compose (dev) + Kubernetes EKS (prod)
+- Live demo: https://ivysketch.me
+
+**Part 2: Architecture & Design Patterns (slides 15-45)**
+- Backend middleware chain (Chi router, OpenTelemetry, Prometheus)
+- Frontend React component structure with SSE streaming
+- LLM integration with Ollama (OpenAI-compatible API)
+- NATS JetStream async message queue pattern
+- Distributed tracing with OpenTelemetry semantic conventions
+- Custom Prometheus metrics for AI workloads
+
+**Part 3: Kubernetes Deployment Patterns (slides 46-73)**
+- Kustomize base + overlays structure
+- GPU node scheduling (g5.2xlarge instances)
+- Sealed Secrets for production secret management
+- NetworkPolicies for security (default deny, explicit allow)
+- Ingress + TLS with cert-manager
+- Persistent storage for Ollama models
+- Observability stack (Prometheus, Grafana, Jaeger)
+
+**Part 4: AI-Powered Development Workflow (slides 74-99)**
+- Documentation-driven development philosophy
+- Task planning structure (docs/prompt_plan.md)
+- Custom slash commands: `/workflow-issue-plan`, `/workflow-research-plan`, `/workflow-action-plan`
+- Plan document structure and templates
+- Real example: Issue #310 (nil pointer dereference fix)
+
+**Part 5: Real-World Examples (slides 100-127)**
+- Example 1: NATS integration journey (Issues #115→#117→#120→#131)
+- Example 2: ComfyUI image generation (Issues #137→#138→#146→#176)
+- Example 3: Image worker service (Issues #229→#233→#254)
+- Production architecture: Chat → NATS → Worker → ComfyUI → S3 → Frontend
+
+**Part 6: Lessons Learned (slides 128-154)**
+- What worked: Documentation-driven dev, AI-assisted planning, sequential tasks
+- Challenge 1: GPU node security (AWS security groups vs K8s NetworkPolicies)
+- Challenge 2: Large model images (16.3 GB ComfyUI, 4.7 GB Ollama)
+- Challenge 3: Cold start latency (30s → <500ms with model preloading)
+- AI development best practices
+- Avoiding AI pitfalls (over-engineering, trust without verification)
+
+**Part 7: Conclusion & Q&A (slides 155-160)**
+- Key takeaways (4 main points)
+- Resources (live demo, GitHub, gallery, documentation)
+- Contact information
+- Final Q&A slide
+
+### Slide Layout Usage in Talk
+
+**Slide Classes Used:**
+- `<!-- _class: lead -->` - Used for part dividers (7 instances)
+- Standard content slides - Majority of presentation
+- Code blocks - Go, TypeScript, YAML, Bash examples throughout
+- ASCII diagrams - Architecture overview (slide 18)
+- Tables - Not used in this talk
+- Two-column layouts - Not used in this talk
+
+**Note:** The talk uses `<!-- _class: lead -->` which is **not** part of the Edera V2 theme. This needs to be verified during testing or replaced with `<!-- _class: dark -->`.
+
 ## Files Modified
 
-1. `slides/2025-12-04-cloud-native-manchester.md` - New presentation slide deck
-2. `README.md` - Add talks section with Cloud-Native Manchester info
+1. `ivysketch-design-patterns-and-ai-workflow.marp.md` → `slides/2025-12-04-cloud-native-manchester.md` - Move and rename presentation file
+2. `slides/2025-12-04-cloud-native-manchester.md` - Update title slide with event details, add header/footer
+3. `README.md` - Add talks section with Cloud-Native Manchester info
 
 ## Related Issues and Tasks
 
