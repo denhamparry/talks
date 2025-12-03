@@ -11,7 +11,8 @@
     "build": "marp -I slides/ -o dist/",
     "build:pdf": "marp -I slides/ --pdf -o dist/",
     "watch": "marp -I slides/ -w -o dist/",
-    "serve": "marp -s -I slides/"
+    "serve": "marp -s -I slides/",
+    "accessibility-audit": "node scripts/check-contrast.js"
   },
   "keywords": [
     "marp",
@@ -23,6 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "@marp-team/marp-cli": "^4.2.3",
-    "@marp-team/marp-core": "^3.9.0"
+    "@marp-team/marp-core": "^3.9.0",
+    "wcag-contrast": "3.0.0"
   }
 }
