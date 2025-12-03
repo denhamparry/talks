@@ -86,23 +86,23 @@ LABEL org.opencontainers.image.source="https://github.com/denhamparry/talks"
 # Copy built slides from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy custom nginx configuration template
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
-# Ensure proper permissions for nginx files and config
+# Ensure proper permissions for nginx files
 RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html && \
-    chown -R nginx:nginx /etc/nginx/conf.d && \
-    chmod 644 /etc/nginx/conf.d/default.conf
+    chmod -R 755 /usr/share/nginx/html
 
-# Expose HTTP port
-EXPOSE 80
+# Cloud Run sets $PORT environment variable (default to 8080 for local use)
+ENV PORT=8080
 
-# Health check for nginx
+# Expose port (Cloud Run ignores this, uses $PORT)
+EXPOSE 8080
+
+# Health check for nginx (uses $PORT environment variable)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:80 || exit 1
+    CMD wget --no-verbose --tries=1 --spider http://localhost:${PORT}/health || exit 1
 
-# Note: nginx alpine image runs as root by default for port 80 binding
-# For production, consider using port >1024 and USER nginx directive
-# nginx runs in foreground by default
+# Start script: substitute $PORT in nginx config template and start nginx
+# The /docker-entrypoint.sh script automatically processes templates in /etc/nginx/templates/
 CMD ["nginx", "-g", "daemon off;"]

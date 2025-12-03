@@ -1,0 +1,89 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'slides/**'
+      - 'themes/**'
+      - 'templates/**'
+      - 'Dockerfile'
+      - 'nginx.conf'
+      - 'package.json'
+      - 'marp.config.js'
+      - '.github/workflows/cloudrun-deploy.yml'
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: 'denhamparry-talks'
+  REGION: 'europe-west2'  # London
+  SERVICE_NAME: 'talks'
+  IMAGE_NAME: 'ghcr.io/denhamparry/talks:latest'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # Required for OIDC authentication
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE_NAME }}
+          region: ${{ env.REGION }}
+          image: ${{ env.IMAGE_NAME }}
+          flags: |
+            --platform=managed
+            --allow-unauthenticated
+            --port=8080
+            --min-instances=0
+            --max-instances=10
+            --memory=256Mi
+            --cpu=1
+            --timeout=60s
+
+      - name: Verify deployment
+        run: |
+          SERVICE_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }} \
+            --region=${{ env.REGION }} \
+            --format='value(status.url)')
+
+          echo "Service deployed to: $SERVICE_URL"
+
+          # Test health endpoint
+          curl -f "$SERVICE_URL/health" || (echo "Health check failed" && exit 1)
+
+          # Test homepage
+          curl -f -I "$SERVICE_URL/" || (echo "Homepage check failed" && exit 1)
+
+          echo "::notice::Deployment successful to $SERVICE_URL"
+
+      - name: Output deployment URL
+        run: |
+          SERVICE_URL=$(gcloud run services describe ${{ env.SERVICE_NAME }} \
+            --region=${{ env.REGION }} \
+            --format='value(status.url)')
+
+          echo "### Deployment Successful! 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Service URL:** $SERVICE_URL" >> $GITHUB_STEP_SUMMARY
+          echo "**Custom Domain:** https://talks.denhamparry.co.uk (after DNS setup)" >> $GITHUB_STEP_SUMMARY
+          echo "**Region:** ${{ env.REGION }} (London)" >> $GITHUB_STEP_SUMMARY
+          echo "**Image:** ${{ env.IMAGE_NAME }}" >> $GITHUB_STEP_SUMMARY
