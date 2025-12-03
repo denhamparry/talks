@@ -1,5 +1,9 @@
 # Claude Code Project Template
 
+[![CI](https://github.com/denhamparry/talks/workflows/ci/badge.svg)](https://github.com/denhamparry/talks/actions)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A GitHub template repository that provides a standardized, fully-configured foundation for new projects developed with Claude Code. Includes built-in support for Test-Driven Development (TDD), automated code quality checks, and AI-assisted workflows.
 
 ## 🚀 Quick Start
@@ -399,6 +403,6 @@ For issues with:
 ---
 
 **Template Version:** 1.0
-**Last Updated:** 2025-10-02
+**Last Updated:** 2025-12-03
 
 Built with ❤️ for Claude Code development

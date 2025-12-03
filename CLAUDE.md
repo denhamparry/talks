@@ -287,5 +287,5 @@ GitHub Actions automatically builds presentations:
 ---
 
 **Template Version:** 1.0
-**Last Updated:** 2025-10-02
-**Maintained By:** [Your Name/Team]
+**Last Updated:** 2025-12-03
+**Maintained By:** Lewis Denham-Parry
