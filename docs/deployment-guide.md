@@ -37,7 +37,7 @@ GitHub → Docker Build → GHCR → Cloud Run → talks.denhamparry.co.uk
 
 3. **Deploy to Cloud Run**
    - Triggers `.github/workflows/cloudrun-deploy.yml`
-   - Deploys to europe-west2 (London)
+   - Deploys to europe-west1 (Belgium)
    - Scales 0-10 instances automatically
 
 4. **Available globally**
@@ -151,7 +151,7 @@ gcloud artifacts repositories describe talks \
 ### Step 5: Create Service Accounts
 
 ```bash
-export REGION="europe-west2"  # London
+export REGION="europe-west1"  # Belgium (supports domain mappings)
 export SERVICE_NAME="talks"
 
 # Service account for Cloud Run service (runs the container)
@@ -420,7 +420,7 @@ git push origin main
 # Deploy specific image tag
 gcloud run deploy talks \
   --image=ghcr.io/denhamparry/talks:main \
-  --region=europe-west2 \
+  --region=europe-west1 \
   --project=denhamparry-talks
 ```
 
@@ -631,7 +631,7 @@ gcloud billing budgets update BUDGET_ID \
 ```bash
 gcloud run services update talks \
   --min-instances=1 \
-  --region=europe-west2
+  --region=europe-west1
 ```
 
 ### Image Size Too Large
@@ -673,7 +673,7 @@ If presentations are large or complex:
 gcloud run services update talks \
   --memory=512Mi \
   --cpu=2 \
-  --region=europe-west2
+  --region=europe-west1
 ```
 
 **Cost impact:** Increases compute costs, but still likely within free tier.
@@ -767,7 +767,7 @@ gcloud run services add-iam-policy-binding talks \
 For issues with deployment:
 
 1. Check [Troubleshooting](#troubleshooting) section
-2. Review Cloud Run logs: `gcloud run services logs read talks --region=europe-west2`
+2. Review Cloud Run logs: `gcloud run services logs read talks --region=europe-west1`
 3. Check GitHub Actions logs: `gh run view --log`
 4. Open an issue in the repository
 

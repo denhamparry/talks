@@ -261,7 +261,7 @@ docker build --target production -t talks:latest .
 Presentations are automatically deployed to **Google Cloud Run** when changes are pushed to the main branch.
 
 - **Production URL:** [talks.denhamparry.co.uk](https://talks.denhamparry.co.uk)
-- **Region:** europe-west2 (London)
+- **Region:** europe-west1 (Belgium)
 - **Platform:** Google Cloud Run (serverless)
 - **Cost:** $0/month (within free tier)
 
@@ -278,7 +278,7 @@ Presentations are automatically deployed to **Google Cloud Run** when changes ar
 # Deploy latest image to Cloud Run
 gcloud run deploy talks \
   --image=ghcr.io/denhamparry/talks:latest \
-  --region=europe-west2 \
+  --region=europe-west1 \
   --project=denhamparry-talks
 ```
 

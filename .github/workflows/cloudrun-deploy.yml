@@ -17,9 +17,9 @@ on:
 
 env:
   PROJECT_ID: 'denhamparry-talks'
-  REGION: 'europe-west2'  # London
+  REGION: 'europe-west1'  # Belgium (supports domain mappings)
   SERVICE_NAME: 'talks'
-  ARTIFACT_REGISTRY: 'europe-west2-docker.pkg.dev'
+  ARTIFACT_REGISTRY: 'europe-west1-docker.pkg.dev'
   REPOSITORY: 'talks'
   IMAGE_NAME: 'talks'
 
@@ -107,5 +107,5 @@ jobs:
 
           echo "**Service URL:** $SERVICE_URL" >> $GITHUB_STEP_SUMMARY
           echo "**Custom Domain:** https://talks.denhamparry.co.uk (after DNS setup)" >> $GITHUB_STEP_SUMMARY
-          echo "**Region:** ${{ env.REGION }} (London)" >> $GITHUB_STEP_SUMMARY
+          echo "**Region:** ${{ env.REGION }} (Belgium)" >> $GITHUB_STEP_SUMMARY
           echo "**Image:** $IMAGE_URL" >> $GITHUB_STEP_SUMMARY
