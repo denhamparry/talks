@@ -1,9 +1,10 @@
 # GitHub Issue #32: Fix GCP IAM Service Account Credentials API not enabled in deployment workflow
 
 **Issue:** [#32](https://github.com/denhamparry/talks/issues/32)
-**Status:** Open
+**Status:** Documentation Complete - Awaiting Manual Infrastructure Setup
 **Labels:** bug, ci, github_actions, high-priority
 **Date:** 2025-12-03
+**Documentation Updated:** 2025-12-03
 
 ## Problem Statement
 
@@ -516,3 +517,74 @@ Not applicable - this is an infrastructure configuration change with no code mod
    - Workflow should fail fast with clear error messages
    - Consider adding a preflight check step that validates API enablement before attempting Docker operations
    - Add workflow summary with troubleshooting links on failure
+
+## Implementation Summary
+
+### Documentation Updates Completed (2025-12-03)
+
+To prevent this issue in future GCP Cloud Run deployments, the following documentation has been updated:
+
+#### 1. Deployment Guide - Step 4: Enable Required APIs
+
+**File:** `docs/deployment-guide.md` (lines 114-132)
+
+**Changes:**
+- Added `iamcredentials.googleapis.com` to the list of required APIs
+- Added command: `gcloud services enable iamcredentials.googleapis.com --project=$PROJECT_ID`
+- Added explanation note: "The IAM Service Account Credentials API is critical for Workload Identity Federation to impersonate service accounts"
+
+**Impact:** Future deployments will include this API in the initial setup checklist, preventing the authentication error encountered in issue #32.
+
+#### 2. Deployment Guide - Troubleshooting Section
+
+**File:** `docs/deployment-guide.md` (lines 553-594)
+
+**Changes:**
+- Added new troubleshooting entry: "Unable to Acquire Impersonated Credentials"
+- Documents symptoms: workflow fails at "Push to Artifact Registry" step
+- Explains root cause: missing `iamcredentials.googleapis.com` API
+- Provides solution: `gcloud services enable` command with verification steps
+- Includes re-run instructions: `gh run rerun <RUN_ID> --failed`
+
+**Impact:** Developers encountering this error can quickly diagnose and resolve the issue without needing to research GCP Workload Identity Federation internals.
+
+### Manual Infrastructure Steps (User Action Required)
+
+The following steps still need to be executed manually by someone with GCP project access:
+
+1. **Enable the API:**
+   ```bash
+   gcloud services enable iamcredentials.googleapis.com --project=192861381104
+   ```
+
+2. **Wait for propagation:** 2-5 minutes
+
+3. **Verify API enabled:**
+   ```bash
+   gcloud services list --enabled --project=192861381104 --filter="name:iamcredentials.googleapis.com"
+   ```
+
+4. **Re-run failed workflow:**
+   ```bash
+   gh run rerun 19903865129 --failed
+   ```
+
+5. **Verify deployment succeeds:** Check that all workflow steps complete successfully
+
+### Success Criteria Status
+
+**Documentation Tasks (Complete):**
+- ✅ Updated `docs/deployment-guide.md` Step 4 to include `iamcredentials.googleapis.com`
+- ✅ Added note about Workload Identity Federation requiring this API
+- ✅ Added troubleshooting section with this specific authentication error
+- ✅ Plan document updated with implementation summary
+
+**Infrastructure Tasks (Pending - User Action):**
+- ⏳ IAM Service Account Credentials API enabled in GCP project 192861381104
+- ⏳ API shows as enabled when listing services
+- ⏳ Workflow re-run completes successfully (all steps green)
+- ⏳ Docker images successfully pushed to Artifact Registry
+- ⏳ Cloud Run service deploys new revision successfully
+- ⏳ Service URL accessible and serves presentation slides
+
+Once the manual infrastructure steps are completed, issue #32 can be fully closed.
