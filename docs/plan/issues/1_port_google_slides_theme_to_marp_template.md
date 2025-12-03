@@ -1,7 +1,7 @@
 # GitHub Issue #1: Port Google Slides theme to MARP template
 
 **Issue:** [#1](https://github.com/denhamparry/talks/issues/1)
-**Status:** Open
+**Status:** Complete
 **Labels:** documentation, enhancement, template
 **Date:** 2025-12-03
 
@@ -10,12 +10,14 @@
 Create a MARP slide deck template that replicates the design and theme from an existing Google Slides template. This will enable consistent, version-controlled presentations using Markdown while maintaining the visual style of current presentation materials.
 
 ### Current Behavior
+
 - Presentations are created using Google Slides
 - Version control is limited or non-existent for slide content
 - Design consistency depends on manually copying styles
 - Markdown-based presentation workflow is not available
 
 ### Expected Behavior
+
 - MARP templates that visually match the Google Slides design
 - Markdown-based slide creation with familiar brand styling
 - Version-controlled presentation source files
@@ -24,6 +26,7 @@ Create a MARP slide deck template that replicates the design and theme from an e
 ## Current State Analysis
 
 ### Relevant Code/Config
+
 - **Project Structure:** This is a GitHub template repository focused on Claude Code project setup
 - **No MARP Configuration:** No existing MARP setup, CSS themes, or presentation files found
 - **No Package.json:** No Node.js dependencies or MARP CLI tooling configured
@@ -34,6 +37,7 @@ Create a MARP slide deck template that replicates the design and theme from an e
   - Edera V2 theme ready for analysis and MARP conversion
 
 ### Related Context
+
 - Repository is currently a template for Claude Code projects
 - No presentation-specific tooling or dependencies are currently installed
 - Need to establish MARP infrastructure from scratch
@@ -44,6 +48,7 @@ Create a MARP slide deck template that replicates the design and theme from an e
 ## Solution Design
 
 ### Approach
+
 Implement a complete MARP presentation system with the "Edera V2" custom theme that matches the Google Slides design. This involves:
 
 1. **Setup MARP tooling** - Install MARP CLI and configure build process
@@ -53,6 +58,7 @@ Implement a complete MARP presentation system with the "Edera V2" custom theme t
 5. **Document usage** - Provide clear instructions for using and customizing templates
 
 **Theme Naming Strategy:**
+
 - Primary theme: `edera-v2` (based on Edera V2 Google Slides template)
 - Future themes can be added: `edera-v3`, `custom-theme`, etc.
 - Theme files organized in `themes/` directory for easy management
@@ -60,12 +66,15 @@ Implement a complete MARP presentation system with the "Edera V2" custom theme t
 ### Implementation
 
 #### 1. MARP Tooling Setup
+
 **Files to create:**
+
 - `package.json` - Node.js dependencies for MARP CLI
 - `marp.config.js` - MARP configuration file
 - `.github/workflows/build-slides.yml` - CI/CD for building PDFs
 
 **Dependencies needed:**
+
 ```json
 {
   "@marp-team/marp-cli": "^3.x",
@@ -74,9 +83,11 @@ Implement a complete MARP presentation system with the "Edera V2" custom theme t
 ```
 
 #### 2. Theme CSS Architecture
+
 **File:** `themes/edera-v2.css`
 
 MARP themes use CSS with special directives:
+
 ```css
 /* @theme edera-v2 */
 /* @import default */
@@ -98,12 +109,15 @@ section.content {
 ```
 
 **Theme Source Files:**
+
 - SVG files in `docs/theme-resources/slides-export/edera/v2/svg/`
 - 26 slides containing various layouts and design patterns
 - Design elements will be extracted and documented in `docs/theme-analysis.md`
 
 #### 3. Template Structure
+
 **Files to create:**
+
 - `templates/basic-presentation.md` - Starter template
 - `templates/layouts/title-slide.md` - Title slide example
 - `templates/layouts/content-slide.md` - Content slide example
@@ -111,12 +125,15 @@ section.content {
 - `templates/layouts/image-slide.md` - Image-focused layout
 
 #### 4. Documentation
+
 **Files to create:**
+
 - `docs/marp-usage.md` - How to use MARP templates
 - `docs/theme-guide.md` - Theme customization guide
 - `README.md` updates - Add MARP build instructions
 
 ### Benefits
+
 - Version-controlled presentations (Git-based workflow)
 - Markdown simplicity with professional design
 - Easy collaboration and review process
@@ -127,21 +144,25 @@ section.content {
 ## Implementation Plan
 
 ### Step 1: Create MARP Project Structure
+
 **Files:** `package.json`, `.gitignore` updates
 
 **Changes:**
+
 - Initialize Node.js project with MARP dependencies
 - Add MARP CLI and core packages
 - Configure npm scripts for building presentations
 - Update `.gitignore` to exclude `node_modules/` and build artifacts
 
 **Commands:**
+
 ```bash
 npm init -y
 npm install --save-dev @marp-team/marp-cli @marp-team/marp-core
 ```
 
 **package.json scripts:**
+
 ```json
 {
   "scripts": {
@@ -154,14 +175,17 @@ npm install --save-dev @marp-team/marp-cli @marp-team/marp-core
 ```
 
 **Testing:**
+
 ```bash
 npm run build
 ```
 
 ### Step 2: Analyze Edera V2 Theme from SVG Files
+
 **File:** `docs/theme-analysis.md`
 
 **Changes:**
+
 - Create documentation file for Edera V2 theme analysis
 - Parse SVG files to extract design elements
 - Document color palette (primary, secondary, accent, backgrounds) from fill/stroke attributes
@@ -171,6 +195,7 @@ npm run build
 - Identify reusable layout types across the 26 slides
 
 **SVG Analysis Process:**
+
 - Read SVG files from `docs/theme-resources/slides-export/edera/v2/svg/`
 - Extract color values from `fill=""` and `stroke=""` attributes
 - Extract font properties from `<text>` elements
@@ -178,6 +203,7 @@ npm run build
 - Document patterns found across multiple slides
 
 **Structure:**
+
 ```markdown
 # Edera V2 Theme Analysis
 
@@ -212,14 +238,17 @@ npm run build
 ```
 
 **Testing:**
+
 - Compare SVG analysis with visual inspection of slides
 - Verify extracted colors match the original theme
 - User reviews and confirms theme analysis is accurate
 
 ### Step 3: Create Edera V2 MARP Theme CSS
+
 **File:** `themes/edera-v2.css`
 
 **Changes:**
+
 - Create custom MARP theme CSS file
 - Implement base section styling (colors, fonts, backgrounds)
 - Define title slide class with specific layout
@@ -229,6 +258,7 @@ npm run build
 - Implement footer and header styling
 
 **Example structure:**
+
 ```css
 /* @theme edera-v2 */
 
@@ -264,15 +294,18 @@ h1 {
 ```
 
 **Testing:**
+
 - Create test slide deck using the edera-v2 theme
 - Compare rendered output with original SVG files
 - Adjust CSS until visual match is achieved
 - Test with different slide layouts found in the 26 SVGs
 
 ### Step 4: Create MARP Configuration
+
 **File:** `marp.config.js`
 
 **Changes:**
+
 - Create MARP configuration file
 - Specify custom theme path
 - Configure PDF export options
@@ -280,6 +313,7 @@ h1 {
 - Define input/output directories
 
 **Content:**
+
 ```javascript
 module.exports = {
   inputDir: './slides',
@@ -296,12 +330,15 @@ module.exports = {
 ```
 
 **Testing:**
+
 ```bash
 marp --config-file marp.config.js
 ```
 
 ### Step 5: Build Template Slide Decks
+
 **Files:**
+
 - `templates/basic-presentation.md`
 - `templates/layouts/title-slide.md`
 - `templates/layouts/content-slide.md`
@@ -309,6 +346,7 @@ marp --config-file marp.config.js
 - `templates/layouts/image-slide.md`
 
 **Changes:**
+
 - Create basic presentation template with frontmatter
 - Implement title slide example with theme class
 - Create content slide with bullet points and code example
@@ -316,6 +354,7 @@ marp --config-file marp.config.js
 - Create image-focused slide template
 
 **Basic presentation structure:**
+
 ```markdown
 ---
 marp: true
@@ -353,14 +392,17 @@ function example() {
 ```
 
 **Testing:**
+
 - Build each template individually
 - Verify layouts match Google Slides patterns
 - Test PDF export quality
 
 ### Step 6: Create GitHub Actions Workflow
+
 **File:** `.github/workflows/build-slides.yml`
 
 **Changes:**
+
 - Create CI/CD workflow for building presentations
 - Configure workflow to trigger on push to slides or themes
 - Install Node.js and dependencies
@@ -369,6 +411,7 @@ function example() {
 - Optional: Deploy HTML to GitHub Pages
 
 **Workflow structure:**
+
 ```yaml
 name: Build MARP Slides
 
@@ -409,12 +452,15 @@ jobs:
 ```
 
 **Testing:**
+
 - Push changes and verify workflow runs
 - Check artifact downloads
 - Verify PDF quality
 
 ### Step 7: Create Documentation
+
 **Files:**
+
 - `docs/marp-usage.md`
 - `docs/theme-guide.md`
 - Update `README.md`
@@ -422,6 +468,7 @@ jobs:
 **Changes:**
 
 **docs/marp-usage.md:**
+
 ```markdown
 # MARP Usage Guide
 
@@ -450,6 +497,7 @@ jobs:
 ```
 
 **docs/theme-guide.md:**
+
 ```markdown
 # Theme Customization Guide
 
@@ -477,19 +525,23 @@ Edit the `font-family` in section styling in `themes/edera-v2.css`...
 ```
 
 **README.md updates:**
+
 - Add "Building Presentations" section
 - Document npm scripts
 - Link to MARP documentation
 
 **Testing:**
+
 - Follow documentation to create a test presentation
 - Verify all commands work as documented
 - Check for clarity and completeness
 
 ### Step 8: Create Example Presentation
+
 **File:** `slides/example-presentation.md`
 
 **Changes:**
+
 - Create full example presentation using all layouts
 - Demonstrate title slide
 - Show content slides with various elements (lists, code, images)
@@ -498,6 +550,7 @@ Edit the `font-family` in section styling in `themes/edera-v2.css`...
 - Demonstrate all theme features
 
 **Content includes:**
+
 - Title slide with conference/talk info
 - About/bio slide
 - Technical content with code examples
@@ -505,19 +558,23 @@ Edit the `font-family` in section styling in `themes/edera-v2.css`...
 - Conclusion/thank you slide
 
 **Testing:**
+
 - Build example: `npm run build:pdf`
 - Review PDF output for quality
 - Compare with Google Slides version
 - Share with stakeholders for feedback
 
 ### Step 9: Update Project Documentation
+
 **Files:**
+
 - `CLAUDE.md`
 - `CONTRIBUTING.md` (if applicable)
 
 **Changes:**
 
 **CLAUDE.md updates:**
+
 ```markdown
 ## Presentation Workflow
 
@@ -546,19 +603,23 @@ Edit the `font-family` in section styling in `themes/edera-v2.css`...
 ```
 
 **Testing:**
+
 - Verify documentation is clear and complete
 - Test commands listed in documentation
 
 ### Step 10: Add .gitignore Entries
+
 **File:** `.gitignore`
 
 **Changes:**
+
 - Add `node_modules/` to ignore Node dependencies
 - Add `dist/` to ignore build outputs (or commit them based on preference)
 - Add `.marp/` if MARP creates cache directories
 - Add OS-specific files (`.DS_Store`, `Thumbs.db`)
 
 **Content to add:**
+
 ```gitignore
 # Node.js
 node_modules/
@@ -578,16 +639,19 @@ Thumbs.db
 ```
 
 **Testing:**
+
 - Run `git status` to verify ignored files don't appear
 
 ## Testing Strategy
 
 ### Unit Testing
+
 Not applicable for this implementation (CSS and Markdown templates)
 
 ### Integration Testing
 
 **Test Case 1: Build Process**
+
 1. Run `npm install` to install dependencies
 2. Run `npm run build` to build slides
 3. Verify HTML output in `dist/`
@@ -598,6 +662,7 @@ Not applicable for this implementation (CSS and Markdown templates)
 **Expected Result:** All builds complete successfully, outputs match theme design
 
 **Test Case 2: Theme Application**
+
 1. Create test slide deck with all layout types
 2. Apply custom theme via frontmatter
 3. Build slides
@@ -607,6 +672,7 @@ Not applicable for this implementation (CSS and Markdown templates)
 **Expected Result:** Visual parity between MARP output and Google Slides design
 
 **Test Case 3: Template Usability**
+
 1. Copy `templates/basic-presentation.md` to `slides/test.md`
 2. Customize content (title, bullets, code)
 3. Build: `npm run build:pdf`
@@ -616,6 +682,7 @@ Not applicable for this implementation (CSS and Markdown templates)
 **Expected Result:** Template is intuitive and produces professional output
 
 **Test Case 4: CI/CD Pipeline**
+
 1. Commit changes to slides or theme
 2. Push to GitHub
 3. Verify GitHub Actions workflow triggers
@@ -625,12 +692,14 @@ Not applicable for this implementation (CSS and Markdown templates)
 **Expected Result:** Automated builds work correctly, PDFs are downloadable
 
 ### Regression Testing
+
 - After theme CSS changes, rebuild all example slides and verify no breaking changes
 - Test with different content types (long text, large images, many code blocks)
 - Verify PDF export quality across different slide types
 - Test on different operating systems (macOS, Linux, Windows)
 
 ### Edge Cases
+
 - **Very long content:** Test slides with excessive text to verify overflow handling
 - **Large images:** Test with high-resolution images to check scaling
 - **Complex code blocks:** Test syntax highlighting with various languages
@@ -687,17 +756,21 @@ Not applicable for this implementation (CSS and Markdown templates)
 ## Related Issues and Tasks
 
 ### Depends On
+
 - ✅ Access to Google Slides template for design analysis (SVG files available)
 - ✅ SVG exports of Edera V2 theme (26 slides in `docs/theme-resources/slides-export/edera/v2/svg/`)
 
 ### Blocks
+
 - Creating actual presentation content for talks
 - Setting up GitHub Pages deployment (optional enhancement)
 
 ### Related
+
 - Issue #1 (this issue) - Port Google Slides theme to MARP template
 
 ### Enables
+
 - Version-controlled presentation workflow
 - Markdown-based slide creation
 - Automated PDF generation in CI/CD
@@ -715,6 +788,7 @@ Not applicable for this implementation (CSS and Markdown templates)
 ## Notes
 
 ### Key Insights
+
 - MARP uses Marpit framework for theme CSS with special directives (`/* @theme */`)
 - Themes can extend default theme using `@import default`
 - Slide classes are applied via HTML comments: `<!-- _class: title -->`
@@ -727,6 +801,7 @@ Not applicable for this implementation (CSS and Markdown templates)
 ### Design Decisions
 
 **Why MARP over alternatives (Reveal.js, Slidev)?**
+
 - **Chosen: MARP** ✅
   - Simpler Markdown syntax
   - Excellent PDF export out of the box
@@ -745,6 +820,7 @@ Not applicable for this implementation (CSS and Markdown templates)
   - Steeper learning curve
 
 **Theme Analysis Approach:**
+
 1. ✅ User provided SVG exports of Edera V2 Google Slides template (26 slides)
 2. Parse SVG XML to extract color values from `fill` and `stroke` attributes
 3. Extract font properties from `<text>` elements (family, size, weight)
@@ -755,6 +831,7 @@ Not applicable for this implementation (CSS and Markdown templates)
 8. Compare MARP output with original SVG files for accuracy
 
 ### Best Practices
+
 - **Version control themes:** Track CSS changes in Git for easy rollback
 - **Use CSS variables:** Define colors/fonts as variables for easy customization
 - **Test PDF output early:** PDF rendering can differ from HTML preview
@@ -764,6 +841,7 @@ Not applicable for this implementation (CSS and Markdown templates)
 - **Example-driven documentation:** Provide working examples for each feature
 
 ### Monitoring and Maintenance
+
 - Review PDF output quality after MARP CLI updates
 - Check for breaking changes in MARP core releases
 - Update documentation when adding new layouts or features
@@ -771,6 +849,7 @@ Not applicable for this implementation (CSS and Markdown templates)
 - Monitor GitHub Actions workflow for build failures
 
 ### Future Enhancements (Out of Scope)
+
 - GitHub Pages deployment for HTML versions
 - Speaker notes support
 - Live reload during development
