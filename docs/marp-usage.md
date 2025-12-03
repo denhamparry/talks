@@ -116,6 +116,7 @@ Speaker Name | Date | Location
 ```
 
 **Features:**
+
 - Dark teal background
 - Centered content
 - Large, prominent title
@@ -134,6 +135,7 @@ Speaker Name | Date | Location
 ```
 
 **Features:**
+
 - Light mint background
 - Standard layout for most content
 - Good readability
@@ -149,6 +151,7 @@ Content with light text on dark background.
 ```
 
 **Features:**
+
 - Dark teal background
 - Light text
 - Great for emphasis or variety
@@ -172,6 +175,7 @@ Content with light text on dark background.
 ```
 
 **Features:**
+
 - Side-by-side content
 - Perfect for comparisons
 - Flexible column content
@@ -185,6 +189,7 @@ Content with light text on dark background.
 ```
 
 **Features:**
+
 - Full-screen image display
 - No padding
 - Great for visual impact
@@ -202,6 +207,7 @@ Content appears over the image with dark overlay.
 ```
 
 **Features:**
+
 - Background image
 - Semi-transparent overlay
 - Text remains readable
@@ -306,6 +312,7 @@ Content with extra spacing
 ```
 
 Available utility classes:
+
 - `.text-center` - Center align text
 - `.text-right` - Right align text
 - `.text-small` - Smaller text
@@ -377,6 +384,7 @@ Use relative or absolute paths:
 ## Examples
 
 See `templates/` directory for complete examples:
+
 - `basic-presentation.md` - Full presentation template
 - `layouts/title-slide.md` - Title slide variations
 - `layouts/content-slide.md` - Content layouts
@@ -409,9 +417,50 @@ Add notes that don't appear in presentation:
 <!-- Only visible in markdown, not in slides -->
 ```
 
+### Adding Speaker Notes
+
+Add notes visible only to the presenter using HTML comments:
+
+```markdown
+# My Slide Title
+
+Content visible to audience
+
+<!--
+Speaker Notes:
+- This text is only visible to you
+- Great for timing cues
+- Add talking points
+- Remember key statistics
+- Note questions to ask audience
+-->
+```
+
+**Viewing Speaker Notes:**
+
+When presenting from HTML (not PDF):
+
+1. Open the HTML file in a browser
+2. The HTML contains your notes in comments
+3. Use browser developer tools (F12) to view comments
+4. Or use MARP's presenter mode if available
+
+**Best Practices:**
+
+- Keep notes concise and bullet-pointed
+- Add timing estimates (e.g., "Spend 2 minutes here")
+- Include questions to engage audience
+- Note common Q&A topics
+- Add pronunciation guides for technical terms
+
+**Example from our demo:**
+
+See `slides/example-presentation.md` for complete examples of speaker notes throughout a presentation.
+
 ### Fragments (Incremental Reveal)
 
 MARP doesn't natively support fragments, but you can:
+
 1. Duplicate slides with progressive content
 2. Use presenter mode features
 3. Export to PDF and use PDF presenter tools
