@@ -46,9 +46,9 @@
   --spacing-lg: calc(var(--spacing-unit) * 2);
   --spacing-xl: calc(var(--spacing-unit) * 3);
 
-  /* Layout */
-  --slide-width: 960px;
-  --slide-height: 540px;
+  /* Layout - Reference values only (actual sizing managed by MARP) */
+  --slide-width: 960px;   /* Design reference for 16:9 aspect ratio */
+  --slide-height: 540px;  /* Design reference for 16:9 aspect ratio */
   --margin-horizontal: 84px;
   --margin-vertical: 60px;
 }
@@ -64,8 +64,7 @@ section {
   font-size: var(--font-size-base);
   line-height: 1.6;
   padding: var(--margin-vertical) var(--margin-horizontal);
-  width: var(--slide-width);
-  height: var(--slide-height);
+  /* width and height managed by MARP framework */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

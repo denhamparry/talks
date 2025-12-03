@@ -86,12 +86,25 @@ font-family: 'Arial', 'Helvetica', sans-serif;
 
 ## Layout System
 
-### Slide Dimensions
+### Responsive Sizing
 
-- **Width:** 960px
-- **Height:** 540px
-- **Aspect Ratio:** 16:9
+The Edera V2 theme uses MARP's native responsive sizing system:
+
+- **Viewport-responsive:** Slides automatically scale to fill the browser viewport
+- **Aspect ratio:** Maintains 16:9 aspect ratio (1280x720 default)
+- **Fullscreen support:** Works seamlessly with MARP's fullscreen mode
+- **Print support:** Maintains proper dimensions when exporting to PDF
+
+#### Design Dimensions
+
+The theme is designed for 16:9 slides with these reference dimensions:
+
+- **Reference Width:** 960px (design canvas)
+- **Reference Height:** 540px (design canvas)
+- **Actual Display:** Scales responsively to viewport size
 - **Margins:** 60px vertical, 84px horizontal
+
+When building presentations, content will scale proportionally to fit any screen size.
 
 ### Available Classes
 
@@ -106,12 +119,14 @@ font-family: 'Arial', 'Helvetica', sans-serif;
 ```
 
 **Styling:**
+
 - Dark teal background
 - Centered content (vertical & horizontal)
 - Large typography
 - Minimal padding
 
 **Best for:**
+
 - Conference talk titles
 - Section breaks
 - Thank you slides
@@ -127,12 +142,14 @@ Content here
 ```
 
 **Styling:**
+
 - Light mint background
 - Left-aligned content
 - Standard margins
 - Dark teal text
 
 **Best for:**
+
 - Bullet points
 - Paragraphs
 - Mixed content
@@ -147,12 +164,14 @@ Content here
 ```
 
 **Styling:**
+
 - Dark teal background
 - Light mint text
 - Cyan accents
 - High contrast
 
 **Best for:**
+
 - Emphasis
 - Visual variety
 - Code-heavy slides
@@ -169,12 +188,14 @@ Content      Content
 ```
 
 **Styling:**
+
 - CSS Grid layout
 - Equal width columns
 - Gap between columns
 - Responsive alignment
 
 **Best for:**
+
 - Comparisons
 - Before/After
 - Code + Explanation
@@ -189,12 +210,14 @@ Content      Content
 ```
 
 **Styling:**
+
 - No padding
 - Full-screen coverage
 - Centered image
 - Object-fit: cover
 
 **Best for:**
+
 - Diagrams
 - Screenshots
 - Hero images
@@ -210,12 +233,14 @@ Content      Content
 ```
 
 **Styling:**
+
 - Background image
 - Dark overlay (70% opacity)
 - White/cyan text
 - Centered content
 
 **Best for:**
+
 - Conference branding
 - Visual storytelling
 - Section breaks
@@ -345,7 +370,7 @@ theme: my-theme
 4. **Test projectors** - Colors look different on screens
 5. **Avoid pure colors** - Slightly muted looks better
 
-### Typography
+### Text and Fonts
 
 1. **Readable sizes** - Minimum 24px for body text
 2. **Line height** - 1.5-1.6 for paragraphs
@@ -526,6 +551,7 @@ section {
 ## Support
 
 For theme-related issues:
+
 1. Check this guide
 2. Review `docs/theme-analysis.md`
 3. Inspect `themes/edera-v2.css`

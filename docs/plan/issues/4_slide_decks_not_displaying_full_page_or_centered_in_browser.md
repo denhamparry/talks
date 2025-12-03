@@ -1,7 +1,7 @@
 # GitHub Issue #4: Slide decks not displaying full-page or centered in browser
 
 **Issue:** [#4](https://github.com/denhamparry/talks/issues/4)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
 **Labels:** bug, marp, css, ui
 
@@ -482,17 +482,17 @@ grep -E "^section \{" -A 20 themes/edera-v2.css | grep -E "width:|height:"
 ## Success Criteria
 
 - [x] Research completed - Root cause identified in theme CSS
-- [ ] Fixed dimensions removed from `section` selector in `themes/edera-v2.css`
-- [ ] CSS variable comments updated for clarity
-- [ ] HTML output displays slides full-viewport in browser
-- [ ] Slides are properly centered horizontally and vertically
-- [ ] No large margins/borders visible around slide content
-- [ ] Fullscreen mode works correctly
-- [ ] PDF export maintains correct dimensions (16:9 aspect ratio)
-- [ ] All layout classes (title, content, dark, two-columns, image, image-overlay) work correctly
-- [ ] No visual regressions in typography, colors, or spacing
-- [ ] Theme documentation updated in `docs/theme-guide.md`
-- [ ] All tests pass (HTML, PDF, server mode, multiple viewports)
+- [x] Fixed dimensions removed from `section` selector in `themes/edera-v2.css`
+- [x] CSS variable comments updated for clarity
+- [x] HTML output displays slides full-viewport in browser
+- [x] Slides are properly centered horizontally and vertically
+- [x] No large margins/borders visible around slide content
+- [x] Fullscreen mode works correctly
+- [x] PDF export maintains correct dimensions (16:9 aspect ratio)
+- [x] All layout classes (title, content, dark, two-columns, image, image-overlay) work correctly
+- [x] No visual regressions in typography, colors, or spacing
+- [x] Theme documentation updated in `docs/theme-guide.md`
+- [x] All tests pass (HTML, PDF, server mode, multiple viewports)
 - [ ] CI/CD builds successfully generate artifacts
 - [ ] Issue #4 closed with verification screenshots
 
