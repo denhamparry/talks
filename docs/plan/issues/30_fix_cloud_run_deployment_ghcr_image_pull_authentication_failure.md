@@ -1,7 +1,7 @@
 # GitHub Issue #30: Fix Cloud Run deployment: GHCR image pull authentication failure
 
 **Issue:** [#30](https://github.com/denhamparry/talks/issues/30)
-**Status:** Open
+**Status:** ✅ Complete
 **Date:** 2025-12-03
 **Labels:** bug, ci
 
