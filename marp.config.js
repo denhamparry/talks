@@ -14,10 +14,11 @@ module.exports = {
   // Enable HTML in markdown content and HTML output format
   html: true,
 
-  // Enable PDF output
-  pdf: true,
+  // PDF output disabled in default config (use npm run build:pdf for PDFs)
+  // This ensures npm run build generates HTML slides as expected
+  pdf: false,
 
-  // PDF export options
+  // PDF export options (used by build:pdf script)
   pdfOptions: {
     format: 'A4',         // Paper format
     landscape: true,      // Landscape orientation for 16:9 slides
