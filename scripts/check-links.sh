@@ -11,42 +11,55 @@ echo "========================================="
 echo -e "\n📄 Checking internal markdown links..."
 broken_count=0
 
-find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*" -not -path "./dist/*" | \
-  while read file; do
-    grep -o '\[.*\](.*\.md[^)]*)' "$file" 2>/dev/null | \
-      grep -o '([^)]*)' | tr -d '()' | \
-      while read link; do
-        # Handle relative paths
-        dir=$(dirname "$file")
+while IFS= read -r file; do
+  while IFS= read -r link; do
+    # Skip HTTP/HTTPS links (they're checked separately)
+    if [[ "$link" =~ ^https?:// ]]; then
+      continue
+    fi
 
-        # Try both relative and absolute
-        if [[ -f "$dir/$link" ]] || [[ -f "$link" ]]; then
-          continue
-        else
-          echo "  ❌ $file -> $link"
-          ((broken_count++))
-        fi
-      done
-  done
+    # Strip anchor from link (everything after #)
+    link_file="${link%%#*}"
+
+    # Handle relative paths
+    dir=$(dirname "$file")
+
+    # Resolve the full path
+    if [[ "$link_file" = /* ]]; then
+      # Absolute path
+      full_path="$link_file"
+    else
+      # Relative path - resolve from the directory of the source file
+      full_path="$dir/$link_file"
+    fi
+
+    # Check if file exists (realpath would be better but may not be available)
+    if [[ -f "$full_path" ]]; then
+      continue
+    else
+      echo "  ❌ $file -> $link"
+      ((broken_count++))
+    fi
+  done < <(grep -o '\[.*\](.*\.md[^)]*)' "$file" 2>/dev/null | grep -o '([^)]*)' | tr -d '()')
+done < <(find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*" -not -path "./dist/*")
 
 # Check external HTTPS links (with timeout)
 echo -e "\n🌐 Checking external links (this may take a minute)..."
 external_count=0
 external_broken=0
 
-grep -rh "https\?://[^)\" ]*" --include="*.md" . 2>/dev/null | \
+while IFS= read -r url; do
+  ((external_count++))
+  if curl -s -f -L -o /dev/null --max-time 10 "$url" 2>/dev/null; then
+    echo "  ✅ $url"
+  else
+    echo "  ❌ $url"
+    ((external_broken++))
+  fi
+done < <(grep -rh "https\?://[^)\" ]*" --include="*.md" . 2>/dev/null | \
   grep -o "https\?://[^)\" ]*" | \
   grep -v "localhost\|127.0.0.1" | \
-  sort -u | \
-  while read url; do
-    ((external_count++))
-    if curl -s -f -L -o /dev/null --max-time 10 "$url" 2>/dev/null; then
-      echo "  ✅ $url"
-    else
-      echo "  ❌ $url"
-      ((external_broken++))
-    fi
-  done
+  sort -u)
 
 echo -e "\n========================================="
 echo "Summary:"
