@@ -135,10 +135,20 @@ gcloud services enable iamcredentials.googleapis.com --project=$PROJECT_ID
 
 Google Cloud Run requires images to be in Google Artifact Registry, not GitHub Container Registry.
 
+**CRITICAL: Region Consistency**
+
+The Artifact Registry repository **MUST** be in the **same region** as your Cloud Run service. Mismatched regions will cause deployment failures.
+
+- ✅ **europe-west1** (Belgium) - Recommended, supports domain mappings
+- ❌ **europe-west2** (London) - Does NOT support domain mappings
+- ✅ **us-central1** (Iowa) - Supports domain mappings
+
 ```bash
 export REGION="europe-west1"  # Belgium (supports domain mappings)
-# Note: europe-west2 (London) does NOT support domain mappings
-# Use europe-west1 (Belgium) or us-central1 (Iowa) instead
+# IMPORTANT: Use the SAME region for:
+# - Artifact Registry repository (this step)
+# - Cloud Run service (Step 7)
+# - GitHub Actions workflow (.github/workflows/cloudrun-deploy.yml)
 
 # Create Artifact Registry repository
 gcloud artifacts repositories create talks \
@@ -151,6 +161,28 @@ gcloud artifacts repositories create talks \
 gcloud artifacts repositories describe talks \
   --location=$REGION \
   --project=$PROJECT_ID
+```
+
+**Verification Checklist:**
+
+- [ ] Repository created in correct region (`europe-west1`)
+- [ ] Repository format is `DOCKER`
+- [ ] Repository is accessible (describe command succeeds)
+- [ ] No duplicate repositories in other regions (list all with `gcloud artifacts repositories list`)
+
+**Clean Up Wrong-Region Repositories:**
+
+If you accidentally created repositories in the wrong region:
+
+```bash
+# List all repositories
+gcloud artifacts repositories list --project=$PROJECT_ID
+
+# Delete wrong-region repository (e.g., europe-west2)
+gcloud artifacts repositories delete talks \
+  --location=europe-west2 \
+  --project=$PROJECT_ID \
+  --quiet
 ```
 
 ### Step 5: Create Service Accounts
@@ -388,6 +420,119 @@ curl https://talks.denhamparry.co.uk/health
 4. Access <https://talks.denhamparry.co.uk>
 5. Verify changes appear
 
+### Step 11: Verify Deployment Configuration
+
+After completing the initial setup, run these verification commands to ensure everything is configured correctly:
+
+**Check Region Consistency:**
+
+```bash
+export PROJECT_ID="denhamparry-talks"
+
+# 1. List all Artifact Registry repositories
+echo "=== Artifact Registry Repositories ==="
+gcloud artifacts repositories list --project=$PROJECT_ID
+
+# 2. List all Cloud Run services
+echo "=== Cloud Run Services ==="
+gcloud run services list --project=$PROJECT_ID
+
+# 3. Verify workflow configuration
+echo "=== Workflow Configuration ==="
+grep "REGION:" .github/workflows/cloudrun-deploy.yml
+grep "ARTIFACT_REGISTRY:" .github/workflows/cloudrun-deploy.yml
+```
+
+**Expected Results:**
+
+- ✅ Artifact Registry repository exists in `europe-west1` ONLY
+- ✅ Cloud Run service exists in `europe-west1` ONLY
+- ✅ Workflow `REGION` is set to `europe-west1`
+- ✅ Workflow `ARTIFACT_REGISTRY` is `europe-west1-docker.pkg.dev`
+
+**Check Service Account Permissions:**
+
+```bash
+# Verify GitHub Actions service account has all required permissions
+gcloud projects get-iam-policy $PROJECT_ID \
+  --flatten="bindings[].members" \
+  --filter="bindings.members:github-actions-cloudrun@$PROJECT_ID.iam.gserviceaccount.com" \
+  --format="table(bindings.role)"
+```
+
+**Expected Roles:**
+
+- ✅ `roles/artifactregistry.writer`
+- ✅ `roles/run.admin`
+- ✅ `roles/iam.serviceAccountUser`
+
+**Check Required APIs:**
+
+```bash
+# Verify all required APIs are enabled
+gcloud services list --enabled --project=$PROJECT_ID \
+  --filter="name:(run.googleapis.com OR compute.googleapis.com OR artifactregistry.googleapis.com OR iamcredentials.googleapis.com)"
+```
+
+**Expected APIs:**
+
+- ✅ `run.googleapis.com` (Cloud Run API)
+- ✅ `compute.googleapis.com` (Compute Engine API)
+- ✅ `artifactregistry.googleapis.com` (Artifact Registry API)
+- ✅ `iamcredentials.googleapis.com` (IAM Service Account Credentials API)
+
+**Test Deployment:**
+
+```bash
+# Test the deployed service
+SERVICE_URL=$(gcloud run services describe talks \
+  --region=europe-west1 \
+  --project=$PROJECT_ID \
+  --format="value(status.url)")
+
+echo "Service URL: $SERVICE_URL"
+
+# Test health endpoint
+curl -f "$SERVICE_URL/health"
+
+# Test homepage
+curl -f -I "$SERVICE_URL/"
+```
+
+**Configuration Checklist:**
+
+- [ ] Only one Artifact Registry repository (in `europe-west1`)
+- [ ] Only one Cloud Run service (in `europe-west1`)
+- [ ] Service account has all three required roles
+- [ ] All four required APIs are enabled
+- [ ] Workflow region matches infrastructure region
+- [ ] Service responds to health checks
+- [ ] GitHub Actions workflows pass successfully
+- [ ] Custom domain configured and accessible (if applicable)
+
+**Clean Up Multiple Regions (if needed):**
+
+If verification shows services or repositories in wrong regions:
+
+```bash
+# Delete wrong-region Artifact Registry repositories
+gcloud artifacts repositories delete talks \
+  --location=europe-west2 \
+  --project=$PROJECT_ID \
+  --quiet
+
+# Delete wrong-region Cloud Run services
+gcloud run services delete talks \
+  --region=europe-west2 \
+  --project=$PROJECT_ID \
+  --quiet
+
+gcloud run services delete talks \
+  --region=us-central1 \
+  --project=$PROJECT_ID \
+  --quiet
+```
+
 ## Usage
 
 ### Viewing Presentations
@@ -592,6 +737,98 @@ The IAM Service Account Credentials API (`iamcredentials.googleapis.com`) is not
 **Prevention:**
 
 Ensure this API is included in Step 4 of the initial setup. This is now documented in the deployment guide.
+
+### Permission Denied: artifactregistry.repositories.uploadArtifacts
+
+**Symptoms:**
+
+- GitHub Actions workflow fails at "Push to Artifact Registry" step
+- Error message: "denied: Permission 'artifactregistry.repositories.uploadArtifacts' denied on resource"
+- Error includes: "projects/PROJECT_ID/locations/REGION/repositories/REPOSITORY_NAME (or it may not exist)"
+
+**Root Causes:**
+
+This error has two possible causes:
+
+1. **Artifact Registry repository doesn't exist** in the specified region
+2. **Service account lacks permissions** to push to Artifact Registry
+
+**Solution:**
+
+**Step 1: Check if repository exists in the correct region**
+
+```bash
+# Check if repository exists
+gcloud artifacts repositories describe talks \
+  --location=europe-west1 \
+  --project=denhamparry-talks
+```
+
+If you get "NOT_FOUND", create the repository:
+
+```bash
+gcloud artifacts repositories create talks \
+  --repository-format=docker \
+  --location=europe-west1 \
+  --description="MARP presentation slides container images" \
+  --project=denhamparry-talks
+```
+
+**Step 2: Verify region consistency**
+
+The Artifact Registry repository MUST be in the SAME region as specified in `.github/workflows/cloudrun-deploy.yml`:
+
+```bash
+# List all repositories and their regions
+gcloud artifacts repositories list --project=denhamparry-talks
+
+# Check Cloud Run service region
+gcloud run services list --project=denhamparry-talks
+```
+
+If repositories exist in wrong regions, delete them:
+
+```bash
+# Delete wrong-region repository
+gcloud artifacts repositories delete talks \
+  --location=WRONG_REGION \
+  --project=denhamparry-talks \
+  --quiet
+```
+
+**Step 3: Grant Artifact Registry permissions**
+
+If repository exists but permissions are missing:
+
+```bash
+# Grant Artifact Registry Writer permission
+gcloud projects add-iam-policy-binding denhamparry-talks \
+  --member="serviceAccount:github-actions-cloudrun@denhamparry-talks.iam.gserviceaccount.com" \
+  --role="roles/artifactregistry.writer"
+
+# Verify permissions
+gcloud projects get-iam-policy denhamparry-talks \
+  --flatten="bindings[].members" \
+  --filter="bindings.members:github-actions-cloudrun@denhamparry-talks.iam.gserviceaccount.com"
+```
+
+Expected roles:
+
+- ✅ `roles/artifactregistry.writer`
+- ✅ `roles/run.admin`
+- ✅ `roles/iam.serviceAccountUser`
+
+**Step 4: Re-run workflow**
+
+```bash
+gh run rerun <RUN_ID> --failed
+```
+
+**Prevention:**
+
+- Create Artifact Registry repository in Step 4.5 BEFORE first deployment
+- Ensure repository region matches Cloud Run service region
+- Grant all required permissions in Step 5
 
 ### Domain Not Accessible (talks.denhamparry.co.uk)
 
