@@ -1,10 +1,10 @@
 # GitHub Issue #32: Fix GCP IAM Service Account Credentials API not enabled in deployment workflow
 
 **Issue:** [#32](https://github.com/denhamparry/talks/issues/32)
-**Status:** Documentation Complete - Awaiting Manual Infrastructure Setup
+**Status:** ✅ RESOLVED - Documentation Complete, Infrastructure Configured
 **Labels:** bug, ci, github_actions, high-priority
 **Date:** 2025-12-03
-**Documentation Updated:** 2025-12-03
+**Resolved:** 2025-12-03
 
 ## Problem Statement
 
@@ -588,3 +588,218 @@ The following steps still need to be executed manually by someone with GCP proje
 - ⏳ Service URL accessible and serves presentation slides
 
 Once the manual infrastructure steps are completed, issue #32 can be fully closed.
+
+## Final Resolution (2025-12-03)
+
+### Issues Discovered and Resolved
+
+After enabling the IAM Service Account Credentials API, additional infrastructure configuration issues were discovered and resolved:
+
+#### Issue 1: IAM Service Account Credentials API Not Enabled (Original)
+
+**Status:** ✅ Resolved via Documentation
+
+**Problem:**
+- Workload Identity Federation couldn't impersonate service accounts
+- Error: "Unable to acquire impersonated credentials"
+
+**Solution:**
+- Documented in `docs/deployment-guide.md` Step 4
+- Added troubleshooting section with resolution steps
+- Users must enable: `gcloud services enable iamcredentials.googleapis.com`
+
+#### Issue 2: Artifact Registry Repository Missing/Wrong Region
+
+**Status:** ✅ Resolved
+
+**Problem:**
+- Workflow attempted to push to `europe-west1-docker.pkg.dev` but repository didn't exist initially
+- Multiple repositories created in wrong regions during testing (`europe-west2`)
+- Error: `Permission "artifactregistry.repositories.uploadArtifacts" denied... (or it may not exist)`
+
+**Root Cause:**
+- Artifact Registry repository must be in the SAME region as Cloud Run service
+- `europe-west2` (London) does NOT support domain mappings
+- Must use `europe-west1` (Belgium) for domain mapping support
+
+**Solution:**
+1. Created Artifact Registry repository in correct region (`europe-west1`)
+2. Deleted wrong-region repository (`europe-west2`)
+3. Verified service account has `roles/artifactregistry.writer` permission
+
+**Commands Executed:**
+
+```bash
+# Repository already existed in europe-west1 (created during troubleshooting)
+gcloud artifacts repositories describe talks \
+  --location=europe-west1 \
+  --project=denhamparry-talks
+# Result: Repository exists, 21.8MB
+
+# Deleted wrong-region repository
+gcloud artifacts repositories delete talks \
+  --location=europe-west2 \
+  --project=denhamparry-talks \
+  --quiet
+# Result: Deleted successfully
+
+# Verified permissions
+gcloud projects get-iam-policy denhamparry-talks \
+  --flatten="bindings[].members" \
+  --filter="bindings.members:github-actions-cloudrun@denhamparry-talks.iam.gserviceaccount.com"
+# Result: ✅ roles/artifactregistry.writer
+#         ✅ roles/run.admin
+#         ✅ roles/iam.serviceAccountUser
+```
+
+#### Issue 3: Multiple Cloud Run Services in Different Regions
+
+**Status:** ✅ Resolved
+
+**Problem:**
+- Services existed in three regions: `europe-west1`, `europe-west2`, `us-central1`
+- Caused confusion about which service was active
+- Resources in wrong regions wasted costs
+
+**Solution:**
+- Kept only `europe-west1` (Belgium) service (supports domain mapping)
+- Services in `europe-west2` and `us-central1` were already deleted before cleanup
+
+**Verification:**
+
+```bash
+gcloud run services list --project=denhamparry-talks
+# Result: Only 1 service in europe-west1
+# Last deployed by: github-actions-cloudrun@denhamparry-talks.iam.gserviceaccount.com
+# Last deployed at: 2025-12-03T18:43:13
+```
+
+### Documentation Updates Completed
+
+#### 1. Deployment Guide - Step 4.5 Enhanced
+
+**File:** `docs/deployment-guide.md` (lines 134-186)
+
+**Added:**
+- ⚠️ CRITICAL warning about region consistency
+- ✅ Explanation that Artifact Registry must match Cloud Run region
+- ✅ Region recommendations with domain mapping support notes
+- ✅ Verification checklist for repository creation
+- ✅ Commands to clean up wrong-region repositories
+
+**Key Points:**
+- `europe-west1` (Belgium) - Recommended, supports domain mappings ✅
+- `europe-west2` (London) - Does NOT support domain mappings ❌
+- `us-central1` (Iowa) - Supports domain mappings ✅
+
+#### 2. Deployment Guide - Step 11 Added (New)
+
+**File:** `docs/deployment-guide.md` (lines 423-534)
+
+**Added:**
+- Complete verification checklist for deployment configuration
+- Commands to verify region consistency
+- Service account permission verification
+- Required API verification
+- Deployment testing commands
+- Cleanup commands for multiple regions
+
+**Verification Categories:**
+1. Region consistency (Artifact Registry, Cloud Run, workflow config)
+2. Service account permissions (3 required roles)
+3. Required APIs (4 APIs must be enabled)
+4. Service health checks
+
+#### 3. Troubleshooting Section - New Entry
+
+**File:** `docs/deployment-guide.md` (lines 628-717)
+
+**Added:** "Permission Denied: artifactregistry.repositories.uploadArtifacts"
+
+**Covers:**
+- Symptoms and error messages
+- Two root causes: repository doesn't exist OR wrong permissions
+- Step-by-step resolution with verification
+- Region consistency verification
+- Permission grant commands
+- Prevention steps
+
+### Final Infrastructure State
+
+**Artifact Registry:**
+- ✅ Repository exists in `europe-west1` only
+- ✅ Size: ~21.8MB
+- ✅ Accessible to GitHub Actions service account
+
+**Cloud Run:**
+- ✅ Service exists in `europe-west1` only
+- ✅ URL: https://talks-192861381104.europe-west1.run.app
+- ✅ Successfully deployed by GitHub Actions
+- ✅ Service healthy and responding
+
+**Service Account Permissions:**
+- ✅ `roles/artifactregistry.writer`
+- ✅ `roles/run.admin`
+- ✅ `roles/iam.serviceAccountUser`
+
+**APIs Enabled:**
+- ✅ `run.googleapis.com`
+- ✅ `compute.googleapis.com`
+- ✅ `artifactregistry.googleapis.com`
+- ✅ `iamcredentials.googleapis.com`
+
+### Success Criteria - Final Status
+
+**Documentation (Complete):**
+- ✅ IAM Credentials API added to Step 4
+- ✅ Step 4.5 enhanced with region consistency warnings
+- ✅ Step 11 added with comprehensive verification checklist
+- ✅ Troubleshooting section for uploadArtifacts permission error
+- ✅ Troubleshooting section for IAM Credentials API error
+- ✅ All documentation committed and pre-commit hooks passed
+
+**Infrastructure (Complete):**
+- ✅ IAM Service Account Credentials API enabled
+- ✅ Artifact Registry repository exists in correct region (europe-west1)
+- ✅ Service account has all required permissions
+- ✅ Wrong-region resources cleaned up
+- ✅ Only europe-west1 resources remain
+- ✅ GitHub Actions workflow deploys successfully
+- ✅ Service accessible and healthy
+
+### Lessons Learned
+
+1. **Region Consistency is Critical**
+   - Artifact Registry repository MUST be in same region as Cloud Run service
+   - Not all regions support domain mappings (europe-west2 doesn't)
+   - Document region requirements prominently in setup guides
+
+2. **Multiple Repositories Cause Confusion**
+   - Creating repositories in multiple regions during testing causes problems
+   - Always verify correct region before creating resources
+   - Clean up test resources immediately
+
+3. **API Enablement Often Overlooked**
+   - `iamcredentials.googleapis.com` is not obvious when setting up Workload Identity Federation
+   - Error messages from GCP are helpful but appear late in process
+   - Include ALL required APIs in initial setup documentation
+
+4. **Permission Errors Can Mean "Not Exists"**
+   - "Permission denied" errors can mean repository doesn't exist
+   - Always verify resource exists before troubleshooting permissions
+   - Check region consistency when debugging "not found" or "permission denied" errors
+
+5. **Verification Checklists Prevent Issues**
+   - Post-setup verification catches configuration problems early
+   - Automated verification scripts save troubleshooting time
+   - Document expected outputs for each verification command
+
+### Issue Resolution
+
+**Issue #32:** ✅ **RESOLVED**
+
+All documentation has been updated and infrastructure is correctly configured. Future deployments will not encounter these issues if the deployment guide is followed.
+
+**Deployment Status:** ✅ **WORKING**
+
+GitHub Actions workflow successfully deploys to Cloud Run in europe-west1. Service is healthy and accessible.
