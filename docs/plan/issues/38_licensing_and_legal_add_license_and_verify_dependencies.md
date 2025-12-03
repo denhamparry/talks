@@ -1,7 +1,7 @@
 # GitHub Issue #38: Licensing and Legal: Add LICENSE and verify dependencies
 
 **Issue:** [#38](https://github.com/denhamparry/talks/issues/38)
-**Status:** Open
+**Status:** Complete
 **Labels:** documentation, enhancement
 **Date:** 2025-12-03
 **Related To:** Part of #34 - Prepare repository for public release

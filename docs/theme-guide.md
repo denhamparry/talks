@@ -5,6 +5,7 @@ Complete guide to understanding and customizing the Edera V2 MARP theme.
 ## Table of Contents
 
 - [Overview](#overview)
+- [Licensing](#licensing)
 - [Color Scheme](#color-scheme)
 - [Typography](#typography)
 - [Layout System](#layout-system)
@@ -24,6 +25,26 @@ The **Edera V2** theme is a professional presentation theme featuring:
 - Accessible color combinations
 
 **Theme File:** `themes/edera-v2.css`
+
+## Licensing
+
+**License:** MIT License
+**Copyright:** Copyright (c) 2025 Lewis Denham-Parry
+
+The Edera V2 theme is original work created for this project:
+
+- Original design: Google Slides template by Lewis Denham-Parry
+- MARP CSS implementation: Ported from SVG exports for this repository
+- License: MIT (same as parent project)
+
+You are free to:
+
+- Use the theme in your own presentations
+- Modify and customize the theme
+- Distribute the theme with your projects
+- Use commercially
+
+See [LICENSE](../../LICENSE) file for complete terms.
 
 ## Color Scheme
 

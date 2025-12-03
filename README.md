@@ -384,7 +384,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## 📝 License
 
-[Add your license here]
+MIT License - see [LICENSE](LICENSE) file for details.
+
+Copyright (c) 2025 Lewis Denham-Parry
 
 ## 🙋 Support
 

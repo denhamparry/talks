@@ -1,8 +1,14 @@
 /*
  * @theme edera-v2
- * @author Edera
+ * @author Lewis Denham-Parry
  * @description Edera V2 presentation theme with dark teal and light mint colors
  * @version 2.0.0
+ * @license MIT
+ *
+ * Copyright (c) 2025 Lewis Denham-Parry
+ *
+ * Original design created from Google Slides template.
+ * Ported to MARP CSS theme for this project.
  */
 
 @import 'default';
