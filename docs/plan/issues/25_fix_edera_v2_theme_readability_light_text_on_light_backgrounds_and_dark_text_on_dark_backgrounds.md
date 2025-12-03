@@ -1,7 +1,7 @@
 # GitHub Issue #25: Fix Edera V2 theme readability: light text on light backgrounds and dark text on dark backgrounds
 
 **Issue:** [#25](https://github.com/denhamparry/talks/issues/25)
-**Status:** Open
+**Status:** Complete
 **Labels:** bug, accessibility, design, high-priority
 **Date:** 2025-12-03
 
