@@ -92,13 +92,15 @@ jobs:
           provenance: mode=max
           sbom: true
 
-      - name: Generate artifact attestation
-        if: github.event_name != 'pull_request'
-        uses: actions/attest-build-provenance@v2
-        with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          subject-digest: ${{ steps.push.outputs.digest }}
-          push-to-registry: true
+      # NOTE: Attestations require public repository or organization-owned repo
+      # Disabled for private user-owned repositories
+      # - name: Generate artifact attestation
+      #   if: github.event_name != 'pull_request'
+      #   uses: actions/attest-build-provenance@v2
+      #   with:
+      #     subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      #     subject-digest: ${{ steps.push.outputs.digest }}
+      #     push-to-registry: true
 
       - name: Verify image
         if: github.event_name != 'pull_request'
