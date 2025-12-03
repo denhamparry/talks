@@ -27,6 +27,7 @@ COPY marp.config.js ./
 COPY themes/ ./themes/
 COPY slides/ ./slides/
 COPY templates/ ./templates/
+COPY scripts/ ./scripts/
 
 # Build HTML slides
 # Temporarily disable PDF in config for Docker build (PDF requires sandbox)
