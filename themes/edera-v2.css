@@ -211,6 +211,20 @@ pre code .hljs-meta {
   opacity: 0.8;
 }
 
+/* Markdown-specific syntax elements */
+pre code .hljs-section,
+pre code .hljs-title.class_,
+pre code .hljs-doctag {
+  color: var(--edera-white);  /* #ffffff - white (12.58:1 on dark teal) - for ## headers */
+  font-weight: 700;
+}
+
+pre code .hljs-bullet,
+pre code .hljs-code {
+  color: var(--edera-white);  /* #ffffff - white (12.58:1 on dark teal) - for list bullets */
+  font-weight: 600;
+}
+
 /* ========================================
    Tables
    ======================================== */
