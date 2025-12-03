@@ -1,10 +1,11 @@
 # GitHub Issue #26: Deploy talks website to Google Cloud Run with custom domain
 
 **Issue:** [#26](https://github.com/denhamparry/talks/issues/26)
-**Status:** Implementation Complete - Awaiting Google Cloud Setup
+**Status:** ✅ Complete - Deployed to Cloud Run
 **Date:** 2025-12-03
 **Labels:** enhancement, ci, docker, infrastructure
-**Commit:** ef379b4
+**Commits:** ef379b4, 8a7dcc8, 6eb0c6c
+**Live URL:** https://talks-192861381104.europe-west1.run.app
 
 ## Problem Statement
 
@@ -1023,6 +1024,46 @@ docker run --rm talks:test /bin/sh -c 'envsubst "$$PORT" < /etc/nginx/templates/
 ### nginx Dynamic Port Configuration
 - [nginx Environment Variables](https://stackoverflow.com/questions/32813447/nginx-read-environment-variables) - envsubst pattern
 - [Cloud Run nginx Example](https://github.com/GoogleCloudPlatform/cloud-run-samples/tree/main/hello-nginx) - Official example
+
+## Implementation Updates
+
+### Index Page Generation (December 3, 2025)
+
+**Problem Identified:**
+After initial deployment, Cloud Run showed nginx default welcome page instead of presentation index.
+
+**Root Cause:**
+- MARP build process created individual HTML files for each presentation
+- No landing page (index.html) was generated
+- nginx served its default index.html from the base image
+
+**Solution Implemented (Commits 8a7dcc8, 6eb0c6c):**
+
+1. **Created `scripts/generate-index.js`:**
+   - Scans `slides/` directory for markdown files
+   - Extracts metadata: title (first H1), date (from filename or frontmatter), event info
+   - Generates responsive HTML index with card-based layout
+   - Styled using Edera V2 theme colors for consistency
+   - Sorts presentations by date (newest first)
+
+2. **Updated `package.json`:**
+   - Added `generate-index` script
+   - Modified `build` command to run index generation after MARP build: `marp -I slides/ -o dist/ && npm run generate-index`
+
+3. **Updated `Dockerfile`:**
+   - Added `COPY scripts/ ./scripts/` to builder stage
+   - Ensures script available during Docker build
+
+**Verification:**
+- Local test: index page displays correctly with all presentations
+- Cloud Run deployment: ✅ https://talks-192861381104.europe-west1.run.app shows custom index
+- Individual presentations accessible: ✅ All HTML files serve correctly
+
+**Current Status:**
+- ✅ Index page generation automated in build process
+- ✅ Deployed to Cloud Run (revision talks-00004-6fh)
+- ✅ Service URL active and serving presentations
+- ⏳ Custom domain (talks.denhamparry.co.uk) - awaiting DNS configuration
 
 ## Notes
 
