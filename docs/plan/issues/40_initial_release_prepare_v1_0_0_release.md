@@ -1,8 +1,9 @@
 # GitHub Issue #40: Initial Release: Prepare v1.0.0 release
 
 **Issue:** [#40](https://github.com/denhamparry/talks/issues/40)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
+**Completed:** 2025-12-03
 **Part of:** #34 - Prepare repository for public release
 
 ## Problem Statement
