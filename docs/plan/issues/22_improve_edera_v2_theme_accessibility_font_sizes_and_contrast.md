@@ -1,9 +1,10 @@
 # GitHub Issue #22: Improve Edera V2 theme accessibility: font sizes and contrast
 
 **Issue:** [#22](https://github.com/denhamparry/talks/issues/22)
-**Status:** Open
+**Status:** Complete
 **Labels:** documentation, enhancement, accessibility
 **Date:** 2025-12-03
+**Completed:** 2025-12-03
 
 ## Problem Statement
 

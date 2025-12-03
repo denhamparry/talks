@@ -13,6 +13,7 @@
     "CHANGELOG.md",
     "docs/theme-analysis.md",
     "docs/accessibility-research-findings.md",
+    "docs/accessibility-audit.md",
     "docs/plan/**/*.md",
     "templates/**/*.md",
     "slides/**/*.md"
