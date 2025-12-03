@@ -186,23 +186,19 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 
 ### Prerequisites
 
-```bash
-# List prerequisites here
-# Example:
-# - Node.js 18+
-# - Python 3.9+
-# - Go 1.21+
-```
+- Node.js 18+ and npm
+- Git
+- (Optional) Docker for containerized development
 
 ### Installation
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
-cd REPO_NAME
+git clone https://github.com/YOUR_USERNAME/talks.git
+cd talks
 
 # Install dependencies
-# Add your installation commands here
+npm install
 
 # Install pre-commit hooks
 pip install pre-commit
@@ -212,21 +208,26 @@ pre-commit install
 ### Running Tests
 
 ```bash
-# Add your test commands here
-# Examples:
-# npm test
-# go test ./...
-# pytest
+# Build all presentations to verify they compile
+npm run build
+npm run build:pdf
+
+# Run pre-commit hooks
+pre-commit run --all-files
 ```
 
 ### Running Locally
 
 ```bash
-# Add your local development commands here
-# Examples:
-# npm run dev
-# go run main.go
-# python app.py
+# Build presentations
+npm run build
+
+# Start local server with live reload
+npm run serve
+# Visit http://localhost:8080
+
+# Or watch mode for auto-rebuild
+npm run watch
 ```
 
 ## Testing Requirements
