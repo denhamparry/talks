@@ -32,6 +32,7 @@ Currently, MARP presentation slides require local Node.js setup to build and ser
   - Build scripts: `build`, `build:pdf`, `watch`, `serve`
   - Dependencies: `@marp-team/marp-cli@^3.4.0`, `@marp-team/marp-core@^3.9.0`
   - Node.js requirement: `>=20.0.0`
+  - MARP CLI includes Puppeteer for PDF generation (adds ~170MB to node_modules)
 
 - `Makefile` (lines 1-82) - Consistent command interface
   - Delegates to npm scripts for build operations
@@ -43,31 +44,81 @@ Currently, MARP presentation slides require local Node.js setup to build and ser
   - Themes: `./themes`
   - Supports HTML and PDF export
   - PDF options: A4 landscape with background printing
+  - HTML output: true (enables HTML tags in markdown)
 
 **CI/CD:**
 - `.github/workflows/build-slides.yml` (lines 1-66) - GitHub Actions workflow
   - Builds HTML and PDF on slide changes
   - Uploads artifacts to GitHub Actions
   - Currently no container image publishing
+  - Uses actions/checkout@v6, actions/setup-node@v6, actions/upload-artifact@v5
+
+- `.github/workflows/ci.yml` (lines 1-63) - Placeholder CI workflow
+  - Template file with commented sections for lint/test/build
+  - Not actively used for this project
 
 **Content Structure:**
 - `slides/` - Markdown presentation files
-- `themes/edera-v2.css` - Custom MARP theme
+  - `example-presentation.md`
+  - `example-contribution.md`
+- `themes/edera-v2.css` - Custom MARP theme (dark teal/cyan color scheme)
 - `templates/` - Reusable slide layouts
+  - `basic-presentation.md`
+  - `contributor-template.md`
+  - `layouts/` - Individual layout examples
 - `dist/` - Generated HTML/PDF output (gitignored)
 
 ### Related Context
 
-**Dependencies:**
-- Node.js 20+ required for MARP CLI
-- npm packages for build tooling
-- Chromium (via Puppeteer) for PDF generation
+**Dependencies Analysis:**
+- **Node.js 20+**: Required for MARP CLI (LTS version, alpine image ~50MB base)
+- **npm packages**: @marp-team/marp-cli (includes Puppeteer ~170MB in node_modules)
+- **Chromium**: Bundled with Puppeteer for PDF generation (not needed for HTML-only builds)
+- **Production dependencies**: Only static HTML/CSS/JS files after build
+
+**Build Output Analysis:**
+- HTML files: Self-contained with embedded CSS and JavaScript
+- PDF files: Generated via Puppeteer/Chromium (optional for production)
+- Static assets: CSS themes, potentially embedded images
+- No runtime dependencies after build
 
 **Missing Components:**
 - No Dockerfile
 - No docker-compose.yml
+- No .dockerignore
 - No container publishing workflow
 - No deployment documentation
+- No nginx configuration for production serving
+
+**Research Findings (2025 Best Practices):**
+
+1. **Docker Multi-Stage Builds for Node.js**:
+   - Use node:20-alpine base (reduces image size 70-90%)
+   - Separate build dependencies from production artifacts
+   - Use `npm ci --production` in final stage
+   - Implement BuildKit cache mounts for faster builds
+   - Source: [Node.js Docker Optimization 2025](https://markaicode.com/nodejs-docker-optimization-2025/)
+
+2. **nginx Configuration for Static Sites**:
+   - Enable gzip compression (60-80% size reduction)
+   - Set appropriate cache headers (1y for immutable assets, no-cache for HTML)
+   - Add security headers (X-Frame-Options, X-Content-Type-Options, X-XSS-Protection)
+   - Use `try_files` for SPA routing compatibility
+   - Source: [Nginx Config for SPAs](https://gist.github.com/coltenkrauter/2ec75399210d3e8d33612426a37377e1)
+
+3. **GitHub Container Registry (GHCR) Integration**:
+   - Use GITHUB_TOKEN for authentication (no separate credentials)
+   - Requires permissions: contents: read, packages: write
+   - Use docker/metadata-action@v5 for automatic tag generation
+   - Recommended actions: docker/build-push-action@v6, docker/setup-buildx-action@v3
+   - Source: [Publishing Docker Images to GHCR](https://docs.github.com/en/actions/publishing-packages/publishing-docker-images)
+
+4. **Image Size Optimization**:
+   - Alpine base images: 5MB vs 100MB+ Debian
+   - Multi-stage builds: Exclude build tools from production
+   - .dockerignore: Exclude node_modules, docs, tests from build context
+   - Target production image: 40-60MB (nginx + static HTML)
+   - Source: [Docker Multi-Stage Builds](https://labs.iximiuz.com/tutorials/docker-multi-stage-builds)
 
 ## Solution Design
 
@@ -88,47 +139,77 @@ Implement a **multi-stage Docker build** strategy:
 
 ### Implementation
 
-#### 1. Multi-Stage Dockerfile
+#### 1. Multi-Stage Dockerfile (2025 Optimized)
 
 ```dockerfile
 # Stage 1: Builder - Build slides from source
 FROM node:20-alpine AS builder
 
+# Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Install dependencies with cache mount for faster builds (BuildKit feature)
+# Copy package files first for better layer caching
 COPY package*.json ./
-RUN npm ci --production=false
 
-# Copy source files
+# Use npm ci for deterministic builds and cache mount for npm cache
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --production=false
+
+# Copy source files (separated for better layer caching)
 COPY marp.config.js ./
 COPY themes/ ./themes/
 COPY slides/ ./slides/
 COPY templates/ ./templates/
 
-# Build HTML slides
+# Build HTML slides (PDF generation excluded for smaller image)
 RUN npm run build
+
+# Optional: Build PDFs if needed (adds build time but useful for downloads)
+# RUN npm run build:pdf
 
 # Stage 2: Development - Serve with live reload
 FROM node:20-alpine AS development
+
+# Add labels for metadata
+LABEL org.opencontainers.image.title="MARP Slides Development Server"
+LABEL org.opencontainers.image.description="Development environment for MARP presentations with live reload"
+LABEL org.opencontainers.image.source="https://github.com/denhamparry/talks"
 
 WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package*.json ./
-RUN npm ci --production=false
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --production=false
 
-# Copy configuration
+# Copy configuration (source files will be mounted via volumes)
 COPY marp.config.js ./
+COPY themes/ ./themes/
+
+# Create directories for volume mounts
+RUN mkdir -p slides templates dist
+
+# Set NODE_ENV for development
+ENV NODE_ENV=development
 
 # Expose MARP dev server port
 EXPOSE 8080
 
+# Health check for development server
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080 || exit 1
+
 # Default to serve mode with live reload
-CMD ["npm", "run", "serve", "--", "--port", "8080"]
+CMD ["npm", "run", "serve", "--", "--port", "8080", "--host", "0.0.0.0"]
 
 # Stage 3: Production - Serve static files with nginx
 FROM nginx:alpine AS production
+
+# Add labels for metadata
+LABEL org.opencontainers.image.title="MARP Slides Production Server"
+LABEL org.opencontainers.image.description="Production-ready nginx server for MARP presentations"
+LABEL org.opencontainers.image.source="https://github.com/denhamparry/talks"
 
 # Copy built slides from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
@@ -136,14 +217,49 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Create non-root user (nginx alpine already runs as nginx user)
+# Verify permissions on served files
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html
+
 # Expose HTTP port
 EXPOSE 80
+
+# Health check for nginx
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:80 || exit 1
+
+# Switch to non-root user
+USER nginx
 
 # nginx runs in foreground by default
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-#### 2. nginx Configuration
+**Key Optimizations:**
+
+1. **BuildKit Cache Mounts**: `--mount=type=cache,target=/root/.npm` persists npm cache between builds, reducing build time by 50-70%
+
+2. **Layer Caching Strategy**:
+   - Copy package.json first (rarely changes)
+   - Install dependencies (cached unless package.json changes)
+   - Copy source files last (changes frequently)
+
+3. **Security**:
+   - Runs as non-root user (nginx) in production
+   - Proper file permissions with chown/chmod
+   - Health checks for container orchestration
+
+4. **Development Experience**:
+   - Binds to 0.0.0.0 for external access from host
+   - Health check ensures server is responsive
+   - Volume mount directories pre-created
+
+5. **Metadata**:
+   - OCI labels for image discovery and documentation
+   - Links to source repository
+
+#### 2. nginx Configuration (2025 Optimized)
 
 **File:** `nginx.conf`
 
@@ -154,28 +270,124 @@ server {
     root /usr/share/nginx/html;
     index index.html;
 
-    # Enable gzip compression
+    # Character encoding
+    charset utf-8;
+
+    # Enable gzip compression (2025 best practices)
     gzip on;
-    gzip_types text/html text/css application/javascript;
-    gzip_min_length 1000;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_min_length 1024;
+    gzip_types
+        text/plain
+        text/css
+        text/xml
+        text/javascript
+        application/json
+        application/javascript
+        application/xml+rss
+        application/atom+xml
+        image/svg+xml
+        font/woff
+        font/woff2;
 
-    # Serve HTML files
+    # Disable gzip for IE6 and older
+    gzip_disable "msie6";
+
+    # Main location block for presentations
     location / {
+        # Try to serve file directly, fall back to .html extension, then 404
         try_files $uri $uri.html $uri/ =404;
+
+        # CORS headers (if presentations need to be embedded)
+        # Uncomment if needed:
+        # add_header Access-Control-Allow-Origin "*" always;
+        # add_header Access-Control-Allow-Methods "GET, OPTIONS" always;
     }
 
-    # Cache static assets
-    location ~* \.(css|js|jpg|jpeg|png|gif|ico|svg)$ {
+    # HTML files - no caching (presentations may be updated)
+    location ~* \.html?$ {
+        expires -1;
+        add_header Cache-Control "no-cache, no-store, must-revalidate" always;
+        add_header Pragma "no-cache" always;
+    }
+
+    # Cache static assets (CSS, JS, fonts, images)
+    location ~* \.(css|js|woff|woff2|ttf|eot|otf)$ {
         expires 1y;
-        add_header Cache-Control "public, immutable";
+        add_header Cache-Control "public, immutable" always;
     }
 
-    # Security headers
+    # Image files - long-term caching
+    location ~* \.(jpg|jpeg|png|gif|ico|svg|webp|avif)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable" always;
+    }
+
+    # Security headers (2025 recommendations)
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "no-referrer-when-downgrade" always;
+
+    # Content Security Policy for presentations
+    # Adjust based on your presentation content (inline styles, external resources)
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; object-src 'none'; frame-ancestors 'self';" always;
+
+    # Disable server tokens for security
+    server_tokens off;
+
+    # Custom error pages (optional)
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+
+    # Deny access to hidden files (e.g., .git, .env)
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    # Health check endpoint for container orchestration
+    location /health {
+        access_log off;
+        return 200 "healthy\n";
+        add_header Content-Type text/plain;
+    }
 }
 ```
+
+**Key Enhancements:**
+
+1. **Comprehensive gzip Compression**:
+   - Compression level 6 (balance between CPU and size)
+   - Minimum 1024 bytes (avoid compressing small files)
+   - All relevant MIME types included (HTML, CSS, JS, JSON, SVG, fonts)
+   - gzip_vary for proper proxy caching
+
+2. **Advanced Caching Strategy**:
+   - HTML files: No caching (allow presentation updates)
+   - Static assets (CSS/JS/fonts): 1-year cache with immutable flag
+   - Images: Long-term caching for performance
+   - Proper Cache-Control and Pragma headers
+
+3. **Enhanced Security Headers**:
+   - Content Security Policy (CSP) for XSS protection
+   - Referrer-Policy for privacy
+   - Server tokens disabled (hide nginx version)
+   - Deny access to hidden files (.git, .env)
+
+4. **Operational Features**:
+   - Health check endpoint at /health for Kubernetes/Cloud Run
+   - Custom error pages
+   - UTF-8 character encoding
+   - CORS headers (commented, ready to enable)
+
+5. **Performance**:
+   - Optimized for static content delivery
+   - Minimal overhead with access_log off for health checks
+   - Efficient try_files directive
 
 #### 3. Docker Compose for Local Development
 
@@ -211,7 +423,7 @@ services:
       - production
 ```
 
-#### 4. GitHub Actions Workflow
+#### 4. GitHub Actions Workflow (2025 Optimized)
 
 **File:** `.github/workflows/docker-publish.yml`
 
@@ -228,13 +440,21 @@ on:
       - 'templates/**'
       - 'Dockerfile'
       - 'docker-compose.yml'
+      - 'nginx.conf'
       - 'package.json'
       - 'marp.config.js'
   pull_request:
     paths:
       - 'Dockerfile'
       - 'docker-compose.yml'
+      - 'nginx.conf'
   workflow_dispatch:
+    inputs:
+      build-pdf:
+        description: 'Build PDF versions of slides'
+        required: false
+        default: false
+        type: boolean
 
 env:
   REGISTRY: ghcr.io
@@ -246,10 +466,22 @@ jobs:
     permissions:
       contents: read
       packages: write
+      attestations: write
+      id-token: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: |
+            image=moby/buildkit:latest
+            network=host
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -270,21 +502,91 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=sha,prefix={{branch}}-
             type=raw,value=latest,enable={{is_default_branch}}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+          labels: |
+            org.opencontainers.image.title=MARP Slides
+            org.opencontainers.image.description=Containerized MARP presentation slides
+            org.opencontainers.image.vendor=denhamparry
 
       - name: Build and push Docker image
+        id: push
         uses: docker/build-push-action@v6
         with:
           context: .
+          platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           target: production
+          provenance: mode=max
+          sbom: true
+
+      - name: Generate artifact attestation
+        if: github.event_name != 'pull_request'
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
+
+      - name: Verify image
+        if: github.event_name != 'pull_request'
+        run: |
+          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest nginx -t
+
+      - name: Image size check
+        if: github.event_name != 'pull_request'
+        run: |
+          SIZE=$(docker image inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest --format='{{.Size}}')
+          SIZE_MB=$((SIZE / 1024 / 1024))
+          echo "Image size: ${SIZE_MB}MB"
+          if [ $SIZE_MB -gt 100 ]; then
+            echo "::warning::Image size ${SIZE_MB}MB exceeds 100MB target"
+          else
+            echo "::notice::Image size ${SIZE_MB}MB is within 100MB target ✓"
+          fi
 ```
+
+**Key Enhancements:**
+
+1. **Multi-Architecture Support**:
+   - Builds for linux/amd64 and linux/arm64 (Apple Silicon, AWS Graviton)
+   - QEMU setup for cross-platform builds
+   - Supports deployment to various cloud platforms
+
+2. **Security and Provenance**:
+   - Attestations for supply chain security (SLSA)
+   - SBOM (Software Bill of Materials) generation
+   - Provenance tracking with artifact attestation
+   - Required permissions: attestations: write, id-token: write
+
+3. **BuildKit Optimizations**:
+   - Latest BuildKit image for improved performance
+   - GitHub Actions cache for faster rebuilds
+   - Cache mode: max (caches all layers)
+
+4. **Quality Checks**:
+   - Image verification after build
+   - nginx configuration syntax check
+   - Image size monitoring with warnings if >100MB
+   - Automated feedback via GitHub annotations
+
+5. **Flexibility**:
+   - workflow_dispatch for manual triggers
+   - Optional PDF build input parameter
+   - Triggers on relevant file changes only
+
+6. **Updated Action Versions (2025)**:
+   - actions/checkout@v6
+   - docker/setup-qemu-action@v3
+   - docker/setup-buildx-action@v3
+   - docker/login-action@v3
+   - docker/metadata-action@v5
+   - docker/build-push-action@v6
+   - actions/attest-build-provenance@v2
 
 #### 5. .dockerignore File
 
@@ -671,12 +973,36 @@ curl -I http://localhost:8081
 
 ## References
 
-- [GitHub Issue #8](https://github.com/denhamparry/talks/issues/8)
-- [MARP CLI Documentation](https://github.com/marp-team/marp-cli)
-- [Docker Multi-Stage Builds](https://docs.docker.com/build/building/multi-stage/)
-- [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-container-registry/working-with-the-container-registry)
-- [nginx Official Image](https://hub.docker.com/_/nginx)
-- [Docker Compose Documentation](https://docs.docker.com/compose/)
+### Issue and Documentation
+- [GitHub Issue #8](https://github.com/denhamparry/talks/issues/8) - Original issue with requirements
+- [MARP CLI Documentation](https://github.com/marp-team/marp-cli) - Official MARP command-line interface docs
+- [Docker Compose Documentation](https://docs.docker.com/compose/) - Docker Compose reference
+
+### Docker Best Practices (2025 Research)
+- [Node.js Docker Optimization 2025: Shrink Images 70%](https://markaicode.com/nodejs-docker-optimization-2025/) - Multi-stage build optimization
+- [How to Build Smaller Container Images](https://labs.iximiuz.com/tutorials/docker-multi-stage-builds) - Multi-stage build tutorial
+- [Docker Multi-Stage Builds Reference](https://dockerbuild.com/reference/multi-stage-builds) - Official reference
+- [Why You Should Use Alpine Images](https://medium.com/@husnainali593/why-you-should-use-alpine-images-for-your-docker-builds-7c42c8e5e5c4) - Alpine benefits
+- [Node.js Docker Best Practices](https://github.com/AlbertHernandez/nodejs-docker-best-practices) - Production-ready setup examples
+
+### nginx Configuration (2025 Research)
+- [Nginx Config for SPAs](https://gist.github.com/coltenkrauter/2ec75399210d3e8d33612426a37377e1) - Single-page application configuration
+- [Setting Caching Headers for SPAs](https://medium.com/@pratheekhegde/setting-caching-headers-for-a-spa-in-nginx-eb2f75f52441) - Cache strategy
+- [Best nginx Configuration for Security](https://gist.github.com/plentz/6737338) - Security headers reference
+- [NGINX Compression Documentation](https://docs.nginx.com/nginx/admin-guide/web-server/compression/) - Official gzip guide
+- [Web Server Mastery: Serving Static Content](https://dev.to/unkletayo/part-2-web-server-mastery-serving-static-content-like-a-pro-1m0i) - nginx optimization
+
+### GitHub Container Registry (2025 Research)
+- [Publishing Docker Images - GitHub Docs](https://docs.github.com/en/actions/publishing-packages/publishing-docker-images) - Official GHCR guide
+- [Using the Github Container Registry](https://0ink.net/posts/2025/2025-11-01-using-ghcr.html) - Recent 2025 tutorial
+- [Build and Push Docker Image with GitHub Actions](https://victorhachard.github.io/notes/build-push-docker-image-with-github-action) - Workflow examples
+- [Shipyard: Building Docker Images in GitHub Actions](https://shipyard.build/blog/gha-recipes-build-and-push-container-registry/) - Advanced recipes
+- [GitHub Actions: Build and Push to GHCR](https://github.com/marketplace/actions/build-docker-image-and-push-to-ghcr-docker-hub-or-aws-ecr) - Marketplace action
+
+### Container Registries and Tools
+- [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-container-registry/working-with-the-container-registry) - GHCR overview
+- [nginx Official Image](https://hub.docker.com/_/nginx) - Docker Hub nginx image
+- [Docker Multi-Stage Builds Official Docs](https://docs.docker.com/build/building/multi-stage/) - Docker documentation
 
 ## Notes
 
