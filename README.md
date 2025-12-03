@@ -256,23 +256,49 @@ docker build --target production -t talks:latest .
 - **Multi-architecture** - Supports amd64 and arm64 (Apple Silicon, AWS Graviton)
 - **Cloud deployment** - Ready for Cloud Run, Fly.io, or any container platform
 
-### Deployment
+### Cloud Deployment
 
-See [Docker Deployment Guide](docs/docker-deployment.md) for detailed instructions on:
+Presentations are automatically deployed to **Google Cloud Run** when changes are pushed to the main branch.
 
-- Local development and production workflows
-- Deploying to Google Cloud Run
-- Deploying to Fly.io
-- Running on generic container platforms
-- Troubleshooting
+- **Production URL:** [talks.denhamparry.co.uk](https://talks.denhamparry.co.uk)
+- **Region:** europe-west2 (London)
+- **Platform:** Google Cloud Run (serverless)
+- **Cost:** $0/month (within free tier)
+
+**How it works:**
+
+1. Push slides to `main` branch
+2. GitHub Actions builds Docker image → `ghcr.io/denhamparry/talks:latest`
+3. GitHub Actions deploys to Cloud Run → `talks.denhamparry.co.uk`
+4. Available globally within 2-3 minutes
+
+**Manual deployment:**
+
+```bash
+# Deploy latest image to Cloud Run
+gcloud run deploy talks \
+  --image=ghcr.io/denhamparry/talks:latest \
+  --region=europe-west2 \
+  --project=denhamparry-talks
+```
+
+See [Deployment Guide](docs/deployment-guide.md) for complete setup instructions, including:
+
+- Google Cloud project setup and Workload Identity Federation
+- Custom domain configuration (Cloudflare DNS)
+- Billing alerts and cost management
+- Troubleshooting and monitoring
 
 ### GitHub Container Registry
 
-The project automatically publishes container images to GitHub Container Registry when changes are pushed to main:
+Container images are automatically published to GHCR on every main branch push:
 
 ```bash
+# Pull latest image
 docker pull ghcr.io/denhamparry/talks:latest
-docker run -p 80:80 ghcr.io/denhamparry/talks:latest
+
+# Run locally
+docker run -p 8080:8080 -e PORT=8080 ghcr.io/denhamparry/talks:latest
 ```
 
 ## 📢 Talks and Presentations
