@@ -128,28 +128,27 @@ jobs:
           echo "Starting test server..."
           docker run -d --name test-server -p 8888:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
-          echo "Waiting for server to be ready..."
-          sleep 5
-
-          echo "Testing health endpoint with retries..."
-          HEALTH_CHECK_PASSED=false
-          for i in {1..5}; do
-            if curl -f http://localhost:8888/health; then
-              echo "✓ Health check passed on attempt $i"
-              HEALTH_CHECK_PASSED=true
-              break
+          echo "Waiting for Docker health check to pass..."
+          TIMEOUT=30
+          ELAPSED=0
+          until [ "$(docker inspect --format='{{.State.Health.Status}}' test-server 2>/dev/null)" = "healthy" ]; do
+            if [ $ELAPSED -ge $TIMEOUT ]; then
+              echo "::error::Container failed to become healthy within ${TIMEOUT}s"
+              docker logs test-server
+              docker stop test-server
+              docker rm test-server
+              exit 1
             fi
-            echo "⚠ Health check failed on attempt $i, retrying..."
+            echo "⏳ Waiting for health check... (${ELAPSED}s/${TIMEOUT}s)"
             sleep 2
+            ELAPSED=$((ELAPSED + 2))
           done
+          echo "✓ Container is healthy (checked via Docker internal health check)"
 
-          if [ "$HEALTH_CHECK_PASSED" = "false" ]; then
-            echo "::error::Health check failed after 5 attempts"
-            docker logs test-server
-            exit 1
-          fi
+          echo "Verifying health endpoint from host..."
+          curl -f http://localhost:8888/health || (echo "::error::Health endpoint check failed" && docker logs test-server && exit 1)
 
-          echo "Testing homepage..."
+          echo "Verifying homepage..."
           curl -f -I http://localhost:8888/ || (echo "::error::Homepage check failed" && docker logs test-server && exit 1)
 
           echo "Cleaning up test server..."
