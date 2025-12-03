@@ -85,31 +85,51 @@ When creating a new project from this template:
 
 ## Quick Commands
 
-### Development Commands
+### Development Commands (via Makefile)
 
 ```bash
-# Build: [Add your build command]
-# Test: [Add your test command]
-# Lint: [Add your lint command]
-# Type Check: [Add your typecheck command]
-# Dev Server: [Add your dev command]
+# Show all available commands
+make help
+
+# Install dependencies
+make install
+
+# Build all formats
+make build
+
+# Build specific formats
+make build-html
+make build-pdf
+
+# Development workflow
+make watch          # Auto-rebuild on changes
+make serve          # Local server with live reload
+
+# Quality checks
+make lint           # Run linting
+make format         # Format files
+make precommit      # Run pre-commit hooks
+
+# Cleanup
+make clean          # Remove build artifacts
+
+# CI workflow
+make ci             # Install + build all
 ```
 
-### Presentation Commands (MARP)
+### Underlying npm Scripts
+
+The Makefile delegates to these npm scripts:
 
 ```bash
-# Build slides to HTML
-npm run build
-
-# Build slides to PDF
-npm run build:pdf
-
-# Watch mode (auto-rebuild on changes)
-npm run watch
-
-# Serve locally with live reload
-npm run serve
+npm run build       # Build HTML
+npm run build:pdf   # Build PDF
+npm run watch       # Watch mode
+npm run serve       # Dev server
+npm run clean       # Clean dist/
 ```
+
+Use `make` commands for consistency across projects. Use npm scripts directly if preferred.
 
 ## Code Style Guidelines (Customize)
 

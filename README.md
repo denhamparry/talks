@@ -145,6 +145,73 @@ npm run serve        # Local server with live reload
 - **[Theme Analysis](docs/theme-analysis.md)** - Design specifications
 - **[Templates](templates/)** - Example slide decks and layouts
 
+## 🛠️ Quick Commands
+
+This repository includes a Makefile for convenient command-line operations.
+
+### View All Commands
+
+```bash
+make help
+```
+
+### Common Operations
+
+```bash
+# Install dependencies
+make install
+
+# Build presentations (HTML + PDF)
+make build
+
+# Build HTML only
+make build-html
+
+# Build PDF only
+make build-pdf
+
+# Development mode with auto-rebuild
+make watch
+
+# Serve locally with live reload
+make serve
+
+# Run pre-commit hooks
+make precommit
+
+# Clean build artifacts
+make clean
+```
+
+### Quality Checks
+
+```bash
+# Run linting
+make lint
+
+# Format files
+make format
+
+# Run all pre-commit hooks
+make precommit
+```
+
+### CI Workflow
+
+```bash
+# Run complete CI workflow (install + build)
+make ci
+```
+
+**Alternative:** You can still use npm scripts directly:
+
+```bash
+npm run build
+npm run build:pdf
+npm run watch
+npm run serve
+```
+
 ## 📚 Documentation
 
 - **`CLAUDE.md`** - Main project context for Claude Code
