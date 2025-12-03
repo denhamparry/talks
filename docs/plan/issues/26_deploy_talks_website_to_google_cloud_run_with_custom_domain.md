@@ -1,9 +1,10 @@
 # GitHub Issue #26: Deploy talks website to Google Cloud Run with custom domain
 
 **Issue:** [#26](https://github.com/denhamparry/talks/issues/26)
-**Status:** Open
+**Status:** Implementation Complete - Awaiting Google Cloud Setup
 **Date:** 2025-12-03
 **Labels:** enhancement, ci, docker, infrastructure
+**Commit:** ef379b4
 
 ## Problem Statement
 
@@ -935,19 +936,40 @@ docker run --rm talks:test /bin/sh -c 'envsubst "$$PORT" < /etc/nginx/templates/
 
 ## Success Criteria
 
-- [ ] Dockerfile modified to support Cloud Run $PORT environment variable
-- [ ] nginx.conf uses ${PORT} template variable
-- [ ] Google Cloud project and service accounts created
+### Code Implementation (Completed ✅)
+
+- [x] Dockerfile modified to support Cloud Run $PORT environment variable
+- [x] nginx.conf uses ${PORT} template variable
+- [x] GitHub Actions workflow created (.github/workflows/cloudrun-deploy.yml)
+- [x] Documentation updated (README.md, docs/deployment-guide.md)
+- [x] Implementation plan completed
+- [x] Pre-commit hooks passing
+- [x] Changes committed to branch denhamparry.co.uk/feat/gh-issue-026
+
+### Infrastructure Setup (Pending - User Action Required)
+
+- [ ] Google Cloud project created (denhamparry-talks)
+- [ ] Billing account linked with budget alerts (£10/month)
+- [ ] Service accounts created (cloudrun-talks-sa, github-actions-cloudrun)
 - [ ] Workload Identity Federation configured
+- [ ] Required APIs enabled (run.googleapis.com, compute.googleapis.com)
 - [ ] Cloud Run service deployed and accessible
-- [ ] GitHub Actions workflow deploys automatically on main branch push
+- [ ] GitHub Secrets configured (GCP_WORKLOAD_IDENTITY_PROVIDER, GCP_SERVICE_ACCOUNT)
 - [ ] Custom domain talks.denhamparry.co.uk mapped to Cloud Run
-- [ ] DNS records configured correctly
+- [ ] Domain verified in Google Cloud Console
+- [ ] DNS records configured in Cloudflare
 - [ ] SSL certificate provisioned and valid
-- [ ] Documentation updated (README.md, docs/deployment-guide.md)
 - [ ] All presentations accessible at https://talks.denhamparry.co.uk
-- [ ] Existing local Docker functionality still works
 - [ ] Deployment cost within Cloud Run free tier ($0/month)
+
+### Testing (Pending - After Infrastructure Setup)
+
+- [ ] Existing local Docker functionality still works
+- [ ] Docker build successful with dynamic port
+- [ ] Health check endpoint responds
+- [ ] Automatic deployment triggered on main branch push
+- [ ] Custom domain accessible via HTTPS
+- [ ] SSL certificate valid (Google Trust Services)
 
 ## Files Modified
 
