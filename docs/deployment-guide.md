@@ -121,6 +121,29 @@ gcloud services enable run.googleapis.com --project=$PROJECT_ID
 
 # Enable Compute Engine API (required for domain mapping)
 gcloud services enable compute.googleapis.com --project=$PROJECT_ID
+
+# Enable Artifact Registry API
+gcloud services enable artifactregistry.googleapis.com --project=$PROJECT_ID
+```
+
+### Step 4.5: Create Artifact Registry Repository
+
+Google Cloud Run requires images to be in Google Artifact Registry, not GitHub Container Registry.
+
+```bash
+export REGION="europe-west2"  # London
+
+# Create Artifact Registry repository
+gcloud artifacts repositories create talks \
+  --repository-format=docker \
+  --location=$REGION \
+  --description="MARP presentation slides container images" \
+  --project=$PROJECT_ID
+
+# Verify repository created
+gcloud artifacts repositories describe talks \
+  --location=$REGION \
+  --project=$PROJECT_ID
 ```
 
 ### Step 5: Create Service Accounts
@@ -148,6 +171,11 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 gcloud projects add-iam-policy-binding $PROJECT_ID \
   --member="serviceAccount:github-actions-cloudrun@$PROJECT_ID.iam.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
+
+# Grant Artifact Registry Writer permission (required to push images)
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:github-actions-cloudrun@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/artifactregistry.writer"
 ```
 
 ### Step 6: Configure Workload Identity Federation
@@ -190,12 +218,27 @@ gcloud iam workload-identity-pools providers describe github-provider \
 
 **Save the output** (format: `projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/providers/github-provider`)
 
-### Step 7: Deploy Initial Cloud Run Service
+### Step 7: Copy Image to Artifact Registry and Deploy
+
+Cloud Run requires images in Artifact Registry (not GHCR).
 
 ```bash
-# Deploy from existing GHCR image
+# Configure Docker authentication for Artifact Registry
+gcloud auth configure-docker $REGION-docker.pkg.dev
+
+# Pull image from GitHub Container Registry
+docker pull ghcr.io/denhamparry/talks:latest
+
+# Tag for Artifact Registry
+docker tag ghcr.io/denhamparry/talks:latest \
+  $REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest
+
+# Push to Artifact Registry
+docker push $REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest
+
+# Deploy to Cloud Run from Artifact Registry
 gcloud run deploy $SERVICE_NAME \
-  --image=ghcr.io/denhamparry/talks:latest \
+  --image=$REGION-docker.pkg.dev/$PROJECT_ID/talks/talks:latest \
   --platform=managed \
   --region=$REGION \
   --allow-unauthenticated \
@@ -221,6 +264,8 @@ SERVICE_URL=$(gcloud run services describe $SERVICE_NAME --region=$REGION --form
 curl "$SERVICE_URL/health"
 # Should return: healthy
 ```
+
+**Note:** After GitHub Actions is configured, the workflow will automatically pull from GHCR and push to Artifact Registry on every deployment.
 
 ### Step 8: Configure GitHub Secrets
 
