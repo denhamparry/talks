@@ -107,6 +107,40 @@ jobs:
           docker inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           docker run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest nginx -t
 
+      - name: Verify slides were built
+        if: github.event_name != 'pull_request'
+        run: |
+          echo "Checking if slides exist in built image..."
+          SLIDE_COUNT=$(docker run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest find /usr/share/nginx/html -name "*.html" -type f | wc -l)
+          echo "Found $SLIDE_COUNT HTML files in image"
+          if [ "$SLIDE_COUNT" -eq 0 ]; then
+            echo "::error::No HTML files found in image - build may have failed"
+            exit 1
+          else
+            echo "::notice::Successfully found $SLIDE_COUNT HTML presentation files ✓"
+          fi
+
+      - name: Smoke test - Verify server responds
+        if: github.event_name != 'pull_request'
+        run: |
+          echo "Starting test server..."
+          docker run -d --name test-server -p 8888:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+          echo "Waiting for server to be ready..."
+          sleep 5
+
+          echo "Testing health endpoint..."
+          curl -f http://localhost:8888/health || (docker logs test-server && exit 1)
+
+          echo "Testing homepage..."
+          curl -f -I http://localhost:8888/ || (docker logs test-server && exit 1)
+
+          echo "Cleaning up test server..."
+          docker stop test-server
+          docker rm test-server
+
+          echo "::notice::Smoke test passed - server responds correctly ✓"
+
       - name: Image size check
         if: github.event_name != 'pull_request'
         run: |
