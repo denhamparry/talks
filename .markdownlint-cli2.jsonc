@@ -3,7 +3,16 @@
     "default": true,
     "MD013": false,
     "MD029": false,
-    "MD036": false
+    "MD036": false,
+    "MD025": {
+      "front_matter_title": ""
+    }
   },
-  "ignores": ["node_modules", "CHANGELOG.md"]
+  "ignores": [
+    "node_modules",
+    "CHANGELOG.md",
+    "docs/theme-analysis.md",
+    "templates/**/*.md",
+    "slides/**/*.md"
+  ]
 }

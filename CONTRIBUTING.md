@@ -8,6 +8,32 @@ This project adheres to a Code of Conduct. By participating, you are expected to
 
 ## How Can I Contribute?
 
+### Contributing Slide Content
+
+Want to contribute presentation content without writing code? We welcome slide submissions!
+
+**No MARP knowledge required!** Use our contributor-friendly template to create professional slide decks.
+
+See our [Slide Contribution Guide](docs/CONTRIBUTING_SLIDES.md) for:
+
+- Using the contributor template
+- Submitting slides from external projects
+- Best practices for slide content
+- Step-by-step submission workflow
+
+**Quick start:**
+
+```bash
+# Copy the template
+cp templates/contributor-template.md slides/your-talk.md
+
+# Fill in your content and submit a PR
+```
+
+Check out `slides/example-contribution.md` for a complete example.
+
+---
+
 ### Reporting Bugs
 
 Before creating a bug report:
