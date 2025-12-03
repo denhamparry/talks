@@ -1,4 +1,4 @@
-# Claude Code Project Template
+# Talks
 
 [![CI](https://github.com/denhamparry/talks/workflows/CI/badge.svg)](https://github.com/denhamparry/talks/actions/workflows/ci.yml)
 [![Build Slides](https://github.com/denhamparry/talks/workflows/Build%20MARP%20Slides/badge.svg)](https://github.com/denhamparry/talks/actions/workflows/build-slides.yml)
@@ -7,150 +7,114 @@
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A GitHub template repository that provides a standardized, fully-configured foundation for new projects developed with Claude Code. Includes built-in support for Test-Driven Development (TDD), automated code quality checks, and AI-assisted workflows.
+> Professional presentations built with MARP and the Edera V2 theme
+
+A modern presentation system for creating beautiful slide decks using Markdown. Built with MARP and featuring the professional Edera V2 theme, this project makes it easy to create, version control, and deploy presentations.
+
+**Live Presentations:** [talks.denhamparry.co.uk](https://talks.denhamparry.co.uk)
+
+## ✨ Features
+
+- **Markdown-based** - Write slides in simple, version-controllable Markdown
+- **Professional Theme** - Edera V2 theme with 6 pre-built layouts (title, content, dark, two-column, image, image-overlay)
+- **Multiple Formats** - Export to HTML and PDF automatically
+- **Live Development** - Hot reload server for rapid iteration
+- **Docker Ready** - Containerized development and production deployment
+- **CI/CD Pipeline** - Automated builds and deployment to Google Cloud Run
+- **Accessible** - WCAG AA compliant color contrasts
+- **Open Source** - MIT licensed, free to use and customize
 
 ## 🚀 Quick Start
 
-### 1. Create Your Project
+### Prerequisites
 
-Click the **"Use this template"** button above to create a new repository from this template.
+- Node.js 18+ (or use Docker - see below)
+- npm or yarn
+- Git
 
-### 2. Clone and Setup
+### Create Your First Presentation
 
-```bash
-# Clone your new repository
-git clone https://github.com/your-username/your-new-project.git
-cd your-new-project
+1. **Clone the repository**
 
-# Open Claude Code
-claude
-```
+   ```bash
+   git clone https://github.com/denhamparry/talks.git
+   cd talks
+   ```
 
-### 3. Run the Setup Wizard
+2. **Install dependencies**
 
-In Claude Code, run:
+   ```bash
+   npm install
+   ```
 
-```text
-/setup-repo
-```
+3. **Copy a template**
 
-The interactive wizard will:
+   ```bash
+   cp templates/basic-presentation.md slides/my-first-talk.md
+   ```
 
-- ✅ Gather your project information (name, tech stack, commands)
-- ✅ Customize configuration files for your specific project
-- ✅ Configure pre-commit hooks for your language
-- ✅ Set up automated GitHub PR reviews
-- ✅ Install and verify all configurations
+4. **Edit your slides**
 
-### 4. Start Building
+   Open `slides/my-first-talk.md` in your editor and customize the content
 
-```bash
-# Commit the configured files
-git add .
-git commit -m "chore: configure Claude Code for project"
+5. **Build and preview**
 
-# Start developing with TDD!
-```
+   ```bash
+   # Development mode with live reload
+   npm run serve
+   # Visit http://localhost:8080
 
-## 📦 What's Included
+   # Or build HTML/PDF
+   npm run build
+   npm run build:pdf
+   ```
 
-### Core Configuration
+That's it! Your presentation is ready at `dist/my-first-talk.html` and `dist/my-first-talk.pdf`.
 
-- **`CLAUDE.md`** - Project context for Claude Code with TDD guidelines
-- **`docs/setup.md`** - Comprehensive setup checklist and best practices
-- **`.pre-commit-config.yaml`** - Code quality hooks (formatting, linting, security)
-- **`.github/claude-code-review.yml`** - Automated PR review configuration
+### Using Docker (No Node.js Required)
 
-### Presentation System (MARP)
-
-- **`themes/edera-v2.css`** - Professional Edera V2 presentation theme
-- **`templates/`** - Ready-to-use slide deck templates
-- **`marp.config.js`** - MARP build configuration
-- **`docs/marp-usage.md`** - Complete MARP usage guide
-- **`docs/theme-guide.md`** - Theme customization documentation
-
-### Custom Slash Commands
-
-Located in `.claude/commands/`:
-
-- **`/setup-repo`** - Interactive setup wizard (run this first!)
-- **`/review`** - Comprehensive code review (quality, tests, security, performance)
-- **`/tdd-check`** - Verify TDD workflow compliance
-- **`/precommit`** - Run pre-commit hooks on all files
-
-## 🎯 Key Features
-
-### Test-Driven Development (TDD)
-
-This template enforces TDD workflow:
-
-1. **Red** - Write a failing test first
-2. **Green** - Write minimal code to make it pass
-3. **Refactor** - Improve code while keeping tests green
-
-Use `/tdd-check` to verify you're following TDD principles.
-
-### Automated Code Quality
-
-- Pre-commit hooks for consistent formatting and linting
-- Secret detection to prevent credential leaks
-- Language-specific quality checks (Python, Go, JavaScript/TypeScript)
-- Automated PR reviews with Claude Code
-
-### Claude Code Optimized
-
-- Project-specific context in CLAUDE.md
-- Custom slash commands for common workflows
-- Automated PR reviews configured out of the box
-- Best practices built into the template
-
-## 🛠️ Supported Languages
-
-The template is language-agnostic but includes pre-configured hooks for:
-
-- **Python** - Black, Flake8, isort
-- **Go** - gofmt, go vet, go imports
-- **JavaScript/TypeScript** - Prettier, ESLint
-- **Generic** - File formatting, YAML/JSON validation, secret detection
-
-Simply uncomment the relevant hooks in `.pre-commit-config.yaml` during setup.
-
-## 🎤 Building Presentations
-
-This repository includes a complete MARP setup with the Edera V2 theme for creating professional presentations.
-
-### Quick Start
+Prefer containers? Use Docker instead:
 
 ```bash
-# Install dependencies
-npm install
+# Development with live reload
+make docker-dev
+# Visit http://localhost:8080
 
-# Create a new presentation
-cp templates/basic-presentation.md slides/my-talk.md
-
-# Build slides
-npm run build        # HTML output
-npm run build:pdf    # PDF output
-
-# Development mode
-npm run watch        # Auto-rebuild on changes
-npm run serve        # Local server with live reload
+# Production build
+make docker-build
 ```
 
-### Features
+## 📺 Example Presentations
 
-- **Edera V2 Theme** - Professional dark teal and light mint color scheme
-- **6 Slide Layouts** - Title, content, dark, two-column, image, and image-overlay
-- **Version Control** - Markdown-based slides in Git
-- **CI/CD Ready** - Automated builds via GitHub Actions
-- **Accessible** - WCAG AA compliant color contrasts
+### Upcoming Talks
 
-### Documentation
+#### IvySketch: Design Patterns & AI Workflow
 
-- **[MARP Usage Guide](docs/marp-usage.md)** - Complete usage instructions
-- **[Theme Guide](docs/theme-guide.md)** - Customization and best practices
-- **[Theme Analysis](docs/theme-analysis.md)** - Design specifications
-- **[Templates](templates/)** - Example slide decks and layouts
+**Cloud-Native Manchester** | December 4th, 2025
+
+Building GenAI applications with Kubernetes and AI-assisted development workflows.
+
+- **Topic:** IvySketch - AI-powered Axolotl character designer
+- **Focus:** Architecture, Kubernetes deployment, development workflow
+- **Slides:** [HTML](https://talks.denhamparry.co.uk/2025-12-04-cloud-native-manchester.html) | [PDF](https://talks.denhamparry.co.uk/2025-12-04-cloud-native-manchester.pdf)
+- **Source:** [slides/2025-12-04-cloud-native-manchester.md](slides/2025-12-04-cloud-native-manchester.md)
+
+### Example Slides
+
+- **[Basic Presentation](templates/basic-presentation.md)** - Simple starter template
+- **[Contributor Template](templates/contributor-template.md)** - Simplified template for external contributors
+- **[Example Contribution](slides/example-contribution.md)** - Complete example presentation
+
+### Layout Examples
+
+See `templates/layouts/` for examples of all 6 available slide layouts:
+
+- Title slides (dark backgrounds)
+- Content slides (default)
+- Dark emphasis slides
+- Two-column layouts
+- Image slides
+- Image overlay slides
 
 ## 🛠️ Quick Commands
 
@@ -308,6 +272,72 @@ docker pull ghcr.io/denhamparry/talks:latest
 docker run -p 8080:8080 -e PORT=8080 ghcr.io/denhamparry/talks:latest
 ```
 
+## 📚 Documentation
+
+### Getting Started
+
+- **[Quick Start](#-quick-start)** - Get your first presentation running
+- **[MARP Usage Guide](docs/marp-usage.md)** - Complete MARP syntax and features
+- **[Examples](templates/)** - Ready-to-use templates and layouts
+
+### Customization
+
+- **[Theme Guide](docs/theme-guide.md)** - Customize the Edera V2 theme
+- **[Theme Analysis](docs/theme-analysis.md)** - Design specifications and colors
+- **[Slide Layouts](templates/layouts/)** - All available layout examples
+
+### Deployment
+
+- **[Docker Deployment](docs/docker-deployment.md)** - Containerized deployment guide
+- **[Cloud Run Guide](docs/deployment-guide.md)** - Google Cloud Run deployment
+- **[CI/CD Setup](docs/troubleshooting-cicd.md)** - GitHub Actions troubleshooting
+
+### Contributing
+
+- **[Slide Contribution Guide](docs/CONTRIBUTING_SLIDES.md)** - Submit your own presentations
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribute to the project
+
+## 🤝 Contributing
+
+### Submit Your Presentations
+
+**Want to share your talks?** We welcome slide contributions!
+
+No MARP knowledge required - use our simple template:
+
+```bash
+# Get the contributor template
+cp templates/contributor-template.md slides/your-talk-name.md
+
+# Fill in your content (the template has inline instructions)
+
+# Submit a pull request
+```
+
+**Features:**
+
+- ✅ Simple Markdown template with inline instructions
+- ✅ No need to understand MARP or presentation tools
+- ✅ Automatic professional formatting with Edera V2 theme
+- ✅ CI/CD builds HTML and PDF automatically
+- ✅ Great for sharing conference talks and meetup presentations
+
+**See:** [Slide Contribution Guide](docs/CONTRIBUTING_SLIDES.md) for complete instructions.
+
+**Example:** Check out `slides/example-contribution.md` for a complete working example!
+
+### Improve the Project
+
+Want to improve the presentation system itself?
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Test locally (`make ci`)
+5. Submit a pull request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
 ## 🔐 GitHub Secrets Configuration
 
 ### Required Secrets (Maintainer Only)
@@ -420,87 +450,6 @@ If workflows fail, see:
 - **Deployment Issues:** `docs/deployment-guide.md`
 - **Repository Settings:** `docs/repository-settings.md`
 
-## 📢 Talks and Presentations
-
-This repository contains slide decks for conference and meetup talks.
-
-### Upcoming Talks
-
-#### IvySketch: Design Patterns & AI Workflow - December 4th, 2025
-
-- **Event:** [Cloud-Native Manchester Meetup](https://www.meetup.com/cloud-native-kubernetes-manchester/events/312062865/)
-- **Date:** December 4th, 2025
-- **Location:** Manchester, UK
-- **Speaker:** Lewis Denham-Parry
-- **Topic:** Building GenAI Applications with Kubernetes and AI-Assisted Development
-- **Project:** [IvySketch](https://ivysketch.me) - AI-powered Axolotl character designer
-- **Slides:** [HTML](dist/2025-12-04-cloud-native-manchester.html) | [PDF](dist/2025-12-04-cloud-native-manchester.pdf)
-
-**Talk Outline:**
-
-- Part 1: Introduction to IvySketch (GenAI app with Kubernetes)
-- Part 2: Architecture & Design Patterns (Go, NATS, OpenTelemetry)
-- Part 3: Kubernetes Deployment (Kustomize, GPU scheduling, NetworkPolicies)
-- Part 4: AI-Powered Development Workflow (Documentation-driven, custom commands)
-- Part 5: Real-World Examples (326+ tasks completed across 13 phases)
-- Part 6: Lessons Learned (Challenges, best practices, pitfalls to avoid)
-- Part 7: Q&A
-
----
-
-## 📚 Documentation
-
-- **`CLAUDE.md`** - Main project context for Claude Code
-- **`docs/setup.md`** - Detailed setup instructions and best practices
-- **`docs/marp-usage.md`** - MARP presentation guide
-- **`docs/theme-guide.md`** - Theme customization guide
-- **`.claude/commands/`** - Custom command documentation
-
-## 🔧 Manual Setup (Alternative)
-
-If you prefer not to use the interactive wizard, follow the manual checklist in `docs/setup.md`.
-
-## 🤝 Contributing
-
-### Contributing Slide Content
-
-**Want to contribute presentations without code?** You can!
-
-No MARP knowledge required - just use our simple template:
-
-```bash
-# Get the template
-cp templates/contributor-template.md slides/your-talk.md
-
-# Fill in your content
-# Submit a pull request
-```
-
-See our [Slide Contribution Guide](docs/CONTRIBUTING_SLIDES.md) for complete instructions.
-
-**Features:**
-
-- Simple markdown template with inline instructions
-- No need to understand MARP or presentation tools
-- Automatic professional formatting with Edera V2 theme
-- CI/CD builds HTML and PDF automatically
-- Great for external projects and teams
-
-**Check out:** `slides/example-contribution.md` for a complete example!
-
----
-
-### Contributing to the Template
-
-To improve this template:
-
-1. Make your changes
-2. Test with a new project
-3. Update documentation
-4. Submit a PR
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
-
 ## 📝 License
 
 MIT License - see [LICENSE](LICENSE) file for details.
@@ -509,15 +458,23 @@ Copyright (c) 2025 Lewis Denham-Parry
 
 ## 🙋 Support
 
-For issues with:
+For questions or issues:
 
-- **This template**: Open an issue in this repository
-- **Claude Code**: Visit <https://docs.claude.com/en/docs/claude-code>
-- **Feedback**: <https://github.com/anthropics/claude-code/issues>
+- **Presentation Help:** Check [MARP Usage Guide](docs/marp-usage.md) or [Theme Guide](docs/theme-guide.md)
+- **Bugs/Features:** Open an issue in this repository
+- **Slide Contributions:** See [Contribution Guide](docs/CONTRIBUTING_SLIDES.md)
+- **General Questions:** Open a discussion on GitHub
+
+### Useful Resources
+
+- **MARP Documentation:** [https://marpit.marp.app/](https://marpit.marp.app/)
+- **Markdown Guide:** [https://www.markdownguide.org/](https://www.markdownguide.org/)
+- **Project Issues:** [https://github.com/denhamparry/talks/issues](https://github.com/denhamparry/talks/issues)
 
 ---
 
-**Template Version:** 1.0
+**Version:** 1.0.0 (preparing for public release)
 **Last Updated:** 2025-12-03
+**Maintainer:** [Lewis Denham-Parry](https://github.com/denhamparry)
 
-Built with ❤️ for Claude Code development
+Built with ❤️ using [MARP](https://marp.app/) and the Edera V2 theme.
