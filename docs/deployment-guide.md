@@ -124,7 +124,12 @@ gcloud services enable compute.googleapis.com --project=$PROJECT_ID
 
 # Enable Artifact Registry API
 gcloud services enable artifactregistry.googleapis.com --project=$PROJECT_ID
+
+# Enable IAM Service Account Credentials API (required for Workload Identity Federation)
+gcloud services enable iamcredentials.googleapis.com --project=$PROJECT_ID
 ```
+
+**Important:** The IAM Service Account Credentials API (`iamcredentials.googleapis.com`) is critical for Workload Identity Federation to impersonate service accounts. Without this API enabled, GitHub Actions authentication will succeed but Docker pushes to Artifact Registry will fail with a "Unable to acquire impersonated credentials" error.
 
 ### Step 4.5: Create Artifact Registry Repository
 
@@ -544,6 +549,49 @@ gcloud billing budgets update BUDGET_ID \
 3. Verify GitHub Secrets are correct:
    - Go to repository Settings → Secrets → Actions
    - Ensure `GCP_WORKLOAD_IDENTITY_PROVIDER` and `GCP_SERVICE_ACCOUNT` are set
+
+### Unable to Acquire Impersonated Credentials
+
+**Symptoms:**
+
+- GitHub Actions workflow fails at "Push to Artifact Registry" step
+- Error message: "Unable to acquire impersonated credentials"
+- Error includes: "IAM Service Account Credentials API has not been used in project... or it is disabled"
+- Error code: 403 PERMISSION_DENIED, reason: SERVICE_DISABLED
+
+**Root Cause:**
+
+The IAM Service Account Credentials API (`iamcredentials.googleapis.com`) is not enabled in your GCP project. This API is required for Workload Identity Federation to impersonate service accounts.
+
+**Solution:**
+
+1. Enable the IAM Service Account Credentials API:
+
+   ```bash
+   gcloud services enable iamcredentials.googleapis.com --project=denhamparry-talks
+   ```
+
+   Or via GCP Console:
+   - Visit: <https://console.developers.google.com/apis/api/iamcredentials.googleapis.com/overview?project=YOUR_PROJECT_ID>
+   - Click "Enable"
+
+2. Wait 2-5 minutes for API enablement to propagate across GCP systems
+
+3. Verify the API is enabled:
+
+   ```bash
+   gcloud services list --enabled --project=denhamparry-talks --filter="name:iamcredentials.googleapis.com"
+   ```
+
+4. Re-run the failed GitHub Actions workflow:
+
+   ```bash
+   gh run rerun <RUN_ID> --failed
+   ```
+
+**Prevention:**
+
+Ensure this API is included in Step 4 of the initial setup. This is now documented in the deployment guide.
 
 ### Domain Not Accessible (talks.denhamparry.co.uk)
 
