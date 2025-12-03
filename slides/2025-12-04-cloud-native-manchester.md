@@ -2,8 +2,7 @@
 marp: true
 theme: edera-v2
 paginate: true
-header: 'Cloud-Native Manchester'
-footer: 'December 4th, 2025'
+footer: 'December 4th, 2025 | Cloud-Native Manchester'
 ---
 
 # IvySketch: Design Patterns & AI Workflow
