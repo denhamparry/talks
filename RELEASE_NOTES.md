@@ -168,7 +168,6 @@ make ci
 
 - **Cloud Run Deployment:** Requires GCP secrets (maintainer only)
 - **Custom Domain Setup:** Requires DNS configuration (Cloudflare or similar)
-- **Docker Workflow:** Smoke test timing issue (non-blocking, image builds successfully)
 - **PDF Generation:** Requires Node.js and npm installed locally
 
 ## Credits
