@@ -1,7 +1,7 @@
 # GitHub Issue #13: Fix: Slide deck links navigate to wrong presentation
 
 **Issue:** [#13](https://github.com/denhamparry/talks/issues/13)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
 **Labels:** bug, presentation, routing, priority:high
 
