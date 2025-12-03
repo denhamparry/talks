@@ -1,7 +1,7 @@
 # GitHub Issue #47: Fix Docker workflow smoke test timing issue
 
 **Issue:** [#47](https://github.com/denhamparry/talks/issues/47)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
 **Priority:** Low
 **Labels:** bug, ci, docker

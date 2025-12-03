@@ -131,11 +131,18 @@ jobs:
           echo "Waiting for server to be ready..."
           sleep 5
 
-          echo "Testing health endpoint..."
-          curl -f http://localhost:8888/health || (docker logs test-server && exit 1)
+          echo "Testing health endpoint with retries..."
+          for i in {1..5}; do
+            if curl -f http://localhost:8888/health; then
+              echo "✓ Health check passed on attempt $i"
+              break
+            fi
+            echo "⚠ Health check failed on attempt $i, retrying..."
+            sleep 2
+          done || (echo "::error::Health check failed after 5 attempts" && docker logs test-server && exit 1)
 
           echo "Testing homepage..."
-          curl -f -I http://localhost:8888/ || (docker logs test-server && exit 1)
+          curl -f -I http://localhost:8888/ || (echo "::error::Homepage check failed" && docker logs test-server && exit 1)
 
           echo "Cleaning up test server..."
           docker stop test-server

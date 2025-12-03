@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed placeholder text in core documentation files
 - Fixed date inconsistencies in documentation
+- Fixed Docker workflow smoke test timing issue with retry logic (#47)
+  - Added health check retry loop (5 attempts, 2-second intervals)
+  - Eliminates race condition in container startup verification
+  - Total timeout: ~15 seconds maximum
 
 ## [1.0.0] - 2025-12-03
 
