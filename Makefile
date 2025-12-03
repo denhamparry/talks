@@ -79,3 +79,23 @@ install: ## Install dependencies
 .PHONY: ci
 ci: install build ## CI workflow: install dependencies and build all formats
 	@echo "CI workflow complete"
+
+# Docker Commands
+# ----------------
+
+.PHONY: docker-build
+docker-build: ## Build Docker image (production)
+	docker build --target production -t talks:latest .
+
+.PHONY: docker-dev
+docker-dev: ## Run development server in Docker
+	docker-compose up dev
+
+.PHONY: docker-prod
+docker-prod: ## Run production server in Docker
+	docker-compose --profile production up prod
+
+.PHONY: docker-clean
+docker-clean: ## Remove Docker images and containers
+	docker-compose down --volumes --remove-orphans
+	docker rmi talks:latest talks:dev talks:prod 2>/dev/null || true

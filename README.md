@@ -212,6 +212,69 @@ npm run watch
 npm run serve
 ```
 
+## 🐳 Running with Docker
+
+This repository includes full Docker support for containerized development and deployment.
+
+### Docker Quick Start
+
+```bash
+# Development server with live reload
+make docker-dev
+# Visit http://localhost:8080
+
+# Production server
+make docker-prod
+# Visit http://localhost:8081
+```
+
+### Using docker-compose Directly
+
+```bash
+# Development mode
+docker-compose up dev
+
+# Production mode
+docker-compose --profile production up prod
+```
+
+### Building Images
+
+```bash
+# Build production image
+make docker-build
+
+# Or using docker directly
+docker build --target production -t talks:latest .
+```
+
+### Docker Features
+
+- **Multi-stage builds** - Optimized for size (production <60MB)
+- **Live reload** - Development server with volume mounts
+- **Production-ready** - nginx with gzip compression and security headers
+- **Multi-architecture** - Supports amd64 and arm64 (Apple Silicon, AWS Graviton)
+- **Cloud deployment** - Ready for Cloud Run, Fly.io, or any container platform
+
+### Deployment
+
+See [Docker Deployment Guide](docs/docker-deployment.md) for detailed instructions on:
+
+- Local development and production workflows
+- Deploying to Google Cloud Run
+- Deploying to Fly.io
+- Running on generic container platforms
+- Troubleshooting
+
+### GitHub Container Registry
+
+The project automatically publishes container images to GitHub Container Registry when changes are pushed to main:
+
+```bash
+docker pull ghcr.io/denhamparry/talks:latest
+docker run -p 80:80 ghcr.io/denhamparry/talks:latest
+```
+
 ## 📚 Documentation
 
 - **`CLAUDE.md`** - Main project context for Claude Code

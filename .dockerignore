@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Build outputs
+dist/
+.marp/
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# IDE
+.vscode/
+.idea/
+
+# CI/CD
+.github/
+.claude/
+
+# Config files
+.editorconfig
+.prettierrc
+.markdownlint-cli2.jsonc
+.pre-commit-config.yaml

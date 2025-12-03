@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Development server with live reload
+  dev:
+    build:
+      context: .
+      target: development
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./slides:/app/slides
+      - ./themes:/app/themes
+      - ./templates:/app/templates
+      - ./marp.config.js:/app/marp.config.js
+    environment:
+      - NODE_ENV=development
+
+  # Production server (static HTML)
+  prod:
+    build:
+      context: .
+      target: production
+    ports:
+      - "8081:80"
+    profiles:
+      - production
