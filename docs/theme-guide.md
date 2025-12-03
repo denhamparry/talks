@@ -556,22 +556,73 @@ section {
 
 ### Logo Integration
 
-Add persistent logo:
+The Edera V2 theme includes a logo in the top right corner of slides (added in v2.1.0).
+
+**Logo Asset:** `themes/assets/edera-logo.png`
+
+**Implementation:**
+
+The logo is implemented using CSS `::before` pseudo-element:
 
 ```css
 section::before {
   content: '';
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 100px;
-  height: 50px;
-  background: url('logo.svg') no-repeat center;
+  top: var(--spacing-sm);           /* 1rem = ~16px */
+  right: var(--margin-horizontal);  /* 84px */
+  width: 110px;
+  height: auto;
+  background: url('./assets/edera-logo.png') no-repeat center;
   background-size: contain;
+  z-index: 10;
 }
 
 section.title::before {
-  display: none;  /* Hide on title slides */
+  display: none;  /* Hidden on title slides */
+}
+
+section.dark::before {
+  opacity: 1;  /* Full visibility on dark slides */
+}
+```
+
+**Customization:**
+
+To show logo on title slides:
+
+```css
+/* Remove or comment out this rule in themes/edera-v2.css */
+/* section.title::before { display: none; } */
+```
+
+To adjust logo size:
+
+```css
+section::before {
+  width: 130px;  /* Increase from default 110px */
+}
+```
+
+To change logo position:
+
+```css
+section::before {
+  top: 30px;     /* Move down from default */
+  right: 50px;   /* Move left from default */
+}
+```
+
+To use a different logo:
+
+1. Replace `themes/assets/edera-logo.png` with your logo
+2. Adjust `width` in CSS if needed
+3. Rebuild: `npm run build`
+
+To completely remove the logo:
+
+```css
+section::before {
+  display: none;
 }
 ```
 

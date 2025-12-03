@@ -1,7 +1,7 @@
 # GitHub Issue #51: Add Edera logo to top right of Edera V2 slide deck
 
 **Issue:** [#51](https://github.com/denhamparry/talks/issues/51)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
 **Labels:** documentation, enhancement, design
 
