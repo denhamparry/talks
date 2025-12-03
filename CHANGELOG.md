@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2025-12-03
+
+### Fixed
+
+- Fixed Docker HEALTHCHECK IPv6 resolution and port mapping issues
+  - Root cause #1: BusyBox wget resolves localhost to IPv6 first, connection refused
+  - Root cause #2: Workflow mapped port 8888:80 but nginx listens on 8080
+  - Solution: Use 127.0.0.1 instead of localhost in HEALTHCHECK
+  - Solution: Changed workflow port mapping to 8888:8080
+  - Health check now passes consistently in ~6 seconds
+  - Verified with local testing before deployment
+
 ## [1.0.2] - 2025-12-03
 
 ### Fixed
