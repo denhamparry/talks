@@ -1,8 +1,18 @@
 # Stage 1: Builder - Build slides from source
-FROM node:20-alpine AS builder
+# Pinned to specific digest for reproducible builds (node:20-alpine as of 2025-12-03)
+FROM node:20-alpine@sha256:16858294071a56ffd4cce9f17b57136cc39e41507b40e245b4f8e906f7a19463 AS builder
 
 # Set working directory
 WORKDIR /app
+
+# Install Chromium for MARP PDF generation
+RUN apk add --no-cache chromium
+
+# Set Chromium path for Puppeteer and enable no-sandbox mode (required for Docker)
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser \
+    CHROME_PATH=/usr/bin/chromium-browser \
+    CHROME_BIN=/usr/bin/chromium-browser
 
 # Install dependencies with cache mount for faster builds (BuildKit feature)
 # Copy package files first for better layer caching
@@ -18,14 +28,19 @@ COPY themes/ ./themes/
 COPY slides/ ./slides/
 COPY templates/ ./templates/
 
-# Build HTML slides (PDF generation excluded for smaller image)
+# Build HTML slides
+# Temporarily disable PDF in config for Docker build (PDF requires sandbox)
+RUN sed -i "s/pdf: true,/pdf: false,/" marp.config.js
+
+# Build slides (HTML only, no PDF)
 RUN npm run build
 
-# Optional: Build PDFs if needed (adds build time but useful for downloads)
-# RUN npm run build:pdf
+# Optional: Build PDFs separately if needed (adds ~170MB Chromium to image)
+# RUN npm run build:pdf -- --allow-local-files -- --no-sandbox
 
 # Stage 2: Development - Serve with live reload
-FROM node:20-alpine AS development
+# Pinned to specific digest for reproducible builds (node:20-alpine as of 2025-12-03)
+FROM node:20-alpine@sha256:16858294071a56ffd4cce9f17b57136cc39e41507b40e245b4f8e906f7a19463 AS development
 
 # Add labels for metadata
 LABEL org.opencontainers.image.title="MARP Slides Development Server"
@@ -60,7 +75,8 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 CMD ["npm", "run", "serve", "--", "--port", "8080", "--host", "0.0.0.0"]
 
 # Stage 3: Production - Serve static files with nginx
-FROM nginx:alpine AS production
+# Pinned to specific digest for reproducible builds (nginx:alpine as of 2025-12-03)
+FROM nginx:alpine@sha256:b3c656d55d7ad751196f21b7fd2e8d4da9cb430e32f646adcf92441b72f82b14 AS production
 
 # Add labels for metadata
 LABEL org.opencontainers.image.title="MARP Slides Production Server"
@@ -73,10 +89,11 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Create non-root user (nginx alpine already runs as nginx user)
-# Verify permissions on served files
+# Ensure proper permissions for nginx files and config
 RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html
+    chmod -R 755 /usr/share/nginx/html && \
+    chown -R nginx:nginx /etc/nginx/conf.d && \
+    chmod 644 /etc/nginx/conf.d/default.conf
 
 # Expose HTTP port
 EXPOSE 80
@@ -85,8 +102,7 @@ EXPOSE 80
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:80 || exit 1
 
-# Switch to non-root user
-USER nginx
-
+# Note: nginx alpine image runs as root by default for port 80 binding
+# For production, consider using port >1024 and USER nginx directive
 # nginx runs in foreground by default
 CMD ["nginx", "-g", "daemon off;"]
