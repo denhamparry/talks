@@ -12,6 +12,7 @@
     "node_modules",
     "CHANGELOG.md",
     "docs/theme-analysis.md",
+    "docs/plan/**/*.md",
     "templates/**/*.md",
     "slides/**/*.md"
   ]
