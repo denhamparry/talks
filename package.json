@@ -2,7 +2,12 @@
   "name": "denhamparry-talks",
   "version": "1.0.0",
   "description": "Presentation slide decks using MARP with Edera V2 theme",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
+    "clean": "rm -rf dist/ .marp/",
     "build": "marp -I slides/ -o dist/",
     "build:pdf": "marp -I slides/ --pdf -o dist/",
     "watch": "marp -I slides/ -w -o dist/",

@@ -11,7 +11,7 @@ module.exports = {
   // Theme directory (custom CSS themes)
   themeSet: './themes',
 
-  // Enable HTML output
+  // Enable HTML in markdown content and HTML output format
   html: true,
 
   // Enable PDF output
@@ -30,9 +30,6 @@ module.exports = {
 
   // Allow local files
   allowLocalFiles: true,
-
-  // Enable HTML in markdown
-  html: true,
 
   // Enable Marp features
   options: {

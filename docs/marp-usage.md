@@ -347,13 +347,45 @@ Available utility classes:
 
 ## Troubleshooting
 
-### Build Fails
+### Build Failures
+
+**Problem:** `marp: command not found`
+
+**Solution:**
+
+```bash
+# Install dependencies first
+npm install
+
+# Or install MARP CLI globally
+npm install -g @marp-team/marp-cli
+```
+
+**Problem:** Build fails with dependency errors
+
+**Solution:**
 
 ```bash
 # Clear node_modules and reinstall
 rm -rf node_modules package-lock.json
 npm install
 ```
+
+**Problem:** Build fails with "Cannot find theme"
+
+**Solution:**
+
+- Verify `themes/` directory exists
+- Check `marp.config.js` has correct `themeSet` path
+- Ensure theme file is named correctly (e.g., `edera-v2.css`)
+
+**Problem:** Build succeeds but output directory is empty
+
+**Solution:**
+
+- Check `marp.config.js` output path is correct
+- Ensure slides directory (`slides/`) contains `.md` files
+- Verify file permissions on output directory
 
 ### Theme Not Applied
 
@@ -366,6 +398,25 @@ theme: edera-v2  # Must match theme filename
 ---
 ```
 
+**Additional checks:**
+
+1. Verify theme file location: `themes/edera-v2.css`
+2. Check `marp.config.js` themeSet path
+3. Clear cache and rebuild:
+
+```bash
+npm run clean
+npm run build
+```
+
+**Problem:** Custom CSS classes not working
+
+**Solution:**
+
+- Ensure HTML is enabled: `html: true` in config
+- Use HTML comment syntax for classes: `<!-- _class: content -->`
+- Check class is defined in theme CSS
+
 ### Images Not Showing
 
 Use relative or absolute paths:
@@ -377,9 +428,154 @@ Use relative or absolute paths:
 
 ### PDF Export Issues
 
+**Problem:** PDF export hangs or fails
+
+**Solution:**
+
+```bash
+# Try with explicit chromium path
+marp --pdf --allow-local-files slides/presentation.md
+
+# Or rebuild with verbose output
+npm run build:pdf -- --verbose
+```
+
+**Problem:** PDF has broken fonts or missing styles
+
+**Solution:**
+
+- Ensure `printBackground: true` in `marp.config.js`
+- Check theme CSS has proper print media queries
+- Try different PDF options in config:
+
+```javascript
+pdfOptions: {
+  format: 'A4',
+  landscape: true,
+  printBackground: true,
+  preferCSSPageSize: true,
+}
+```
+
+**Problem:** PDF file size is too large
+
+**Solution:**
+
+- Optimize images before embedding
+- Use web-optimized image formats (WebP, optimized PNG/JPG)
+- Consider linking images instead of embedding
+
+**Additional common issues:**
+
 - Ensure Chromium dependencies are installed
 - Check `marp.config.js` PDF options
 - Try building HTML first to verify content
+
+### Speaker Notes Issues
+
+**Problem:** Speaker notes don't appear in output
+
+**Solution:**
+
+- Notes are HTML comments - only visible in HTML source
+- For PDF: Notes won't be visible in final PDF
+- For HTML: View page source or use browser dev tools (F12)
+- Consider using MARP presenter mode for live presentations
+
+**Problem:** Notes syntax not recognized
+
+**Solution:**
+
+Use correct HTML comment syntax:
+
+```markdown
+<!-- This is a speaker note -->
+
+NOT:
+
+// This is not a speaker note
+```
+
+### CI/CD Workflow Failures
+
+**Problem:** GitHub Actions build fails
+
+**Solution:**
+
+1. Check Node.js version in workflow matches `package.json` engines
+2. Ensure `package-lock.json` is committed
+3. Verify workflow has proper permissions
+
+**Problem:** Artifacts not uploading
+
+**Solution:**
+
+- Check workflow `actions/upload-artifact` step
+- Verify `dist/` directory is created
+- Check artifact name doesn't contain invalid characters
+
+**Problem:** Build succeeds locally but fails in CI
+
+**Solution:**
+
+```bash
+# Ensure dependencies match
+npm ci  # Use clean install like CI does
+
+# Check Node version matches
+node --version  # Should be >=20.0.0
+
+# Test build exactly as CI does
+npm run clean
+npm run build
+npm run build:pdf
+```
+
+### Common Issues
+
+**Problem:** Watch mode not detecting changes
+
+**Solution:**
+
+```bash
+# Kill existing watch process
+# Restart with:
+npm run watch
+```
+
+**Problem:** Serve mode port already in use
+
+**Solution:**
+
+```bash
+# Find and kill process on port
+lsof -ti:8080 | xargs kill -9
+
+# Or specify different port
+marp -s -I slides/ --port 8081
+```
+
+**Problem:** Colors look different in PDF vs HTML
+
+**Solution:**
+
+- This is expected due to PDF rendering
+- Ensure `printBackground: true` in config
+- Test theme colors in both formats
+- Consider PDF-specific color adjustments in theme CSS
+
+### Getting More Help
+
+If you're still experiencing issues:
+
+1. Check the [MARP CLI documentation](https://github.com/marp-team/marp-cli)
+2. Review theme customization in `docs/theme-guide.md`
+3. Search existing issues on GitHub
+4. Open a new issue with:
+   - Error message (full output)
+   - Your configuration files
+   - Steps to reproduce
+   - Environment details (Node version, OS)
 
 ## Examples
 
