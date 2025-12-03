@@ -1,7 +1,7 @@
 # GitHub Issue #8: Containerize MARP slides for local presentation and web hosting
 
 **Issue:** [#8](https://github.com/denhamparry/talks/issues/8)
-**Status:** Open
+**Status:** Complete
 **Date:** 2025-12-03
 **Labels:** documentation, enhancement, ci, docker
 
