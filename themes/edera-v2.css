@@ -37,8 +37,8 @@
   --color-text-white: var(--edera-white);
 
   /* Typography Scale */
-  --font-size-base: 1.5rem;      /* 24px at 16px base */
-  --font-size-small: 1.125rem;   /* 18px */
+  --font-size-base: 2.75rem;     /* 44px at 16px base (increased for readability) */
+  --font-size-small: 1.5rem;     /* 24px (increased from 18px) */
   --font-size-h3: 1.75rem;       /* 28px */
   --font-size-h2: 2.5rem;        /* 40px */
   --font-size-h1: 3.5rem;        /* 56px */
@@ -106,6 +106,7 @@ h3 {
 
 p {
   margin: 0 0 var(--spacing-sm) 0;
+  font-size: calc(var(--marpit-root-font-size, 1rem) * 1.25);
 }
 
 a {
@@ -143,6 +144,7 @@ ol {
 
 li {
   margin-bottom: var(--spacing-xs);
+  font-size: calc(var(--marpit-root-font-size, 1rem) * 1.25);
 }
 
 ul > li::marker {
@@ -165,7 +167,7 @@ code {
   padding: 0.2em 0.4em;
   border-radius: 4px;
   font-family: 'Courier New', 'Consolas', monospace;
-  font-size: 0.9em;
+  font-size: 1.125rem;  /* 18px - fixed size for inline code */
 }
 
 pre {
@@ -180,7 +182,7 @@ pre {
 pre code {
   background-color: transparent;
   padding: 0;
-  font-size: var(--font-size-small);
+  font-size: 1.125rem;  /* 18px - original size for code blocks */
   line-height: 1.5;
 }
 
@@ -427,7 +429,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-size-small);
+  font-size: 1.125rem;  /* 18px - original size for header */
   color: var(--color-text-dark);
 }
 
@@ -439,7 +441,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-size-small);
+  font-size: 1.125rem;  /* 18px - original size for footer */
   color: var(--color-text-dark);
 }
 
@@ -458,7 +460,7 @@ section::after {
   position: absolute;
   bottom: var(--spacing-sm);
   right: var(--margin-horizontal);
-  font-size: var(--font-size-small);
+  font-size: 1.125rem;  /* 18px - original size for pagination */
   color: var(--color-text-dark);
 }
 
