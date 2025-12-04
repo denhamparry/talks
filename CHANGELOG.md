@@ -7,8 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2025-12-04
+
 ### Added
 
+- Cloud-Native Manchester talk (December 4th, 2025) comprehensive review and updates ([#58](https://github.com/denhamparry/talks/issues/58))
+  - Personal introduction section with background and motivations
+  - "Lessons Learned" section with human perspective on AI development
+  - QR code for IvySketch live demo at https://ivysketch.me
+  - Speaker notes for Chi router middleware chain explanation
+  - Responsive two-column image layouts for book cover and IvySketch demo
+  - Conclusion section with F&%K LUCK philosophy and Edera branding
+  - Reference to upcoming am-i-isolated project
+  - Presentation assets (book cover, QR code, train image) - optimized under 1MB
 - Edera logo in top right corner of slides for Edera V2 theme ([#51](https://github.com/denhamparry/talks/issues/51))
   - Logo displays on content, dark, two-column, and image slides
   - Hidden on title slides for clean aesthetic
@@ -16,8 +27,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Customizable via CSS (position, size, visibility)
   - Logo asset: `themes/assets/edera-logo.png` (4.2KB)
 
+### Changed
+
+- Enhanced Edera V2 theme typography for better readability
+  - Base font size: 24px → 44px (83% increase)
+  - List items: MARP-relative sizing `calc(var(--marpit-root-font-size) * 1.25)` (~55px)
+  - Code blocks: Fixed at 18px (prevents overflow on slides)
+  - Footer/header/pagination: Fixed at 18px (consistent metadata sizing)
+  - MARP-relative font sizing enables flexible scaling across presentations
+
 ### Fixed
 
+- Fixed spelling in Cloud-Native Manchester talk: "excentuates" → "accentuates"
+- Fixed grammar in Cloud-Native Manchester talk: "Its" → "It's" (contraction)
 - Fix 404 errors for edera-logo.png and favicon.ico on talks.denhamparry.co.uk ([#56](https://github.com/denhamparry/talks/issues/56))
   - Updated build process to copy theme assets to dist directory
   - Added favicon generation from Edera logo using ImageMagick
@@ -27,6 +49,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Edera logo now displays correctly in top right of slides
   - Browser tabs now show Edera favicon
   - Build chain: marp → copy-assets → generate-index → generate-favicon
+
+### Documentation
+
+- Created comprehensive implementation plan at `docs/plan/issues/58_review_and_update_ivysketch_talk_design_patterns_ai_workflow.md`
+  - Systematic review approach with detailed checklists
+  - Testing strategy (unit, integration, regression)
+  - Success criteria (25+ measurable items)
+  - Cross-platform testing matrix
 
 ## [1.0.3] - 2025-12-03
 
@@ -84,7 +114,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Automated deployment to Google Cloud Run
 - Comprehensive contributor guides
 
-[Unreleased]: https://github.com/denhamparry/talks/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/denhamparry/talks/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/denhamparry/talks/compare/v1.0.3...v1.0.4
+[1.0.3]: https://github.com/denhamparry/talks/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/denhamparry/talks/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/denhamparry/talks/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/denhamparry/talks/releases/tag/v1.0.0
