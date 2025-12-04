@@ -313,10 +313,27 @@ docker-compose --profile production up prod
    cp templates/basic-presentation.md slides/my-talk.md
    ```
 
-2. **Edit Content:**
+2. **Add Slide-Specific Images (Optional):**
+
+   If your presentation includes images:
+
+   ```bash
+   mkdir -p slides/assets/my-talk
+   cp /path/to/image.png slides/assets/my-talk/
+   ```
+
+   Reference in markdown:
+
+   ```markdown
+   ![Image description](./assets/my-talk/image.png)
+   ```
+
+   **Note:** Assets in `slides/assets/` are automatically copied to `dist/assets/` during build.
+
+3. **Edit Content:**
    Edit `slides/my-talk.md` using Markdown syntax with MARP directives
 
-3. **Build Slides:**
+4. **Build Slides:**
 
    ```bash
    npm run build       # Build HTML with assets
@@ -325,7 +342,7 @@ docker-compose --profile production up prod
    npm run watch       # Auto-rebuild during development
    ```
 
-4. **Output:**
+5. **Output:**
    Find generated files in `dist/my-talk.pdf` or `dist/my-talk.html`
 
 ### Available Slide Layouts

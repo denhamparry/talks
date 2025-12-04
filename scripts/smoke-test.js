@@ -138,6 +138,59 @@ if (fs.existsSync(indexPath)) {
 
 console.log('');
 
+// Check slide-specific assets
+console.log('Checking slide-specific assets:');
+const slideAssetsDir = path.join(__dirname, '..', 'slides', 'assets');
+const distAssetsDir = path.join(DIST_DIR, 'assets');
+
+if (!fs.existsSync(slideAssetsDir)) {
+  console.log('  ℹ  No slides/assets/ directory found, skipping');
+} else {
+  // Get all asset directories in slides/assets/
+  const assetDirs = fs.readdirSync(slideAssetsDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+
+  if (assetDirs.length === 0) {
+    console.log('  ℹ  No asset directories in slides/assets/, skipping');
+  } else {
+    assetDirs.forEach(dir => {
+      const sourceDir = path.join(slideAssetsDir, dir);
+      const destDir = path.join(distAssetsDir, dir);
+
+      if (!fs.existsSync(destDir)) {
+        console.error(`  ❌ Asset directory not copied: ${dir}/`);
+        failed++;
+        exitCode = 1;
+      } else {
+        // Verify all files were copied
+        const sourceFiles = fs.readdirSync(sourceDir);
+        const allFilesCopied = sourceFiles.every(file => {
+          const destFile = path.join(destDir, file);
+          return fs.existsSync(destFile);
+        });
+
+        if (allFilesCopied) {
+          console.log(`  ✓ Assets copied: ${dir}/ (${sourceFiles.length} file(s))`);
+          passed++;
+        } else {
+          console.error(`  ❌ Some files not copied in: ${dir}/`);
+          sourceFiles.forEach(file => {
+            const destFile = path.join(destDir, file);
+            if (!fs.existsSync(destFile)) {
+              console.error(`     Missing: ${file}`);
+            }
+          });
+          failed++;
+          exitCode = 1;
+        }
+      }
+    });
+  }
+}
+
+console.log('');
+
 // Summary
 console.log('─'.repeat(50));
 if (exitCode === 0) {
