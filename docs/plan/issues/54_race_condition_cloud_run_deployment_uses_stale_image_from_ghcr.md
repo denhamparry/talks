@@ -1,8 +1,8 @@
 # GitHub Issue #54: Race condition: Cloud Run deployment uses stale image from GHCR
 
 **Issue:** [#54](https://github.com/denhamparry/talks/issues/54)
-**Status:** Open
-**Date:** 2025-12-03
+**Status:** Complete
+**Date:** 2025-12-04
 **Labels:** bug, ci, cloud-run, priority-high
 
 ## Problem Statement
@@ -599,11 +599,11 @@ gh run list --limit 10
 
 ### Functional Requirements
 - [x] Cloud Run deployment workflow uses `workflow_run` trigger
-- [ ] Deployment only starts after Docker build completes
-- [ ] Deployment pulls latest image from GHCR (verified in logs)
-- [ ] Cloud Run service reflects latest code changes
-- [ ] Manual workflow dispatch still works
-- [ ] Build failures prevent deployment (optional enhancement)
+- [x] Deployment only starts after Docker build completes
+- [x] Build failures prevent deployment (optional enhancement)
+- [ ] Deployment pulls latest image from GHCR (verified in logs) - requires testing after merge
+- [ ] Cloud Run service reflects latest code changes - requires testing after merge
+- [ ] Manual workflow dispatch still works - requires testing after merge
 
 ### Testing Requirements
 - [ ] Test Case 1 passes: Normal deployment with latest code
@@ -613,9 +613,9 @@ gh run list --limit 10
 - [ ] Regression tests pass: PRs, path filters, health checks all work
 
 ### Documentation Requirements
-- [ ] Workflow file includes explanatory comments
-- [ ] Issue #54 linked in workflow comments
-- [ ] This plan document created and committed
+- [x] Workflow file includes explanatory comments
+- [x] Issue #54 linked in workflow comments
+- [x] This plan document created and committed
 
 ### Monitoring Requirements
 - [ ] First deployment after fix monitored in real-time
