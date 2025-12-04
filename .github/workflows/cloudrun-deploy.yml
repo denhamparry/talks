@@ -1,18 +1,14 @@
 name: Deploy to Cloud Run
 
+# Triggered after Docker build completes to avoid race condition
+# See: https://github.com/denhamparry/talks/issues/54
 on:
-  push:
+  workflow_run:
+    workflows: ["Build and Publish Docker Image"]
+    types:
+      - completed
     branches:
       - main
-    paths:
-      - 'slides/**'
-      - 'themes/**'
-      - 'templates/**'
-      - 'Dockerfile'
-      - 'nginx.conf'
-      - 'package.json'
-      - 'marp.config.js'
-      - '.github/workflows/cloudrun-deploy.yml'
   workflow_dispatch:
 
 env:
@@ -26,6 +22,8 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Only deploy if the build workflow completed successfully
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     permissions:
       contents: read
       id-token: write  # Required for OIDC authentication
