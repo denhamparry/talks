@@ -5,11 +5,105 @@ paginate: true
 footer: 'December 4th, 2025 | Cloud-Native Manchester'
 ---
 
+# What I wish I knew about AI...
+
+## ... 10 days ago
+
+Lewis Denham-Parry | [Edera.dev](https://edera.dev)
+
+---
+
+# $ whoami
+
+- Lewis Denham-Parry
+- Find me on the internet thanks to my name
+- [Edera.dev](https://edera.dev)
+- Based in Cardiff
+- Often questions what it is that I'm doing
+
+---
+
+# Time
+
+---
+
+# Background
+
+- Coming back from KCD Edinburgh and starting to prepare for KubeCon NA 2025
+- Create a demo for going to conferences, events, and meetups in the New Year
+- Wanting to look into what AI (pronounced: _Aye Eye_) is
+
+## Assumptions
+
+- AI is creating/taking jobs
+- AI is saving/burning the World
+- AI knows everything/nothing
+
+### One constant
+
+- AI hallucinates
+
+---
+
+# Read a book
+
+- "The AI Hallucination" by Lewis Denham-Parry
+  - Not a book, but what my AI IDE prompt thinks I read?!?
+---
+
+# Read an actual book
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; height: 100%;">
+
+<div>
+
+- [Supremacy: AI, ChatGPT, and the Race That Will Change the World by Parmy Olson](https://shop.bl.uk/products/supremacy-ai-chatgpt-and-the-race-that-will-change-the-world)
+
+</div>
+
+<div style="text-align: center; display: flex; align-items: center; justify-content: center;">
+  <img src="./assets/2025-12-04-cloud-native-manchester/supremacy-book-cover.png" alt="Supremacy Book Cover" style="max-width: 100%; max-height: 400px; width: auto; height: auto; object-fit: contain;">
+</div>
+
+</div>
+
+---
+
+# Idea
+
+- Create an application to create your very own Axolotl
+- Write an application using only AI
+- Make sure that all components are self hosted and Open Source
+- I don't want to store any personal identifiable information
+- The generated Axolotl image needs to be appropriate
+
+<!--
+Speaker Notes:
+
+- Create an application to create your very own Axolotl
+  - Nothing scares a business more than trademark infringement
+- Write an application using only AI
+  - I cannot write any code, but I can write a prompt for an AI to generate the code
+- Make sure that all components are self hosted and Open Source
+  - I don't want to make any external calls to other hosted services
+  - Caveat for authentication as for the next step...
+- I don't want to store any personal identifiable information
+  - Email is the only data that is captured, so that we can send an email to the user with their image
+- The generated Axolotl image needs to be appropriate
+  - Nothing scares a business more than trademark infringement
+-->
+
+---
+
+# Now for the AI generated part
+
+---
+
 # IvySketch: Design Patterns & AI Workflow
 
 **Building GenAI Applications with Kubernetes and AI-Assisted Development**
 
-Lewis Denham-Parry | Cloud-Native Manchester | December 4th, 2025
+Lewis Denham-Parry | [Edera.dev](https://edera.dev)
 
 ---
 
@@ -30,6 +124,10 @@ Lewis Denham-Parry | Cloud-Native Manchester | December 4th, 2025
 
 ## What is IvySketch?
 
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; height: 100%;">
+
+<div>
+
 **IvyBot** - AI-powered Axolotl character designer
 
 - Chat with AI to design custom axolotl characters
@@ -38,6 +136,18 @@ Lewis Denham-Parry | Cloud-Native Manchester | December 4th, 2025
 - Educational content about Edera (English Ivy)
 
 **Live Demo:** https://ivysketch.me
+
+<div style="text-align: center; margin-top: 1rem;">
+  <img src="./assets/2025-12-04-cloud-native-manchester/ivysketch-qr.png" alt="IvySketch QR Code" style="width: 200px; height: 200px;">
+</div>
+
+</div>
+
+<div style="text-align: center; display: flex; align-items: center; justify-content: center;">
+  <img src="./assets/2025-12-04-cloud-native-manchester/ivy-train-to-manchester.png" alt="Supremacy Book Cover" style="max-width: 100%; max-height: 400px; width: auto; height: auto; object-fit: contain;">
+</div>
+
+</div>
 
 ---
 
@@ -54,6 +164,23 @@ Lewis Denham-Parry | Cloud-Native Manchester | December 4th, 2025
 - React + Vite + TypeScript
 - Tailwind CSS styling
 - Server-Sent Events (SSE) for streaming
+
+<!--
+Speaker Notes:
+
+Chi Router with Middleware Chain:
+- Chi is a lightweight, composable HTTP router for Go (like Express.js for Node)
+- Middleware chain pattern allows us to compose cross-cutting concerns
+- Each middleware wraps the request/response cycle:
+  * Metrics middleware - captures Prometheus metrics for every request
+  * Tracing middleware - adds OpenTelemetry spans for distributed tracing
+  * CORS middleware - handles cross-origin requests from frontend
+  * RateLimit middleware - prevents abuse and ensures fair usage
+  * Auth middleware - optional API key authentication
+- Benefits: Clean code separation, testable in isolation, easy to add/remove
+- Example coming up in slide 14 shows the actual middleware chain code
+- This pattern is common in production Go services and scales well
+-->
 
 ---
 
@@ -1134,3 +1261,90 @@ aws ec2 authorize-security-group-ingress \
 ☸️ Deployed on Kubernetes
 
 **Try it:** https://ivysketch.me
+
+---
+
+# Back to the Human part
+
+## Lessons learned from my perspective
+
+---
+
+# Its not just weekly requirement changes
+
+> We now have to deal with technology change to a weekly cadence
+
+- It feels there isn't much long term scope of where AI is going
+- Look at the security of MCPs for instance
+- Manage technology change as well as requirement change
+
+Who would have thought another option I'd have today is nano banana pro?!?
+
+---
+
+# Hallucinations aren't an AI problem...
+
+> ...they're a you problem
+
+- Hallucinations are a Human problem
+- Interns !== AI
+- AI === a new employee
+- AI helps you get started today `*`
+
+`*` maybe
+
+---
+
+# We're in an AI bubble...
+
+> ...and we survived the dotcom bubble (Citation needed)
+
+- I don't trust SaaS long term
+- Short term, it helps us
+- Look towards Open Source AI agents like [Goose](https://github.com/block/goose)
+- Look to host your own LLMs
+- Give people the tools to use AI, otherwise...
+
+---
+
+# Who the f&%k are you!?!
+
+> People using AI as if it was their own work
+
+- People are happy to use AI
+- People aren't happy to share that they use AI
+- If you copypasta a prompt result, read it first
+- Look towards SLSA, AI is another identity IMO
+- Attest your identity
+
+---
+
+# Time
+
+> AI accentuates our traits
+
+- I thought AI would help me be better at what I'm not great at
+- It made me better and worse
+- It's given me time, and has taken it away
+
+---
+
+# F&%K LUCK
+
+- At [Edera](https://edera.dev), this is our slogan
+- We don't like to give credit to luck
+- We all make our own luck, and that influences what we use
+- [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated)
+
+---
+
+# Questions?
+
+**Thank you!**
+
+🎨 IvySketch - AI-powered Axolotl designer 🤖 Built with AI-assisted development
+☸️ Deployed on Kubernetes
+
+**Try it:** https://ivysketch.me
+
+🔜 [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated)
