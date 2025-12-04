@@ -203,6 +203,34 @@ The default configuration checks for:
 
 This repository includes a complete MARP presentation system with the Edera V2 theme.
 
+### Build Process
+
+The build process (`npm run build`) performs these steps:
+
+1. **Generate HTML** - MARP converts markdown to HTML
+2. **Copy Assets** - Theme assets copied to `dist/assets/`
+3. **Generate Index** - Creates `index.html` listing all presentations
+4. **Generate Favicon** - Converts Edera logo to `favicon.ico`
+
+**Build output structure:**
+
+```text
+dist/
+├── assets/
+│   └── ederav2/
+│       └── edera-logo.png    # Edera logo for slides
+├── favicon.ico                # Browser tab icon
+├── index.html                 # Presentation listing
+└── *.html                     # Individual presentations
+```
+
+**Static Assets:**
+
+- **Logo:** `dist/assets/ederav2/edera-logo.png` - Appears in top right of content slides
+- **Favicon:** `dist/favicon.ico` - Browser tab icon
+- **CSS:** Inlined in HTML files by MARP
+- All assets served by nginx in production
+
 ### Creating New Presentations
 
 1. **Copy Template:**
@@ -217,6 +245,7 @@ This repository includes a complete MARP presentation system with the Edera V2 t
 3. **Build Slides:**
 
    ```bash
+   npm run build       # Build HTML with assets
    npm run build:pdf   # Generate PDF
    # or
    npm run watch       # Auto-rebuild during development

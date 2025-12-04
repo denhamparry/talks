@@ -444,6 +444,45 @@ gcloud run services describe talks \
 
 ### Troubleshooting
 
+#### Missing Logo or Favicon (404 errors)
+
+If you see 404 errors for `edera-logo.png` or `favicon.ico`:
+
+**Cause:** Static assets not copied during build
+
+**Solution:**
+
+```bash
+# Rebuild with asset copying
+npm run clean
+npm run build
+
+# Verify assets exist
+ls dist/assets/ederav2/edera-logo.png
+ls dist/favicon.ico
+```
+
+#### Favicon Not Generating
+
+**Cause:** ImageMagick not installed
+
+**Solution:**
+
+```bash
+# macOS
+brew install imagemagick
+
+# Ubuntu/Debian
+sudo apt-get install imagemagick
+
+# Alpine (Docker)
+apk add imagemagick
+```
+
+The build will continue without favicon if ImageMagick is unavailable (non-blocking).
+
+#### General CI/CD Issues
+
 If workflows fail, see:
 
 - **General Issues:** `docs/troubleshooting-cicd.md`

@@ -9,7 +9,9 @@
   "scripts": {
     "clean": "rm -rf dist/ .marp/",
     "generate-index": "node scripts/generate-index.js",
-    "build": "marp -I slides/ -o dist/ && npm run generate-index",
+    "copy-assets": "mkdir -p dist/assets && cp -r themes/assets/* dist/assets/",
+    "generate-favicon": "node scripts/generate-favicon.js",
+    "build": "marp -I slides/ -o dist/ && npm run copy-assets && npm run generate-index && npm run generate-favicon",
     "build:pdf": "marp -I slides/ --pdf -o dist/",
     "watch": "marp -I slides/ -w -o dist/",
     "serve": "marp -s -I slides/",

@@ -16,6 +16,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Customizable via CSS (position, size, visibility)
   - Logo asset: `themes/assets/edera-logo.png` (4.2KB)
 
+### Fixed
+
+- Fix 404 errors for edera-logo.png and favicon.ico on talks.denhamparry.co.uk ([#56](https://github.com/denhamparry/talks/issues/56))
+  - Updated build process to copy theme assets to dist directory
+  - Added favicon generation from Edera logo using ImageMagick
+  - Created `scripts/generate-favicon.js` for graceful fallback
+  - Installed ImageMagick in Docker builder stage
+  - Static assets now available at `/assets/ederav2/edera-logo.png` and `/favicon.ico`
+  - Edera logo now displays correctly in top right of slides
+  - Browser tabs now show Edera favicon
+  - Build chain: marp → copy-assets → generate-index → generate-favicon
+
 ## [1.0.3] - 2025-12-03
 
 ### Fixed

@@ -5,8 +5,8 @@ FROM node:20-alpine@sha256:16858294071a56ffd4cce9f17b57136cc39e41507b40e245b4f8e
 # Set working directory
 WORKDIR /app
 
-# Install Chromium for MARP PDF generation
-RUN apk add --no-cache chromium
+# Install Chromium for MARP PDF generation and ImageMagick for favicon
+RUN apk add --no-cache chromium imagemagick
 
 # Set Chromium path for Puppeteer and enable no-sandbox mode (required for Docker)
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
