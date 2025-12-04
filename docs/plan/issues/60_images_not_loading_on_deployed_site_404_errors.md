@@ -1,7 +1,7 @@
 # GitHub Issue #60: Images not loading on deployed site (404 errors)
 
 **Issue:** [#60](https://github.com/denhamparry/talks/issues/60)
-**Status:** Open
+**Status:** Complete
 **Labels:** bug, ci, deployment, static-assets
 **Date:** 2025-12-04
 
