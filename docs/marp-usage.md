@@ -50,13 +50,18 @@ npm run build:pdf
 # Watch mode (auto-rebuild on save)
 npm run watch
 
-# Serve locally with live reload
+# Serve with MARP dev server (file browser)
 npm run serve
+
+# Serve complete site with themed index (production-like)
+npm run serve:dist
 ```
 
 ### 5. View Your Presentation
 
 Open `dist/my-talk.html` in your browser or `dist/my-talk.pdf` in a PDF viewer.
+
+Alternatively, use `npm run serve:dist` to preview the complete site with the themed landing page (same as production).
 
 ## Available Commands
 
@@ -65,7 +70,119 @@ Open `dist/my-talk.html` in your browser or `dist/my-talk.pdf` in a PDF viewer.
 | `npm run build` | Build all slides to HTML in `dist/` |
 | `npm run build:pdf` | Build all slides to PDF in `dist/` |
 | `npm run watch` | Watch for changes and auto-rebuild |
-| `npm run serve` | Start local server with live reload |
+| `npm run serve` | Start MARP dev server (file browser) |
+| `npm run serve:dist` | Build and serve complete site with themed index |
+| `npm run test:smoke` | Run smoke tests to verify build output |
+
+### Understanding Serve Commands
+
+**`npm run serve`** - MARP Development Server
+
+- Shows MARP's default file browser interface
+- Plain white background with simple file listing
+- Serves slides directly from `slides/` directory
+- Live reload for rapid slide editing
+- **Does NOT show the custom Edera V2 themed index page**
+- Best for: Quick slide editing during development
+
+**What you'll see:**
+
+```text
+MARP CLI Server @ http://localhost:8080
+
+Directory listing:
+- example-presentation.md
+- my-talk.md
+- another-presentation.md
+
+Click any file to view the presentation
+```
+
+The interface is minimal: white background, simple blue links, basic file browser. Changes to your markdown files are reflected immediately with live reload.
+
+**`npm run serve:dist`** - Production-Like Preview
+
+- Shows the complete site with Edera V2 themed landing page
+- Light mint gradient background with styled presentation cards
+- Serves the built `dist/` directory (same as production)
+- Includes all assets, favicon, and proper index page
+- **This is what production looks like** (talks.denhamparry.co.uk)
+- Best for: Final preview before deploying, verifying the themed index page
+
+**What you'll see:**
+
+The landing page features:
+
+- **Background:** Light mint to white gradient (Edera V2 colors)
+- **Header:** Large "denhamparry talks" title in dark teal
+- **Subtitle:** "Technical presentations and conference talks"
+- **Presentation cards:** Each presentation displayed as a styled card with:
+  - Presentation title (dark teal)
+  - Date and location (gray text)
+  - View Slides button (mint background)
+- **Footer:** Edera branding with logo
+- **Favicon:** denhamparry.co.uk favicon in browser tab
+
+The themed index provides a professional, cohesive experience matching the presentation slides themselves. This is the exact interface users will see in production at talks.denhamparry.co.uk.
+
+**When to use each:**
+
+```bash
+# During development: Quick editing with live reload
+npm run serve
+
+# Before deployment: Verify the final site
+npm run serve:dist
+
+# Or using Makefile
+make serve       # Quick preview
+make serve-dist  # Production-like preview
+```
+
+### Verifying Build Output
+
+Before running `serve:dist` or deploying to production, verify that all required files and assets are present:
+
+```bash
+npm run test:smoke
+```
+
+The smoke test checks for:
+
+- ✓ `dist/index.html` exists
+- ✓ `dist/favicon.ico` exists
+- ✓ `dist/assets/` directory and theme assets exist
+- ✓ At least one presentation HTML file exists
+- ✓ index.html has proper structure and links
+
+**When to use:**
+
+- Before running `npm run serve:dist`
+- After making changes to build scripts
+- Before deploying to production
+- When troubleshooting build issues
+
+**Example output:**
+
+```text
+🔍 Running smoke tests for serve:dist build output...
+
+✓ dist/ directory exists
+
+Checking required files:
+  ✓ index.html
+  ✓ favicon.ico
+
+Checking required directories:
+  ✓ assets/
+  ✓ assets/ederav2/
+
+✅ All smoke tests passed! (10 checks)
+
+Ready to run: npm run serve:dist
+```
+
+If the smoke test fails, run `npm run build` to regenerate the build output.
 
 ## MARP Directives
 
@@ -563,6 +680,152 @@ marp -s -I slides/ --port 8081
 - Ensure `printBackground: true` in config
 - Test theme colors in both formats
 - Consider PDF-specific color adjustments in theme CSS
+
+### Server and Preview Issues
+
+**Problem:** Port already in use when running `npm run serve` or `npm run serve:dist`
+
+**Solution:**
+
+```bash
+# Find process using port 8080
+lsof -ti:8080
+
+# Kill the process
+lsof -ti:8080 | xargs kill -9
+
+# Or specify a different port for MARP server
+marp -s -I slides/ --port 8081
+```
+
+**Problem:** Assets (favicon, images, logo) not loading in `serve:dist`
+
+**Solution:**
+
+1. Ensure build completed successfully:
+
+   ```bash
+   npm run build
+   ls -la dist/assets/  # Verify assets directory exists
+   ls -la dist/favicon.ico  # Verify favicon exists
+   ```
+
+2. Check browser console (F12) for 404 errors
+3. Hard refresh browser cache: `Ctrl+Shift+R` (Linux/Windows) or `Cmd+Shift+R` (Mac)
+4. Verify `scripts/copy-assets.js` and `scripts/generate-favicon.js` ran successfully
+
+**Problem:** Themed index page not showing, seeing plain file listing instead
+
+**Solution:**
+
+- You're likely using `npm run serve` (MARP dev server) instead of `npm run serve:dist`
+- Use `npm run serve:dist` to see the themed index page
+- Verify `dist/index.html` exists after running build
+
+**Problem:** Changes not reflecting in `serve:dist` preview
+
+**Solution:**
+
+`serve:dist` serves the built `dist/` directory, not source files:
+
+```bash
+# Stop the server (Ctrl+C)
+# Rebuild to see changes
+npm run build
+npm run serve:dist
+
+# Or use watch mode for development
+npm run serve  # Live reload from source files
+```
+
+**Problem:** `http-server` command not found when running `serve:dist`
+
+**Solution:**
+
+```bash
+# Install http-server as dev dependency
+npm install --save-dev http-server
+
+# Or install globally
+npm install -g http-server
+
+# Verify installation
+npx http-server --version
+```
+
+**Problem:** Browser shows cached version of site
+
+**Solution:**
+
+1. Hard refresh: `Ctrl+Shift+R` (Linux/Windows) or `Cmd+Shift+R` (Mac)
+2. Clear browser cache for localhost
+3. Use incognito/private browsing mode
+4. Add cache-busting parameter: `http://localhost:8080/?v=2`
+
+### Docker Development Issues
+
+**Problem:** Docker dev server not starting (`make docker-dev` fails)
+
+**Solution:**
+
+```bash
+# Check Docker is running
+docker info
+
+# Rebuild the image
+docker-compose build dev
+
+# Check logs for errors
+docker-compose logs dev
+```
+
+**Problem:** Docker production server not starting (`make docker-prod` fails)
+
+**Solution:**
+
+```bash
+# Ensure you're using the production profile
+docker-compose --profile production up prod
+
+# Or use the Makefile command
+make docker-prod
+
+# Check nginx logs
+docker-compose --profile production logs prod
+```
+
+**Problem:** Port conflict with Docker services
+
+**Solution:**
+
+- Dev server uses port 8080 (configurable in docker-compose.yml)
+- Prod server uses port 8081 (different port to avoid conflicts)
+- If ports are taken, modify `docker-compose.yml`:
+
+```yaml
+services:
+  dev:
+    ports:
+      - "8082:8080"  # Change host port
+
+  prod:
+    ports:
+      - "8083:8080"  # Change host port
+```
+
+**Problem:** Volume mounts not working in Docker dev mode
+
+**Solution:**
+
+```bash
+# Ensure paths are correct in docker-compose.yml
+# Check file permissions
+ls -la slides/ themes/
+
+# Restart with fresh mount
+docker-compose down -v
+docker-compose up dev
+```
 
 ### Getting More Help
 

@@ -15,6 +15,8 @@
     "build:pdf": "marp -I slides/ --pdf -o dist/",
     "watch": "marp -I slides/ -w -o dist/",
     "serve": "marp -s -I slides/",
+    "serve:dist": "npm run build && npx http-server dist -p 8080",
+    "test:smoke": "node scripts/smoke-test.js",
     "accessibility-audit": "node scripts/check-contrast.js"
   },
   "keywords": [

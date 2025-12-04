@@ -33,8 +33,12 @@ build-pdf: ## Build PDF presentations only
 # --------------------
 
 .PHONY: serve
-serve: ## Serve presentations locally with live reload
+serve: ## Serve slides with MARP dev server (file browser)
 	npm run serve
+
+.PHONY: serve-dist
+serve-dist: ## Build and serve complete site with themed index page
+	npm run serve:dist
 
 .PHONY: watch
 watch: ## Watch mode for auto-rebuild on changes
@@ -58,6 +62,10 @@ format: ## Format code/markdown files
 .PHONY: precommit
 precommit: ## Run pre-commit hooks on all files
 	pre-commit run --all-files
+
+.PHONY: test-smoke
+test-smoke: ## Run smoke tests to verify build output
+	npm run test:smoke
 
 .PHONY: accessibility-audit
 accessibility-audit: ## Run WCAG contrast audit on Edera V2 theme
@@ -93,11 +101,11 @@ docker-build: ## Build Docker image (production)
 	docker build --target production -t talks:latest .
 
 .PHONY: docker-dev
-docker-dev: ## Run development server in Docker
+docker-dev: ## Run dev server in Docker (file browser, port 8080)
 	docker-compose up dev
 
 .PHONY: docker-prod
-docker-prod: ## Run production server in Docker
+docker-prod: ## Run prod server in Docker (themed index, port 8081)
 	docker-compose --profile production up prod
 
 .PHONY: docker-clean

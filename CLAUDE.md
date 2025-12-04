@@ -103,12 +103,14 @@ make build-pdf
 
 # Development workflow
 make watch          # Auto-rebuild on changes
-make serve          # Local server with live reload
+make serve          # MARP dev server (file browser)
+make serve-dist     # Build and serve complete site with themed index
 
 # Quality checks
 make lint           # Run linting
 make format         # Format files
 make precommit      # Run pre-commit hooks
+make test-smoke     # Run smoke tests to verify build output
 
 # Cleanup
 make clean          # Remove build artifacts
@@ -125,7 +127,9 @@ The Makefile delegates to these npm scripts:
 npm run build       # Build HTML
 npm run build:pdf   # Build PDF
 npm run watch       # Watch mode
-npm run serve       # Dev server
+npm run serve       # MARP dev server (file browser)
+npm run serve:dist  # Build and serve complete site with themed index
+npm run test:smoke  # Run smoke tests to verify build output
 npm run clean       # Clean dist/
 ```
 
@@ -230,6 +234,76 @@ dist/
 - **Favicon:** `dist/favicon.ico` - Browser tab icon
 - **CSS:** Inlined in HTML files by MARP
 - All assets served by nginx in production
+
+### Local Development Options
+
+There are two ways to preview presentations locally:
+
+**Option 1: MARP Dev Server (Quick Preview)**
+
+```bash
+make serve          # or npm run serve
+# Visit http://localhost:8080
+```
+
+- Shows MARP's default file browser interface
+- Plain white background with simple file listing
+- Serves slides directly from `slides/` directory
+- Good for quick slide editing with live reload
+- **Does NOT show the custom Edera V2 themed index page**
+
+**Option 2: Production-Like Preview (Complete Site)**
+
+```bash
+make serve-dist     # or npm run serve:dist
+# Visit http://localhost:8080
+```
+
+- Shows the complete site with Edera V2 themed landing page
+- Light mint gradient background with styled presentation cards
+- Serves the built `dist/` directory (same as production)
+- Includes all assets, favicon, and proper index page
+- **This is what production looks like** (talks.denhamparry.co.uk)
+
+**When to use each:**
+
+- Use `make serve` for rapid slide editing during development
+- Use `make serve-dist` to preview the final site before deploying
+- Use `make serve-dist` to verify the themed index page displays correctly
+
+### Docker Development Options
+
+If using Docker, there are two services available:
+
+**Option 1: Development Service (Quick Preview)**
+
+```bash
+make docker-dev
+# or
+docker-compose up dev
+# Visit http://localhost:8080
+```
+
+- Shows MARP's default file browser interface
+- Plain white background with simple file listing
+- Live reload for rapid slide editing
+- **Does NOT show the custom Edera V2 themed index page**
+
+**Option 2: Production Service (Complete Site)**
+
+```bash
+make docker-prod
+# or
+docker-compose --profile production up prod
+# Visit http://localhost:8081  (note: different port!)
+```
+
+- Shows the complete site with Edera V2 themed landing page
+- Light mint gradient background with styled presentation cards
+- Serves the built `dist/` directory (same as production)
+- **This is what production looks like** (talks.denhamparry.co.uk)
+
+**Important:** The production service runs on **port 8081**, not 8080.
 
 ### Creating New Presentations
 

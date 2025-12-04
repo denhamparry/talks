@@ -60,8 +60,12 @@ A modern presentation system for creating beautiful slide decks using Markdown. 
 5. **Build and preview**
 
    ```bash
-   # Development mode with live reload
+   # Option 1: Quick preview (MARP file browser)
    npm run serve
+   # Visit http://localhost:8080
+
+   # Option 2: Full site preview with themed index (like production)
+   npm run serve:dist
    # Visit http://localhost:8080
 
    # Or build HTML/PDF
@@ -71,18 +75,26 @@ A modern presentation system for creating beautiful slide decks using Markdown. 
 
 That's it! Your presentation is ready at `dist/my-first-talk.html` and `dist/my-first-talk.pdf`.
 
+**Note:** `npm run serve` shows MARP's file browser, while `npm run serve:dist` shows the complete site with the Edera V2 themed landing page (same as production).
+
 ### Using Docker (No Node.js Required)
 
 Prefer containers? Use Docker instead:
 
 ```bash
-# Development with live reload
+# Development server (MARP file browser)
 make docker-dev
 # Visit http://localhost:8080
 
-# Production build
+# Production server (themed index page)
+make docker-prod
+# Visit http://localhost:8081
+
+# Or build production image only
 make docker-build
 ```
+
+**Note:** The dev service shows MARP's file browser. To see the Edera V2 themed landing page (like production), use `make docker-prod`.
 
 ## 📺 Example Presentations
 
@@ -144,8 +156,11 @@ make build-pdf
 # Development mode with auto-rebuild
 make watch
 
-# Serve locally with live reload
+# Serve with MARP dev server (file browser)
 make serve
+
+# Serve complete site with themed index (production-like)
+make serve-dist
 
 # Run pre-commit hooks
 make precommit
@@ -165,6 +180,9 @@ make format
 
 # Run all pre-commit hooks
 make precommit
+
+# Run smoke tests to verify build output
+make test-smoke
 ```
 
 ### CI Workflow
@@ -177,10 +195,12 @@ make ci
 **Alternative:** You can still use npm scripts directly:
 
 ```bash
-npm run build
-npm run build:pdf
-npm run watch
-npm run serve
+npm run build        # Build HTML
+npm run build:pdf    # Build PDF
+npm run watch        # Watch mode
+npm run serve        # MARP dev server (file browser)
+npm run serve:dist   # Build and serve complete site with themed index
+npm run test:smoke   # Run smoke tests to verify build output
 ```
 
 ## 🐳 Running with Docker
@@ -189,25 +209,45 @@ This repository includes full Docker support for containerized development and d
 
 ### Docker Quick Start
 
-```bash
-# Development server with live reload
-make docker-dev
-# Visit http://localhost:8080
+There are two Docker services available:
 
-# Production server
-make docker-prod
-# Visit http://localhost:8081
+**Development Service (MARP File Browser)**
+
+```bash
+make docker-dev
+# or
+docker-compose up dev
+# Visit http://localhost:8080
 ```
+
+- Shows MARP's default file browser interface
+- Live reload for rapid slide editing
+- **Does NOT show the themed index page**
+
+**Production Service (Themed Index Page)**
+
+```bash
+make docker-prod
+# or
+docker-compose --profile production up prod
+# Visit http://localhost:8081  (note: different port!)
+```
+
+- Shows the complete site with Edera V2 themed landing page
+- Same as production deployment (talks.denhamparry.co.uk)
+- **Use this to preview the final site**
 
 ### Using docker-compose Directly
 
 ```bash
-# Development mode
+# Development mode (file browser, port 8080)
 docker-compose up dev
 
-# Production mode
+# Production mode (themed index, port 8081)
 docker-compose --profile production up prod
 ```
+
+**Important:** The production service requires the `--profile production` flag and runs on port **8081**.
 
 ### Building Images
 
