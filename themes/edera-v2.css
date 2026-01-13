@@ -443,6 +443,7 @@ footer {
   align-items: center;
   font-size: 1.125rem;  /* 18px - original size for footer */
   color: var(--color-text-dark);
+  padding-right: 3rem;  /* Reserve space for pagination number */
 }
 
 section.title header,
