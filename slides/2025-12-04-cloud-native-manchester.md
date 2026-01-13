@@ -2,7 +2,7 @@
 marp: true
 theme: edera-v2
 paginate: true
-footer: 'December 4th, 2025 | Cloud-Native Manchester'
+footer: 'December 4th, 2025 Cloud Native Manchester'
 ---
 
 # What I wish I knew about AI...

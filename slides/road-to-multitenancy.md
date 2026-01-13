@@ -2,7 +2,8 @@
 marp: true
 theme: edera-v2
 paginate: true
-footer: 'January 14th, 2026 | [London Platform User Group (LoPUG)](https://www.meetup.com/london-platform-user-group-lopug/events/311100198)'
+header: '<a href="https://edera.dev" class="logo-link"><img src="./assets/ederav2/edera-logo.png" alt="Edera Logo"></a>'
+footer: 'January 14th, 2026 [London Platform User Group (LoPUG)](https://www.meetup.com/london-platform-user-group-lopug/events/311100198)'
 ---
 
 <!-- _class: title -->
@@ -96,8 +97,7 @@ Speaker Notes:
 
 **Cons:**
 - ❌ Defeats orchestration purpose
-- ❌ Poor resource utilization
-- ❌ High infrastructure costs
+- ❌ Poor resource utilization and high infrastructure costs
 - ❌ Complex cluster management
 - ❌ Doesn't scale economically
 
@@ -123,17 +123,11 @@ Speaker Notes:
 
 **Solution:** Standard container runtimes (containerd, CRI-O)
 
-**The Security Problem:**
-- All containers share the host kernel
-- Kernel vulnerabilities affect all tenants
+**Security Concerns:**
+- Shared kernel = shared vulnerabilities
 - Container escapes can access host
-- Limited isolation between workloads
-
-**Attack Vectors:**
-- Kernel exploits
-- Container runtime vulnerabilities
-- Privilege escalation
-- Resource exhaustion attacks
+- Kernel exploits affect all tenants
+- Privilege escalation and runtime attacks
 
 **Verdict:** Not suitable for untrusted multi-tenant workloads
 
@@ -159,21 +153,15 @@ Speaker Notes:
 
 # Current Approach #3: Kata Containers
 
-**Solution:** Lightweight VMs for container isolation
-
-**How It Works:**
-- Each container runs in its own VM
-- Separate kernel per container
-- Hardware virtualization for isolation
+**Solution:** Lightweight VMs for container isolation (separate kernel per container)
 
 **Pros:**
-- ✅ Strong isolation (separate kernels)
+- ✅ Strong isolation via hardware virtualization
 - ✅ Compatible with Kubernetes
 
 **Cons:**
-- ❌ Performance overhead (VM startup)
-- ❌ Higher memory footprint
-- ❌ Slower cold starts (1-2 seconds)
+- ❌ VM startup overhead (1-2 second cold starts)
+- ❌ Higher memory footprint per container
 - ❌ Additional infrastructure complexity
 
 <!--
@@ -198,22 +186,16 @@ Speaker Notes:
 
 # Current Approach #4: gVisor
 
-**Solution:** Userspace kernel for application isolation
-
-**How It Works:**
-- Intercepts system calls
-- Implements kernel functionality in userspace
-- Limits direct kernel access
+**Solution:** Userspace kernel that intercepts syscalls for isolation
 
 **Pros:**
 - ✅ Improved isolation vs standard containers
 - ✅ Smaller footprint than VMs
 
 **Cons:**
-- ❌ Performance penalty (syscall interception)
-- ❌ Compatibility issues with some applications
-- ❌ Limited system call support
-- ❌ Added complexity in debugging
+- ❌ Performance penalty from syscall interception
+- ❌ Limited syscall support and compatibility issues
+- ❌ Added debugging complexity
 
 <!--
 Speaker Notes:
@@ -308,29 +290,29 @@ Speaker Notes:
 
 1. **Drop-in Replacement**: Compatible with Kubernetes CRI
 2. **Process Isolation**: Each container in isolated environment
-3. **System Call Filtering**: Secure syscall handling without performance hit
+3. **Paravirtualized System Calls**: Optimized hypercalls without performance hit
 4. **Resource Limits**: Per-tenant resource guarantees
 5. **Network Isolation**: Automatic tenant network segmentation
 
 **Key Technologies:**
 - Advanced namespace isolation
 - Secure compute profiles
-- Optimized system call handling
-- Zero-trust networking
+- Paravirtualized system calls for performance
+- Network isolation with gateway control
 
 <!--
 Speaker Notes:
 - Technical architecture: how Edera achieves security + performance
 - CRI compatible: works with any Kubernetes distribution (EKS, GKE, AKS, vanilla)
 - Process isolation: enhanced beyond standard Linux namespaces
-- Syscall filtering: selective syscall access, not blanket interception
-- Unlike gVisor (intercepts all), Edera optimizes hot paths
+- Paravirtualization: guest kernel uses hypercalls for privileged operations
+- Unlike gVisor (intercepts all syscalls), Edera delegates through hypervisor
 - Resource guarantees: per-tenant CPU/memory/I/O limits enforced
 - Network segmentation: automatic tenant isolation at network layer
 - Advanced namespaces: goes beyond standard Linux kernel capabilities
 - Secure compute profiles: eBPF-based security policies
-- Optimized syscalls: fast path for common operations, security for risky ones
-- Zero-trust network: no tenant-to-tenant communication by default
+- Paravirtualized syscalls: 3% faster than Docker, avoids costly emulation
+- Gateway network control: protect-network service mediates all packet routing
 - Result: security isolation without the performance penalty
 -->
 
@@ -338,24 +320,19 @@ Speaker Notes:
 
 <!-- _class: dark -->
 
-# Benefits: Security + Performance Together
+# Benefits: Security + Performance
 
 **Security Wins:**
 - ✅ Strong isolation between tenants
 - ✅ Reduced kernel attack surface
 - ✅ Container escape protection
-- ✅ Zero-trust networking
+- ✅ Gateway-controlled networking
 
 **Performance Wins:**
 - ✅ Near-native application performance
-- ✅ Fast cold starts (< 100ms)
+- ✅ Sub-second cold starts (~750ms vs 2s for Kata)
 - ✅ Low memory overhead
 - ✅ No VM layer penalties
-
-**Operational Wins:**
-- ✅ Kubernetes-native integration
-- ✅ Simple deployment model
-- ✅ Minimal infrastructure changes
 
 <!--
 Speaker Notes:
@@ -366,14 +343,36 @@ Speaker Notes:
 - Zero-trust network: no lateral movement between tenants
 - PERFORMANCE: this is where Edera shines vs Kata/gVisor
 - Near-native: < 5% overhead on most workloads (vs 10-30% for alternatives)
-- Cold starts: milliseconds not seconds (critical for serverless, batch)
+- Cold starts: ~750ms vs 2s for Kata, 4x faster (critical for serverless, batch)
 - Memory: minimal overhead per container (vs 100MB+ for Kata)
 - No VM layer: avoid all virtualization penalties
+-->
+
+---
+
+<!-- _class: dark -->
+
+# Benefits: Operational Excellence
+
+**Operational Wins:**
+- ✅ Kubernetes-native integration
+- ✅ Simple deployment model
+- ✅ Minimal infrastructure changes
+
+**The Complete Package:**
+> Security + Performance + Simplicity
+
+No more forced trade-offs between isolation and efficiency
+
+<!--
+Speaker Notes:
 - OPERATIONAL: platform engineers' favorite part
 - Kubernetes native: kubectl, Helm, GitOps all work unchanged
 - Simple deployment: update container runtime, no architecture redesign
 - Minimal changes: existing workloads run without modification
 - Finally a solution that doesn't force painful trade-offs
+- This is the trifecta: secure, fast, AND simple to deploy
+- You don't have to sacrifice one for the other anymore
 -->
 
 ---
@@ -430,7 +429,7 @@ Speaker Notes:
 
 **Next Steps:**
 - Learn more: [edera.dev](https://edera.dev)
-- Try it: [github.com/edera-dev](https://github.com/edera-dev)
+- Try it: [demo.edera.dev](https://demo.edera.dev)
 - Test your isolation: [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated)
 
 <!--
@@ -454,19 +453,17 @@ Speaker Notes:
 
 <!-- _class: title -->
 
-# Thank You
-
-## Questions?
+## Thank You, Questions?
 
 Lewis Denham-Parry
 [Edera.dev](https://edera.dev)
 
-[London Platform User Group (LoPUG)](https://www.meetup.com/london-platform-user-group-lopug/events/311100198) | January 14th, 2026
+### Resources:
 
-**Resources:**
-- 🌐 [edera.dev](https://edera.dev)
-- 💻 [github.com/edera-dev](https://github.com/edera-dev)
-- 🔒 [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated)
+🌐 [edera.dev](https://edera.dev)
+⌨️ [demo.edera.dev](https://demo.edera.dev)
+💻 [github.com/edera-dev](https://github.com/edera-dev)
+🔒 [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated)
 
 <!--
 Speaker Notes:
