@@ -2,7 +2,7 @@
 marp: true
 theme: edera-v2
 paginate: true
-footer: 'January 14th, 2026 | Platform Engineering - London'
+footer: 'January 14th, 2026 | [London Platform User Group (LoPUG)](https://www.meetup.com/london-platform-user-group-lopug/events/311100198)'
 ---
 
 <!-- _class: title -->
@@ -12,7 +12,7 @@ footer: 'January 14th, 2026 | Platform Engineering - London'
 ## Running Secure Multi-Tenant Workloads at Scale
 
 Lewis Denham-Parry | [Edera.dev](https://edera.dev)
-Platform Engineering Talk - London | January 14th, 2026
+[London Platform User Group (LoPUG)](https://www.meetup.com/london-platform-user-group-lopug/events/311100198) | January 14th, 2026
 
 <!--
 Speaker Notes:
@@ -461,7 +461,7 @@ Speaker Notes:
 Lewis Denham-Parry
 [Edera.dev](https://edera.dev)
 
-Platform Engineering - London | January 14th, 2026
+[London Platform User Group (LoPUG)](https://www.meetup.com/london-platform-user-group-lopug/events/311100198) | January 14th, 2026
 
 **Resources:**
 - 🌐 [edera.dev](https://edera.dev)
