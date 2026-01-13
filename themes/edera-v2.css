@@ -85,7 +85,8 @@ h1 {
   font-size: var(--font-size-h1);
   font-weight: 700;
   line-height: 1.2;
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--spacing-sm) 0;  /* Reduced from spacing-md to give more vertical space */
+  padding-right: 6.5rem;  /* Increased padding for better logo clearance across all browsers */
 }
 
 h2 {
@@ -143,7 +144,7 @@ ol {
 }
 
 li {
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: calc(var(--spacing-xs) * 0.75);  /* Reduced from spacing-xs to save vertical space */
   font-size: calc(var(--marpit-root-font-size, 1rem) * 1.25);
 }
 
@@ -315,9 +316,23 @@ section.title h2 {
   margin-bottom: var(--spacing-lg);
 }
 
+section.title h3 {
+  color: var(--color-primary);
+}
+
 section.title p {
   color: var(--color-text-light);
   font-size: var(--font-size-base);
+}
+
+section.title a {
+  color: var(--color-text-light) !important;
+  border-bottom-color: var(--color-text-light) !important;
+}
+
+section.title a:hover {
+  color: var(--color-primary) !important;
+  border-bottom-color: var(--color-primary) !important;
 }
 
 /* Content Slide (Default) */
@@ -350,6 +365,11 @@ section.dark strong {
 section.dark ul > li::marker,
 section.dark ol > li::marker {
   color: var(--color-primary);
+}
+
+section.dark blockquote {
+  color: var(--color-text-light);
+  border-left-color: var(--color-primary);
 }
 
 /* Light/White Background Variant */
@@ -443,6 +463,7 @@ footer {
   align-items: center;
   font-size: 1.125rem;  /* 18px - original size for footer */
   color: var(--color-text-dark);
+  padding-right: 3rem;  /* Reserve space for pagination number */
 }
 
 section.title header,
@@ -476,11 +497,40 @@ section.dark::after {
    Logo
    ======================================== */
 
-section::before {
+/* Logo link in header */
+header .logo-link {
+  position: absolute;
+  top: var(--spacing-sm);    /* 1rem from top */
+  right: var(--spacing-sm);  /* 1rem (16px) from right edge - moved closer to edge */
+  width: 5rem;               /* 80px logo width */
+  height: 5rem;              /* 80px logo height */
+  display: block;
+  z-index: 10;               /* Ensure logo appears above content */
+  border: none;              /* Remove default link border */
+  background: transparent;   /* Transparent background */
+  transition: opacity 0.2s ease;
+}
+
+header .logo-link:hover {
+  opacity: 0.8;
+  border: none;              /* Remove hover border */
+  background: transparent;   /* Keep transparent on hover */
+}
+
+header .logo-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0;          /* Remove default img border-radius */
+  background: transparent;   /* Transparent background for image */
+}
+
+/* Fallback: Show logo via ::before if no header is present */
+section:not(:has(header .logo-link))::before {
   content: '';
   position: absolute;
   top: var(--spacing-sm);    /* 1rem from top */
-  right: var(--margin-horizontal);  /* 84px from right edge */
+  right: var(--spacing-sm);  /* 1rem (16px) from right edge - moved closer to edge */
   width: 5rem;               /* 80px logo width */
   height: 5rem;              /* 80px logo height */
   background: url('./assets/ederav2/edera-logo.png') no-repeat center;
@@ -489,7 +539,8 @@ section::before {
 }
 
 /* Hide logo on title slides for clean aesthetic */
-section.title::before {
+section.title::before,
+section.title header .logo-link {
   display: none;
 }
 

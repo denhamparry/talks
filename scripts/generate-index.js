@@ -14,6 +14,15 @@ const SLIDES_DIR = path.join(__dirname, '..', 'slides');
 const OUTPUT_FILE = path.join(__dirname, '..', 'dist', 'index.html');
 
 /**
+ * Convert markdown links to plain text (extract text only)
+ */
+function convertMarkdownLinks(text) {
+  if (!text) return text;
+  // Replace [text](url) with just text
+  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+}
+
+/**
  * Extract presentation metadata from markdown file
  */
 function extractMetadata(filePath) {
@@ -24,6 +33,7 @@ function extractMetadata(filePath) {
   let date = '';
   let footer = '';
   let header = '';
+  let unlisted = false;
 
   // Extract from frontmatter
   let inFrontmatter = false;
@@ -50,6 +60,9 @@ function extractMetadata(filePath) {
       if (line.startsWith('header:')) {
         header = line.replace('header:', '').trim().replace(/['"]/g, '');
       }
+      if (line.startsWith('unlisted:')) {
+        unlisted = line.replace('unlisted:', '').trim() === 'true';
+      }
     }
 
     // Extract first H1 title after frontmatter
@@ -64,19 +77,22 @@ function extractMetadata(filePath) {
     title = path.basename(filePath, '.md');
   }
 
-  // Try to extract date from filename (format: YYYY-MM-DD-*)
-  const dateMatch = path.basename(filePath).match(/^(\d{4}-\d{2}-\d{2})/);
-  if (dateMatch) {
-    date = dateMatch[1];
-  } else if (footer) {
+  // Use footer for date if available, otherwise extract from filename (format: YYYY-MM-DD-*)
+  if (footer) {
     date = footer;
+  } else {
+    const dateMatch = path.basename(filePath).match(/^(\d{4}-\d{2}-\d{2})/);
+    if (dateMatch) {
+      date = dateMatch[1];
+    }
   }
 
   return {
     title,
     date,
     header,
-    htmlFile: path.basename(filePath, '.md') + '.html'
+    htmlFile: path.basename(filePath, '.md') + '.html',
+    unlisted
   };
 }
 
@@ -97,6 +113,7 @@ function generateIndex() {
 
   // Extract metadata from each file
   const presentations = files.map(extractMetadata)
+    .filter(p => !p.unlisted) // Filter out unlisted presentations
     .sort((a, b) => b.date.localeCompare(a.date)); // Sort by date descending
 
   // Generate HTML
@@ -106,6 +123,7 @@ function generateIndex() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentations - Lewis Denham-Parry</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         * {
             margin: 0;
@@ -244,8 +262,8 @@ function generateIndex() {
 ${presentations.map(p => `            <a href="${p.htmlFile}" class="presentation-card">
                 <h2 class="presentation-title">${p.title}</h2>
                 <div class="presentation-meta">
-                    ${p.date ? `<span>${p.date}</span>` : ''}
-                    ${p.header ? `<span class="presentation-header">${p.header}</span>` : ''}
+                    ${p.date ? `<span>${convertMarkdownLinks(p.date)}</span>` : ''}
+                    ${p.header ? `<span class="presentation-header">${convertMarkdownLinks(p.header)}</span>` : ''}
                 </div>
             </a>`).join('\n')}
         </main>

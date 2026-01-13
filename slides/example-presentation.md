@@ -4,6 +4,7 @@ theme: edera-v2
 paginate: true
 header: 'Edera V2 Theme Demo'
 footer: 'December 2025'
+unlisted: true
 ---
 
 <!-- _class: title -->
