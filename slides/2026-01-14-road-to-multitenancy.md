@@ -76,7 +76,6 @@ Speaker Notes:
 - All containers on a node share the Linux kernel
 - Kernel vulnerability = all tenants on that node at risk
 - Container escape: break out and access host or other containers
-- Next slide shows visual of the attack surface
 - The fundamental contradiction: isolation vs density
 - Using separate machines for each tenant? That's pre-Kubernetes thinking
 - We need a better solution that preserves both goals
@@ -174,7 +173,6 @@ Speaker Notes:
 - Security win: finally proper isolation for multi-tenancy
 - BUT: performance trade-offs
 - VM startup overhead: 150-300ms with modern configurations (optimized setups), up to 1-2s with older configurations (vs milliseconds for containers)
-- Next slide shows startup time comparison benchmark
 - Memory: each VM reserves memory for kernel (~100MB overhead)
 - High-churn workloads (serverless, batch jobs) suffer most
 - Infrastructure: need nested virtualization in cloud, specific host setup
@@ -209,7 +207,6 @@ Speaker Notes:
 - Smaller footprint than Kata: no full VM overhead
 - BUT: performance tax on system calls
 - Syscall interception adds latency (microseconds per call)
-- Next slide shows the syscall overhead benchmark
 - Performance varies widely: <1% overhead for CPU-bound workloads, 10-30%+ for I/O-heavy applications
 - At Ant Group production: 70% of apps have <1% overhead, 25% have <3% overhead [Source: gVisor.dev - Running gVisor in Production at Scale in Ant, Dec 2021]
 - Compatibility: doesn't support all syscalls (some apps won't run)
@@ -244,7 +241,6 @@ Speaker Notes:
 - Note: Fargate's use of Firecracker is disputed by some sources, so we focus on Lambda where it's confirmed
 - MicroVMs: stripped-down VMs with minimal device emulation
 - Fast startup: ~125ms vs older Kata (significant improvement)
-- Next slide shows benchmark comparison of startup times
 - Memory: ~5MB overhead vs ~100MB for traditional VMs
 - KVM virtualization: hardware-level isolation guarantee
 - BUT: still has VM layer, just optimized
@@ -423,7 +419,6 @@ Speaker Notes:
 - Paravirtualized syscalls: 3% faster than Docker, avoids costly emulation
 - Gateway network control: protect-network service mediates all packet routing
 - Result: VM-level security isolation without traditional VM performance penalty
-- Next slide shows the architecture diagrams
 -->
 
 ---
@@ -453,7 +448,6 @@ Speaker Notes:
 - Reduced attack surface: Type-1 hypervisor with microkernel design
 - Container escape protection: hypervisor boundary prevents cross-zone access
 - Zero-trust network: no lateral movement between tenants
-- Next slides show visual evidence of security and performance benefits
 - PERFORMANCE: this is where Edera shines vs Kata/gVisor
 - Near-native: < 5% overhead on most workloads (vs 10-30% for gVisor, startup delays for Kata)
 - Cold starts: ~750ms vs 1.9s for Kata, 2.5x faster (critical for serverless, batch)
