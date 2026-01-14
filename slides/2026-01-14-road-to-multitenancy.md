@@ -688,6 +688,10 @@ Lewis Denham-Parry
 💻 [github.com/edera-dev](https://github.com/edera-dev)
 🔒 [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated)
 
+<div style="text-align: center; margin-top: 2rem;">
+  <img src="./assets/2026-01-14-road-to-multitenancy/road-to-multitenancy-qr.png" alt="Scan to access slides" style="width: 200px; height: 200px;">
+</div>
+
 <!--
 Speaker Notes:
 - Thank the audience for their time and attention
