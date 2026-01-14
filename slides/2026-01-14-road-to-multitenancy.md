@@ -2,7 +2,6 @@
 marp: true
 theme: edera-v2
 paginate: true
-header: '<a href="https://edera.dev" class="logo-link"><img src="./assets/ederav2/edera-logo.png" alt="Edera Logo"></a>'
 footer: 'January 14th, 2026 [London Platform User Group (LoPUG)](https://www.meetup.com/london-platform-user-group-lopug/events/311100198)'
 ---
 
@@ -160,7 +159,7 @@ Speaker Notes:
 - ✅ Compatible with Kubernetes
 
 **Cons:**
-- ❌ VM startup overhead (1-2 second cold starts)
+- ❌ VM startup overhead (150-300ms with modern configurations, up to 1-2s with older setups)
 - ❌ Higher memory footprint per container
 - ❌ Additional infrastructure complexity
 
@@ -168,16 +167,17 @@ Speaker Notes:
 Speaker Notes:
 - Kata Containers: lightweight VMs that look like containers
 - Each container gets its own VM with its own kernel
-- Uses hardware virtualization (KVM, Firecracker)
+- Uses hardware virtualization (KVM, Firecracker, Cloud Hypervisor)
 - Strong isolation: kernel vulnerability in one VM doesn't affect others
 - Kubernetes compatible: implements CRI, drop-in replacement
 - Security win: finally proper isolation for multi-tenancy
 - BUT: performance trade-offs
-- VM startup overhead: 1-2 seconds cold start (vs milliseconds for containers)
+- VM startup overhead: 150-300ms with modern configurations (optimized setups), up to 1-2s with older configurations (vs milliseconds for containers)
 - Memory: each VM reserves memory for kernel (~100MB overhead)
 - High-churn workloads (serverless, batch jobs) suffer most
 - Infrastructure: need nested virtualization in cloud, specific host setup
 - Good solution, but sacrifices the speed and density we want
+- Performance has improved significantly with recent optimizations
 -->
 
 ---
@@ -193,7 +193,7 @@ Speaker Notes:
 - ✅ Smaller footprint than VMs
 
 **Cons:**
-- ❌ Performance penalty from syscall interception
+- ❌ Performance penalty from syscall interception (varies by workload)
 - ❌ Limited syscall support and compatibility issues
 - ❌ Added debugging complexity
 
@@ -207,11 +207,88 @@ Speaker Notes:
 - Smaller footprint than Kata: no full VM overhead
 - BUT: performance tax on system calls
 - Syscall interception adds latency (microseconds per call)
-- I/O-heavy workloads see 10-30% performance degradation
+- Performance varies widely: <1% overhead for CPU-bound workloads, 10-30%+ for I/O-heavy applications
+- At Ant production: 70% of apps have <1% overhead, 25% have <3% overhead
 - Compatibility: doesn't support all syscalls (some apps won't run)
 - Debugging: syscall stack traces become complex
 - Used by Google Cloud Run and some serverless platforms
-- Trade-off: better than nothing, but still costs performance
+- Trade-off: better than nothing, but still costs performance for syscall-heavy workloads
+-->
+
+---
+
+<!-- _class: content -->
+
+# Current Approach #5: Firecracker
+
+**Solution:** Lightweight microVMs for serverless and container workloads
+
+**Pros:**
+- ✅ Strong isolation via hardware virtualization (KVM)
+- ✅ Fast startup times (~125ms vs 1-2s for Kata)
+- ✅ Minimal memory footprint (~5MB per microVM)
+
+**Cons:**
+- ❌ Still VM overhead (vs pure containers)
+- ❌ Limited to Linux guests
+- ❌ Requires nested virtualization in cloud environments
+- ❌ Specialized use case (designed for serverless)
+
+<!--
+Speaker Notes:
+- Firecracker: AWS's answer to lightweight isolation
+- Powers AWS Lambda - production-proven at massive scale (trillions of requests/month)
+- Note: Fargate's use of Firecracker is disputed by some sources, so we focus on Lambda where it's confirmed
+- MicroVMs: stripped-down VMs with minimal device emulation
+- Fast startup: ~125ms vs older Kata (significant improvement)
+- Memory: ~5MB overhead vs ~100MB for traditional VMs
+- KVM virtualization: hardware-level isolation guarantee
+- BUT: still has VM layer, just optimized
+- Limited to Linux guests: no Windows support
+- Nested virtualization: need specific host configuration in cloud
+- Purpose-built for serverless: not general-purpose container runtime
+- Trade-off: better than traditional VMs for startup time, but still not container-native
+- Good for Function-as-a-Service, less ideal for long-running workloads
+-->
+
+---
+
+<!-- _class: content -->
+
+# Current Approach #6: Bare Metal
+
+**Solution:** Dedicated physical servers per tenant
+
+**Pros:**
+- ✅ Maximum isolation (physical separation)
+- ✅ Predictable performance (no noisy neighbors)
+- ✅ Full hardware control and resource access
+- ✅ No virtualization overhead
+
+**Cons:**
+- ❌ Extremely poor resource utilization
+- ❌ Highest infrastructure costs (dedicated hardware)
+- ❌ Slow provisioning (minutes to hours vs seconds)
+- ❌ Does not scale with tenant growth
+
+<!--
+Speaker Notes:
+- Bare metal: the ultimate isolation approach - separate physical servers
+- Maximum isolation: physical network boundaries, no shared CPU/memory/kernel
+- Predictable performance: no virtualization overhead, no noisy neighbors
+- Full hardware access: GPUs, specialized hardware, direct I/O
+- No hypervisor tax: applications run at native hardware speed
+- BUT: this is the most expensive and least scalable option
+- Resource utilization: typical 10-30% (70-90% wasted capacity)
+- Infrastructure costs: $100-$500/month per server, multiplied by tenant count
+- Provisioning time: minutes to hours vs seconds for containers
+- Scaling: adding 100 tenants = buying 100 servers
+- This approach only makes sense for specialized workloads:
+  - High-security government/financial workloads
+  - GPU-intensive ML training with dedicated hardware
+  - Compliance requirements mandating physical separation
+- For most multi-tenant platforms, bare metal defeats the purpose
+- Including this to show the full spectrum of isolation options
 -->
 
 ---
@@ -226,6 +303,8 @@ Speaker Notes:
 | **Shared Kernel** | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | **Kata Containers** | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
 | **gVisor** | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **Firecracker** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
+| **Bare Metal** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐ | ⭐ |
 | **Edera** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
 
 **The Gap:** Need security AND performance without compromise
@@ -237,10 +316,13 @@ Speaker Notes:
 - Shared kernel: scales great, but insecure for multi-tenancy
 - Kata: good security, but performance suffers (VM overhead)
 - gVisor: middle ground, but still performance penalty
+- Firecracker: better performance than Kata, but still VM-based (moderate scale)
+- Bare metal: maximum isolation and performance, but worst scalability and cost
 - Notice the pattern: every solution compromises something
 - Security OR performance OR scale - pick 2, sacrifice 1
 - Complexity column: all add operational overhead
-- The market gap: no solution delivers all three
+- Even with 7 different approaches, the market gap remains
+- No solution delivers all three until now
 - Platform engineers are stuck with trade-offs
 - This is where Edera enters the picture
 - (Pause before next slide for impact)
@@ -260,7 +342,7 @@ Speaker Notes:
 > By focusing on the container runtime, we can achieve both security isolation AND high performance
 
 **Edera's Approach:**
-- Security isolation without VMs
+- Security isolation using optimized lightweight VMs ("zones")
 - Performance comparable to native containers
 - Compatible with existing orchestrators (Kubernetes)
 - Minimal infrastructure changes
@@ -272,8 +354,9 @@ Speaker Notes:
 - Runtime sits between Kubernetes and the containers
 - This is where isolation decisions are made
 - By innovating at the runtime, we can optimize both security AND performance
-- No VMs required: avoid VM startup and memory overhead
-- Near-native performance: minimal syscall overhead
+- Lightweight VMs (zones): each with its own kernel, but without traditional VM overhead
+- Uses paravirtualization to avoid VM startup and memory penalties
+- Near-native performance: minimal overhead through optimized hypercalls
 - Kubernetes native: implements CRI interface, drop-in compatible
 - Minimal changes: don't need to redesign your platform
 - This is the "best of all worlds" solution
@@ -289,31 +372,32 @@ Speaker Notes:
 **Container Runtime Integration:**
 
 1. **Drop-in Replacement**: Compatible with Kubernetes CRI
-2. **Process Isolation**: Each container in isolated environment
+2. **Zone Isolation**: Each container runs in its own lightweight VM ("zone") with dedicated kernel
 3. **Paravirtualized System Calls**: Optimized hypercalls without performance hit
 4. **Resource Limits**: Per-tenant resource guarantees
 5. **Network Isolation**: Automatic tenant network segmentation
 
 **Key Technologies:**
-- Advanced namespace isolation
+- Type-1 hypervisor with microkernel architecture
+- Paravirtualized zones (lightweight VMs)
 - Secure compute profiles
-- Paravirtualized system calls for performance
 - Network isolation with gateway control
 
 <!--
 Speaker Notes:
 - Technical architecture: how Edera achieves security + performance
 - CRI compatible: works with any Kubernetes distribution (EKS, GKE, AKS, vanilla)
-- Process isolation: enhanced beyond standard Linux namespaces
+- Zone isolation: each container gets its own "zone" (lightweight VM) with full Linux kernel
+- Type-1 hypervisor: microkernel written in MISRA C for minimal attack surface
 - Paravirtualization: guest kernel uses hypercalls for privileged operations
 - Unlike gVisor (intercepts all syscalls), Edera delegates through hypervisor
-- Resource guarantees: per-tenant CPU/memory/I/O limits enforced
+- Unlike Kata/Firecracker (traditional VMs), Edera uses paravirtualization for efficiency
+- Resource guarantees: per-tenant CPU/memory/I/O limits enforced by hypervisor
 - Network segmentation: automatic tenant isolation at network layer
-- Advanced namespaces: goes beyond standard Linux kernel capabilities
 - Secure compute profiles: eBPF-based security policies
 - Paravirtualized syscalls: 3% faster than Docker, avoids costly emulation
 - Gateway network control: protect-network service mediates all packet routing
-- Result: security isolation without the performance penalty
+- Result: VM-level security isolation without traditional VM performance penalty
 -->
 
 ---
@@ -329,23 +413,24 @@ Speaker Notes:
 - ✅ Gateway-controlled networking
 
 **Performance Wins:**
-- ✅ Near-native application performance
-- ✅ Sub-second cold starts (~750ms vs 2s for Kata)
+- ✅ Near-native application performance (<5% overhead)
+- ✅ Sub-second cold starts (~750ms vs 1.9s for Kata)
 - ✅ Low memory overhead
-- ✅ No VM layer penalties
+- ✅ Minimal virtualization penalties through paravirtualization
 
 <!--
 Speaker Notes:
 - Let's break down the concrete benefits for platform teams
-- SECURITY: tenant isolation comparable to VMs, without VMs
-- Reduced attack surface: limited syscall exposure per tenant
-- Container escape protection: even if they break out, contained
+- SECURITY: VM-level tenant isolation with each zone having its own kernel
+- Reduced attack surface: Type-1 hypervisor with microkernel design
+- Container escape protection: hypervisor boundary prevents cross-zone access
 - Zero-trust network: no lateral movement between tenants
 - PERFORMANCE: this is where Edera shines vs Kata/gVisor
-- Near-native: < 5% overhead on most workloads (vs 10-30% for alternatives)
-- Cold starts: ~750ms vs 2s for Kata, 4x faster (critical for serverless, batch)
-- Memory: minimal overhead per container (vs 100MB+ for Kata)
-- No VM layer: avoid all virtualization penalties
+- Near-native: < 5% overhead on most workloads (vs 10-30% for gVisor, startup delays for Kata)
+- Cold starts: ~750ms vs 1.9s for Kata, 2.5x faster (critical for serverless, batch)
+- Memory: minimal overhead per zone through paravirtualization
+- Paravirtualization advantage: avoids traditional VM overhead while maintaining isolation
+- 3% faster syscalls than Docker, 0.9% slower CPU - essentially native performance
 -->
 
 ---
@@ -415,6 +500,144 @@ Speaker Notes:
 
 ---
 
+<!-- _class: dark -->
+
+# Edera for Containers: Use Cases
+
+**Untrusted Code / Production Grade Sandbox:**
+- Run arbitrary user code safely in production
+- CI/CD build environments executing untrusted scripts
+- Code evaluation and testing platforms
+
+**Multi-tenancy & Isolation:**
+- SaaS platforms with customer workloads
+- Shared Kubernetes clusters with strong tenant boundaries
+- Developer self-service environments
+
+<!--
+Speaker Notes:
+- First two key use case categories for Edera Containers
+- UNTRUSTED CODE: This is the classic multi-tenancy problem
+  - Example: GitHub Actions, GitLab Runners - running arbitrary user code
+  - Code evaluation platforms: LeetCode, HackerRank, online IDEs
+  - Production sandboxes: allow customers to run custom code in your SaaS
+  - Key requirement: isolation without sacrificing speed
+- MULTI-TENANCY: Shared infrastructure scenarios
+  - SaaS platforms: Shopify, Salesforce-style multi-tenant applications
+  - Shared k8s clusters: avoid cluster-per-tenant cost explosion
+  - Developer environments: give teams isolated namespaces with confidence
+  - Key requirement: tenant isolation + resource efficiency
+-->
+
+---
+
+<!-- _class: dark -->
+
+# Edera for Containers: Use Cases (cont.)
+
+**Compliance & Regulatory Security:**
+- Meet PCI-DSS, HIPAA, SOC 2 requirements
+- Financial services with strict isolation mandates
+- Government and defense workload separation
+
+**Edge Computing:**
+- Resource-constrained edge nodes with security needs
+- IoT gateways running untrusted workloads
+- Retail/manufacturing edge deployments
+
+<!--
+Speaker Notes:
+- Additional use case categories for Edera Containers
+- COMPLIANCE: Meeting regulatory requirements
+  - PCI-DSS: payment processing workloads must be isolated
+  - HIPAA: healthcare data workloads need strong boundaries
+  - SOC 2: security audits require demonstrable isolation
+  - Financial services: regulatory mandates for workload separation
+  - Key requirement: auditable isolation that passes compliance
+- EDGE COMPUTING: Limited resources with security needs
+  - Edge nodes: small servers with limited CPU/memory
+  - IoT gateways: running third-party code at the edge
+  - Retail/manufacturing: edge deployments in untrusted environments
+  - Key requirement: lightweight isolation on constrained hardware
+- All of these work today with Edera - not theoretical use cases
+- For case studies, visit edera.dev
+-->
+
+---
+
+<!-- _class: dark -->
+
+# Edera for GPUs: Use Cases
+
+**GPUs & AI Infrastructure:**
+- Secure GPU sharing across multiple tenants
+- AI/ML training workloads with isolation
+- Inference serving with resource guarantees
+- Prevent GPU memory attacks and side channels
+- GPU-accelerated data processing pipelines
+
+**Compliance & Regulatory Security:**
+- Healthcare AI models with patient data isolation
+- Financial ML workloads under regulatory mandates
+- Government AI systems requiring security boundaries
+- Research environments with sensitive datasets
+
+<!--
+Speaker Notes:
+- GPU use cases: increasingly important as AI workloads grow
+- GPUS & AI INFRASTRUCTURE: The core problem
+  - GPU sharing: GPUs are expensive ($10k-$50k each), need multi-tenancy
+  - Training workloads: multiple teams training models on shared GPU clusters
+  - Inference serving: serving multiple models/customers from shared GPUs
+  - GPU security: GPUs have their own attack surface and side channels
+  - GPU memory attacks: one tenant reading another's GPU memory
+  - Side channels: timing attacks via shared GPU execution units
+  - Edera isolates GPU access just like CPU/memory isolation
+- COMPLIANCE: Regulatory requirements for GPU workloads
+  - Healthcare AI: training on patient data requires HIPAA compliance
+  - Financial ML: fraud detection models under regulatory oversight
+  - Government AI: defense and intelligence with strict security requirements
+  - Research: universities with sensitive datasets (genomics, etc.)
+  - Key issue: traditional isolation doesn't cover GPU attack surface
+-->
+
+---
+
+<!-- _class: dark -->
+
+# Edera for GPUs: Key Benefits
+
+- 🔒 **Isolate GPU memory between tenants** - Prevent cross-tenant memory access and side-channel attacks
+
+- ⚡ **Near-native GPU performance** - Minimal overhead with full GPU acceleration maintained
+
+- 💰 **Maximize GPU utilization without security risk** - Safely share expensive hardware across tenants
+
+- 📊 **Per-tenant GPU resource limits and monitoring** - Fine-grained controls and usage visibility
+
+<!--
+Speaker Notes:
+- KEY BENEFITS: What Edera for GPUs provides
+- GPU memory isolation: tenants can't access each other's GPU memory
+  - Critical security boundary that most GPU platforms lack
+  - Prevents sensitive model/data leakage between tenants
+- Performance: minimal overhead, near-native GPU throughput
+  - Don't sacrifice speed for security
+  - GPU operations run at near-hardware speed
+- Utilization: safely share expensive GPUs across multiple tenants
+  - GPUs cost $10k-$50k each - sharing is essential
+  - Enable multi-tenancy without compromising security
+- Monitoring: per-tenant GPU metrics and resource limits
+  - Visibility into which tenant is using GPU resources
+  - Enforce fair sharing and prevent resource hogging
+- This is cutting-edge: most GPU platforms don't have proper isolation
+- Shared GPU clusters today are often "trust-based" - not acceptable
+- Edera extends container isolation to GPU workloads
+- For GPU-specific case studies and benchmarks, visit edera.dev
+-->
+
+---
+
 <!-- _class: content -->
 
 # Conclusion: The Road Ahead
@@ -471,7 +694,7 @@ Speaker Notes:
 - Open the floor for questions
 - Common questions to expect:
   Q: "How does Edera compare to Firecracker/AWS Lambda's approach?"
-  A: Firecracker is lightweight VMs, still has VM overhead. Edera is pure containers with runtime-level security.
+  A: See slide 9 for Firecracker details. Key difference: Both use VMs for isolation. Firecracker has faster startup (~125ms vs ~750ms for Edera) using traditional KVM microVMs, while Edera uses paravirtualization to achieve better runtime performance (near-native, <5% overhead). Firecracker optimized for serverless/FaaS cold starts, Edera optimized for general container workloads. Both provide strong isolation, different performance optimization strategies.
 
   Q: "What's the actual performance overhead percentage?"
   A: < 5% for most workloads, compared to 10-30% for gVisor and VM startup delays for Kata.
