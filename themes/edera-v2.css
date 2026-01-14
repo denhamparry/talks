@@ -350,6 +350,27 @@ section.title a:hover {
   border-bottom-color: var(--color-primary) !important;
 }
 
+/* Resources list styling on title slides */
+section.title ul {
+  font-size: 0.9rem;  /* Smaller font size for list */
+  margin-bottom: 1rem;
+}
+
+section.title li {
+  font-size: 0.9rem;  /* Match list font size */
+  margin-bottom: 0.4rem;
+  text-align: left;
+}
+
+/* Make emojis appropriately sized on title slides */
+section.title li img {
+  max-width: 30px !important;
+  max-height: 30px !important;
+  width: 30px !important;
+  height: 30px !important;
+  margin: 0 0.5em 0 0;
+}
+
 /* Content Slide (Default) */
 section.content {
   background-color: var(--color-background-content);
