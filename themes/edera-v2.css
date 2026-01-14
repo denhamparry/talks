@@ -282,8 +282,13 @@ blockquote {
    ======================================== */
 
 img {
-  max-width: 100%;
+  max-width: 90%;
+  max-height: 55vh;  /* Constrain height to 55% of viewport to ensure fit with title and footer */
   height: auto;
+  width: auto;
+  object-fit: contain;  /* Preserve aspect ratio while fitting within constraints */
+  display: block;
+  margin: 0 auto;  /* Center images horizontally */
   border-radius: 8px;
 }
 
