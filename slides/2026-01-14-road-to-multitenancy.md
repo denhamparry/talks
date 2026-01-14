@@ -244,7 +244,6 @@ Speaker Notes:
 - Memory: ~5MB overhead vs ~100MB for traditional VMs
 - KVM virtualization: hardware-level isolation guarantee
 - BUT: still has VM layer, just optimized
-- Limited to Linux guests: no Windows support
 - Nested virtualization: need specific host configuration in cloud
 - Purpose-built for serverless: not general-purpose container runtime
 - Trade-off: better than traditional VMs for startup time, but still not container-native
@@ -409,7 +408,7 @@ Speaker Notes:
 - Technical architecture: how Edera achieves security + performance
 - CRI compatible: works with any Kubernetes distribution (EKS, GKE, AKS, vanilla)
 - Zone isolation: each container gets its own "zone" (lightweight VM) with full Linux kernel
-- Type-1 hypervisor: microkernel written in MISRA C for minimal attack surface
+- Type-1 hypervisor: microkernel written in Rust for minimal attack surface
 - Paravirtualization: guest kernel uses hypercalls for privileged operations
 - Unlike gVisor (intercepts all syscalls), Edera delegates through hypervisor
 - Unlike Kata/Firecracker (traditional VMs), Edera uses paravirtualization for efficiency
@@ -734,9 +733,6 @@ Speaker Notes:
 
   Q: "Is it production-ready?"
   A: Visit edera.dev for current status and case studies.
-
-  Q: "What about Windows containers?"
-  A: Currently focused on Linux containers, the primary multi-tenant use case.
 - Available after the talk for one-on-one discussions
 - Point them to resources on the slide for self-service learning
 - Thank event organizers and venue
