@@ -86,22 +86,6 @@ Speaker Notes:
 
 <!-- _class: content -->
 
-# Shared Kernel Attack Surface
-
-![Shared kernel attack surface](./assets/diagrams/edera-attack-without.png)
-
-<!--
-Speaker Notes:
-- Visual shows the shared kernel attack surface
-- Point out: one compromised container can escape to host or other containers
-- This diagram illustrates the fundamental security problem
-- All containers sharing one kernel = all tenants at risk
--->
-
----
-
-<!-- _class: content -->
-
 # Current Approach #1: Separate Machines
 
 **Solution:** Dedicated machines per tenant
@@ -202,22 +186,6 @@ Speaker Notes:
 
 <!-- _class: content -->
 
-# Kata Containers: Startup Time Overhead
-
-![Container startup time comparison](./assets/diagrams/container-startup-time.png)
-
-<!--
-Speaker Notes:
-- Diagram shows startup time comparison - visual evidence of VM overhead
-- Kata takes ~750ms vs Edera's optimized approach
-- This overhead impacts serverless and batch workloads significantly
-- Notice the 2.5x difference in cold start times
--->
-
----
-
-<!-- _class: content -->
-
 # Current Approach #4: gVisor
 
 **Solution:** Userspace kernel that intercepts syscalls for isolation
@@ -248,22 +216,6 @@ Speaker Notes:
 - Debugging: syscall stack traces become complex
 - Used by Google Cloud Run and some serverless platforms
 - Trade-off: better than nothing, but still costs performance for syscall-heavy workloads
--->
-
----
-
-<!-- _class: content -->
-
-# gVisor: Syscall Performance Impact
-
-![System call performance overhead](./assets/diagrams/syscall-performance.png)
-
-<!--
-Speaker Notes:
-- Diagram shows the syscall overhead impact - visual evidence of performance penalty
-- Notice the latency increase for I/O-heavy workloads
-- This is the trade-off: security through syscall interception costs performance
-- For CPU-bound apps, impact is minimal; for I/O-heavy apps, it's significant
 -->
 
 ---
@@ -301,22 +253,6 @@ Speaker Notes:
 - Purpose-built for serverless: not general-purpose container runtime
 - Trade-off: better than traditional VMs for startup time, but still not container-native
 - Good for Function-as-a-Service, less ideal for long-running workloads
--->
-
----
-
-<!-- _class: content -->
-
-# Firecracker: MicroVM Startup Performance
-
-![MicroVM startup times](./assets/diagrams/startup%20times.png)
-
-<!--
-Speaker Notes:
-- Diagram shows benchmark comparison of startup times across different approaches
-- Firecracker achieves ~125ms cold starts - significantly faster than traditional VMs
-- Still slower than pure containers, but with hardware isolation guarantees
-- This is the trade-off for serverless workloads: speed vs security
 -->
 
 ---
@@ -492,25 +428,6 @@ Speaker Notes:
 
 ---
 
-<!-- _class: content -->
-
-# Edera Architecture
-
-![Edera architecture overview](./assets/diagrams/edera-architecture-overview.png)
-
-![Type-1 vs Type-2 hypervisor comparison](./assets/diagrams/type1-vs-type2-hypervisor.png)
-
-<!--
-Speaker Notes:
-- Architecture diagram shows the complete Edera system - zones, hypervisor, and network control
-- Each zone has its own kernel, isolated by the hypervisor
-- Hypervisor comparison diagram illustrates Type-1 vs Type-2 advantages
-- Type-1 runs directly on hardware, Type-2 runs on top of host OS
-- Type-1 provides better performance and smaller attack surface
--->
-
----
-
 <!-- _class: dark -->
 
 # Benefits: Security + Performance
@@ -543,43 +460,6 @@ Speaker Notes:
 - Memory: minimal overhead per zone through paravirtualization
 - Paravirtualization advantage: avoids traditional VM overhead while maintaining isolation
 - 3% faster syscalls than Docker, 0.9% slower CPU - essentially native performance
--->
-
----
-
-<!-- _class: dark -->
-
-# Security Isolation with Edera
-
-![Edera security isolation](./assets/diagrams/edera-attack-with.png)
-
-<!--
-Speaker Notes:
-- Security diagram shows protection with Edera vs without (compare to earlier slide)
-- Hypervisor boundary prevents container escape and cross-zone access
-- Each zone is fully isolated at the hardware level
-- Zero-trust network: no lateral movement between tenants
-- This is VM-level security without traditional VM performance penalty
--->
-
----
-
-<!-- _class: dark -->
-
-# Performance Benchmarks
-
-![CPU performance benchmark](./assets/diagrams/cpu-benchmark.png)
-
-![Memory performance benchmark](./assets/diagrams/Memory%20Benchmarks-Full%20Range.png)
-
-<!--
-Speaker Notes:
-- CPU benchmark diagram shows near-native performance empirically
-- Memory benchmark demonstrates efficiency advantage
-- Note: Based on Edera internal benchmarks as of January 2026
-- Benchmark methodology available at edera.dev
-- These metrics from Edera performance testing; independent verification pending
-- Key takeaway: <5% overhead across CPU and memory workloads
 -->
 
 ---
