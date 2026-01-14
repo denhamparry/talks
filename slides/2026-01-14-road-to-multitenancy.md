@@ -208,7 +208,7 @@ Speaker Notes:
 - BUT: performance tax on system calls
 - Syscall interception adds latency (microseconds per call)
 - Performance varies widely: <1% overhead for CPU-bound workloads, 10-30%+ for I/O-heavy applications
-- At Ant production: 70% of apps have <1% overhead, 25% have <3% overhead
+- At Ant Group production: 70% of apps have <1% overhead, 25% have <3% overhead [Source: gVisor.dev - Running gVisor in Production at Scale in Ant, Dec 2021]
 - Compatibility: doesn't support all syscalls (some apps won't run)
 - Debugging: syscall stack traces become complex
 - Used by Google Cloud Run and some serverless platforms
@@ -308,6 +308,8 @@ Speaker Notes:
 | **Edera** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
 
 **The Gap:** Need security AND performance without compromise
+
+*Ratings are relative assessments based on typical use cases as of January 2026
 
 <!--
 Speaker Notes:
@@ -413,10 +415,12 @@ Speaker Notes:
 - ✅ Gateway-controlled networking
 
 **Performance Wins:**
-- ✅ Near-native application performance (<5% overhead)
-- ✅ Sub-second cold starts (~750ms vs 1.9s for Kata)
+- ✅ Near-native application performance (<5% overhead)*
+- ✅ Sub-second cold starts (~750ms vs 1.9s for Kata)*
 - ✅ Low memory overhead
 - ✅ Minimal virtualization penalties through paravirtualization
+
+*Based on Edera internal benchmarks (January 2026). Visit edera.dev for methodology.
 
 <!--
 Speaker Notes:
@@ -427,10 +431,13 @@ Speaker Notes:
 - Zero-trust network: no lateral movement between tenants
 - PERFORMANCE: this is where Edera shines vs Kata/gVisor
 - Near-native: < 5% overhead on most workloads (vs 10-30% for gVisor, startup delays for Kata)
+  - Note: Based on Edera internal benchmarks as of January 2026
 - Cold starts: ~750ms vs 1.9s for Kata, 2.5x faster (critical for serverless, batch)
+  - Benchmark methodology available at edera.dev
 - Memory: minimal overhead per zone through paravirtualization
 - Paravirtualization advantage: avoids traditional VM overhead while maintaining isolation
 - 3% faster syscalls than Docker, 0.9% slower CPU - essentially native performance
+  - These metrics from Edera performance testing; independent verification pending
 -->
 
 ---
