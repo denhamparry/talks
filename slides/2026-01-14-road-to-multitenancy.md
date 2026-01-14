@@ -295,6 +295,25 @@ Speaker Notes:
 
 <!-- _class: content -->
 
+<style scoped>
+table {
+  width: 100%;
+  font-size: 0.85em;
+}
+table td, table th {
+  padding: 0.4em 0.5em;
+  line-height: 1.3;
+}
+table td img, table th img {
+  display: inline-block !important;
+  vertical-align: middle;
+  max-width: 1em;
+  max-height: 1em;
+  margin: 0 0.1em;
+  border-radius: 0;
+}
+</style>
+
 # Comparison Matrix: Security vs Performance
 
 | Approach | Security Isolation | Performance | Scale | Complexity |
@@ -431,13 +450,10 @@ Speaker Notes:
 - Zero-trust network: no lateral movement between tenants
 - PERFORMANCE: this is where Edera shines vs Kata/gVisor
 - Near-native: < 5% overhead on most workloads (vs 10-30% for gVisor, startup delays for Kata)
-  - Note: Based on Edera internal benchmarks as of January 2026
 - Cold starts: ~750ms vs 1.9s for Kata, 2.5x faster (critical for serverless, batch)
-  - Benchmark methodology available at edera.dev
 - Memory: minimal overhead per zone through paravirtualization
 - Paravirtualization advantage: avoids traditional VM overhead while maintaining isolation
 - 3% faster syscalls than Docker, 0.9% slower CPU - essentially native performance
-  - These metrics from Edera performance testing; independent verification pending
 -->
 
 ---
@@ -690,10 +706,10 @@ Lewis Denham-Parry
 
 ### Resources:
 
-🌐 [edera.dev](https://edera.dev)
-⌨️ [demo.edera.dev](https://demo.edera.dev)
-💻 [github.com/edera-dev](https://github.com/edera-dev)
-🔒 [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated)
+- 🌐 [edera.dev](https://edera.dev)
+- ⌨️ [demo.edera.dev](https://demo.edera.dev)
+- 💻 [github.com/edera-dev](https://github.com/edera-dev)
+- 🔒 [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated)
 
 <div style="text-align: center; margin-top: 2rem;">
   <img src="./assets/2026-01-14-road-to-multitenancy/road-to-multitenancy-qr.png" alt="Scan to access slides" style="width: 200px; height: 200px;">
