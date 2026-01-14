@@ -30,6 +30,7 @@
   "devDependencies": {
     "@marp-team/marp-cli": "^4.2.3",
     "@marp-team/marp-core": "^3.9.0",
+    "qrcode": "1.5.4",
     "wcag-contrast": "3.0.0"
   }
 }
