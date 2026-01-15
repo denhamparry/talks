@@ -1,7 +1,7 @@
 # GitHub Issue #79: Create Security in Cloud Native Landscape Presentation
 
 **Issue:** [#79](https://github.com/denhamparry/talks/issues/79)
-**Status:** Open
+**Status:** Complete
 **Date:** 2026-01-15
 
 ## Problem Statement
