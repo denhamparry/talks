@@ -422,6 +422,47 @@ Speaker Notes:
 
 ---
 
+<!-- _class: content -->
+
+# Multi-Tenant System Architecture
+
+![System architecture overview showing Kubernetes cluster with Edera zones](./assets/road-to-multitenancy/system-architecture-overview.svg)
+
+<!--
+Speaker Notes:
+- This is what the Edera architecture looks like inside a Kubernetes cluster
+- Control Plane manages the cluster — unchanged, standard Kubernetes
+- Worker Nodes run the Edera Type-1 Hypervisor
+- Each Zone is a lightweight VM with its own Linux kernel
+- Point to the cyan boxes — those are Edera Zones, one per tenant
+- No shared kernel between zones — Tenant A and Tenant B cannot affect each other
+- This is the key difference from standard container runtimes (shared kernel)
+- Same familiar Kubernetes primitives: Pods, Deployments, Services
+- The isolation is transparent to the application
+-->
+
+---
+
+<!-- _class: content -->
+
+# Deployment Architecture
+
+![Deployment topology showing cloud infrastructure, worker nodes, and tenant zones](./assets/road-to-multitenancy/deployment-architecture.svg)
+
+<!--
+Speaker Notes:
+- Tenant requests arrive at the Ingress / Load Balancer as normal
+- Traffic is routed to the appropriate Edera Zone on any worker node
+- Each worker node runs the Edera Hypervisor and hosts multiple zones
+- Each zone runs one tenant's container workload in full isolation
+- Worker nodes scale horizontally as more tenants are added
+- Cloud or bare metal — Edera works on both
+- Key point: a single Kubernetes cluster handles all tenants safely
+- No need for separate clusters per tenant — cost and ops efficiency
+-->
+
+---
+
 <!-- _class: dark -->
 
 # Benefits: Security + Performance
@@ -518,6 +559,27 @@ Speaker Notes:
 - Use case 4: Edge - limited resources, need density AND security
 - Bottom line: build platforms that are both secure and fast
 - No more "we can't do that for security reasons" blockers
+-->
+
+---
+
+<!-- _class: content -->
+
+# Tenant Data Isolation Patterns
+
+![Data isolation patterns comparing database-per-tenant, schema-per-tenant, and row-level security](./assets/road-to-multitenancy/data-isolation-patterns.svg)
+
+<!--
+Speaker Notes:
+- SaaS platforms use different data isolation strategies at the application layer
+- Database-per-tenant: strongest isolation, highest cost — separate DB per customer
+- Schema-per-tenant: moderate isolation, shared infrastructure — one DB, separate schemas
+- Row-level security: cheapest, policy filters which rows each tenant can read
+- These are APPLICATION-level isolation patterns
+- Edera operates at the INFRASTRUCTURE layer — it complements all three approaches
+- Regardless of which data strategy you choose, Edera ensures containers are isolated
+- Point: multi-tenancy is a spectrum — Edera handles the infrastructure layer,
+  your data strategy handles the application layer
 -->
 
 ---
