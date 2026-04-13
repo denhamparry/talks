@@ -477,12 +477,22 @@ Lewis Denham-Parry
 - 🔒 [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated) — test your cluster
 - 🌐 [edera.dev](https://edera.dev) · 💻 [github.com/edera-dev](https://github.com/edera-dev)
 
-<div style="text-align: center; margin-top: 1.5rem;">
-  <img src="./assets/2026-04-14-beyond-containers/edera-on-qr.png" alt="Scan for Edera On" style="width: 200px; height: 200px;">
+<div style="display: flex; justify-content: center; gap: 3rem; margin-top: 1rem;">
+  <div style="text-align: center;">
+    <img src="./assets/2026-04-14-beyond-containers/slides-qr.png" alt="Scan for these slides" style="width: 170px; height: 170px;">
+    <div style="margin-top: 0.25rem; font-size: 0.7em;">Get the slides</div>
+  </div>
+  <div style="text-align: center;">
+    <img src="./assets/2026-04-14-beyond-containers/edera-on-qr.png" alt="Scan for Edera On" style="width: 170px; height: 170px;">
+    <div style="margin-top: 0.25rem; font-size: 0.7em;">Try Edera On</div>
+  </div>
 </div>
 
 <!--
 Speaker Notes:
+- Call out both QRs before taking questions:
+  "Left QR is the deck itself — grab it now, read later.
+   Right QR is Edera On — clone it tonight and try the runtime."
 - Open the floor
 - Likely questions to have answers ready for:
   Q: "How does this compare to gVisor?"
