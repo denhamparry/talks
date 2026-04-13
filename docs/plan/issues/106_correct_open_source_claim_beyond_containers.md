@@ -1,7 +1,7 @@
 ---
 issue: 106
 title: Correct open-source claim on Beyond Containers slide 13
-status: Reviewed (Approved)
+status: Complete
 branch: denhamparry.co.uk/fix/gh-issue-106
 worktree: ~/git/denhamparry/talks/gh-issue-106
 ---
