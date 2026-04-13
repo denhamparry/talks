@@ -569,7 +569,7 @@ section.dark::after {
 header .logo-link {
   position: absolute;
   top: var(--spacing-sm);    /* 1rem from top */
-  right: var(--spacing-sm);  /* 1rem (16px) from right edge - moved closer to edge */
+  right: var(--spacing-md);  /* 1.5rem (24px) from right edge - loosened for breathing room */
   width: 5rem;               /* 80px logo width */
   height: 5rem;              /* 80px logo height */
   display: block;
@@ -598,7 +598,7 @@ section:not(:has(header .logo-link))::before {
   content: '';
   position: absolute;
   top: var(--spacing-sm);    /* 1rem from top */
-  right: var(--spacing-sm);  /* 1rem (16px) from right edge - moved closer to edge */
+  right: var(--spacing-md);  /* 1.5rem (24px) from right edge - loosened for breathing room */
   width: 5rem;               /* 80px logo width */
   height: 5rem;              /* 80px logo height */
   background: url('./assets/ederav2/edera-logo.png') no-repeat center;

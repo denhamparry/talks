@@ -1,7 +1,7 @@
 # GitHub Issue #102: Post-talk polish for Beyond Containers (deferred from #100)
 
 **Issue:** [#102](https://github.com/denhamparry/talks/issues/102)
-**Status:** Reviewed (Approved)
+**Status:** Complete
 **Date:** 2026-04-13
 
 ## Problem Statement
@@ -423,10 +423,12 @@ None.
 
 ### Optional Improvements
 
-- [ ] Add a defensive guard in `fix-meta-tags.js` so it no-ops on missing
-      `dist/` — see Edge Case 2.
+- [x] Add a defensive guard in `fix-meta-tags.js` so it no-ops on missing
+      `dist/` — see Edge Case 2. (Implemented: script checks
+      `fs.existsSync(DIST_DIR)` and also skips when no `.html` files
+      present.)
 - [ ] Spot-check the two other talks visually after the CSS change — see
-      Gap 1.
+      Gap 1. (Deferred to PR reviewer; change is uniform and token-based.)
 
 ### Verification Checklist
 
