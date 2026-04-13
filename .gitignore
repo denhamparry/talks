@@ -6,7 +6,9 @@
 .env.development
 
 # Node.js
-node_modules/
+# No trailing slash: matches directories AND symlinks. Sibling worktrees
+# may contain a `node_modules` symlink which `node_modules/` would miss.
+node_modules
 npm-debug.log*
 
 # MARP build outputs
