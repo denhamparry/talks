@@ -161,6 +161,7 @@ Speaker Notes:
 | **CVE-2025-31133** | 2025 | runc | Masked-path race condition |
 | **CVE-2025-52565** | 2025 | runc | `/dev/console` mount escape |
 | **CVE-2025-38617** | 2025 | Linux kernel | Packet socket use-after-free |
+| **CVE-2026-5747** | 2026 | Firecracker virtio-pci | Guest root → OOB write in host VMM process (potential RCE) |
 
 > One kernel. ~40M lines of C. ~450 syscalls. One bug reaches every tenant.
 
@@ -172,10 +173,17 @@ Speaker Notes:
   /proc/self/fd/N/... and gets host filesystem write
 - The NVIDIA toolkit CVEs are the new multi-tenant GPU problem — relevant
   for the AI/ML crowd in the room
-- CVE-2025-38617 is the "scariest" — kernel-level UAF, no toolkit bug needed
+- CVE-2025-38617 is the "scariest" kernel example — kernel-level UAF, no
+  toolkit bug needed
+- CVE-2026-5747 (fresh this week, 2026-04-07) widens the point: the class
+  of bug is not confined to kernel + runtime + GPU toolkit — it also
+  shows up in the VMM layer underneath microVM sandboxes (Firecracker's
+  virtio-pci transport, reported by Anthropic via AWS VDP). Every layer
+  of the shared / host-userspace stack keeps producing the same class.
 - The point isn't to memorise CVE numbers, it's to show cadence:
   this keeps happening, and will keep happening
-- Source: Beganović, "Your Container Is Not a Sandbox" (March 2026)
+- Source: Beganović, "Your Container Is Not a Sandbox" (March 2026);
+  CVE-2026-5747 via GHSA-776c-mpj7-jm3r / AWS-2026-015
 - Time check: ~7 minutes in
 -->
 
@@ -325,6 +333,13 @@ Speaker Notes:
 - Kata is the easiest on-ramp for most teams (CRI-compatible, well known)
 - Edera is the one I work on — be upfront about that
 - Cloud Hypervisor and Firecracker are lower-level building blocks
+- Firecracker shipped **CVE-2026-5747** (virtio-pci OOB write, HIGH) on
+  2026-04-07 — reported by Anthropic via AWS VDP. Good example of the
+  VMM-in-userspace class: a device-model bug lands in a host userspace
+  process with privileged guest memory access. If it comes up, the
+  remediation is upgrade to Firecracker 1.14.4 / 1.15.1 for anyone
+  running `--enable-pci`. The architectural point is where the bug
+  *lands*, not whether any given VMM has bugs.
 - If someone asks about gVisor in Q&A: different threat model
   (user-space syscall interception, not hardware isolation)
 -->
@@ -516,5 +531,14 @@ Speaker Notes:
   Q: "Can I run this on EKS / GKE / AKS?"
   A: Yes, with caveats around nested virtualization. Bare metal node
      pools are the cleanest path today.
+
+  Q: "What about the Firecracker virtio-pci CVE from last week?"
+  A: CVE-2026-5747. Guest-to-host OOB write in Firecracker's PCI
+     transport. Anthropic reported it via AWS's VDP. Fix is Firecracker
+     1.14.4 / 1.15.1 — upgrade if you run --enable-pci. The broader
+     point is architectural: a VMM in host userspace means a
+     device-model bug is a host-userspace bug, which is one mitigation
+     step from host RCE. A Type-1 boundary puts that same class of bug
+     in a different, smaller trust domain.
 - Available after the talk for deeper discussions
 -->
