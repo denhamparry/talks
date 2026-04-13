@@ -457,7 +457,7 @@ Speaker Notes:
 
 1. **Know your runtime.** `crictl info` — check it today.
 2. **Shared kernel ≠ isolated tenant.** Namespaces are a UX, not a boundary.
-3. **MicroVMs are production-ready.** Open source, OCI-compatible, drop-in.
+3. **MicroVMs are production-ready.** OCI-compatible, drop-in, with open-source and commercial options.
 
 **Monday morning action:** run a container-escape test on your cluster.
 
