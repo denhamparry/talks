@@ -166,9 +166,10 @@ build or runtime surface of the project. The pre-commit hook
 `scripts/check-changelog.sh` prints a (non-blocking) warning when staged
 changes touch build-system files without a `CHANGELOG.md` update.
 
-**Changes that SHOULD get a CHANGELOG entry:**
+**Changes that SHOULD get a CHANGELOG entry** (matches the hook's trigger
+patterns):
 
-- `package.json` scripts (build chain additions/removals, new tooling)
+- `package.json` and `package-lock.json` (build chain, tooling, dependencies)
 - New or modified files under `scripts/` that affect build output
 - `Dockerfile`, `docker-compose.yml`, `nginx.conf`
 - Theme changes under `themes/` visible in rendered output

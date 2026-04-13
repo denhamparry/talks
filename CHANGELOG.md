@@ -10,8 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - CHANGELOG reminder hook: new `scripts/check-changelog.sh` pre-commit hook
-  warns (non-blocking) when build-system files change without a `CHANGELOG.md`
-  update ([#103](https://github.com/denhamparry/talks/issues/103))
+  warns (non-blocking) when build-system files are staged without a
+  `CHANGELOG.md` update in the same commit
+  ([#103](https://github.com/denhamparry/talks/issues/103))
 - `fix-meta-tags` build step: `scripts/fix-meta-tags.js` now runs after
   favicon generation to inject the modern `mobile-web-app-capable` meta tag
   alongside MARP's legacy `apple-mobile-web-app-capable`

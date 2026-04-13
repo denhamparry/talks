@@ -9,18 +9,28 @@
 set -euo pipefail
 
 # Files whose changes typically warrant a CHANGELOG entry.
+# Leaf-name patterns are anchored with `(^|/)...$` so `package.json` does not
+# match `slides/assets/some-package.json`. Directory patterns use `^dir/`.
 build_patterns=(
-  'package.json'
-  'package-lock.json'
+  '(^|/)package\.json$'
+  '(^|/)package-lock\.json$'
   '^scripts/'
-  'Dockerfile'
-  'docker-compose\.yml'
-  'nginx\.conf'
+  '(^|/)Dockerfile$'
+  '(^|/)docker-compose\.yml$'
+  '(^|/)nginx\.conf$'
   '^themes/'
   '^\.github/workflows/'
 )
 
-staged=$(git diff --cached --name-only --diff-filter=ACMR)
+# Non-blocking contract: if `git diff` itself fails (corrupt index, detached
+# state, etc.) we must NOT abort with set -e exit 1 — that would block the
+# commit. Swallow the failure and exit 0 with a diagnostic instead. We also
+# drop --diff-filter so deletions (D) of build files are detected too — removing
+# a workflow or script is a build-surface change worth a CHANGELOG entry.
+staged=$(git diff --cached --name-only 2>/dev/null) || {
+  echo "check-changelog: skipping (git diff failed)" >&2
+  exit 0
+}
 if [ -z "$staged" ]; then
   exit 0
 fi
