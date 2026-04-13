@@ -36,3 +36,13 @@ repos:
     hooks:
       - id: markdownlint-cli2
         name: Lint Markdown files
+
+  # Local hooks
+  - repo: local
+    hooks:
+      - id: check-changelog
+        name: Warn when build files change without CHANGELOG update
+        entry: scripts/check-changelog.sh
+        language: script
+        pass_filenames: false
+        stages: [pre-commit]
