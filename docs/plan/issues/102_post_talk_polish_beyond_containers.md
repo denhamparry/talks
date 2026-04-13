@@ -1,7 +1,7 @@
 # GitHub Issue #102: Post-talk polish for Beyond Containers (deferred from #100)
 
 **Issue:** [#102](https://github.com/denhamparry/talks/issues/102)
-**Status:** Planning
+**Status:** Reviewed (Approved)
 **Date:** 2026-04-13
 
 ## Problem Statement
@@ -330,3 +330,117 @@ For `fix-meta-tags.js`:
 - Keep theme-wide changes (CSS) minimal and use design tokens.
 - Prefer Markdown-local fixes for slide-specific issues.
 - Post-build transforms should be idempotent and additive where possible.
+
+## Plan Review
+
+**Reviewer:** Claude Code (workflow-research-plan)
+**Review Date:** 2026-04-13
+**Original Plan Date:** 2026-04-13
+
+### Review Summary
+
+- **Overall Assessment:** Approved
+- **Confidence Level:** High
+- **Recommendation:** Proceed to implementation
+
+### Strengths
+
+- Every referenced line/file verified against the codebase:
+  `themes/edera-v2.css:572` and `:601` both use `right: var(--spacing-sm)`;
+  `--spacing-md` exists at line 51 (1.5rem = 24px, an exact 8px loosening);
+  slide #20 structure at `slides/2026-04-14-beyond-containers.md:477-486`
+  matches the plan.
+- Uses an existing design token instead of a hand-tuned pixel value — keeps
+  the theme internally consistent.
+- Item 2 chose the Markdown-local fix (`## → #`) over a theme-wide CSS
+  change, avoiding collateral impact on other title slides.
+- Item 4 is additive (keeps the legacy tag alongside the modern one) and
+  idempotent by design — safe to rerun.
+- Item 5 correctly notes that `<!-- _footer: '' -->` on line 9 already
+  hides the footer on the title slide, so the frontmatter change only
+  affects content slides.
+
+### Gaps Identified
+
+1. **Theme-wide scope of Item 1 not flagged for visual verification on the
+   other two talks**
+   - **Impact:** Low
+   - **Recommendation:** During implementation, spot-check
+     `2025-12-04-cloud-native-manchester.html` and
+     `2026-01-14-road-to-multitenancy.html` after the CSS change to
+     confirm no layout regression (24px right offset should be
+     unambiguously better, but worth a glance).
+
+### Edge Cases Not Covered
+
+1. **Non-Beyond-Containers decks with an emoji-heavy style**
+   - **Current Plan:** Item 3 is scoped to the Beyond Containers final
+     slide only.
+   - **Recommendation:** No action — other decks are out of scope for this
+     issue. Noted for completeness.
+
+2. **`fix-meta-tags.js` running when `dist/` is empty or absent**
+   - **Current Plan:** Doesn't specify behaviour.
+   - **Recommendation:** Script should no-op gracefully if `dist/`
+     is missing or empty (e.g. wrap the glob/readdir in a try/catch or
+     existence check). Low-impact but avoids noisy errors on clean builds
+     that skip steps.
+
+### Alternative Approaches Considered
+
+1. **Hand-tuned pixel offset for Item 1 (e.g. `right: 1.75rem`)**
+   - **Pros:** Finer control over exact gap.
+   - **Cons:** Diverges from the token system; ad-hoc value.
+   - **Verdict:** Plan's use of `--spacing-md` is better — consistent and
+     within the issue's "~8–12px" target at 8px.
+
+2. **HTML post-processing via a regex in `generate-index.js` rather than
+   a new script**
+   - **Pros:** One less file.
+   - **Cons:** Conflates concerns (index generation vs meta-tag fix); the
+     index generator already has a clear single responsibility.
+   - **Verdict:** Plan's separate script is cleaner.
+
+### Risks and Concerns
+
+1. **CSS change lands the day before delivery (2026-04-14)**
+   - **Likelihood:** Medium (timing)
+   - **Impact:** Low (visual-only)
+   - **Mitigation:** Integration Test Case 3 in the plan covers visual
+     verification. Run `npm run serve:dist` and eyeball all three decks
+     before merging.
+
+2. **Post-build script adds a new failure point in `npm run build`**
+   - **Likelihood:** Low
+   - **Impact:** Medium (would break CI if script throws)
+   - **Mitigation:** Keep the script defensive (see Edge Case 2 above);
+     `npm run test:smoke` in the plan's testing strategy will catch any
+     regression.
+
+### Required Changes
+
+None.
+
+### Optional Improvements
+
+- [ ] Add a defensive guard in `fix-meta-tags.js` so it no-ops on missing
+      `dist/` — see Edge Case 2.
+- [ ] Spot-check the two other talks visually after the CSS change — see
+      Gap 1.
+
+### Verification Checklist
+
+- [x] Solution addresses root cause identified in GitHub issue
+- [x] All acceptance criteria from issue are covered (all 5 items)
+- [x] Implementation steps are specific and actionable
+- [x] File paths and code references are accurate (verified against the
+      codebase)
+- [x] Security implications considered and addressed (no attack surface
+      introduced; meta-tag change is additive; no user input handled)
+- [x] Performance impact assessed (negligible — CSS diff + one extra
+      post-build pass on a small set of HTML files)
+- [x] Test strategy covers critical paths and edge cases
+- [x] Documentation updates planned (plan doc itself; no user-facing docs
+      require changes)
+- [x] Related issues/dependencies identified (#100, #101)
+- [x] Breaking changes documented (none — purely additive/visual)
