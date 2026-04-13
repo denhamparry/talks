@@ -418,12 +418,44 @@ section.light {
 section.two-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-lg);
+  grid-template-rows: auto auto 1fr;
+  column-gap: var(--spacing-lg);
+  row-gap: var(--spacing-sm);
   align-items: start;
 }
 
-section.two-columns h1 {
+/* h1 spans both columns on the first row */
+section.two-columns > h1 {
   grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+/* First h2 heads column 1, second h2 heads column 2 (both on row 2) */
+section.two-columns > h2:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 2;
+}
+section.two-columns > h2:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* First content block (ul/ol/p/pre) sits under the first h2 */
+section.two-columns > ul:nth-of-type(1),
+section.two-columns > ol:nth-of-type(1),
+section.two-columns > p:nth-of-type(1),
+section.two-columns > pre:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+/* Second content block sits under the second h2 */
+section.two-columns > ul:nth-of-type(2),
+section.two-columns > ol:nth-of-type(2),
+section.two-columns > p:nth-of-type(2),
+section.two-columns > pre:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 3;
 }
 
 /* Image Slide */
