@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" font-family="sans-serif">
+  <!-- Background -->
+  <rect width="1200" height="520" fill="#d0fdf2"/>
+
+  <!-- Title -->
+  <text x="600" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#013a3b">
+    Blast Radius: Same Attack, Two Runtimes
+  </text>
+
+  <!-- ── LEFT: shared kernel ── -->
+  <text x="300" y="80" text-anchor="middle" font-size="17" font-weight="bold" fill="#013a3b">
+    Shared Kernel
+  </text>
+
+  <!-- Tenants compromised (red tint simulated with darker border) -->
+  <g>
+    <rect x="80"  y="100" width="130" height="70" rx="8" fill="white" stroke="#013a3b" stroke-width="2"/>
+    <text x="145" y="130" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">Tenant A</text>
+    <text x="145" y="152" text-anchor="middle" font-size="11" fill="#013a3b">attacker</text>
+
+    <rect x="225" y="100" width="130" height="70" rx="8" fill="white" stroke="#013a3b" stroke-width="2" stroke-dasharray="4,3"/>
+    <text x="290" y="130" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">Tenant B</text>
+    <text x="290" y="152" text-anchor="middle" font-size="11" fill="#013a3b">compromised</text>
+
+    <rect x="370" y="100" width="130" height="70" rx="8" fill="white" stroke="#013a3b" stroke-width="2" stroke-dasharray="4,3"/>
+    <text x="435" y="130" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">Tenant C</text>
+    <text x="435" y="152" text-anchor="middle" font-size="11" fill="#013a3b">compromised</text>
+  </g>
+
+  <!-- Kernel below -->
+  <rect x="80" y="200" width="420" height="80" rx="10" fill="#013a3b"/>
+  <text x="290" y="235" text-anchor="middle" font-size="15" font-weight="bold" fill="#02f4d5">
+    Shared Linux Kernel
+  </text>
+  <text x="290" y="260" text-anchor="middle" font-size="12" fill="#d0fdf2">
+    bug here → reach everyone above
+  </text>
+
+  <!-- Hardware -->
+  <rect x="80" y="300" width="420" height="50" rx="8" fill="white" stroke="#013a3b" stroke-width="2"/>
+  <text x="290" y="331" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">Hardware</text>
+
+  <!-- Blast radius arc -->
+  <path d="M 145 380 Q 290 460 435 380" fill="none" stroke="#013a3b" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="290" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">
+    blast radius = the node
+  </text>
+
+  <!-- Divider -->
+  <line x1="600" y1="80" x2="600" y2="470" stroke="#013a3b" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- ── RIGHT: MicroVM ── -->
+  <text x="900" y="80" text-anchor="middle" font-size="17" font-weight="bold" fill="#013a3b">
+    MicroVM
+  </text>
+
+  <!-- Zone A (attacker) — highlighted -->
+  <rect x="680" y="100" width="130" height="160" rx="10" fill="white" stroke="#02f4d5" stroke-width="3"/>
+  <text x="745" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">Zone A</text>
+  <rect x="695" y="138" width="100" height="45" rx="6" fill="#d0fdf2" stroke="#013a3b" stroke-width="1.5"/>
+  <text x="745" y="165" text-anchor="middle" font-size="11" fill="#013a3b">Tenant A</text>
+  <text x="745" y="178" text-anchor="middle" font-size="10" fill="#013a3b">attacker</text>
+  <rect x="695" y="195" width="100" height="50" rx="6" fill="#013a3b"/>
+  <text x="745" y="220" text-anchor="middle" font-size="11" font-weight="bold" fill="#02f4d5">kernel</text>
+
+  <!-- Zone B -->
+  <rect x="825" y="100" width="130" height="160" rx="10" fill="white" stroke="#02f4d5" stroke-width="3"/>
+  <text x="890" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">Zone B</text>
+  <rect x="840" y="138" width="100" height="45" rx="6" fill="#d0fdf2" stroke="#013a3b" stroke-width="1.5"/>
+  <text x="890" y="165" text-anchor="middle" font-size="11" fill="#013a3b">Tenant B</text>
+  <text x="890" y="178" text-anchor="middle" font-size="10" fill="#013a3b">untouched</text>
+  <rect x="840" y="195" width="100" height="50" rx="6" fill="#013a3b"/>
+  <text x="890" y="220" text-anchor="middle" font-size="11" font-weight="bold" fill="#02f4d5">kernel</text>
+
+  <!-- Zone C -->
+  <rect x="970" y="100" width="130" height="160" rx="10" fill="white" stroke="#02f4d5" stroke-width="3"/>
+  <text x="1035" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">Zone C</text>
+  <rect x="985" y="138" width="100" height="45" rx="6" fill="#d0fdf2" stroke="#013a3b" stroke-width="1.5"/>
+  <text x="1035" y="165" text-anchor="middle" font-size="11" fill="#013a3b">Tenant C</text>
+  <text x="1035" y="178" text-anchor="middle" font-size="10" fill="#013a3b">untouched</text>
+  <rect x="985" y="195" width="100" height="50" rx="6" fill="#013a3b"/>
+  <text x="1035" y="220" text-anchor="middle" font-size="11" font-weight="bold" fill="#02f4d5">kernel</text>
+
+  <!-- Hypervisor -->
+  <rect x="680" y="285" width="420" height="55" rx="10" fill="#013a3b"/>
+  <text x="890" y="320" text-anchor="middle" font-size="14" font-weight="bold" fill="#02f4d5">
+    Type-1 Hypervisor
+  </text>
+
+  <!-- Hardware -->
+  <rect x="680" y="355" width="420" height="45" rx="8" fill="white" stroke="#013a3b" stroke-width="2"/>
+  <text x="890" y="383" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">Hardware</text>
+
+  <!-- Blast radius arc — small, around Zone A only -->
+  <circle cx="745" cy="180" r="90" fill="none" stroke="#013a3b" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="890" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#013a3b">
+    blast radius = the workload
+  </text>
+</svg>

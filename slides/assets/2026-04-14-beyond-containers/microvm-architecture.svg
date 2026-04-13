@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" font-family="sans-serif">
+  <!-- Background -->
+  <rect width="1200" height="520" fill="#d0fdf2"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#013a3b">
+    MicroVM — One Kernel Per Workload
+  </text>
+
+  <!-- Zones row: each zone wraps workload + its own kernel -->
+  <g>
+    <!-- Zone A -->
+    <rect x="60" y="80" width="210" height="200" rx="12" fill="white" stroke="#02f4d5" stroke-width="3"/>
+    <text x="165" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#013a3b">Zone A</text>
+    <rect x="80" y="120" width="170" height="60" rx="8" fill="#d0fdf2" stroke="#013a3b" stroke-width="1.5"/>
+    <text x="165" y="156" text-anchor="middle" font-size="13" fill="#013a3b">Tenant A workload</text>
+    <rect x="80" y="195" width="170" height="70" rx="8" fill="#013a3b"/>
+    <text x="165" y="225" text-anchor="middle" font-size="13" font-weight="bold" fill="#02f4d5">Guest kernel</text>
+    <text x="165" y="248" text-anchor="middle" font-size="11" fill="#d0fdf2">dedicated</text>
+
+    <!-- Zone B -->
+    <rect x="295" y="80" width="210" height="200" rx="12" fill="white" stroke="#02f4d5" stroke-width="3"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#013a3b">Zone B</text>
+    <rect x="315" y="120" width="170" height="60" rx="8" fill="#d0fdf2" stroke="#013a3b" stroke-width="1.5"/>
+    <text x="400" y="156" text-anchor="middle" font-size="13" fill="#013a3b">Tenant B workload</text>
+    <rect x="315" y="195" width="170" height="70" rx="8" fill="#013a3b"/>
+    <text x="400" y="225" text-anchor="middle" font-size="13" font-weight="bold" fill="#02f4d5">Guest kernel</text>
+    <text x="400" y="248" text-anchor="middle" font-size="11" fill="#d0fdf2">dedicated</text>
+
+    <!-- Zone C -->
+    <rect x="530" y="80" width="210" height="200" rx="12" fill="white" stroke="#02f4d5" stroke-width="3"/>
+    <text x="635" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#013a3b">Zone C</text>
+    <rect x="550" y="120" width="170" height="60" rx="8" fill="#d0fdf2" stroke="#013a3b" stroke-width="1.5"/>
+    <text x="635" y="156" text-anchor="middle" font-size="13" fill="#013a3b">Tenant C workload</text>
+    <rect x="550" y="195" width="170" height="70" rx="8" fill="#013a3b"/>
+    <text x="635" y="225" text-anchor="middle" font-size="13" font-weight="bold" fill="#02f4d5">Guest kernel</text>
+    <text x="635" y="248" text-anchor="middle" font-size="11" fill="#d0fdf2">dedicated</text>
+
+    <!-- Zone D -->
+    <rect x="765" y="80" width="210" height="200" rx="12" fill="white" stroke="#02f4d5" stroke-width="3"/>
+    <text x="870" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#013a3b">Zone D</text>
+    <rect x="785" y="120" width="170" height="60" rx="8" fill="#d0fdf2" stroke="#013a3b" stroke-width="1.5"/>
+    <text x="870" y="156" text-anchor="middle" font-size="13" fill="#013a3b">Tenant D workload</text>
+    <rect x="785" y="195" width="170" height="70" rx="8" fill="#013a3b"/>
+    <text x="870" y="225" text-anchor="middle" font-size="13" font-weight="bold" fill="#02f4d5">Guest kernel</text>
+    <text x="870" y="248" text-anchor="middle" font-size="11" fill="#d0fdf2">dedicated</text>
+
+    <!-- Zone E -->
+    <rect x="1000" y="80" width="140" height="200" rx="12" fill="white" stroke="#02f4d5" stroke-width="3" stroke-dasharray="6,4"/>
+    <text x="1070" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#013a3b">Zone …</text>
+    <text x="1070" y="180" text-anchor="middle" font-size="12" fill="#013a3b">n more</text>
+    <text x="1070" y="200" text-anchor="middle" font-size="12" fill="#013a3b">zones</text>
+  </g>
+
+  <!-- Hypervisor boundary -->
+  <rect x="60" y="300" width="1080" height="70" rx="10" fill="#013a3b"/>
+  <text x="600" y="332" text-anchor="middle" font-size="18" font-weight="bold" fill="#02f4d5">
+    Type-1 Hypervisor
+  </text>
+  <text x="600" y="358" text-anchor="middle" font-size="12" fill="#d0fdf2">
+    hardware-enforced boundary · VT-x / AMD-V
+  </text>
+
+  <!-- Hardware -->
+  <rect x="60" y="385" width="1080" height="60" rx="10" fill="white" stroke="#013a3b" stroke-width="2"/>
+  <text x="600" y="422" text-anchor="middle" font-size="15" font-weight="bold" fill="#013a3b">
+    Hardware
+  </text>
+
+  <!-- Callout -->
+  <text x="600" y="480" text-anchor="middle" font-size="15" font-style="italic" fill="#013a3b">
+    A kernel bug in one zone stays in that zone.
+  </text>
+</svg>
