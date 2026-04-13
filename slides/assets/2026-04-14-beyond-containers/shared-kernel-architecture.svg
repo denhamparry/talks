@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" font-family="sans-serif">
+  <!-- Background -->
+  <rect width="1200" height="520" fill="#d0fdf2"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#013a3b">
+    Shared Kernel — Many Tenants, One Boundary
+  </text>
+
+  <!-- Containers row -->
+  <g>
+    <!-- Tenant A -->
+    <rect x="80"  y="90" width="180" height="110" rx="10" fill="white" stroke="#013a3b" stroke-width="2"/>
+    <text x="170" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#013a3b">Tenant A</text>
+    <text x="170" y="148" text-anchor="middle" font-size="12" fill="#013a3b">namespace + cgroup</text>
+    <text x="170" y="176" text-anchor="middle" font-size="12" fill="#013a3b">workload</text>
+
+    <!-- Tenant B -->
+    <rect x="290" y="90" width="180" height="110" rx="10" fill="white" stroke="#013a3b" stroke-width="2"/>
+    <text x="380" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#013a3b">Tenant B</text>
+    <text x="380" y="148" text-anchor="middle" font-size="12" fill="#013a3b">namespace + cgroup</text>
+    <text x="380" y="176" text-anchor="middle" font-size="12" fill="#013a3b">workload</text>
+
+    <!-- Tenant C -->
+    <rect x="500" y="90" width="180" height="110" rx="10" fill="white" stroke="#013a3b" stroke-width="2"/>
+    <text x="590" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#013a3b">Tenant C</text>
+    <text x="590" y="148" text-anchor="middle" font-size="12" fill="#013a3b">namespace + cgroup</text>
+    <text x="590" y="176" text-anchor="middle" font-size="12" fill="#013a3b">workload</text>
+
+    <!-- Tenant D -->
+    <rect x="710" y="90" width="180" height="110" rx="10" fill="white" stroke="#013a3b" stroke-width="2"/>
+    <text x="800" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#013a3b">Tenant D</text>
+    <text x="800" y="148" text-anchor="middle" font-size="12" fill="#013a3b">namespace + cgroup</text>
+    <text x="800" y="176" text-anchor="middle" font-size="12" fill="#013a3b">workload</text>
+
+    <!-- Tenant E -->
+    <rect x="920" y="90" width="180" height="110" rx="10" fill="white" stroke="#013a3b" stroke-width="2"/>
+    <text x="1010" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#013a3b">Tenant E</text>
+    <text x="1010" y="148" text-anchor="middle" font-size="12" fill="#013a3b">namespace + cgroup</text>
+    <text x="1010" y="176" text-anchor="middle" font-size="12" fill="#013a3b">workload</text>
+  </g>
+
+  <!-- Arrows down to kernel -->
+  <g stroke="#013a3b" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="170"  y1="200" x2="170"  y2="240"/>
+    <line x1="380"  y1="200" x2="380"  y2="240"/>
+    <line x1="590"  y1="200" x2="590"  y2="240"/>
+    <line x1="800"  y1="200" x2="800"  y2="240"/>
+    <line x1="1010" y1="200" x2="1010" y2="240"/>
+  </g>
+
+  <!-- Shared kernel -->
+  <rect x="80" y="250" width="1020" height="90" rx="10" fill="#013a3b"/>
+  <text x="590" y="285" text-anchor="middle" font-size="18" font-weight="bold" fill="#02f4d5">
+    Shared Linux Kernel
+  </text>
+  <text x="590" y="315" text-anchor="middle" font-size="13" fill="#d0fdf2">
+    ~40M LOC · ~450 syscalls · one attack surface for every tenant above
+  </text>
+
+  <!-- Hardware -->
+  <rect x="80" y="370" width="1020" height="70" rx="10" fill="white" stroke="#013a3b" stroke-width="2"/>
+  <text x="590" y="412" text-anchor="middle" font-size="15" font-weight="bold" fill="#013a3b">
+    Hardware
+  </text>
+
+  <!-- Risk callout -->
+  <text x="600" y="475" text-anchor="middle" font-size="15" font-style="italic" fill="#013a3b">
+    One kernel bug = every tenant on the node compromised.
+  </text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#013a3b"/>
+    </marker>
+  </defs>
+</svg>
