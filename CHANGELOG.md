@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- CHANGELOG reminder hook: new `scripts/check-changelog.sh` pre-commit hook
+  warns (non-blocking) when build-system files change without a `CHANGELOG.md`
+  update ([#103](https://github.com/denhamparry/talks/issues/103))
+- `fix-meta-tags` build step: `scripts/fix-meta-tags.js` now runs after
+  favicon generation to inject the modern `mobile-web-app-capable` meta tag
+  alongside MARP's legacy `apple-mobile-web-app-capable`
+  ([#102](https://github.com/denhamparry/talks/issues/102))
+  - Updated build chain:
+    `marp → copy-assets → generate-index → generate-favicon → fix-meta-tags`
+
+### Documentation
+
+- Added "Changelog convention" guidance to `CLAUDE.md` describing when an
+  `[Unreleased]` entry is expected
+
 ## [1.0.4] - 2025-12-04
 
 ### Added

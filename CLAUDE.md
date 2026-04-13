@@ -159,6 +159,31 @@ Use `make` commands for consistency across projects. Use npm scripts directly if
 - Always create PR for review
 - Rebase before merging
 
+## Changelog Convention
+
+Add an entry under `CHANGELOG.md` `[Unreleased]` when a commit changes the
+build or runtime surface of the project. The pre-commit hook
+`scripts/check-changelog.sh` prints a (non-blocking) warning when staged
+changes touch build-system files without a `CHANGELOG.md` update.
+
+**Changes that SHOULD get a CHANGELOG entry:**
+
+- `package.json` scripts (build chain additions/removals, new tooling)
+- New or modified files under `scripts/` that affect build output
+- `Dockerfile`, `docker-compose.yml`, `nginx.conf`
+- Theme changes under `themes/` visible in rendered output
+- `.github/workflows/` changes affecting CI behaviour users depend on
+
+**Changes that can skip CHANGELOG:**
+
+- Slide content edits under `slides/`
+- Pure refactors, typo fixes, dev-only tweaks
+- Plan documents under `docs/plan/`
+
+Follow the existing [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+sections (`Added` / `Changed` / `Fixed` / `Documentation`). Reference the
+issue number where available.
+
 ## Pre-commit Hooks
 
 This template includes `.pre-commit-config.yaml` with generic code quality hooks:
