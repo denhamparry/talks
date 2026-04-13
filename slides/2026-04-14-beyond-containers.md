@@ -2,7 +2,7 @@
 marp: true
 theme: edera-v2
 paginate: true
-footer: 'April 14th, 2026 [Cloud Native and Kubernetes Edinburgh](https://www.meetup.com/cloud-native-kubernetes-edinburgh/events/313744012/)'
+footer: 'April 14th, 2026 · Cloud Native and Kubernetes Edinburgh'
 ---
 
 <!-- _class: title -->
@@ -474,16 +474,16 @@ Speaker Notes:
 
 <!-- _class: title -->
 
-## Thank You — Questions?
+# Thank You — Questions?
 
 Lewis Denham-Parry
 [Edera.dev](https://edera.dev)
 
 ### Try it tonight
 
-- 🚀 [github.com/edera-dev/on](https://github.com/edera-dev/on) — run Edera locally
-- 🔒 [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated) — test your cluster
-- 🌐 [edera.dev](https://edera.dev) · 💻 [github.com/edera-dev](https://github.com/edera-dev)
+- [github.com/edera-dev/on](https://github.com/edera-dev/on) — run Edera locally
+- [github.com/edera-dev/am-i-isolated](https://github.com/edera-dev/am-i-isolated) — test your cluster
+- [edera.dev](https://edera.dev) · [github.com/edera-dev](https://github.com/edera-dev)
 
 <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 1rem;">
   <div style="text-align: center;">
