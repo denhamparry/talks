@@ -215,6 +215,8 @@ The build process (`npm run build`) performs these steps:
 2. **Copy Assets** - Theme assets copied to `dist/assets/`
 3. **Generate Index** - Creates `index.html` listing all presentations
 4. **Generate Favicon** - Converts Edera logo to `favicon.ico`
+5. **Fix Meta Tags** - Injects the modern `mobile-web-app-capable` meta
+   tag alongside MARP's legacy `apple-mobile-web-app-capable` tag
 
 **Build output structure:**
 
