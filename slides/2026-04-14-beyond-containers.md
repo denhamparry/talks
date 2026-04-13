@@ -6,6 +6,7 @@ footer: 'April 14th, 2026 [Cloud Native and Kubernetes Edinburgh](https://www.me
 ---
 
 <!-- _class: title -->
+<!-- _footer: '' -->
 
 # Beyond Containers
 
@@ -14,10 +15,6 @@ footer: 'April 14th, 2026 [Cloud Native and Kubernetes Edinburgh](https://www.me
 Lewis Denham-Parry | [Edera.dev](https://edera.dev)
 [Cloud Native and Kubernetes Edinburgh](https://www.meetup.com/cloud-native-kubernetes-edinburgh/events/313744012/) | April 14th, 2026
 
-<div style="text-align: center; margin-top: 1.5rem;">
-  <img src="./assets/ederav2/edera-logo.png" alt="Edera" style="width: 180px;">
-</div>
-
 <!--
 Speaker Notes:
 - Welcome the room, introduce yourself briefly: Lewis from Edera
@@ -25,7 +22,6 @@ Speaker Notes:
   almost certainly running a shared kernel — and that has consequences
 - Format: 25 minutes + 5 minutes Q&A
 - Two live demos: encourage questions at the end to keep pacing tight
-- Update [Event Name] placeholder before the talk
 -->
 
 ---
@@ -143,9 +139,8 @@ Speaker Notes:
 - Every container arrow lands on the same kernel block
 - That block is the only thing between tenants and the hardware
 - One CVE in that block = every tenant above is exposed
-- HOLDING IMAGE: refine before the talk if there's time, or replace
-  with a cleaner version — the structure is the point
 -->
+
 
 ---
 
@@ -161,7 +156,7 @@ Speaker Notes:
 | **CVE-2025-31133** | 2025 | runc | Masked-path race condition |
 | **CVE-2025-52565** | 2025 | runc | `/dev/console` mount escape |
 | **CVE-2025-38617** | 2025 | Linux kernel | Packet socket use-after-free |
-| **CVE-2026-5747** | 2026 | Firecracker virtio-pci | Guest root → OOB write in host VMM process (potential RCE) |
+| **CVE-2026-5747** | 2026 | Firecracker virtio-pci | Guest root → host VMM OOB write (potential RCE) |
 
 > One kernel. ~40M lines of C. ~450 syscalls. One bug reaches every tenant.
 
@@ -281,7 +276,6 @@ Speaker Notes:
 - Mirror image of the "Shape of the Problem" diagram
 - Each zone has its own kernel — call out the vertical stack per zone
 - Hypervisor is the only shared block, and it's tiny compared to Linux
-- HOLDING IMAGE: refine or replace before the talk
 -->
 
 ---
@@ -429,7 +423,6 @@ Speaker Notes:
 - Left side: same attack, reaches every tenant on the node
 - Right side: same attack, contained to the attacker's zone
 - The architecture is the difference, not the workload
-- HOLDING IMAGE: refine or replace before the talk
 -->
 
 ---
