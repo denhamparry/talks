@@ -310,22 +310,23 @@ Speaker Notes:
 
 <!-- _class: content -->
 
-# The Open-Source Landscape
+# The MicroVM Landscape
 
 | Tool | Sweet Spot | Notes |
 |---|---|---|
 | **Firecracker** | Serverless / FaaS | AWS Lambda; fast cold start |
 | **Cloud Hypervisor** | General VMs | Rust, modern device model |
 | **Kata Containers** | Drop-in OCI | Uses Firecracker or CH under the hood |
-| **Edera** | Multi-tenant K8s + GPU | Paravirtualized, near-native perf |
+| **Edera** | Multi-tenant K8s + GPU | Paravirtualized, near-native perf; commercial (uses OSS components) |
 
-All four are open source. All four give you a per-workload kernel.
+Firecracker, Cloud Hypervisor, and Kata are open source; Edera is a commercial product built on open-source components. All four give you a per-workload kernel.
 
 <!--
 Speaker Notes:
 - Don't oversell any single tool — the point is "this is a real ecosystem"
 - Kata is the easiest on-ramp for most teams (CRI-compatible, well known)
 - Edera is the one I work on — be upfront about that
+- Be explicit that Edera is commercial, unlike the other three
 - Cloud Hypervisor and Firecracker are lower-level building blocks
 - Firecracker shipped **CVE-2026-5747** (virtio-pci OOB write, HIGH) on
   2026-04-07 — reported by Anthropic via AWS VDP. Good example of the
@@ -456,7 +457,7 @@ Speaker Notes:
 
 1. **Know your runtime.** `crictl info` — check it today.
 2. **Shared kernel ≠ isolated tenant.** Namespaces are a UX, not a boundary.
-3. **MicroVMs are production-ready.** Open source, OCI-compatible, drop-in.
+3. **MicroVMs are production-ready.** OCI-compatible, drop-in, with open-source and commercial options.
 
 **Monday morning action:** run a container-escape test on your cluster.
 
