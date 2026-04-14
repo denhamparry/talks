@@ -170,13 +170,46 @@ Speaker Notes:
   for the AI/ML crowd in the room
 - CVE-2025-38617 is the "scariest" kernel example — kernel-level UAF, no
   toolkit bug needed
-- CVE-2026-5747 (fresh this week, 2026-04-07) widens the point: the class
-  of bug is not confined to kernel + runtime + GPU toolkit — it also
-  shows up in the VMM layer underneath microVM sandboxes (Firecracker's
-  virtio-pci transport, reported by Anthropic via AWS VDP). Every layer
-  of the shared / host-userspace stack keeps producing the same class.
-- The point isn't to memorise CVE numbers, it's to show cadence:
-  this keeps happening, and will keep happening
+
+[CVE-2026-5747 — VMM layer widens the point]
+- Now bring in the newest row on the table. CVE-2026-5747 was disclosed
+  on 7 April 2026 — and it's not a kernel bug, not a runtime bug, not a
+  GPU toolkit bug. It's in Firecracker's virtio-pci transport: the device
+  model that sits between a guest VM and the host.
+- What happens: a guest with root can craft a malicious PCI config write
+  that triggers an out-of-bounds write in the VMM process on the host.
+  That VMM process runs in host userspace with access to guest memory —
+  so an OOB write there is one step from host-level code execution.
+- Why this matters for the talk: we've just shown the audience kernel
+  escapes, runtime escapes, and GPU toolkit escapes. This CVE shows the
+  same class of shared-resource bug in the VMM layer — the very layer
+  that microVM sandboxes add to improve isolation. Even the "fix" has
+  attack surface.
+- The architectural lesson to land: the argument is not "microVMs have
+  no bugs." It's about where bugs land. A VMM bug in Firecracker affects
+  the host-userspace process for one workload. A kernel bug affects every
+  tenant on the node. Blast radius is the difference.
+- Disclosure context: reported by Anthropic via AWS's Vulnerability
+  Disclosure Program (verify Anthropic attribution appears in
+  GHSA-776c-mpj7-jm3r before delivery). Fix shipped in Firecracker
+  1.14.4 / 1.15.1 for anyone running --enable-pci.
+
+[Cadence over memorisation — land the pattern]
+- Don't read CVE numbers off the slide. Gesture at the table and make
+  the point about the pattern: "Look at the dates. 2024, 2024, 2025,
+  2025, 2025, 2025, 2026. Roughly every quarter, another shared-resource
+  escape. Different component each time — runtime, kernel, GPU toolkit,
+  VMM — but the same class of bug."
+- The message to land clearly: this is not a one-off. This is the new
+  normal. The shared-resource stack (kernel, runtime, device model, GPU
+  passthrough) keeps producing escapes because it's large, complex, and
+  shared. The question is not "will there be another CVE?" — it's "when,
+  and what's in the blast radius when it hits?"
+- This sets up the second half of the talk: microVMs don't eliminate
+  bugs, they shrink the blast radius. The audience should leave this
+  slide thinking "okay, so what do we do about this?" — and the answer
+  is the next section.
+
 - Source: Beganović, "Your Container Is Not a Sandbox" (March 2026);
   CVE-2026-5747 via GHSA-776c-mpj7-jm3r / AWS-2026-015
 - Time check: ~7 minutes in
