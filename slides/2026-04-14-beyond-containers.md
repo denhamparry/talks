@@ -17,9 +17,24 @@ Lewis Denham-Parry | [Edera.dev](https://edera.dev)
 
 <!--
 Speaker Notes:
-- Welcome the room, introduce yourself briefly: Lewis from Edera
-- One-line frame: if you don't know your container runtime, you're
-  almost certainly running a shared kernel — and that has consequences
+
+- Welcome the room
+
+- Lewis from Edera
+- KCD UK Organiser, back in Edinburgh this year
+
+- If you don't know your container runtime, you're
+  almost certainly running a shared kernel
+
+- Today we're going to learn about the consequences
+  and for you to decide if it matters to you
+- both at home and at work
+
+- Two live demos that you can try yourself
+- Questions at the end to keep pacing tight
+
+---
+
 - Format: 25 minutes + 5 minutes Q&A
 - Two live demos: encourage questions at the end to keep pacing tight
 -->
@@ -38,6 +53,18 @@ Speaker Notes:
 
 <!--
 Speaker Notes:
+
+- Lets see some hands, or shout out your answer for this one
+
+1. Who can name the container runtime they're running in production?
+2. Who runs **multi-tenant** workloads on Kubernetes?
+3. Who is confident those tenants are actually isolated?
+
+- By the end I'll show you an attack that exploits that gap,
+  and a runtime that closes it.
+
+---
+
 - This is the hook. Pause after each question.
 - The gap between question 2 and question 3 is the whole premise.
 - Don't rush — let the discomfort sit for a beat.
@@ -64,6 +91,19 @@ Both run against **one shared kernel**.
 
 <!--
 Speaker Notes:
+
+- Containers are not a security boundary
+
+- Namespaces
+- cgroups
+
+- Another key takeaway
+- Containers are not a kernel concept
+- Like your end users don't know that you're using Kubernetes to host your service
+- This is abstracted away
+
+---
+
 - Important to land this early: "container" is not a kernel concept
 - Namespaces give each container its own view of the system
 - cgroups limit resource consumption — they are NOT security boundaries
@@ -93,7 +133,26 @@ Speaker Notes:
 - Contain side-channel leaks
 
 <!--
+
+- Talk through the positives
+
+- The kernel is shared across every container on a node
+
+- A kernel vulnerability is a multi-tenant vulnerability
+
+- Historical examples: Dirty COW, Dirty Pipe
+
+- One exploit = access to every container on the node
+
+- This isn't theoretical — these are all real, recent CVEs
+  and we'll look at some later
+
+- Even if YOUR code is fine, the kernel under you might not be
+
+---
+
 Speaker Notes:
+
 - The kernel is shared across every container on a node
 - A kernel vulnerability is a multi-tenant vulnerability
 - Historical examples: Dirty COW, Dirty Pipe, runC CVE-2024-21626
@@ -117,6 +176,11 @@ cgroups limit resources. They don't prevent abuse of the kernel.
 **Multi-tenancy via namespaces + cgroups is multi-tenancy by politeness.**
 
 <!--
+
+- Talk through points
+
+---
+
 Speaker Notes:
 - cgroups answer "how much?" not "is this allowed?"
 - Noisy neighbour is the benign case
@@ -135,6 +199,17 @@ Speaker Notes:
 
 <!--
 Speaker Notes:
+
+- Tenants are containers here
+
+- Shared kernel between our applications and hardware
+
+- Hardware is the one to watch out for
+
+- Explain how I see the diagram from application down to hardware up
+
+---
+
 - Hold this image up while making the point
 - Every container arrow lands on the same kernel block
 - That block is the only thing between tenants and the hardware
@@ -162,6 +237,54 @@ Speaker Notes:
 
 <!--
 Speaker Notes:
+
+- Just mention the CVEs
+
+- [CVE-2026-5747 — VMM layer widens the point]
+- Now bring in the newest row on the table. CVE-2026-5747 was disclosed
+  on 7 April 2026 — and it's not a kernel bug, not a runtime bug, not a
+  GPU toolkit bug. It's in Firecracker's virtio-pci transport: the device
+  model that sits between a guest VM and the host.
+- What happens: a guest with root can craft a malicious PCI config write
+  that triggers an out-of-bounds write in the VMM process on the host.
+  That VMM process runs in host userspace with access to guest memory —
+  so an OOB write there is one step from host-level code execution.
+- Why this matters for the talk: we've just shown the audience kernel
+  escapes, runtime escapes, and GPU toolkit escapes. This CVE shows the
+  same class of shared-resource bug in the VMM layer — the very layer
+  that microVM sandboxes add to improve isolation. Even the "fix" has
+  attack surface.
+- The architectural lesson to land: the argument is not "microVMs have
+  no bugs." It's about where bugs land. A VMM bug in Firecracker affects
+  the host-userspace process for one workload. A kernel bug affects every
+  tenant on the node. Blast radius is the difference.
+- Disclosure context: reported by Anthropic via AWS's Vulnerability
+  Disclosure Program (verify Anthropic attribution appears in
+  GHSA-776c-mpj7-jm3r before delivery). Fix shipped in Firecracker
+  1.14.4 / 1.15.1 for anyone running --enable-pci.
+
+[Cadence over memorisation — land the pattern]
+- Don't read CVE numbers off the slide. Gesture at the table and make
+  the point about the pattern: "Look at the dates. 2024, 2024, 2025,
+  2025, 2025, 2025, 2026. Roughly every quarter, another shared-resource
+  escape. Different component each time — runtime, kernel, GPU toolkit,
+  VMM — but the same class of bug."
+- The message to land clearly: this is not a one-off. This is the new
+  normal. The shared-resource stack (kernel, runtime, device model, GPU
+  passthrough) keeps producing escapes because it's large, complex, and
+  shared. The question is not "will there be another CVE?" — it's "when,
+  and what's in the blast radius when it hits?"
+- This sets up the second half of the talk: microVMs don't eliminate
+  bugs, they shrink the blast radius. The audience should leave this
+  slide thinking "okay, so what do we do about this?" — and the answer
+  is the next section.
+
+- Source: Beganović, "Your Container Is Not a Sandbox" (March 2026);
+  CVE-2026-5747 via GHSA-776c-mpj7-jm3r / AWS-2026-015
+- Time check: ~7 minutes in
+
+---
+
 - These are all from the last 24 months — pick one or two to narrate briefly
 - CVE-2024-21626 (Leaky Vessels) is the canonical recent example — runc
   leaked a file descriptor pointing at the host /proc; attacker writes to
@@ -232,6 +355,11 @@ Speaker Notes:
 **Goal:** From Tenant A, read a secret owned by Tenant B.
 
 <!--
+
+Prep it
+
+---
+
 Speaker Notes:
 - Screenshot / asciinema recording as backup — always
 - Narrate what you're doing, not just what's on screen
@@ -276,7 +404,7 @@ Speaker Notes:
 
 <!-- _class: dark -->
 
-![bg contain](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExejNza2YwOXQ4cjE4OGhiMDRpdXRhM3hoNHVxMGdvcHFmNTViZWs3aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kOIbusN7fPnkk/giphy.gif)
+![bg cover](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExejNza2YwOXQ4cjE4OGhiMDRpdXRhM3hoNHVxMGdvcHFmNTViZWs3aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kOIbusN7fPnkk/giphy.gif)
 
 <!--
 Speaker Notes:
