@@ -2,7 +2,7 @@
 
 **Issue:** #110 — Expand speaker notes for CVE-2026-5747 on slide 7 (Beyond
 Containers)
-**Status:** Reviewed (Approved)
+**Status:** Complete
 **Type:** fix (content)
 
 ## Context

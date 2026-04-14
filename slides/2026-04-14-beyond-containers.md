@@ -172,8 +172,8 @@ Speaker Notes:
   toolkit bug needed
 
 [CVE-2026-5747 — VMM layer widens the point]
-- Now bring in the newest row on the table. CVE-2026-5747 dropped a week
-  ago — 7th April — and it's not a kernel bug, not a runtime bug, not a
+- Now bring in the newest row on the table. CVE-2026-5747 was disclosed
+  on 7 April 2026 — and it's not a kernel bug, not a runtime bug, not a
   GPU toolkit bug. It's in Firecracker's virtio-pci transport: the device
   model that sits between a guest VM and the host.
 - What happens: a guest with root can craft a malicious PCI config write
@@ -189,16 +189,15 @@ Speaker Notes:
   no bugs." It's about where bugs land. A VMM bug in Firecracker affects
   the host-userspace process for one workload. A kernel bug affects every
   tenant on the node. Blast radius is the difference.
-- Disclosure context: reported by Anthropic's security team via AWS's
-  Vulnerability Disclosure Program. Anthropic runs Firecracker at scale
-  for their AI workloads — they found this in production-grade usage.
-  Fix shipped in Firecracker 1.14.4 / 1.15.1 for anyone running
-  --enable-pci.
+- Disclosure context: reported by Anthropic via AWS's Vulnerability
+  Disclosure Program (verify Anthropic attribution appears in
+  GHSA-776c-mpj7-jm3r before delivery). Fix shipped in Firecracker
+  1.14.4 / 1.15.1 for anyone running --enable-pci.
 
 [Cadence over memorisation — land the pattern]
 - Don't read CVE numbers off the slide. Gesture at the table and make
   the point about the pattern: "Look at the dates. 2024, 2024, 2025,
-  2025, 2025, 2025, 2026. Every few months, another shared-resource
+  2025, 2025, 2025, 2026. Roughly every quarter, another shared-resource
   escape. Different component each time — runtime, kernel, GPU toolkit,
   VMM — but the same class of bug."
 - The message to land clearly: this is not a one-off. This is the new
