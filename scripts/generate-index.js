@@ -77,19 +77,21 @@ function extractMetadata(filePath) {
     title = path.basename(filePath, '.md');
   }
 
-  // Use footer for date if available, otherwise extract from filename (format: YYYY-MM-DD-*)
+  // Extract ISO date from filename for sorting (YYYY-MM-DD prefix)
+  const dateMatch = path.basename(filePath).match(/^(\d{4}-\d{2}-\d{2})/);
+  const sortDate = dateMatch ? dateMatch[1] : '';
+
+  // Use footer for display date if available, otherwise fall back to ISO date
   if (footer) {
     date = footer;
-  } else {
-    const dateMatch = path.basename(filePath).match(/^(\d{4}-\d{2}-\d{2})/);
-    if (dateMatch) {
-      date = dateMatch[1];
-    }
+  } else if (sortDate) {
+    date = sortDate;
   }
 
   return {
     title,
     date,
+    sortDate,
     header,
     htmlFile: path.basename(filePath, '.md') + '.html',
     unlisted
@@ -114,7 +116,7 @@ function generateIndex() {
   // Extract metadata from each file
   const presentations = files.map(extractMetadata)
     .filter(p => !p.unlisted) // Filter out unlisted presentations
-    .sort((a, b) => b.date.localeCompare(a.date)); // Sort by date descending
+    .sort((a, b) => b.sortDate.localeCompare(a.sortDate)); // Sort by ISO date descending
 
   // Generate HTML
   const html = `<!DOCTYPE html>
