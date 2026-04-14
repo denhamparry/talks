@@ -1,7 +1,7 @@
 # Plan: Order talks by date (newest first) on index page
 
 **Issue:** #108
-**Status:** Reviewed (Approved)
+**Status:** Complete
 **Type:** Bug fix
 
 ## Problem
