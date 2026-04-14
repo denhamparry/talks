@@ -274,6 +274,23 @@ Speaker Notes:
 
 ---
 
+<!-- _class: dark -->
+
+![bg contain](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExejNza2YwOXQ4cjE4OGhiMDRpdXRhM3hoNHVxMGdvcHFmNTViZWs3aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kOIbusN7fPnkk/giphy.gif)
+
+<!--
+Speaker Notes:
+- Pause here — let the gif play and the room breathe
+- This is a natural break between "the problem" and "the solution"
+- The Inception reference lands the idea: we're going deeper — containers
+  inside VMs inside hardware isolation
+- No need to narrate — the visual does the work
+- Transition after a beat: "So let's go deeper. What does a runtime
+  with a real boundary look like?"
+-->
+
+---
+
 <!-- _class: content -->
 
 # The MicroVM Idea
